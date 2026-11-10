@@ -61,6 +61,7 @@ def main():
             unresolved.append(str(directory.relative_to(ROOT)))
     output={'repaired':repaired,'unresolved':unresolved,
             'policy':'Only missing scores; identical model/rubric/temperature; output ceiling 4096 instead of 2048; up to two preserved repair attempts.'}
+    (ROOT/'results').mkdir(exist_ok=True)
     (ROOT/'results/judge_repairs.json').write_text(json.dumps(output,indent=2))
     print(json.dumps(output,indent=2))
     if unresolved:
