@@ -15,6 +15,7 @@ def main():
     errors, pending = [], []
     command_count = 0
     reference_path_flags = []
+    answer_export_mismatches = []
     approval = json.loads((ROOT/'configs/formal_approval.json').read_text())
     jobs = json.loads((ROOT/'runs/formal/schedule.json').read_text())
     expected = {(i,m,r) for i in approval['question_indices'] for m in approval['conditions'] for r in range(approval['repeats'])}
@@ -66,7 +67,17 @@ def main():
         if completed and not usage:
             errors.append('Completed answer lacks provider usage: ' + label)
         for trajectory in (path/'trajectories').rglob('*.traj.json'):
-            for event in json.loads(trajectory.read_text(encoding='utf-8')).get('events', []):
+            events = json.loads(trajectory.read_text(encoding='utf-8')).get('events', [])
+            finish_messages = [e['action'].get('message', '') for e in events
+                               if isinstance(e.get('action'), dict)
+                               and e['action'].get('kind') == 'FinishAction']
+            if finish_messages and finish_messages[-1].strip() != text.strip():
+                answer_export_mismatches.append({'task':label, 'saved_answer_chars':len(text),
+                                                 'finish_message_chars':len(finish_messages[-1]),
+                                                 'classification':'empty_export' if not text else 'different_export'})
+                if text:
+                    errors.append('Nonempty exported answer differs from final FinishAction: ' + label)
+            for event in events:
                 action = event.get('action', {})
                 command = action.get('command') if isinstance(action,dict) else None
                 if isinstance(command,str):
@@ -90,6 +101,7 @@ def main():
               'project_conservative_usd':spent, 'approved_limit_usd':approval['project_total_limit_usd'],
               'recorded_shell_commands_reviewed':command_count, 'reference_path_flags':reference_path_flags,
               'reviewed_repository_internal_flags':reviewed_flags, 'unresolved_reference_path_flags':unresolved_flags,
+              'answer_export_mismatches':answer_export_mismatches,
               'scope':'Schedule, runtime hashes, question-only input, answer-score linkage, trajectory/usage presence, budget, direct known reference/artifact path patterns in commands. The command check does not enforce filesystem isolation.'}
     (ROOT/'results').mkdir(exist_ok=True)
     (ROOT/'results/evidence_audit.json').write_text(json.dumps(report, indent=2))
