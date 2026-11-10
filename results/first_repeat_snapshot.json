@@ -1,0 +1,31 @@
+{
+  "repeat": 0,
+  "attempts_finished": 24,
+  "answers_completed": 23,
+  "scores_saved": 23,
+  "agent_conservative_usd": 1.4378088,
+  "judge_conservative_usd_observed": 0.0403395,
+  "agent_seconds_sum": 3157.1880099,
+  "project_estimate_from_first_repeat": 5.1821952,
+  "conditions": {
+    "baseline": {
+      "n": 8,
+      "mean_tokens": 138018.375,
+      "pruned_observations": 0,
+      "expansion_calls": 0
+    },
+    "pruner": {
+      "n": 8,
+      "mean_tokens": 204201.875,
+      "pruned_observations": 33,
+      "expansion_calls": 0
+    },
+    "recovery": {
+      "n": 8,
+      "mean_tokens": 204927,
+      "pruned_observations": 1,
+      "expansion_calls": 0
+    }
+  },
+  "note": "Interim operational snapshot; missing judge score(s) remain pending, final comparisons require all three repetitions."
+}
