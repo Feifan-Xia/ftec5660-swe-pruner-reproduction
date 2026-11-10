@@ -7,7 +7,7 @@ from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import A4
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image, KeepTogether, CondPageBreak
 from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,14 +21,15 @@ if not args.draft and (not analysis or analysis['pending'] or not analysis.get('
     raise RuntimeError('Final report requires complete formal evidence')
 
 styles = getSampleStyleSheet()
-styles.add(ParagraphStyle(name='BodyReport', fontName='Helvetica', fontSize=9.5, leading=13,
-                         spaceAfter=7, splitLongWords=True))
+styles.add(ParagraphStyle(name='BodyReport', fontName='Helvetica', fontSize=10.5, leading=14.5,
+                         spaceAfter=8, splitLongWords=True))
 styles['Title'].fontSize = 17
 styles['Title'].leading = 21
 styles['Heading1'].fontSize = 12
 styles['Heading1'].spaceBefore = 11
 styles['Heading2'].fontSize = 10.5
-styles.add(ParagraphStyle(name='TableText', fontSize=8, leading=10))
+styles.add(ParagraphStyle(name='TableText', fontSize=8.5, leading=11))
+styles.add(ParagraphStyle(name='TableCaption', parent=styles['BodyReport'], keepWithNext=True))
 story = []
 
 def fmt(value, pattern):
@@ -43,11 +44,11 @@ def table(rows):
     item.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,0), colors.HexColor('#E8EEF5')),
         ('VALIGN', (0,0), (-1,-1), 'TOP'), ('BOTTOMPADDING', (0,0), (-1,-1), 6),
         ('LINEBELOW', (0,0), (-1,0), .6, colors.HexColor('#52667B'))]))
-    return item
+    return KeepTogether([item])
 
 def result_blocks():
     reference = json.loads((ROOT / 'configs/paper_reference.json').read_text())
-    blocks = [paragraph('Published Streamlink reference (Table 2). Scores and tokens are averages per task. The original model and evaluation population differ from this reproduction.')]
+    blocks = [paragraph('Published Streamlink reference (Table 2). Scores and tokens are averages per task. The original model and evaluation population differ from this reproduction.', 'TableCaption')]
     blocks.append(table([['Published model', 'Condition', 'Score', 'Tokens']] +
         [[r['model'], r['condition'], r['average_score'], f"{r['average_tokens']:,}"] for r in reference['rows']]))
     blocks.append(Spacer(1, 8))
@@ -87,9 +88,11 @@ def result_blocks():
         if score_ci is not None:
             blocks.append(paragraph(f"Failure-zero score sensitivity: paired difference {comparison['mean_failure_zero_score_difference']:.3f}; question-bootstrap 95% interval [{score_ci[0]:.3f}, {score_ci[1]:.3f}]."))
     figure = ROOT / 'results/formal_comparison.png'
+    caption = paragraph('The uncertainty interval resamples question-level means, preserving the three repetitions within a question. The subset is small; these intervals describe this evaluation rather than population-wide effects.')
     if figure.exists():
-        blocks.append(Image(str(figure), width=480, height=192))
-    blocks.append(paragraph('The uncertainty interval resamples question-level means, preserving the three repetitions within a question. The subset is small; these intervals describe this evaluation rather than population-wide effects.'))
+        blocks.append(KeepTogether([Image(str(figure), width=480, height=192), caption]))
+    else:
+        blocks.append(caption)
     return blocks
 
 for block in source.split('\n\n'):
@@ -106,6 +109,8 @@ for block in source.split('\n\n'):
     elif block.startswith('### '):
         story.append(paragraph(block[4:], 'Heading2'))
     elif block.startswith('## '):
+        if block.startswith('## 4.'):
+            story.append(CondPageBreak(230))
         story.append(paragraph(block[3:], 'Heading1'))
     elif block.startswith('# '):
         story.append(paragraph(block[2:], 'Title'))
