@@ -90,6 +90,7 @@ def main():
         for path in destination.rglob('*'):
             if path.is_file():
                 zipped.write(path, path.relative_to(destination))
+    subprocess.run([sys.executable, str(ROOT/'scripts/verify_bundle.py'), str(archive)], cwd=ROOT, check=True)
     print(f'{len(manifest)} checked files: {archive}')
 
 if __name__ == '__main__':
