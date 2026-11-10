@@ -74,6 +74,8 @@ def result_blocks():
     blocks.append(table(cost_rows))
     cash = sum(r['cash_cost'] for r in analysis['conditions'].values())
     blocks.append(paragraph(f'Agent-only cash charges recorded by the provider: ${cash:.4f}. These totals exclude judging and development; the full project ledger and evidence audit track the approved $8 ceiling.'))
+    for mode, r in analysis['conditions'].items():
+        blocks.append(paragraph(f"{mode}: {r['timed_out_tool_calls']} shell-command timeouts; activated pruning processed {r['pruned_original_tokens']:,} source tokens and retained {r['pruned_kept_tokens']:,}. These source-token counts use the pruner tokenizer and are separate from cumulative agent API tokens."))
     blocks.append(paragraph('Token means include failed attempts. Score means cover completed, scored answers; failure-assigned and author-filtered summaries are supplied in formal_analysis.json.'))
     for name, comparison in analysis['paired'].items():
         ci = comparison['bootstrap_95_percentile']
