@@ -40,3 +40,6 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Baseline q43 r1 running in session 63329 with real tool calls and metered API usage. Earlier parent session 63888 may now be terminal.
 - Recovery runtime smoke passed: exact hello observation and Expand recovery, runs/recovery_smoke.json. Formal model-assisted recovery remains untested.
 - Added scorer preserving exact official rubric via AST extraction, recording same-model judge limitation. Runtime score verification pending.
+- Baseline q43 r1 completed: 68s, API input 33944/output 2295, Go allowance 0.00320133. Official rubric scoring succeeded (9.6 mean, same-model judge). Official runner double-counted usage by summing cumulative and individual metrics; patched second if to elif, API ledger authoritative.
+- Baseline q26 r0 session 56558 and q17 r0 session 35192 running; network ConnectErrors conservatively charged at request bound. Pilot budget proxy remains active session 97483.
+- GPU Torch download 95209 still progressing (~6.5GB cache); install chain 74458 now building editable swe-pruner. Server script ready but has not loaded weights yet.

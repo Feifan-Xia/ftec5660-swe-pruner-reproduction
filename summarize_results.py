@@ -24,10 +24,13 @@ def summarize(phase):
         score = json.loads(score_path.read_text()) if score_path.exists() else {}
         text = answer.get('answer', '')
         valid = bool(text) and not text.startswith(('Error:', 'Timeout:', 'Unable to', 'No conversation'))
+        exit_path = directory / 'exit.json'
+        exit_code = json.loads(exit_path.read_text()).get('returncode') if exit_path.exists() else None
+        status = 'running' if exit_code is None else ('answered' if valid else 'failed')
         observations = directory / 'observations.json'
         reads = json.loads(observations.read_text(encoding='utf-8')).get('reads', []) if observations.exists() else []
         row = dict(phase=phase, mode=task['mode'], question_index=task['index'], repeat=task['repeat'],
-                   completed_answer=valid, score=score.get('mean'), seconds=answer.get('time_cost'),
+                   status=status, completed_answer=valid, score=score.get('mean'), seconds=answer.get('time_cost'),
                    api_calls=len(requests), input_tokens=sum(x.get('prompt_tokens', 0) for x in usage),
                    output_tokens=sum(x.get('completion_tokens', 0) for x in usage),
                    cash_cost=sum(x.get('cost', 0) for x in usage),
