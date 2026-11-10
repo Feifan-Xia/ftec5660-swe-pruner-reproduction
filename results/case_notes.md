@@ -27,3 +27,11 @@ The returned 1,570-character payload exactly equals the original output after re
 This trajectory establishes autonomous use of exact recovery after relevant search information was filtered out. Across the whole task, nine outputs were pruned (5,488 source tokens to 2,252 retained tokens), and the agent consumed 101,923 cumulative API tokens. The corresponding baseline and pruner runs consumed 53,433 and 29,340 tokens and scored 10.0 and 8.8. These independently evolving trajectories illustrate the resource/quality trade-off; attributing the score difference specifically to this one expansion would require a controlled replay.
 
 Evidence: `runs/formal/recovery/q41_r1/observations.json`, trajectory events 3–6 (zero-based), saved answer and score; matching baseline/pruner task directories and provider ledger. Verification compared the recorded strings directly. This is AI-assisted trace inspection.
+
+## Question 33, baseline, repetition 1: final answer lost during export
+
+The saved trajectory contains a 2,839-character `FinishAction.message` identifying `test_dash_stream_url` and the JSON serialization logic. Its action has `name: null` and `kind: FinishAction`. The authors' answer extractor recognizes a finish action through its `name`, so it skips this message. With only eight recorded actions, the 30-action fallback is not triggered, and the answers JSONL contains an empty string. The judge assigns 1 in every dimension.
+
+The primary inventory therefore records an answer-export failure, despite successful generation of a final response inside the trajectory. Its 31,370 cumulative tokens remain in resource summaries. The empty exported answer and its original score are retained; completion rates describe exported-answer availability. The trace documents the pipeline defect separately from model answer quality. A comparison of all then-completed formal trajectories found this as the only saved-answer/FinishAction mismatch. Recheck that comparison after the complete schedule.
+
+Evidence: `runs/formal/baseline/q33_r1/answers/openhands/streamlink_answers.jsonl`, the final two trajectory events, `console.log` line containing the eight-action count, and `main.py` finish-action extraction in the archived V2 runtime.

@@ -68,6 +68,8 @@ During formal evaluation, recovery/question 14/repeat 0 reached the 30-step limi
 
 An initial FP32 model with fixed 8,192-position padding incurred heavy memory pressure and exceeded the service timeout. Explicit stored precision, dynamic single-example length, and omission of unused attention matrices reduced the observed inference footprint. The numerical checks and exact tested environment document the resulting implementation difference.
 
+A second pipeline defect appeared in baseline/question 33/repeat 1: the trajectory contains a complete FinishAction.message, while the saved answer is empty. The authors' extractor checks the action name; this SDK action has a null name and identifies itself through kind=FinishAction. Its eight-action trajectory also falls below the fallback trigger. The primary inventory retains this export failure and its resource use. Accordingly, completion rates measure exported-answer availability, and the preserved trace distinguishes the extraction defect from answer-generation quality. The frozen runtime and original score remain unchanged for the scheduled comparison.
+
 ## 6. Conclusions and limitations
 
 {{CONCLUSIONS}}
