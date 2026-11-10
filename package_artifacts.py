@@ -56,7 +56,8 @@ def main():
         original_hash = hashlib.sha256(data).hexdigest()
         if any(secret in data for secret in secrets):
             raise RuntimeError(f'Credential detected in {relative}; bundle is incomplete and must be reviewed')
-        if relative.parts[0] != 'runs' and source.suffix in ('.json', '.jsonl', '.log', '.md', '.csv'):
+        exact_evidence = relative.parts[0] == 'runs' or relative.as_posix() == 'configs/command_access_reviews.json'
+        if not exact_evidence and source.suffix in ('.json', '.jsonl', '.log', '.md', '.csv'):
             text = data.decode('utf-8')
             for alias in aliases:
                 text = text.replace(alias, '$PROJECT_ROOT').replace(json.dumps(alias)[1:-1], '$PROJECT_ROOT')
@@ -83,7 +84,7 @@ def main():
         manifest.append({'path':bundle.name, 'bytes':len(data), 'sha256':hashlib.sha256(data).hexdigest()})
     (destination / 'MANIFEST.json').write_text(json.dumps({'draft': args.draft,
         'git_revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-        'transformation': 'Raw runs/ evidence is byte-preserved, including recorded local paths, content IDs and read lengths. Known project-root paths are replaced by $PROJECT_ROOT in other text files; source_sha256 records original file hashes.',
+        'transformation': 'Raw runs/ evidence and configs/command_access_reviews.json are byte-preserved, including recorded local paths, content IDs and read lengths. Known project-root paths are replaced by $PROJECT_ROOT in other text files; source_sha256 records original file hashes.',
         'files': manifest}, indent=2), encoding='utf-8')
     archive = destination.with_suffix('.zip')
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as zipped:

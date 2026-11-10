@@ -20,7 +20,8 @@ def verify(path):
             digest = hashlib.sha256(data).hexdigest()
             if digest != row['sha256'] or len(data) != row['bytes']:
                 raise ValueError('File hash or size mismatch: ' + row['path'])
-            if row['path'].startswith('runs/') and digest != row['source_sha256']:
+            exact_evidence = row['path'].startswith('runs/') or row['path'] == 'configs/command_access_reviews.json'
+            if exact_evidence and digest != row['source_sha256']:
                 raise ValueError('Raw evidence changed: ' + row['path'])
             if row['path'].endswith('/observations.json'):
                 store = json.loads(data)
