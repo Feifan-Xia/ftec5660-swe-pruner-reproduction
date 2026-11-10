@@ -12,4 +12,4 @@ __pycache__/
 release/
 report/preview_page*.png
 report/*_draft.pdf
-results/*_summary_console.json
+results/*_console.json

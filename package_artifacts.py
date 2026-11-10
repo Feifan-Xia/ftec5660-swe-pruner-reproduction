@@ -34,7 +34,9 @@ def main():
     tracked = subprocess.check_output(['git', 'ls-files'], cwd=ROOT, text=True).splitlines()
     excluded = {'PROJECT_STATUS.md', 'DEBUG_DIARY.md'}
     paths = [ROOT / p for p in tracked if p not in excluded and not p.startswith('results/')]
-    paths += list((ROOT / 'results').glob('formal_*'))
+    paths += [ROOT/'results'/name for name in ('formal_tasks.json', 'formal_tasks.csv', 'formal_analysis.json',
+                                              'formal_comparison.png', 'formal_comparison.pdf')
+              if (ROOT/'results'/name).exists()]
     paths += [ROOT/'results'/name for name in ('conclusion.txt', 'evidence_audit.json', 'pilot_tasks.json', 'pilot_tasks.csv', 'case_notes.md')
               if (ROOT/'results'/name).exists()]
     paths += [ROOT / 'report' / ('SWE-Pruner_report_draft.pdf' if args.draft else 'SWE-Pruner_report.pdf')]
