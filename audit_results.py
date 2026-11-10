@@ -73,11 +73,23 @@ def main():
                     command_count += 1
                     if re.search(r'streamlink\.jsonl|sweqa/questions|/runs/|/upstream/|\.\./\.\.',command):
                         reference_path_flags.append({'task':label,'command':command})
-    if reference_path_flags:
+    review_path = ROOT/'configs/command_access_reviews.json'
+    reviews = json.loads(review_path.read_text()) if review_path.exists() else []
+    reviewed_flags, unresolved_flags = [], []
+    for flag in reference_path_flags:
+        review = next((r for r in reviews if r['task'] == flag['task']
+                       and r['command'] == flag['command']
+                       and r.get('disposition') == 'repository_internal' and r.get('reason')), None)
+        if review:
+            reviewed_flags.append({**flag, 'review': review['reason']})
+        else:
+            unresolved_flags.append(flag)
+    if unresolved_flags:
         errors.append('Recorded commands reference artifact/outside-root paths; inspect flags before finalization')
     report = {'scheduled':len(jobs), 'pending':pending, 'errors':errors,
               'project_conservative_usd':spent, 'approved_limit_usd':approval['project_total_limit_usd'],
               'recorded_shell_commands_reviewed':command_count, 'reference_path_flags':reference_path_flags,
+              'reviewed_repository_internal_flags':reviewed_flags, 'unresolved_reference_path_flags':unresolved_flags,
               'scope':'Schedule, runtime hashes, question-only input, answer-score linkage, trajectory/usage presence, budget, direct known reference/artifact path patterns in commands. The command check does not enforce filesystem isolation.'}
     (ROOT/'results').mkdir(exist_ok=True)
     (ROOT/'results/evidence_audit.json').write_text(json.dumps(report, indent=2))

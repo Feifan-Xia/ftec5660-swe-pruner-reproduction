@@ -1,0 +1,8 @@
+[
+  {
+    "task": "recovery/q11_r1",
+    "command": "cd src/streamlink/webbrowser/cdp && grep -rn \"parse_json_event\\|_event_parsers\" . ../../ | grep -v \"\\.pyc\" | sort -u | head -20",
+    "disposition": "repository_internal",
+    "reason": "The explicit cd starts inside src/streamlink/webbrowser/cdp. Both grep roots resolve inside the pinned repository: . is that directory and ../../ is src/streamlink. The command searches source text and names no question or reference artifact. Exact command reviewed against the saved trajectory; path resolution verified locally."
+  }
+]
