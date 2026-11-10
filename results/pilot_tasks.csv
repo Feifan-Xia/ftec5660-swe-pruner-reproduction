@@ -1,0 +1,16 @@
+phase,mode,question_index,repeat,status,completed_answer,score,seconds,elapsed_task_seconds,api_calls,input_tokens,successful_api_calls,tool_observations,pruned_observations,timed_out_tool_calls,pruned_original_tokens,pruned_kept_tokens,output_tokens,cash_cost,provider_list_cost,go_allowance,conservative_cost,recovery_reads,repeated_lines,author_filtered_eligible,path,total_tokens
+pilot,baseline,17,0,failed,False,,0.0,,22,149065,9,20,0,1,0,0,4062,0,0.01346717,0.00808031,0.049593899999999996,0,0,,runs\pilot\baseline\q17_r0,153127
+pilot,baseline,17,1,answered,True,8.0,46.93,,8,91354,8,12,0,0,0,0,3876,0,0.01049427,0.00629656,0.0320574,0,0,True,runs\pilot\baseline\q17_r1,95230
+pilot,baseline,26,0,failed,False,,0.0,,37,246448,21,31,0,3,0,0,13404,0,0.03786124,0.02271676,0.0900192,0,0,,runs\pilot\baseline\q26_r0,259852
+pilot,baseline,26,1,answered,True,9.2,243.34,,12,111920,12,21,0,1,0,0,9684,0,0.01622016,0.0097321,0.0451968,0,0,True,runs\pilot\baseline\q26_r1,121604
+pilot,baseline,43,0,failed,False,,,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,runs\pilot\baseline\q43_r0,0
+pilot,baseline,43,1,answered,True,9.6,68.0,,6,33944,6,10,0,3,0,0,2295,0,0.00533553,0.00320133,0.012937199999999998,0,0,True,runs\pilot\baseline\q43_r1,36239
+pilot,pruner,17,0,answered,True,7.8,107.71,,20,301260,20,19,0,0,0,0,4365,0,0.01308902,0.00785344,0.09561599999999999,0,0,True,runs\pilot\pruner\q17_r0,305625
+pilot,pruner,26,0,answered,True,9.6,542.15,,21,386378,21,35,0,2,0,0,18267,0,0.03746923,0.02248154,0.1378338,0,0,True,runs\pilot\pruner\q26_r0,404645
+pilot,pruner,43,0,failed,False,,,,7,44567,7,10,0,0,0,0,3535,0,0.00771489,0.00462894,0.0176121,0,0,,runs\pilot\pruner\q43_r0,48102
+pilot,pruner,43,1,failed,False,,,,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,runs\pilot\pruner\q43_r1,0
+pilot,pruner,43,2,answered,True,9.4,98.65,,15,175667,15,23,0,1,0,0,7400,0,0.01465301,0.0087918,0.0615801,0,0,True,runs\pilot\pruner\q43_r2,183067
+pilot,recovery,17,0,answered,True,7.8,76.82,,8,113985,8,14,2,0,3201,1194,3328,0,0.01071776,0.00643064,0.0381891,0,0,True,runs\pilot\recovery\q17_r0,117313
+pilot,recovery,26,0,answered,True,9.6,195.01,,7,50125,7,11,0,1,0,0,4168,0,0.01480826,0.008884949999999999,0.0200391,0,0,True,runs\pilot\recovery\q26_r0,54293
+pilot,recovery,43,0,failed,False,,0.0,,40,144023,15,15,0,0,0,0,8977,0,0.019696560000000002,0.01181793,0.1168878,0,0,,runs\pilot\recovery\q43_r0,153000
+pilot,recovery,43,1,answered,True,10.0,65.1,,5,29222,5,8,0,0,0,0,1952,0,0.00505025,0.00303015,0.011108999999999999,0,0,True,runs\pilot\recovery\q43_r1,31174

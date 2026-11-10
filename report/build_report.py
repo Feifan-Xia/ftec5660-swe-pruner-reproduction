@@ -38,9 +38,9 @@ def fmt(value, pattern):
 def paragraph(text, style='BodyReport'):
     return Paragraph(escape(text), styles[style])
 
-def table(rows):
+def table(rows, widths=None):
     data = [[paragraph(str(v), 'TableText') for v in row] for row in rows]
-    item = Table(data, hAlign='LEFT', repeatRows=1)
+    item = Table(data, colWidths=widths, hAlign='LEFT', repeatRows=1)
     item.setStyle(TableStyle([('BACKGROUND', (0,0), (-1,0), colors.HexColor('#E8EEF5')),
         ('VALIGN', (0,0), (-1,-1), 'TOP'), ('BOTTOMPADDING', (0,0), (-1,-1), 6),
         ('LINEBELOW', (0,0), (-1,0), .6, colors.HexColor('#52667B'))]))
@@ -50,7 +50,8 @@ def result_blocks():
     reference = json.loads((ROOT / 'configs/paper_reference.json').read_text())
     blocks = [paragraph('Published Streamlink reference (Table 2). Scores and tokens are averages per task. The original model and evaluation population differ from this reproduction.', 'TableCaption')]
     blocks.append(table([['Published model', 'Condition', 'Score', 'Tokens']] +
-        [[r['model'], r['condition'], r['average_score'], f"{r['average_tokens']:,}"] for r in reference['rows']]))
+        [[r['model'], r['condition'], r['average_score'], f"{r['average_tokens']:,}"] for r in reference['rows']],
+        widths=[185, 115, 70, 135]))
     blocks.append(Spacer(1, 8))
     if not analysis:
         blocks.append(paragraph('DRAFT: Formal results are pending. Component checks below are measured; no formal comparison is claimed.'))
@@ -83,6 +84,8 @@ def result_blocks():
         if audit['pending'] or audit['errors'] or repairs['unresolved']:
             raise RuntimeError('Final report requires resolved evidence audit and judge repairs')
         blocks.append(paragraph(f"Full-project conservative accounting, including development and judging: ${audit['project_conservative_usd']:.4f} against the approved ${audit['approved_limit_usd']:.2f} ceiling. {len(repairs['repaired'])} answers required the documented bounded judge-repair procedure; all original responses are retained."))
+        provider = audit['provider_recorded_usage']
+        blocks.append(paragraph(f"Across saved provider usage, project list cost is ${provider['list_cost_usd']:.4f}, Go allowance consumption is {provider['go_allowance']:.4f}, and cash cost is ${provider['cash_cost_usd']:.4f}. List cost matches the platform dashboard's Cost field at the checked snapshot. Cached input is included in API token totals; conservative accounting prices all input at the uncached peak rate."))
     for mode, r in analysis['conditions'].items():
         blocks.append(paragraph(f"{mode}: {r['timed_out_tool_calls']} shell-command timeouts; activated pruning processed {r['pruned_original_tokens']:,} source tokens and retained {r['pruned_kept_tokens']:,}. These source-token counts use the pruner tokenizer and are separate from cumulative agent API tokens."))
     blocks.append(paragraph('Token means include failed attempts. Score means cover completed, scored answers; failure-assigned and author-filtered summaries are supplied in formal_analysis.json.'))
@@ -113,7 +116,8 @@ for block in source.split('\n\n'):
         conclusion = ROOT / 'results/conclusion.txt'
         if not args.draft and not conclusion.exists():
             raise RuntimeError('An evidence-reviewed conclusion is required for the final report')
-        story.append(paragraph(conclusion.read_text(encoding='utf-8') if conclusion.exists() else 'DRAFT: Final interpretation will be written after the frozen formal schedule has been analyzed.'))
+        text = conclusion.read_text(encoding='utf-8') if conclusion.exists() else 'DRAFT: Final interpretation will be written after the frozen formal schedule has been analyzed.'
+        story.extend(paragraph(part.strip()) for part in text.split('\n\n') if part.strip())
     elif block.startswith('### '):
         story.append(paragraph(block[4:], 'Heading2'))
     elif block.startswith('## '):

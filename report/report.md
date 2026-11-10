@@ -1,6 +1,8 @@
 # SWE-Pruner on SWE-QA: A Laptop Reproduction with Recoverable Tool Observations
 
-FTEC5660 — Xia Feifan — Student ID: 1155204948 — Individual Reproducibility Project | 10 November 2026
+Xia Feifan | Student ID: 1155204948
+
+FTEC5660 — Individual Reproducibility Project | 10 November 2026
 
 ## 1. Target and scope
 

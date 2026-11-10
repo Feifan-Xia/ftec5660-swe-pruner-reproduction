@@ -1,0 +1,68 @@
+{
+  "scheduled": 72,
+  "pending": [],
+  "errors": [],
+  "project_conservative_usd": 4.425063,
+  "approved_limit_usd": 8.0,
+  "recorded_shell_commands_reviewed": 1169,
+  "reference_path_flags": [
+    {
+      "task": "recovery/q11_r1",
+      "command": "cd src/streamlink/webbrowser/cdp && grep -rn \"parse_json_event\\|_event_parsers\" . ../../ | grep -v \"\\.pyc\" | sort -u | head -20"
+    },
+    {
+      "task": "baseline/q11_r2",
+      "command": "cd \"/mnt/c/Users/feifa/Documents/ChatGPT/Reproduce Agent/data/streamlink/src/streamlink/webbrowser/cdp/devtools\"; grep -n \"RequestId\\|AuthChallenge\\|DownloadProgress\" fetch.py | head -20; echo ==== ; grep -n \"ref_to_python\" -A 18 ../../../../../script/generate-cdp.py | head -40"
+    },
+    {
+      "task": "pruner/q11_r2",
+      "command": "cd src/streamlink/webbrowser/cdp/devtools; for f in *.py; do echo -n \"$f: from_json=\"; grep -c \"def from_json\" $f; done; echo ---; grep -c \"from_json\" network.py; echo ---; sed -n '1,30p' network.py; echo ---; sed -n '215,275p' ../../../../../pyproject.toml"
+    },
+    {
+      "task": "pruner/q11_r2",
+      "command": "cd src/streamlink/webbrowser/cdp/devtools; grep -n \"def from_json\" -A 3 network.py | grep -c \"json: T_JSON_DICT\"; echo ---; sed -n '57,100p' network.py; echo ---; grep -n \"class Headers\" -A 12 network.py; echo ---; grep -c \"from_json\" ../../../../../tests/webbrowser/cdp/test_connection.py"
+    }
+  ],
+  "reviewed_repository_internal_flags": [
+    {
+      "task": "recovery/q11_r1",
+      "command": "cd src/streamlink/webbrowser/cdp && grep -rn \"parse_json_event\\|_event_parsers\" . ../../ | grep -v \"\\.pyc\" | sort -u | head -20",
+      "review": "The explicit cd starts inside src/streamlink/webbrowser/cdp. Both grep roots resolve inside the pinned repository: . is that directory and ../../ is src/streamlink. The command searches source text and names no question or reference artifact. Exact command reviewed against the saved trajectory; path resolution verified locally."
+    },
+    {
+      "task": "baseline/q11_r2",
+      "command": "cd \"/mnt/c/Users/feifa/Documents/ChatGPT/Reproduce Agent/data/streamlink/src/streamlink/webbrowser/cdp/devtools\"; grep -n \"RequestId\\|AuthChallenge\\|DownloadProgress\" fetch.py | head -20; echo ==== ; grep -n \"ref_to_python\" -A 18 ../../../../../script/generate-cdp.py | head -40",
+      "review": "The explicit cd enters src/streamlink/webbrowser/cdp/devtools, five levels below the repository root. Each ../../../../../ target resolves to repository-internal script/generate-cdp.py, pyproject.toml, or tests/webbrowser/cdp/test_connection.py. Those files exist in the pinned working tree. Other named files are local Python modules; the full recorded command references no question or answer artifact."
+    },
+    {
+      "task": "pruner/q11_r2",
+      "command": "cd src/streamlink/webbrowser/cdp/devtools; for f in *.py; do echo -n \"$f: from_json=\"; grep -c \"def from_json\" $f; done; echo ---; grep -c \"from_json\" network.py; echo ---; sed -n '1,30p' network.py; echo ---; sed -n '215,275p' ../../../../../pyproject.toml",
+      "review": "The explicit cd enters src/streamlink/webbrowser/cdp/devtools, five levels below the repository root. Each ../../../../../ target resolves to repository-internal script/generate-cdp.py, pyproject.toml, or tests/webbrowser/cdp/test_connection.py. Those files exist in the pinned working tree. Other named files are local Python modules; the full recorded command references no question or answer artifact."
+    },
+    {
+      "task": "pruner/q11_r2",
+      "command": "cd src/streamlink/webbrowser/cdp/devtools; grep -n \"def from_json\" -A 3 network.py | grep -c \"json: T_JSON_DICT\"; echo ---; sed -n '57,100p' network.py; echo ---; grep -n \"class Headers\" -A 12 network.py; echo ---; grep -c \"from_json\" ../../../../../tests/webbrowser/cdp/test_connection.py",
+      "review": "The explicit cd enters src/streamlink/webbrowser/cdp/devtools, five levels below the repository root. Each ../../../../../ target resolves to repository-internal script/generate-cdp.py, pyproject.toml, or tests/webbrowser/cdp/test_connection.py. Those files exist in the pinned working tree. Other named files are local Python modules; the full recorded command references no question or answer artifact."
+    }
+  ],
+  "unresolved_reference_path_flags": [],
+  "answer_export_mismatches": [
+    {
+      "task": "baseline/q33_r1",
+      "saved_answer_chars": 0,
+      "finish_message_chars": 2839,
+      "classification": "empty_export"
+    }
+  ],
+  "provider_recorded_usage": {
+    "requests_with_usage": 1063,
+    "list_cost_usd": 0.8840541,
+    "go_allowance": 0.53043235,
+    "cash_cost_usd": 0,
+    "prompt_tokens": 12463968,
+    "cached_prompt_tokens": 10545024,
+    "completion_tokens": 519112,
+    "scope": "Saved provider usage including development and judges; the initial unlogged connectivity probe is included only in conservative accounting."
+  },
+  "scope": "Schedule, runtime hashes, question-only input, answer-score linkage, trajectory/usage presence, budget, direct known reference/artifact path patterns in commands. The command check does not enforce filesystem isolation."
+}

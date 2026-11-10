@@ -4,7 +4,17 @@ FTEC5660 individual reproducibility project. The experiment uses the authors' SW
 
 ## Experiment status
 
-Nine development condition/question combinations have completed. The approved 72-attempt formal evaluation is running; final results and report remain pending. Results must be interpreted at their recorded model, repository revision, question subset, and configuration.
+Nine development condition/question combinations and all 72 approved formal attempts have completed. Each formal condition exported 23 valid answers from 24 attempts. Three initially truncated judge responses were repaired using the documented bounded procedure; all original responses remain available.
+
+| Condition | Valid answers / attempts | Mean cumulative API tokens | Mean score of valid answers | Expansion calls |
+|---|---:|---:|---:|---:|
+| Baseline | 23 / 24 | 125,036 | 9.87 | 0 |
+| Pruner | 23 / 24 | 183,425 | 9.74 | 0 |
+| Recovery | 23 / 24 | 140,734 | 9.83 | 3 |
+
+Pruner used 46.7% more cumulative tokens than baseline; recovery used 23.3% fewer than pruner. Both paired question-bootstrap token intervals cross zero. The released model successfully compressed individual observations, while the local small-subset comparison did not reproduce aggregate token savings. See the report for failure-zero scores, uncertainty, runtime amendments and limitations.
+
+Recorded project provider list cost is $0.8841, Go allowance consumption is 0.5304, and provider-reported cash charges are $0. Conservative budget accounting totals $4.4251 against the approved $8 ceiling. These totals include development and judging; the initial connectivity probe is covered in conservative accounting. Full evidence is distributed in the local submission ZIP; downloaded weights and source checkouts are obtained using the pinned setup below.
 
 ## Conditions
 

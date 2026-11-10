@@ -209,5 +209,21 @@
         "conservative": 0
       }
     }
-  ]
+  ],
+  "final_observation": {
+    "time": "2026-11-10T20:05:17.331250+08:00",
+    "completed_attempts": 72,
+    "provider_recorded_usage": {
+      "requests_with_usage": 1063,
+      "list_cost_usd": 0.8840541,
+      "go_allowance": 0.53043235,
+      "cash_cost_usd": 0,
+      "prompt_tokens": 12463968,
+      "cached_prompt_tokens": 10545024,
+      "completion_tokens": 519112,
+      "scope": "Saved provider usage including development and judges; the initial unlogged connectivity probe is included only in conservative accounting."
+    },
+    "conservative_usd": 4.425063,
+    "forecast_comparison": "The question/condition-matched forecast was $0.8855 list cost before judge repairs. Final saved-provider list cost is $0.8841; realized remaining task variation offset repair cost. Forecast was approximate and excluded the initial unlogged connectivity probe."
+  }
 }

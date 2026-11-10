@@ -37,6 +37,18 @@ def main():
         spent += sum(json.loads(x).get('usage', {}).get('opencode', {}).get('list_cost', 0) for x in checks.read_text().splitlines())
     if spent > approval['project_total_limit_usd'] + 1e-8:
         errors.append('Project budget ceiling exceeded')
+    usages = [r['usage'] for r in ledger if r.get('usage')]
+    if checks.exists():
+        usages += [json.loads(x)['usage'] for x in checks.read_text().splitlines() if json.loads(x).get('usage')]
+    provider_totals = {
+        'requests_with_usage':len(usages),
+        'list_cost_usd':sum(u.get('opencode', {}).get('list_cost', 0) for u in usages),
+        'go_allowance':sum(u.get('opencode', {}).get('allowance', 0) for u in usages),
+        'cash_cost_usd':sum(u.get('cost', 0) for u in usages),
+        'prompt_tokens':sum(u.get('prompt_tokens', 0) for u in usages),
+        'cached_prompt_tokens':sum(u.get('prompt_tokens_details', {}).get('cached_tokens', 0) for u in usages),
+        'completion_tokens':sum(u.get('completion_tokens', 0) for u in usages),
+        'scope':'Saved provider usage including development and judges; the initial unlogged connectivity probe is included only in conservative accounting.'}
     for job in jobs:
         label = f"{job['mode']}/q{job['index']}_r{job['repeat']}"
         path = ROOT/'runs/formal'/label
@@ -102,6 +114,7 @@ def main():
               'recorded_shell_commands_reviewed':command_count, 'reference_path_flags':reference_path_flags,
               'reviewed_repository_internal_flags':reviewed_flags, 'unresolved_reference_path_flags':unresolved_flags,
               'answer_export_mismatches':answer_export_mismatches,
+              'provider_recorded_usage':provider_totals,
               'scope':'Schedule, runtime hashes, question-only input, answer-score linkage, trajectory/usage presence, budget, direct known reference/artifact path patterns in commands. The command check does not enforce filesystem isolation.'}
     (ROOT/'results').mkdir(exist_ok=True)
     (ROOT/'results/evidence_audit.json').write_text(json.dumps(report, indent=2))

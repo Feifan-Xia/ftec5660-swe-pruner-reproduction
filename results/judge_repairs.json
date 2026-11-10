@@ -1,0 +1,9 @@
+{
+  "repaired": [
+    "runs\\formal\\pruner\\q14_r2",
+    "runs\\formal\\recovery\\q14_r1",
+    "runs\\formal\\recovery\\q46_r0"
+  ],
+  "unresolved": [],
+  "policy": "Only missing scores; identical model/rubric/temperature; output ceiling 4096 instead of 2048; up to two preserved repair attempts."
+}
