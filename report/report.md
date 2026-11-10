@@ -48,6 +48,8 @@ For question 41, repetition 0, all three conditions correctly located TestIO.tes
 
 ### Released-checkpoint behavior and exact recovery
 
+A formal autonomous recovery occurred on question 41, repetition 1. Pruning reduced a 29-line repository search result from 851 source tokens to 6, leaving only a filtered-lines marker. The agent immediately called expand for all 29 saved lines, recovering the exact original payload, including the TestIO file location. It subsequently identified the requested test and assertion and scored 10.0. That run used 101,923 cumulative API tokens, compared with 53,433 for baseline and 29,340 for pruner in the same question/repetition. This trace establishes actual recovery use and its resource cost; causal attribution of a quality improvement would require a controlled replay.
+
 A fixed component demonstration uses the 217-line albavision.py source file and a query about token transformation and adjacent-hour timestamps. The released model reduces 1,687 code tokens to 169, retaining the transformation function and the current/previous-hour call. The observed request completes in approximately two seconds. A separate real-code service smoke measured peak allocated GPU memory of approximately 2.88 GB.
 
 The demo then retrieves original lines 191–215 by observation ID and verifies exact string equality with the saved source range. This is a scripted component demonstration: the script chooses the recovery range. Autonomous use of recovery is measured separately in the formal trajectories. Unit tests additionally cover mixed CRLF/LF endings, Unicode, overlapping reads, unknown IDs, invalid ranges, and the per-read line limit.

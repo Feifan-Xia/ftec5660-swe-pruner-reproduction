@@ -61,10 +61,11 @@ def result_blocks():
                      fmt(r['mean_tokens_all_attempts'], ',.0f'), fmt(r['mean_score_completed'], '.2f'),
                      r['pruned_observations'], r['recovery_reads']])
     blocks.append(table(rows))
-    repeat_rows = [['Condition', 'Token mean SD across repeats', 'Score mean SD across repeats']]
+    repeat_rows = [['Condition', 'Token mean SD across repeats', 'Score mean SD across repeats', 'Failure-zero score']]
     for mode, r in analysis['conditions'].items():
         repeat_rows.append([mode, fmt(r['repeat_token_mean_sample_sd'], ',.0f'),
-                            fmt(r['repeat_score_mean_sample_sd'], '.3f')])
+                            fmt(r['repeat_score_mean_sample_sd'], '.3f'),
+                            fmt(r['mean_score_failure_zero'], '.2f')])
     blocks.append(Spacer(1, 6))
     blocks.append(table(repeat_rows))
     cost_rows = [['Condition', 'Mean task elapsed time (s)', 'Go allowance total', 'Conservative USD total']]
@@ -75,6 +76,12 @@ def result_blocks():
     blocks.append(table(cost_rows))
     cash = sum(r['cash_cost'] for r in analysis['conditions'].values())
     blocks.append(paragraph(f'Agent-only cash charges recorded by the provider: ${cash:.4f}. These totals exclude judging and development; the full project ledger and evidence audit track the approved $8 ceiling.'))
+    if not args.draft:
+        audit = json.loads((ROOT / 'results/evidence_audit.json').read_text())
+        repairs = json.loads((ROOT / 'results/judge_repairs.json').read_text())
+        if audit['pending'] or audit['errors'] or repairs['unresolved']:
+            raise RuntimeError('Final report requires resolved evidence audit and judge repairs')
+        blocks.append(paragraph(f"Full-project conservative accounting, including development and judging: ${audit['project_conservative_usd']:.4f} against the approved ${audit['approved_limit_usd']:.2f} ceiling. {len(repairs['repaired'])} answers required the documented bounded judge-repair procedure; all original responses are retained."))
     for mode, r in analysis['conditions'].items():
         blocks.append(paragraph(f"{mode}: {r['timed_out_tool_calls']} shell-command timeouts; activated pruning processed {r['pruned_original_tokens']:,} source tokens and retained {r['pruned_kept_tokens']:,}. These source-token counts use the pruner tokenizer and are separate from cumulative agent API tokens."))
     blocks.append(paragraph('Token means include failed attempts. Score means cover completed, scored answers; failure-assigned and author-filtered summaries are supplied in formal_analysis.json.'))

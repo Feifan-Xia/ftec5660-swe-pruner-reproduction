@@ -17,3 +17,13 @@ At the 30-step cap, the direct fallback client sent the SDK-only model prefix to
 The canonical model name and task session headers were repaired for subsequent scheduled tasks. The first six tasks retain runtime V1, and the remaining tasks use V2; exact code snapshots and the amendment are saved. This failure remains in completion/resource summaries and in the failure-zero score sensitivity analysis. No successful replacement overwrites it.
 
 Evidence: `runs/formal/recovery/q14_r0/console.log`, its saved answer and score, `runs/formal/runtime_manifest_v1.json`, and `runs/formal/runtime_manifest.json`.
+
+## Question 41, repetition 1: autonomous recovery after an over-pruned search result
+
+The recovery agent first requested a focused repository search. The original 29-line output contained the working directory, a directory listing, and `./tests/test_cache.py:331:class TestIO:`. Pruning reduced 851 source tokens to 6 tokens, yielding only `(filtered 29 lines)`. The next agent action invoked `expand` for saved observation `obs_cbd1da5a3453bf18`, lines 1–29.
+
+The returned 1,570-character payload exactly equals the original output after removing the standard `Raw Output: \n` tool wrapper. The saved read manifest records one read and zero repeated lines. The agent then searched `tests/test_cache.py` and eventually identified `TestIO.test_load_data` and `assert cache._dirty is dirty`, alongside the production cache implementation. The rubric judge assigned 10.0.
+
+This trajectory establishes autonomous use of exact recovery after relevant search information was filtered out. Across the whole task, nine outputs were pruned (5,488 source tokens to 2,252 retained tokens), and the agent consumed 101,923 cumulative API tokens. The corresponding baseline and pruner runs consumed 53,433 and 29,340 tokens and scored 10.0 and 8.8. These independently evolving trajectories illustrate the resource/quality trade-off; attributing the score difference specifically to this one expansion would require a controlled replay.
+
+Evidence: `runs/formal/recovery/q41_r1/observations.json`, trajectory events 3–6 (zero-based), saved answer and score; matching baseline/pruner task directories and provider ledger. Verification compared the recorded strings directly. This is AI-assisted trace inspection.
