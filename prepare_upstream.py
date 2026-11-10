@@ -12,6 +12,8 @@ def main():
     text = text.replace('MAX_WORKERS = 16', 'MAX_WORKERS = 1')
     text = text.replace('_http_hack_enabled = setup_http_hack_for_claude()',
                         '_http_hack_enabled = False  # OpenAI-compatible route uses native httpx')
+    text = text.replace('                    if hasattr(metrics, "token_usages") and metrics.token_usages:',
+                        '                    elif hasattr(metrics, "token_usages") and metrics.token_usages:')
     text = text.replace('elif experiment == "pruner":\n', 'elif experiment in ("pruner", "recovery"):\n')
     recovery = '''if experiment == "recovery":
     from recovery_tool import make_recoverable, make_expand
