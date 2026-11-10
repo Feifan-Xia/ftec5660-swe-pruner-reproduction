@@ -52,3 +52,9 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Real-code smoke succeeded: albavision.py 6620 chars, 1687->169 tokens, ~2.0 sec, peak allocated ~2.88 GB; runs/pruner_real_code_smoke.json. WSL accesses Windows pruner through localhost:8000 successfully.
 - Current serial pilot batch session 82827. pruner q43 r2 succeeded/scored 9.4, API total 183067, Go allowance .0087918; zero pruner service calls in that particular trajectory (must report bypass rather than claim compression). recovery q43 r0 ongoing, then baseline17/26 r1 and pruner/recovery17/26 r0. Failed earlier setup attempts retained.
 - Pending: finish pilot, verify numerical equivalence of padding/attention optimizations, obtain formal budget approval, run formal fixed subset x3, score/analyze, generate/inspect report PDF and demo materials, publication-ready audit.
+
+### Current download and network policy
+- Before large downloads, inspect total dependency size, existing local installations, and actual Clash connection route. Prefer direct access or SakuraCat for transfers above 5 GB; avoid 魔戒 when a usable alternative exists.
+- Existing CUDA-enabled PyTorch is now reused; GPU dependency installation/download was stopped. Model weights are complete. No additional >5 GB transfer is planned.
+- Windows API proxy PID 70604 uses httpx trust_env=False after an explicit-proxy TLS failure and a successful direct-client probe. Current pilot resumed in session 73056; repeated-call reliability is still under observation.
+- Recovery tool instructions now name the actual expand tool. Pilot skips existing validated score files to avoid duplicate judge calls.

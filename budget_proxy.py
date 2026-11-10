@@ -22,14 +22,18 @@ def main():
     if ledger.exists():
         spent += sum(json.loads(line)['charged_bound_usd'] for line in ledger.read_text().splitlines()
                      if json.loads(line).get('error') != 'ConnectError')
-    client = httpx.Client(timeout=180)
+    checks = ROOT / 'runs/network_checks.jsonl'
+    if checks.exists():
+        spent += sum(json.loads(line).get('usage', {}).get('opencode', {}).get('list_cost', 0)
+                     for line in checks.read_text().splitlines())
+    client = httpx.Client(timeout=180, trust_env=False)
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *args):
             pass
 
         def do_POST(self):
-            nonlocal spent
+            nonlocal spent, client
             payload = json.loads(self.rfile.read(int(self.headers['Content-Length'])))
             if self.path != '/v1/chat/completions' or payload.get('model') != 'deepseek-v4.1-flash':
                 self.send_error(400, 'Unsupported route or model')
@@ -82,7 +86,11 @@ def main():
                     spent += charge
                     with ledger.open('a') as file:
                         file.write(json.dumps(dict(time=time.time(), session=session, status=0,
-                            error=type(exc).__name__, charged_bound_usd=charge, total_bound_usd=spent)) + '\n')
+                            error=type(exc).__name__, error_detail=str(exc)[:300],
+                            charged_bound_usd=charge, total_bound_usd=spent)) + '\n')
+                    if isinstance(exc, httpx.ConnectError):
+                        client.close()
+                        client = httpx.Client(timeout=180, trust_env=False)
                 self.close_connection = True
 
     print(f'Budget proxy on 127.0.0.1:{args.port}; limit={args.limit}; spent_bound={spent}', flush=True)

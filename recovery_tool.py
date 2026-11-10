@@ -24,8 +24,8 @@ class RecoverableObservation(BashObservation):
     @property
     def to_llm_content(self):
         return [*super().to_llm_content, TextContent(text=(
-            f'Original output saved as {self.observation_id}, {self.line_count} lines. '
-            'Use ExpandObservation with inclusive one-based start/end lines to recover details.'))]
+            f'\n\nOriginal output saved as {self.observation_id}, {self.line_count} lines. '
+            'Use the expand tool with inclusive one-based start/end lines to recover details.'))]
 
 
 class RecoverableExecutor(PrunerBashExecutor):
