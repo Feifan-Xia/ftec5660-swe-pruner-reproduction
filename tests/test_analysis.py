@@ -36,6 +36,7 @@ class AnalysisTests(unittest.TestCase):
             self.assertEqual(result['conditions']['baseline']['completed'], 23)
             self.assertAlmostEqual(result['conditions']['baseline']['mean_score_failure_zero'], 23*8/24)
             self.assertEqual(result['paired']['pruner_minus_baseline']['mean_token_difference'], -20)
+            self.assertAlmostEqual(result['paired']['pruner_minus_baseline']['mean_failure_zero_score_difference'], 1/3)
             self.assertEqual(result['paired']['recovery_minus_pruner']['bootstrap_95_percentile'], [10,10])
 
 if __name__ == '__main__':

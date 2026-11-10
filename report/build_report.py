@@ -81,6 +81,9 @@ def result_blocks():
             blocks.append(paragraph(f"{name.replace('_', ' ')}: complete three-repeat question pairs pending."))
             continue
         blocks.append(paragraph(f"{name.replace('_', ' ')}: paired mean token difference {comparison['mean_token_difference']:,.0f}; question-bootstrap 95% interval [{ci[0]:,.0f}, {ci[1]:,.0f}], {comparison['question_pairs']} question pairs."))
+        score_ci = comparison['score_bootstrap_95_percentile']
+        if score_ci is not None:
+            blocks.append(paragraph(f"Failure-zero score sensitivity: paired difference {comparison['mean_failure_zero_score_difference']:.3f}; question-bootstrap 95% interval [{score_ci[0]:.3f}, {score_ci[1]:.3f}]."))
     figure = ROOT / 'results/formal_comparison.png'
     if figure.exists():
         blocks.append(Image(str(figure), width=480, height=192))
