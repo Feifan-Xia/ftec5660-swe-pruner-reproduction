@@ -26,7 +26,7 @@ def summarize(phase):
         valid = bool(text) and not text.startswith(('Error:', 'Timeout:', 'Unable to', 'No conversation'))
         exit_path = directory / 'exit.json'
         exit_code = json.loads(exit_path.read_text()).get('returncode') if exit_path.exists() else None
-        status = 'running' if exit_code is None else ('answered' if valid else 'failed')
+        status = 'running' if not exit_path.exists() else ('answered' if valid else 'failed')
         observations = directory / 'observations.json'
         reads = json.loads(observations.read_text(encoding='utf-8')).get('reads', []) if observations.exists() else []
         events = [e for p in (directory / 'trajectories').rglob('*.traj.json')

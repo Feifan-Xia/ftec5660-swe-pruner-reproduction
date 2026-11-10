@@ -78,10 +78,34 @@ The official five-dimensional rubric is retained. Current pilot scoring uses the
 
 ## Validation
 
+Install `requirements-report.txt` in the analysis/report environment to run the statistical checks and rebuild the report. All commands below run from the project root; use the GPU environment for numerical validation.
+
 ```bash
+python -m pip install -r requirements-report.txt
+python scripts/verify_assets.py
 python -m unittest discover -s tests -v
 python validate_pruner.py  # GPU environment
 python demo.py             # Running local GPU service; no paid API
 ```
+
+## Formal evaluation and artifacts
+
+The approved scope is eight questions, three conditions, and three repetitions. The total project budget ceiling is $8, including development and judging. Start the proxy with `--limit 8 --port 8877` only after the development proxy has stopped; its ledger carries prior usage forward. In the WSL agent environment:
+
+```bash
+python run_formal.py --plan-only
+python run_formal.py
+```
+
+In the analysis environment, after all scheduled attempts and available answer scores are recorded:
+
+```bash
+python summarize_results.py --phase formal
+python analyze_results.py
+python report/build_report.py
+python package_artifacts.py
+```
+
+The report builder requires a reviewed `results/conclusion.txt`. Review every rendered report page before submission. `package_artifacts.py` creates a local ZIP with credential-checked evidence, normalized project paths, third-party licenses and a SHA-256 manifest. Public publishing and the student's recording/submission are separate user actions.
 
 Raw logs and downloaded assets are excluded from Git during development. The final publication package will include a reviewed, credential-free evidence bundle, environment lock, report and demo script.
