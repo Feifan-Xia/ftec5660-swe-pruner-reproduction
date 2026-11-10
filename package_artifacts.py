@@ -43,7 +43,7 @@ def main():
     paths += [ROOT / 'runs' / name for name in evidence_names if (ROOT / 'runs' / name).exists()]
     phases = ['pilot'] if args.draft else ['pilot', 'formal']
     for phase in phases:
-        paths += [p for p in (ROOT / 'runs' / phase).rglob('*') if p.is_file() and p.suffix in ('.json', '.jsonl', '.log')]
+        paths += [p for p in (ROOT / 'runs' / phase).rglob('*') if p.is_file() and p.suffix in ('.json', '.jsonl', '.log', '.py')]
     aliases = [str(ROOT), ROOT.as_posix(), '/mnt/c/Users/feifa/Documents/ChatGPT/Reproduce Agent']
     manifest = []
     for source in sorted(set(paths)):

@@ -50,6 +50,8 @@ The initial budget guard reserved request bounds even when TLS connection establ
 
 The authors' usage aggregation added both cumulative counters and their individual components. An elif correction prevents this duplication; provider per-request usage is authoritative here. A missing optional usage_id also required a default. The saved configuration print was made credential-safe. These compatibility and accounting repairs apply across the affected conditions; the substantive intervention remains the recoverable observation interface.
 
+During formal evaluation, recovery/question 14/repeat 0 reached the 30-step limit and exposed an additional fallback-route issue: the direct OpenAI client passed the SDK's openai/ model prefix to the provider and omitted the task session header. That attempt remains an execution failure in the primary inventory. After the first six scheduled attempts, the fallback was corrected to use the canonical model name and existing task headers. The prior and amended runtime sources are archived, and a recording-client test verifies both fields. The model, prompts, limits, threshold and judge are unchanged. This mid-run infrastructure amendment and its retained failure limit a clean causal interpretation of the pooled comparison.
+
 An initial FP32 model with fixed 8,192-position padding incurred heavy memory pressure and exceeded the service timeout. Explicit stored precision, dynamic single-example length, and omission of unused attention matrices reduced the observed inference footprint. The numerical checks and exact tested environment document the resulting implementation difference.
 
 ## 6. Conclusions and limitations

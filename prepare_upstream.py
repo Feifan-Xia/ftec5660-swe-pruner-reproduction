@@ -15,6 +15,10 @@ def main():
     text = text.replace('                    if hasattr(metrics, "token_usages") and metrics.token_usages:',
                         '                    elif hasattr(metrics, "token_usages") and metrics.token_usages:')
     text = text.replace('LLM_CONFIG["usage_id"]', 'LLM_CONFIG.get("usage_id", "default")')
+    text = text.replace('            model=llm_config["model"],',
+                        '            model=llm_config["model"].removeprefix("openai/"),')
+    text = text.replace('            extra_headers={"X-TT-LOGID": "${your_logid}"},\n            stream=False,',
+                        '            extra_headers=llm_config.get("extra_headers", {}),\n            stream=False,')
     text = text.replace('if experiment == "pruner":', 'if experiment in ("pruner", "recovery"):')
     text = text.replace('elif experiment == "pruner":\n', 'elif experiment in ("pruner", "recovery"):\n')
     recovery = '''if experiment == "recovery":

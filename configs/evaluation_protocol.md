@@ -24,3 +24,7 @@ The current judge uses the same model family as the agent; label this limitation
 ## Isolated modification and XJ13 transfer
 
 The recovery condition changes the availability of original observation lines. Test exact reconstruction and record repeated reads. Separate scripted component demonstrations from autonomous agent recovery use. XJ13 reuse consists of the task-scoped observation store and explicit expansion interface; XJ13's own task benchmark remains a future evaluation.
+
+## Runtime amendment recorded during execution
+
+After the first six scheduled attempts, the authors' fallback answer client was corrected to strip the SDK-only `openai/` model prefix and reuse task session headers. The issue was first observed when recovery/question 14/repeat 0 reached the step cap. That failure remains in the primary inventory. Subsequent tasks use the corrected route; model, prompt, caps, threshold, and judge are unchanged. Exact prior/amended source snapshots and task-to-version mapping are retained under `runs/formal/runtime_versions` and `runtime_manifest.json`. Discuss this infrastructure amendment when interpreting pooled effects.
