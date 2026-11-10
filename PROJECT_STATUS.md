@@ -79,3 +79,6 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Added evidence audit for approved schedule, frozen runtime, question-only agent input, score arithmetic, trajectory/provider-usage presence, and total budget. Initial audit: 72 scheduled, 70 pending, zero errors, conservative usage$0.7775388.
 - Actual formal outgoing decoding parameters are temperature0.0, top_p1.0, max_tokens4096 (SDK resolves unspecified temperature). Report corrected to use transmitted settings. Judge requests use temperature0/max_tokens2048.
 - Final pilot measurements saved separately from historical approval estimate. Formal packaging now requires clean tracked files and successful evidence audit, and includes the reviewed conclusion and audit outputs.
+- Real partial formal outputs successfully passed analysis and draft PDF generation (4 pages), with missing repeat intervals labeled pending. Final report remains gated on all attempts and reviewed conclusion.
+- Added report robustness for unavailable statistics and explicit per-condition timing/Go allowance/conservative cost tables. These reporting changes leave the frozen experiment runtime unchanged.
+- Formal run continues in session24992; q41 all three conditions completed/scored. q14 pruner is active with ongoing successful API calls. Cumulative conservative usage latest observed ~$0.9585.

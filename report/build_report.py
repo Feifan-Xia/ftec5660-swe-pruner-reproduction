@@ -31,6 +31,9 @@ styles['Heading2'].fontSize = 10.5
 styles.add(ParagraphStyle(name='TableText', fontSize=8, leading=10))
 story = []
 
+def fmt(value, pattern):
+    return format(value, pattern) if value is not None else 'N/A'
+
 def paragraph(text, style='BodyReport'):
     return Paragraph(escape(text), styles[style])
 
@@ -54,18 +57,29 @@ def result_blocks():
     rows = [['Local condition', 'Completed / tried', 'Mean tokens', 'Score', 'Pruned outputs', 'Expand calls']]
     for mode, r in analysis['conditions'].items():
         rows.append([mode, f"{r['completed']} / {r['attempted']}",
-                     f"{r['mean_tokens_all_attempts']:,.0f}", f"{r['mean_score_completed']:.2f}",
+                     fmt(r['mean_tokens_all_attempts'], ',.0f'), fmt(r['mean_score_completed'], '.2f'),
                      r['pruned_observations'], r['recovery_reads']])
     blocks.append(table(rows))
     repeat_rows = [['Condition', 'Token mean SD across repeats', 'Score mean SD across repeats']]
     for mode, r in analysis['conditions'].items():
-        repeat_rows.append([mode, f"{r['repeat_token_mean_sample_sd']:,.0f}",
-                            f"{r['repeat_score_mean_sample_sd']:.3f}"])
+        repeat_rows.append([mode, fmt(r['repeat_token_mean_sample_sd'], ',.0f'),
+                            fmt(r['repeat_score_mean_sample_sd'], '.3f')])
     blocks.append(Spacer(1, 6))
     blocks.append(table(repeat_rows))
+    cost_rows = [['Condition', 'Mean completed time (s)', 'Go allowance total', 'Conservative USD total']]
+    for mode, r in analysis['conditions'].items():
+        cost_rows.append([mode, fmt(r['mean_seconds_completed'], '.1f'),
+                          fmt(r['go_allowance'], '.4f'), fmt(r['conservative_cost'], '.4f')])
+    blocks.append(Spacer(1, 6))
+    blocks.append(table(cost_rows))
+    cash = sum(r['cash_cost'] for r in analysis['conditions'].values())
+    blocks.append(paragraph(f'Agent-only cash charges recorded by the provider: ${cash:.4f}. These totals exclude judging and development; the full project ledger and evidence audit track the approved $8 ceiling.'))
     blocks.append(paragraph('Token means include failed attempts. Score means cover completed, scored answers; failure-assigned and author-filtered summaries are supplied in formal_analysis.json.'))
     for name, comparison in analysis['paired'].items():
         ci = comparison['bootstrap_95_percentile']
+        if ci is None:
+            blocks.append(paragraph(f"{name.replace('_', ' ')}: complete three-repeat question pairs pending."))
+            continue
         blocks.append(paragraph(f"{name.replace('_', ' ')}: paired mean token difference {comparison['mean_token_difference']:,.0f}; question-bootstrap 95% interval [{ci[0]:,.0f}, {ci[1]:,.0f}], {comparison['question_pairs']} question pairs."))
     figure = ROOT / 'results/formal_comparison.png'
     if figure.exists():
