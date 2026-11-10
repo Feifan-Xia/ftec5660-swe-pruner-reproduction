@@ -19,7 +19,7 @@ def main():
             raise RuntimeError('Commit reviewed tracked-file changes before creating the final bundle')
         subprocess.run([sys.executable, str(ROOT/'audit_results.py')], cwd=ROOT, check=True)
         summary = json.loads((ROOT / 'results/formal_analysis.json').read_text())
-        if summary['pending'] or summary['scheduled'] != 72:
+        if summary['pending'] or summary['scheduled'] != 72 or not summary.get('final'):
             raise RuntimeError('Final bundle requires the approved complete 72-task inventory')
         if not (ROOT / 'report/SWE-Pruner_report.pdf').exists():
             raise RuntimeError('Final report is missing')

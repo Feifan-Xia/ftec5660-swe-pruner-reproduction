@@ -17,7 +17,7 @@ args = parser.parse_args()
 source = (ROOT / 'report/report.md').read_text(encoding='utf-8')
 analysis_path = ROOT / 'results/formal_analysis.json'
 analysis = json.loads(analysis_path.read_text()) if analysis_path.exists() else None
-if not args.draft and (not analysis or analysis['pending']):
+if not args.draft and (not analysis or analysis['pending'] or not analysis.get('final')):
     raise RuntimeError('Final report requires complete formal evidence')
 
 styles = getSampleStyleSheet()

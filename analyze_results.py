@@ -27,7 +27,8 @@ def main():
         raise RuntimeError(f'{len(pending)} scheduled attempts unresolved; final analysis requires all attempts')
     if len(lookup) != len(rows) or set(lookup) - {key(x) for x in schedule}:
         raise ValueError('Duplicate or out-of-schedule formal result')
-    summary = {'scheduled': len(schedule), 'pending': len(pending), 'conditions': {}, 'paired': {}}
+    summary = {'scheduled': len(schedule), 'pending': len(pending), 'final': not args.allow_partial,
+               'conditions': {}, 'paired': {}}
     for mode in MODES:
         group = [r for r in rows if r['mode'] == mode and r['status'] != 'running']
         answered = [r for r in group if r['completed_answer']]
