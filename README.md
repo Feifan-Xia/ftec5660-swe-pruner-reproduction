@@ -38,6 +38,23 @@ flowchart LR
 - [Streamlink](https://github.com/streamlink/streamlink), commit `ab1f3656` (BSD-2-Clause).
 - Questions and reference answers: authors' `downstream_eval/multi_turn/sweqa/questions/streamlink.jsonl`.
 
+## Reuse in XJ13
+
+`observation_store.py` depends only on the Python standard library. It can store raw JSON responses, code, or other textual tool output independently of OpenHands and the GPU model:
+
+```python
+from observation_store import ObservationStore
+
+store = ObservationStore(max_lines_per_read=200)
+raw_tool_output = '{\n  "answer": 42\n}'
+observation_id = store.put(raw_tool_output)
+restored = store.expand(observation_id, start=1, end=3)
+assert restored == raw_tool_output
+audit = store.manifest()  # Original text plus read and repeated-line accounting
+```
+
+Create one store per task. IDs identify exact saved content; line ranges are one-based and inclusive. `recovery_tool.py` supplies the OpenHands adapter. XJ13 can reuse the store behind its own tool interface and independently evaluate lookup, conditional, and aggregation tasks. JSON-key selection and automatic recovery policies are future extensions; this study evaluates the line-range interface.
+
 ## Setup
 
 Use Linux/WSL, Python 3.12 and an NVIDIA GPU. Run these repository preparation commands from this project's root in WSL:
