@@ -35,6 +35,10 @@ LLM_CONFIG["extra_headers"] = {
     code = code.replace('attn_implementation: Optional[str] = "flash_attention_2"',
                         'attn_implementation: Optional[str] = "sdpa"')
     model.write_text(code, encoding='utf-8')
+    tool = SOURCE / 'openhands-qa/tool_utils.py'
+    code = tool.read_text(encoding='utf-8').replace('httpx.Client(timeout=60.0, proxy=None)',
+                                                'httpx.Client(timeout=60.0, proxy=None, trust_env=False)')
+    tool.write_text(code, encoding='utf-8')
     print('Prepared official runner: credential-safe logs, serial execution, provider headers.')
 
 

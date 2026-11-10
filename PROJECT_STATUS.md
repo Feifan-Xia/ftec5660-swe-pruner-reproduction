@@ -31,3 +31,7 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Added recovery_tool.py OpenHands integration and run_task.py isolated one-question process runner. These require SDK runtime validation before paid runs.
 - Attention default adapted from flash_attention_2 to PyTorch SDPA for laptop portability, same across both pruner conditions. Must report this deviation and verify actual model output/peak memory; runtime validation pending.
 - Remaining: budget-metered API transport before trial; SDK integration validation; model service launch; pilot and budget confirmation; formal runs; scoring and artifacts.
+- Budget proxy implemented and verified with a metered OpenCode Go call. Running in WSL session 97483, port 8765; ledger runs/api_usage.jsonl; ceiling $1 conservative uncached peak-price accounting (including initial connectivity call).
+- WSL inherited NO_PROXY patterns 127.* did not bypass httpx proxy; fixed exact loopback exceptions in runner and trust_env=False in pruning client.
+- SDK install 3620 ended with PyPI TLS EOF. Retried via Tsinghua PyPI mirror, session 74458, currently running. Torch session 95209 remains running with download progress.
+- Backbone config downloaded under models/qwen-backbone. Official paper Table 2 Streamlink reference values captured in configs/paper_reference.json.

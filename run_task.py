@@ -35,6 +35,8 @@ def main():
             k, v = line.split('=', 1)
             env[k] = v
     env.update(API_TYPE='openai', EXPERIMENT_TYPE=args.mode,
+               OPENAI_BASE_URL='http://127.0.0.1:8765/v1',
+               NO_PROXY='localhost,127.0.0.1,::1', no_proxy='localhost,127.0.0.1,::1',
                OPENHANDS_REPOS='streamlink', BASE_REPO_PATH=str(ROOT / 'data'),
                QUESTIONS_PATH=str(questions), ANSWER_OUTPUT_PATH=str(out / 'answers'),
                TRAJ_OUTPUT_PATH=str(out / 'trajectories'), PROMPT_OUTPUT_PATH=str(out / 'prompts'),

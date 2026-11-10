@@ -1,0 +1,13 @@
+{
+  "source": "https://arxiv.org/html/2601.16746v1",
+  "table": 2,
+  "benchmark": "SWE-QA",
+  "repository": "Streamlink",
+  "rows": [
+    {"model": "Claude Sonnet 4.5", "condition": "baseline", "average_score": 8.36, "average_rounds": 23.4, "average_tokens": 611200},
+    {"model": "Claude Sonnet 4.5", "condition": "pruner", "average_score": 8.59, "average_rounds": 23.9, "average_tokens": 557100},
+    {"model": "GLM-4.6", "condition": "baseline", "average_score": 8.56, "average_rounds": 18.2, "average_tokens": 318200},
+    {"model": "GLM-4.6", "condition": "pruner", "average_score": 8.56, "average_rounds": 25.0, "average_tokens": 145100}
+  ],
+  "interpretation": "Reference context only: our model, subset, attention backend and step cap differ. Compare paired local conditions separately."
+}
