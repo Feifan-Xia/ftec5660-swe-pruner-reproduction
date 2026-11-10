@@ -2,27 +2,39 @@
 import json
 from pathlib import Path
 import time
+import sys
+import threading
+ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT / 'upstream/swe-pruner/src'))
 import torch
 from fastapi import FastAPI
 import uvicorn
 from swe_pruner.configuration import SwePrunerConfig
 from swe_pruner.prune_wrapper import SwePrunerForCodePruning, PruneRequest
 
-ROOT = Path(__file__).resolve().parent
 config = SwePrunerConfig.from_pretrained(ROOT / 'models/code-pruner')
 config.backbone_model_name_or_path = str(ROOT / 'models/qwen-backbone')
-model = SwePrunerForCodePruning.from_pretrained(str(ROOT / 'models/code-pruner'), config=config)
+model = SwePrunerForCodePruning.from_pretrained(str(ROOT / 'models/code-pruner'), config=config,
+                                              torch_dtype=torch.bfloat16)
+inference_lock = threading.Lock()
 app = FastAPI()
 
 
 @app.get('/health')
 def health():
     return {'model_loaded': True, 'device': str(next(model.parameters()).device),
+            'dtype': str(next(model.parameters()).dtype),
+            'allocated_bytes': torch.cuda.memory_allocated(),
             'attention_backend': 'sdpa', 'torch': torch.__version__}
 
 
 @app.post('/prune')
 def prune(request: PruneRequest):
+    with inference_lock:
+        return prune_locked(request)
+
+
+def prune_locked(request):
     started = time.time()
     if torch.cuda.is_available():
         torch.cuda.reset_peak_memory_stats()

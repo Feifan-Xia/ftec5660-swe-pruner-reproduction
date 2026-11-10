@@ -33,7 +33,7 @@ def main():
         raise RuntimeError('No candidate answer available; preserve task as execution failure')
     candidate = candidates[-1]
     prompt = official_prompt(reference['question'], reference.get('ground_truth') or reference['answer'], candidate['answer'])
-    response = httpx.post('http://127.0.0.1:8765/v1/chat/completions', trust_env=False,
+    response = httpx.post('http://127.0.0.1:8877/v1/chat/completions', trust_env=False,
         headers={'x-opencode-session': f"judge-{task['phase']}-{task['mode']}-{task['index']}-{task['repeat']}"},
         json={'model':'deepseek-v4.1-flash', 'temperature':0, 'max_tokens':2048,
               'response_format':{'type':'json_object'}, 'messages':[{'role':'user','content':prompt}]}, timeout=180)

@@ -3,6 +3,7 @@
 !.env.example
 upstream/
 .venv/
+.venv-*/
 models/
 data/
 runs/

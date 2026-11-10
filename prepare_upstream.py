@@ -14,6 +14,8 @@ def main():
                         '_http_hack_enabled = False  # OpenAI-compatible route uses native httpx')
     text = text.replace('                    if hasattr(metrics, "token_usages") and metrics.token_usages:',
                         '                    elif hasattr(metrics, "token_usages") and metrics.token_usages:')
+    text = text.replace('LLM_CONFIG["usage_id"]', 'LLM_CONFIG.get("usage_id", "default")')
+    text = text.replace('if experiment == "pruner":', 'if experiment in ("pruner", "recovery"):')
     text = text.replace('elif experiment == "pruner":\n', 'elif experiment in ("pruner", "recovery"):\n')
     recovery = '''if experiment == "recovery":
     from recovery_tool import make_recoverable, make_expand
@@ -38,7 +40,13 @@ LLM_CONFIG["extra_headers"] = {
     code = model.read_text(encoding='utf-8')
     code = code.replace('attn_implementation: Optional[str] = "flash_attention_2"',
                         'attn_implementation: Optional[str] = "sdpa"')
+    code = code.replace('                key_padding_mask=key_padding_mask,\n',
+                        '                key_padding_mask=key_padding_mask,\n                need_weights=False,\n') if 'need_weights=False' not in code else code
     model.write_text(code, encoding='utf-8')
+    wrapper = ROOT / 'upstream/swe-pruner/src/swe_pruner/prune_wrapper.py'
+    code = wrapper.read_text(encoding='utf-8').replace('pad_len = max_length - real_len',
+        'pad_len = 0  # Single-example inference: omit masked right-padding tokens')
+    wrapper.write_text(code, encoding='utf-8')
     tool = SOURCE / 'openhands-qa/tool_utils.py'
     code = tool.read_text(encoding='utf-8').replace('httpx.Client(timeout=60.0, proxy=None)',
                                                 'httpx.Client(timeout=60.0, proxy=None, trust_env=False)')
