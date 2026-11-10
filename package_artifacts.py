@@ -28,6 +28,9 @@ def main():
     destination.mkdir(parents=True, exist_ok=False)
     env = dict(line.split('=', 1) for line in (ROOT / '.env').read_text().splitlines() if '=' in line)
     secrets = [v.encode() for k, v in env.items() if any(word in k for word in ('KEY', 'TOKEN', 'SECRET')) and len(v) >= 16]
+    history = subprocess.check_output(['git', 'log', '--all', '-p', '--format='], cwd=ROOT)
+    if any(secret in history for secret in secrets):
+        raise RuntimeError('Configured credential detected in Git history; review required')
     tracked = subprocess.check_output(['git', 'ls-files'], cwd=ROOT, text=True).splitlines()
     excluded = {'PROJECT_STATUS.md', 'DEBUG_DIARY.md'}
     paths = [ROOT / p for p in tracked if p not in excluded and not p.startswith('results/')]
@@ -68,6 +71,12 @@ def main():
             data = source.read_bytes()
             (folder / name).write_bytes(data)
             manifest.append({'path': 'third_party/' + name, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+    if not args.draft:
+        bundle = destination/'repository-history.bundle'
+        subprocess.run(['git', 'bundle', 'create', str(bundle), '--all'], cwd=ROOT, check=True)
+        subprocess.run(['git', 'bundle', 'verify', str(bundle)], cwd=ROOT, check=True, capture_output=True)
+        data = bundle.read_bytes()
+        manifest.append({'path':bundle.name, 'bytes':len(data), 'sha256':hashlib.sha256(data).hexdigest()})
     (destination / 'MANIFEST.json').write_text(json.dumps({'draft': args.draft,
         'git_revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
         'transformation': 'Known project-root paths replaced by $PROJECT_ROOT in text evidence; no result values changed.',

@@ -14,6 +14,23 @@ Nine development condition/question combinations have completed. The approved 72
 
 Original observations are scoped to a task process. The recovery tool permits at most 200 lines per call and logs overlapping reads. All groups share the agent, model, question, and execution limits.
 
+```mermaid
+flowchart LR
+    A[Agent Bash action] --> B[Original tool output]
+    B --> C{Focus query supplied?}
+    C -->|Yes| D[Released SWE-Pruner model]
+    C -->|No| E[Full output]
+    D --> F[Observation delivered to agent]
+    E --> F
+    B --> G[Recovery condition: exact per-task store]
+    G --> H[Observation ID and line count]
+    H --> F
+    F --> I[Agent requests expand]
+    I --> G
+    G --> J[Exact requested lines and read log]
+    J --> F
+```
+
 ## Sources
 
 - [SWE-Pruner paper](https://arxiv.org/abs/2601.16746), Table 2: SWE-QA Streamlink.
