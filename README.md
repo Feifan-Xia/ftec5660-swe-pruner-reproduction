@@ -4,7 +4,7 @@ FTEC5660 individual reproducibility project. The experiment uses the authors' SW
 
 ## Experiment status
 
-Development runs are in progress. Formal evaluation and final report are pending. See `PROJECT_STATUS.md` for verified progress and `DEBUG_DIARY.md` for repairs. Results must be interpreted at their recorded model, repository revision, question subset, and configuration.
+Nine development condition/question combinations have completed. The approved 72-attempt formal evaluation is running; final results and report remain pending. Results must be interpreted at their recorded model, repository revision, question subset, and configuration.
 
 ## Conditions
 
@@ -101,6 +101,7 @@ In the analysis environment, after all scheduled attempts and available answer s
 
 ```bash
 python summarize_results.py --phase formal
+python audit_results.py
 python analyze_results.py
 python report/build_report.py
 python package_artifacts.py

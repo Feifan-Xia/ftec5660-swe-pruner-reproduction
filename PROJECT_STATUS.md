@@ -75,3 +75,7 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Budget proxy restarted after terminal pilot session73056, now session13542, port8877, limit$8, prior usage carried forward. Records now include nonsecret decoding parameters.
 - Formal schedule launched with run_formal.py after pilot completion. Fixed eight-question x3-condition x3-repeat plan; collect authoritative process handle in next status update.
 - Pilot actual activation: two pruned observations in recovery q17; zero expansion calls across nine successful pilot runs. Preserve optional official focus-query mechanism and report activation rates.
+- Formal session24992 is active; first two attempts completed and scored. Runtime/config hashes frozen under runs/formal/runtime_manifest.json after first task, with no intervening runtime change.
+- Added evidence audit for approved schedule, frozen runtime, question-only agent input, score arithmetic, trajectory/provider-usage presence, and total budget. Initial audit: 72 scheduled, 70 pending, zero errors, conservative usage$0.7775388.
+- Actual formal outgoing decoding parameters are temperature0.0, top_p1.0, max_tokens4096 (SDK resolves unspecified temperature). Report corrected to use transmitted settings. Judge requests use temperature0/max_tokens2048.
+- Final pilot measurements saved separately from historical approval estimate. Formal packaging now requires clean tracked files and successful evidence audit, and includes the reviewed conclusion and audit outputs.

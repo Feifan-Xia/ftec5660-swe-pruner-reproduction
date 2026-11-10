@@ -1,0 +1,13 @@
+{
+  "completed_pilot_combinations": 9,
+  "mean_conservative_task_usd": 0.050506499999999996,
+  "max_conservative_task_usd": 0.1378338,
+  "mean_seconds": 160.41222222222223,
+  "max_seconds": 542.15,
+  "formal_agent_estimated_usd": 3.636468,
+  "formal_agent_estimated_hours": 3.2082444444444445,
+  "project_approved_cap_usd": 8,
+  "pruned_observations": 2,
+  "recovery_reads": 0,
+  "source": "results/pilot_tasks.json; successful development runs only, troubleshooting costs remain in full ledger"
+}

@@ -4,8 +4,8 @@ from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
-import shutil
 import subprocess
+import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parent
@@ -15,6 +15,9 @@ def main():
     parser.add_argument('--draft', action='store_true')
     args = parser.parse_args()
     if not args.draft:
+        if subprocess.check_output(['git', 'diff', '--name-only', 'HEAD'], cwd=ROOT, text=True).strip():
+            raise RuntimeError('Commit reviewed tracked-file changes before creating the final bundle')
+        subprocess.run([sys.executable, str(ROOT/'audit_results.py')], cwd=ROOT, check=True)
         summary = json.loads((ROOT / 'results/formal_analysis.json').read_text())
         if summary['pending'] or summary['scheduled'] != 72:
             raise RuntimeError('Final bundle requires the approved complete 72-task inventory')
@@ -29,6 +32,8 @@ def main():
     excluded = {'PROJECT_STATUS.md', 'DEBUG_DIARY.md'}
     paths = [ROOT / p for p in tracked if p not in excluded and not p.startswith('results/')]
     paths += list((ROOT / 'results').glob('formal_*'))
+    paths += [ROOT/'results'/name for name in ('conclusion.txt', 'evidence_audit.json', 'pilot_tasks.json', 'pilot_tasks.csv')
+              if (ROOT/'results'/name).exists()]
     paths += [ROOT / 'report' / ('SWE-Pruner_report_draft.pdf' if args.draft else 'SWE-Pruner_report.pdf')]
     evidence_names = ['api_usage.jsonl', 'network_checks.jsonl', 'pruner_numerical_validation.json',
                       'pruner_real_code_smoke.json', 'demo.json', 'pruner_service.jsonl']
