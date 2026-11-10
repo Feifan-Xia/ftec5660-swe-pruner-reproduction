@@ -14,6 +14,8 @@ The underlying agent is DeepSeek V4.1 Flash through OpenCode Go. The paper repor
 
 The authors' repository is pinned to commit 96171b5f3ecaf89745cbeb436c8893b57f3400bd. Streamlink is checked out at ab1f3656. The question JSONL has SHA-256 af5d149b7a256b85d50c0d5971f42c3504f14f97632708bb06c1d486c6db0162. Selection seed 5660 partitions development indices 43, 26, and 17 from the formal candidate list. Only the question text is passed to the answering agent; reference answers are reserved for scoring.
 
+The Bash tool retains local filesystem permissions. Recorded shell commands are audited for direct references to known question/answer artifact paths, alongside exact checks of the question-only input files. The audit documents observed access and input construction; it does not establish filesystem isolation.
+
 The GPU is an NVIDIA RTX 5060 Laptop with 8,151 MiB VRAM and driver 591.59. The pruner service runs on Windows using the existing PyTorch 2.9.0.dev20250705+cu129 environment, Transformers 4.57.1, and the released ayanami-kitasan/code-pruner checkpoint (1,345,834,856-byte weights file). A lightweight WSL Ubuntu 22.04 Python 3.12 environment runs OpenHands SDK 1.1.0. Mirrored localhost networking connects the agent, the local pruner service, and an API budget proxy.
 
 The authors' Bash executor imposes a ten-second timeout on each shell command. Such tool failures are counted separately from whole-task execution failures because the agent may recover and still answer. Streamlink was cloned with blob filtering; historical objects can require on-demand network access. Tool latency and history availability therefore depend partly on local cache and network state, which also affect timing comparisons.

@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -12,6 +13,8 @@ def main():
     parser.add_argument('--allow-pending', action='store_true')
     args = parser.parse_args()
     errors, pending = [], []
+    command_count = 0
+    reference_path_flags = []
     approval = json.loads((ROOT/'configs/formal_approval.json').read_text())
     jobs = json.loads((ROOT/'runs/formal/schedule.json').read_text())
     expected = {(i,m,r) for i in approval['question_indices'] for m in approval['conditions'] for r in range(approval['repeats'])}
@@ -62,9 +65,20 @@ def main():
         usage = [row for row in ledger if row['session'] == session and row.get('usage')]
         if completed and not usage:
             errors.append('Completed answer lacks provider usage: ' + label)
+        for trajectory in (path/'trajectories').rglob('*.traj.json'):
+            for event in json.loads(trajectory.read_text(encoding='utf-8')).get('events', []):
+                action = event.get('action', {})
+                command = action.get('command') if isinstance(action,dict) else None
+                if isinstance(command,str):
+                    command_count += 1
+                    if re.search(r'streamlink\.jsonl|sweqa/questions|/runs/|/upstream/|\.\./\.\.',command):
+                        reference_path_flags.append({'task':label,'command':command})
+    if reference_path_flags:
+        errors.append('Recorded commands reference artifact/outside-root paths; inspect flags before finalization')
     report = {'scheduled':len(jobs), 'pending':pending, 'errors':errors,
               'project_conservative_usd':spent, 'approved_limit_usd':approval['project_total_limit_usd'],
-              'scope':'Schedule, runtime hashes, question-only input, answer-score linkage, trajectory/usage presence, budget.'}
+              'recorded_shell_commands_reviewed':command_count, 'reference_path_flags':reference_path_flags,
+              'scope':'Schedule, runtime hashes, question-only input, answer-score linkage, trajectory/usage presence, budget, direct known reference/artifact path patterns in commands. The command check does not enforce filesystem isolation.'}
     (ROOT/'results').mkdir(exist_ok=True)
     (ROOT/'results/evidence_audit.json').write_text(json.dumps(report, indent=2))
     print(f'Scheduled={len(jobs)} pending={len(pending)} errors={len(errors)} conservative_usd={spent:.6f}')

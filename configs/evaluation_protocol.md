@@ -19,7 +19,7 @@ Primary outcomes: completion rate, per-task API input/output tokens, wall time, 
 
 Report condition means and spread over the three repeats. For paired differences, first average repetitions within each question, then compare conditions across the eight question pairs; a question-cluster bootstrap may describe uncertainty but cannot establish generalization from this small subset. Avoid treating 24 runs as 24 independent questions.
 
-The current judge uses the same model family as the agent; label this limitation. The same official rubric and judge settings apply to all conditions. References remain inaccessible to the answering agent. Compare with published Streamlink results only as contextual reference because the model, sample, and runtime differ.
+The current judge uses the same model family as the agent; label this limitation. The same official rubric and judge settings apply to all conditions. References are excluded from question inputs and prompts. Bash retains local filesystem permissions; recorded commands are checked for direct known reference/artifact path access. Compare with published Streamlink results only as contextual reference because the model, sample, and runtime differ.
 
 ## Isolated modification and XJ13 transfer
 
