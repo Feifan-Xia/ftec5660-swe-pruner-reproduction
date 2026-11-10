@@ -35,3 +35,8 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - WSL inherited NO_PROXY patterns 127.* did not bypass httpx proxy; fixed exact loopback exceptions in runner and trust_env=False in pruning client.
 - SDK install 3620 ended with PyPI TLS EOF. Retried via Tsinghua PyPI mirror, session 74458, currently running. Torch session 95209 remains running with download progress.
 - Backbone config downloaded under models/qwen-backbone. Official paper Table 2 Streamlink reference values captured in configs/paper_reference.json.
+- Separate lightweight Agent environment installed successfully: /home/feifa/ftec5660-swe-pruner/agent-env (SDK 1.1.0). Avoids GPU environment lock while Torch downloads.
+- First baseline q43 r0 failed in upstream unconditional Claude HTTP monkeypatch before paid calls; process group 1132 terminated, logs retained. prepare_upstream.py now disables the patch for OpenAI-compatible route.
+- Baseline q43 r1 running in session 63329 with real tool calls and metered API usage. Earlier parent session 63888 may now be terminal.
+- Recovery runtime smoke passed: exact hello observation and Expand recovery, runs/recovery_smoke.json. Formal model-assisted recovery remains untested.
+- Added scorer preserving exact official rubric via AST extraction, recording same-model judge limitation. Runtime score verification pending.
