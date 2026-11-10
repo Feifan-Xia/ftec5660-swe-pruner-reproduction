@@ -104,6 +104,8 @@ python summarize_results.py --phase pilot
 
 Use the appropriate completed attempt path when scoring. `configs/task_selection.json` records disjoint development and evaluation indices, sampling seed, and source hash. Formal runs require a recorded budget approval in `configs/formal_approval.json`.
 
+To reconstruct selection, shuffle `list(range(48))` with Python's `random.Random(5660).shuffle`. The first three indices are the development set, the next twenty are the candidate list, and the approved formal subset uses the first eight candidates. This reconstruction matches the frozen selection file.
+
 ## Measurements
 
 The loopback proxy records provider usage for every request, separately preserving input/output tokens, cash cost, and Go allowance consumption. A conservative uncached peak-price ceiling controls pilot spending. Agent run tokens are aggregated from these per-request records. Judge calls have separate session IDs.
