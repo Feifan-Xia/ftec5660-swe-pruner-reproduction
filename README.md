@@ -118,6 +118,7 @@ python run_formal.py
 In the analysis environment, after all scheduled attempts and available answer scores are recorded:
 
 ```bash
+python repair_scores.py --phase formal  # Fill missing JSON scores; preserve initial responses
 python summarize_results.py --phase formal
 python audit_results.py
 python analyze_results.py
@@ -126,5 +127,7 @@ python package_artifacts.py
 ```
 
 The report builder requires a reviewed `results/conclusion.txt`. Review every rendered report page before submission. `package_artifacts.py` creates a local ZIP with credential-checked evidence, normalized project paths, third-party licenses and a SHA-256 manifest. Public publishing and the student's recording/submission are separate user actions.
+
+Judge repair keeps the official rubric, model and temperature unchanged. Missing/invalid scores receive up to two additional attempts with a 4,096-token output ceiling; initial attempts use 2,048. Every response and billed request remains in the evidence. Valid scores are retained unchanged.
 
 Raw logs and downloaded assets are excluded from Git during development. The final publication package will include a reviewed, credential-free evidence bundle, environment lock, report and demo script.
