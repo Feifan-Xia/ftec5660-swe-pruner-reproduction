@@ -22,4 +22,8 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Keep all selected tasks in primary results, including failures. Show author-filtered statistics separately.
 - Count recovery and judge calls; preserve usage and timestamps.
 - Record actual pruning, failures, repeated reads, and attention backend adaptations.
-- Current CC Switch opencode entries have auth but no endpoint in their settings_config or provider_endpoints. Configuration discovery ongoing; no API call yet.
+- OpenCode Go connectivity succeeded via official /inference/go/openai/v1, model deepseek-v4.1-flash. Response reports cash cost 0, billing_source go, allowance 0.00001782. Credential loaded from newest CC Switch opencode entry into ignored .env.
+- Streamlink clone pinned to ab1f3656; official question JSONL includes reference answers. Task selection saved with source hash and seed; pilot and formal candidates disjoint.
+- Official runner prepared with credential-safe config logging, serial execution, and user-agent/session headers.
+- Live sessions: Torch install 95209; auxiliary dependencies 46358; model download 94597; SDK install 3620. Poll these handles before starting replacements.
+- Observation store tests passed (2). Actual integration with OpenHands and model serving still pending.

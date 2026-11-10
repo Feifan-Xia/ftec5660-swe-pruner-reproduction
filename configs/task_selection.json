@@ -1,0 +1,36 @@
+{
+  "upstream_commit": "96171b5f3ecaf89745cbeb436c8893b57f3400bd",
+  "repository": "streamlink",
+  "repo_commit": "ab1f365",
+  "source_sha256": "af5d149b7a256b85d50c0d5971f42c3504f14f97632708bb06c1d486c6db0162",
+  "total_questions": 48,
+  "selection_seed": 5660,
+  "pilot_indices": [
+    43,
+    26,
+    17
+  ],
+  "evaluation_candidate_indices": [
+    41,
+    14,
+    30,
+    8,
+    11,
+    46,
+    33,
+    29,
+    39,
+    20,
+    47,
+    9,
+    44,
+    10,
+    40,
+    3,
+    23,
+    15,
+    36,
+    25
+  ],
+  "note": "Formal sample count pending pilot; inputs expose question only, references reserved for judge."
+}
