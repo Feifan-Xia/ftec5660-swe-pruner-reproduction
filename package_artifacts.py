@@ -35,7 +35,7 @@ def main():
     excluded = {'PROJECT_STATUS.md', 'DEBUG_DIARY.md'}
     paths = [ROOT / p for p in tracked if p not in excluded and not p.startswith('results/')]
     paths += list((ROOT / 'results').glob('formal_*'))
-    paths += [ROOT/'results'/name for name in ('conclusion.txt', 'evidence_audit.json', 'pilot_tasks.json', 'pilot_tasks.csv')
+    paths += [ROOT/'results'/name for name in ('conclusion.txt', 'evidence_audit.json', 'pilot_tasks.json', 'pilot_tasks.csv', 'case_notes.md')
               if (ROOT/'results'/name).exists()]
     paths += [ROOT / 'report' / ('SWE-Pruner_report_draft.pdf' if args.draft else 'SWE-Pruner_report.pdf')]
     evidence_names = ['api_usage.jsonl', 'network_checks.jsonl', 'pruner_numerical_validation.json',

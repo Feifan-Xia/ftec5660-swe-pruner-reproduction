@@ -36,6 +36,10 @@ Cumulative tokens come from provider usage records for each request, with judge 
 
 {{RESULTS}}
 
+### A trace-level check
+
+For question 41, repetition 0, all three conditions correctly located TestIO.test_load_data and its cache._dirty assertion, matching the reference's central location. Each received a 10.0 mean rubric score. Cumulative tokens were 36,663 for baseline, 46,492 for pruner, and 36,787 for recovery. None of these three trajectories activated pruning or expansion. Thus, this instance demonstrates repository question answering and variability between trajectories; it supplies no instance-level evidence that compression caused the token difference. Evidence-linked case notes are included with the artifacts. This inspection is AI-assisted rather than an independent human evaluation.
+
 ### Released-checkpoint behavior and exact recovery
 
 A fixed component demonstration uses the 217-line albavision.py source file and a query about token transformation and adjacent-hour timestamps. The released model reduces 1,687 code tokens to 169, retaining the transformation function and the current/previous-hour call. The observed request completes in approximately two seconds. A separate real-code service smoke measured peak allocated GPU memory of approximately 2.88 GB.
