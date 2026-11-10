@@ -68,9 +68,10 @@ def result_blocks():
                             fmt(r['mean_score_failure_zero'], '.2f')])
     blocks.append(Spacer(1, 6))
     blocks.append(table(repeat_rows))
-    cost_rows = [['Condition', 'Mean task elapsed time (s)', 'Go allowance total', 'Conservative USD total']]
+    cost_rows = [['Condition', 'Mean task elapsed time (s)', 'Provider list cost (USD)', 'Go allowance total', 'Conservative USD total']]
     for mode, r in analysis['conditions'].items():
         cost_rows.append([mode, fmt(r['mean_elapsed_seconds_all_attempts'], '.1f'),
+                          fmt(r.get('provider_list_cost'), '.4f'),
                           fmt(r['go_allowance'], '.4f'), fmt(r['conservative_cost'], '.4f')])
     blocks.append(Spacer(1, 6))
     blocks.append(table(cost_rows))

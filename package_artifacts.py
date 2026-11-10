@@ -37,7 +37,7 @@ def main():
     paths += [ROOT/'results'/name for name in ('formal_tasks.json', 'formal_tasks.csv', 'formal_analysis.json',
                                               'formal_comparison.png', 'formal_comparison.pdf')
               if (ROOT/'results'/name).exists()]
-    paths += [ROOT/'results'/name for name in ('conclusion.txt', 'evidence_audit.json', 'pilot_tasks.json', 'pilot_tasks.csv', 'case_notes.md', 'judge_repairs.json')
+    paths += [ROOT/'results'/name for name in ('conclusion.txt', 'evidence_audit.json', 'pilot_tasks.json', 'pilot_tasks.csv', 'case_notes.md', 'judge_repairs.json', 'usage_recalibration.json')
               if (ROOT/'results'/name).exists()]
     paths += [ROOT / 'report' / ('SWE-Pruner_report_draft.pdf' if args.draft else 'SWE-Pruner_report.pdf')]
     evidence_names = ['api_usage.jsonl', 'network_checks.jsonl', 'pruner_numerical_validation.json',

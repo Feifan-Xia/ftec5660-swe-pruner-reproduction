@@ -1,0 +1,213 @@
+{
+  "snapshot_time": "2026-11-10T19:44:17.897587+08:00",
+  "completed": 62,
+  "current": {
+    "list_cost": 0.83386579,
+    "allowance": 0.5003194,
+    "conservative": 4.175493899999999
+  },
+  "estimated_remaining": {
+    "list_cost": 0.051682645,
+    "allowance": 0.031009560000000005,
+    "conservative": 0.30184364999999996
+  },
+  "estimated_final_before_judge_repairs": {
+    "list_cost": 0.885548435,
+    "allowance": 0.53132896,
+    "conservative": 4.47733755
+  },
+  "method": "For each unfinished scheduled task, mean prior completed repeats of the same question and condition, minus already incurred cost; judge repairs excluded. A forecast, not a cap.",
+  "dashboard_snapshot": {
+    "requests": 971,
+    "tokens_display": "12.0M",
+    "list_cost_display_usd": 0.83,
+    "input_display": "1.7M",
+    "cache_read_display": "9.8M",
+    "output_display": "475.4k",
+    "rolling_used_percent": 4,
+    "weekly_used_percent": 2,
+    "monthly_used_percent": 44
+  },
+  "remaining_jobs": [
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "recovery",
+        "index": 11,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.02213582,
+        "allowance": 0.01328149,
+        "conservative": 0.14035335
+      },
+      "already_observed": {
+        "list_cost": 0.01108235,
+        "allowance": 0.00664941,
+        "conservative": 0.0873057
+      }
+    },
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "pruner",
+        "index": 46,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.00436965,
+        "allowance": 0.00262179,
+        "conservative": 0.0168678
+      },
+      "already_observed": {
+        "list_cost": 0,
+        "allowance": 0,
+        "conservative": 0
+      }
+    },
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "recovery",
+        "index": 46,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.00371744,
+        "allowance": 0.002230465,
+        "conservative": 0.01082175
+      },
+      "already_observed": {
+        "list_cost": 0,
+        "allowance": 0,
+        "conservative": 0
+      }
+    },
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "baseline",
+        "index": 46,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.003425225,
+        "allowance": 0.00205514,
+        "conservative": 0.013191449999999999
+      },
+      "already_observed": {
+        "list_cost": 0,
+        "allowance": 0,
+        "conservative": 0
+      }
+    },
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "recovery",
+        "index": 33,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.002725985,
+        "allowance": 0.0016355900000000001,
+        "conservative": 0.01612065
+      },
+      "already_observed": {
+        "list_cost": 0,
+        "allowance": 0,
+        "conservative": 0
+      }
+    },
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "baseline",
+        "index": 33,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.003135475,
+        "allowance": 0.001881285,
+        "conservative": 0.015490799999999999
+      },
+      "already_observed": {
+        "list_cost": 0,
+        "allowance": 0,
+        "conservative": 0
+      }
+    },
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "pruner",
+        "index": 33,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.003266235,
+        "allowance": 0.0019597349999999998,
+        "conservative": 0.01428465
+      },
+      "already_observed": {
+        "list_cost": 0,
+        "allowance": 0,
+        "conservative": 0
+      }
+    },
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "baseline",
+        "index": 29,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.0051900950000000005,
+        "allowance": 0.003114055,
+        "conservative": 0.026317349999999996
+      },
+      "already_observed": {
+        "list_cost": 0,
+        "allowance": 0,
+        "conservative": 0
+      }
+    },
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "pruner",
+        "index": 29,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.009497255,
+        "allowance": 0.0056983450000000005,
+        "conservative": 0.09314834999999999
+      },
+      "already_observed": {
+        "list_cost": 0,
+        "allowance": 0,
+        "conservative": 0
+      }
+    },
+    {
+      "job": {
+        "phase": "formal",
+        "mode": "recovery",
+        "index": 29,
+        "repeat": 2
+      },
+      "expected_from_prior_repeats": {
+        "list_cost": 0.005301815,
+        "allowance": 0.0031810750000000002,
+        "conservative": 0.0425532
+      },
+      "already_observed": {
+        "list_cost": 0,
+        "allowance": 0,
+        "conservative": 0
+      }
+    }
+  ]
+}

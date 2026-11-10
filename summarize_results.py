@@ -51,6 +51,7 @@ def summarize(phase):
                    pruned_kept_tokens=sum(o.get('prune_info', {}).get('left_token_cnt', 0) or 0 for o in pruned_observations),
                    output_tokens=sum(x.get('completion_tokens', 0) for x in usage),
                    cash_cost=sum(x.get('cost', 0) for x in usage),
+                   provider_list_cost=sum(x.get('opencode', {}).get('list_cost', 0) for x in usage),
                    go_allowance=sum(x.get('opencode', {}).get('allowance', 0) for x in usage),
                    conservative_cost=sum(x.get('charged_bound_usd', 0) for x in requests if x.get('error') != 'ConnectError'),
                    recovery_reads=len(reads), repeated_lines=sum(x['repeated_lines'] for x in reads),

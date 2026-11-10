@@ -62,6 +62,7 @@ def main():
             'pruned_kept_tokens': sum(r.get('pruned_kept_tokens', 0) for r in group),
             'recovery_reads': sum(r['recovery_reads'] for r in group),
             'cash_cost': sum(r['cash_cost'] for r in group),
+            'provider_list_cost': sum(r.get('provider_list_cost', 0) for r in group),
             'go_allowance': sum(r['go_allowance'] for r in group),
             'conservative_cost': sum(r['conservative_cost'] for r in group),
             'repeat_token_mean_sample_sd': statistics.stdev(repeat_tokens) if len(repeat_tokens) > 1 else None,

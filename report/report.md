@@ -70,6 +70,8 @@ An initial FP32 model with fixed 8,192-position padding incurred heavy memory pr
 
 A second pipeline defect appeared in baseline/question 33/repeat 1: the trajectory contains a complete FinishAction.message, while the saved answer is empty. The authors' extractor checks the action name; this SDK action has a null name and identifies itself through kind=FinishAction. Its eight-action trajectory also falls below the fallback trigger. The primary inventory retains this export failure and its resource use. Accordingly, completion rates measure exported-answer availability, and the preserved trace distinguishes the extraction defect from answer-generation quality. The frozen runtime and original score remain unchanged for the scheduled comparison.
 
+Pruner/question 11/repeat 2 reached the iteration cap and invoked the corrected fallback route successfully. The provider reported all 4,096 completion tokens as reasoning, leaving no final answer. This bounded-generation failure remains in the primary inventory. Provider usage includes the unsuccessful fallback's tokens and cost.
+
 ## 6. Conclusions and limitations
 
 {{CONCLUSIONS}}
