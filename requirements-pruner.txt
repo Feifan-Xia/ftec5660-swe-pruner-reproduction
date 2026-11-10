@@ -1,0 +1,11 @@
+# Use an already validated CUDA PyTorch installation; see README.
+transformers==4.57.1
+fastapi==0.162.2
+uvicorn==0.54.0
+typer==0.29.0
+numpy==2.5.4
+safetensors==0.8.0
+tokenizers==0.22.2
+huggingface-hub==0.36.2
+pydantic==2.14.3
+httpx==0.28.1

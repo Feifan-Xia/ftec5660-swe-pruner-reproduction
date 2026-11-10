@@ -1,0 +1,11 @@
+{
+  "approved": true,
+  "approved_on": "2026-11-10",
+  "authorization": "User explicitly approved total cap $8 and 72 executions in the budget question reply.",
+  "project_total_limit_usd": 8.0,
+  "includes_pilot_and_judging": true,
+  "question_indices": [41, 14, 30, 8, 11, 46, 33, 29],
+  "conditions": ["baseline", "pruner", "recovery"],
+  "repeats": 3,
+  "scheduled_tasks": 72
+}

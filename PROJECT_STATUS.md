@@ -67,3 +67,7 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Recovery q17 r0 produced two real pruned observations (978->540 and 2223->654 tokens). No expand call was made in that run. Component demo remains separately labeled.
 - Added report/report.md and report/build_report.py; generated a three-page DRAFT and visually checked all pages. Formal results and conclusions remain explicitly pending. Added demo_script_zh.md with 10-12 minute recording guidance.
 - Added formal aggregation/paired question-bootstrap analysis code and installed environment manifests. Numerical/runtime outputs are still local under ignored runs; reviewed public evidence packaging is pending.
+- User explicitly approved project total conservative budget $8 and all 72 formal runs. Authorization saved in configs/formal_approval.json. Existing pilot proxy still has $1 cap until idle restart; formal launch follows pilot completion.
+- Added pinned agent requirements, selected GPU dependencies, portable WSL setup, exact model revision/file hashes, and expanded README commands. Historical nightly GPU runtime availability is disclosed.
+- Added local reviewed bundle generation with exact credential checks, path normalization, file hashes, and third-party license copies. No publication performed.
+- Analysis validation uses a hand-computed 72-row fixture with one failure: expected denominators, failure-zero score, and paired token effects passed. Total three tests passed.

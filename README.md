@@ -23,11 +23,35 @@ Original observations are scoped to a task process. The recovery tool permits at
 
 ## Setup
 
-Use Linux/WSL, Python 3.12 and an NVIDIA GPU. Clone upstream with `GIT_LFS_SKIP_SMUDGE=1`, check out the pinned commit, and download `ayanami-kitasan/code-pruner` into `models/code-pruner`. Clone Streamlink into `data/streamlink` and check out the pinned commit.
+Use Linux/WSL, Python 3.12 and an NVIDIA GPU. Run these repository preparation commands from this project's root in WSL:
+
+```bash
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/Ayanami1314/swe-pruner upstream
+git -C upstream checkout 96171b5f3ecaf89745cbeb436c8893b57f3400bd
+mkdir -p data
+git clone --filter=blob:none https://github.com/streamlink/streamlink data/streamlink
+git -C data/streamlink checkout ab1f3656
+bash scripts/setup_wsl.sh
+```
+
+The setup script requires `uv` on PATH and creates a separate agent environment under `~/.venvs/ftec5660-agent`. `requirements-agent.txt` records the tested installed versions. Set the environment location with the script's first argument if desired.
+
+For the Windows GPU service, reuse a Python 3.12 environment whose PyTorch can allocate a tensor on the GPU. With its interpreter path in `$GpuPython`, run:
+
+```powershell
+& $GpuPython -c "import torch; print(torch.__version__, torch.cuda.is_available()); print(torch.ones(1, device='cuda'))"
+uv venv --python $GpuPython --system-site-packages .venv-pruner
+uv pip install --python .venv-pruner/Scripts/python.exe -r requirements-pruner.txt
+.venv-pruner/Scripts/python.exe -m huggingface_hub.cli.hf download ayanami-kitasan/code-pruner --revision 863cee3198c715c9df1faa422a3490e0832bb734 --local-dir models/code-pruner --include '*.json' '*.txt' 'model.safetensors'
+.venv-pruner/Scripts/python.exe -m huggingface_hub.cli.hf download Qwen/Qwen3-Reranker-0.6B --revision e61197ed45024b0ed8a2d74b80b4d909f1255473 --local-dir models/qwen-backbone --include config.json
+.venv-pruner/Scripts/python.exe serve_pruner.py
+```
+
+Check the download route and existing cache first. The released weights occupy approximately 1.35 GB; a fresh GPU runtime can add several GB. Prefer direct access or the designated non-metered VPN route for downloads above 5 GB. Model file revisions, sizes and SHA-256 hashes are recorded in `configs/model_assets.json`. The exact tested nightly PyTorch build is recorded in `configs/environment_gpu.json`; availability of that historical build on a fresh machine is not guaranteed. A replacement GPU runtime requires re-running the numerical and demo checks.
 
 `python prepare_upstream.py` applies documented compatibility and accounting fixes. The script is idempotent. The tested GPU service uses an existing Windows PyTorch 2.9.0.dev20250705+cu129 installation, Transformers 4.57.1, BF16 stored weights and the upstream FP16 autocast. SDPA replaces Flash Attention, unused attention weights are omitted, and single-example inference omits masked right-padding. The agent runs separately in WSL Ubuntu 22.04 / Python 3.12 / OpenHands SDK 1.1.0. WSL mirrored networking accesses the Windows services through localhost.
 
-`validate_pruner.py` compares attention kernels and padding to 8192 on two fixed probes. All token decisions at threshold 0.4 agreed; probabilities differed by up to 0.01653. This is a limited numerical sensitivity check. Exact bitwise equivalence and broader equivalence remain unproven. The legacy `scripts/setup_wsl.sh` records an abandoned combined installation attempt; it is not the tested setup recipe.
+`validate_pruner.py` compares attention kernels and padding to 8192 on two fixed probes. All token decisions at threshold 0.4 agreed; probabilities differed by up to 0.01653. This is a limited numerical sensitivity check. Exact bitwise equivalence and broader equivalence remain unproven. The setup script now installs only the agent environment; GPU dependencies are managed separately.
 
 Create a local `.env` using `.env.example`. Keep credentials outside Git.
 

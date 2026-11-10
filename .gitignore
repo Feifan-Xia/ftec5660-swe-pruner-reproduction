@@ -9,3 +9,7 @@ data/
 runs/
 __pycache__/
 *.pyc
+release/
+report/preview_page*.png
+report/*_draft.pdf
+results/*_summary_console.json

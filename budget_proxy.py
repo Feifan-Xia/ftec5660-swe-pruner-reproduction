@@ -71,7 +71,9 @@ def main():
                 actual = (usage.get('prompt_tokens', 0) * .30 + usage.get('completion_tokens', 0) * 1.20) / 1e6
                 charge = actual if usage else bound
                 spent += charge
+                decoding = {key: payload[key] for key in ('model', 'temperature', 'top_p', 'max_tokens', 'seed') if key in payload}
                 record = dict(time=time.time(), session=session, status=status, seconds=time.time()-started,
+                              decoding=decoding,
                               usage=usage, charged_bound_usd=charge, total_bound_usd=spent)
                 with ledger.open('a') as file:
                     file.write(json.dumps(record) + '\n')
