@@ -70,7 +70,8 @@ Create one store per task. IDs identify exact saved content; line ranges are one
 Use Linux/WSL, Python 3.12 and an NVIDIA GPU. Run these repository preparation commands from this project's root in WSL:
 
 ```bash
-GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/Ayanami1314/swe-pruner upstream
+export GIT_LFS_SKIP_SMUDGE=1
+git clone https://github.com/Ayanami1314/swe-pruner upstream
 git -C upstream checkout 96171b5f3ecaf89745cbeb436c8893b57f3400bd
 mkdir -p data
 git clone --filter=blob:none https://github.com/streamlink/streamlink data/streamlink
