@@ -71,3 +71,7 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Added pinned agent requirements, selected GPU dependencies, portable WSL setup, exact model revision/file hashes, and expanded README commands. Historical nightly GPU runtime availability is disclosed.
 - Added local reviewed bundle generation with exact credential checks, path normalization, file hashes, and third-party license copies. No publication performed.
 - Analysis validation uses a hand-computed 72-row fixture with one failure: expected denominators, failure-zero score, and paired token effects passed. Total three tests passed.
+- All nine planned pilot condition/question combinations completed and were scored. Successful-task average conservative cost is $0.0505065; mean wall time 160.41s. Project cumulative conservative usage including troubleshooting and judges is $0.7477503. Final pilot implies ~3.21h for 72 serial agent runs and ~$3.64 agent cost, before judging; $8 approved cap remains enforced.
+- Budget proxy restarted after terminal pilot session73056, now session13542, port8877, limit$8, prior usage carried forward. Records now include nonsecret decoding parameters.
+- Formal schedule launched with run_formal.py after pilot completion. Fixed eight-question x3-condition x3-repeat plan; collect authoritative process handle in next status update.
+- Pilot actual activation: two pruned observations in recovery q17; zero expansion calls across nine successful pilot runs. Preserve optional official focus-query mechanism and report activation rates.
