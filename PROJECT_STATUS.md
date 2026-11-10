@@ -88,3 +88,6 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Formal process remains session24992; budget proxy13542 and pruner85694 remain running. Latest audited total ~$1.223, 5 completed/scored plus baseline q14 scoring pending at audit time.
 - Formal progress: 8/72 attempts resolved, evidence audit zero errors, latest conservative total ~$1.32265. Scheduler session24992 remains live.
 - Added observation-level timeout counts and pruner-token retention totals to aggregation/reporting. Documented authors' ten-second Bash timeout and filtered-clone historical-object/network caveat. Runtime conditions unchanged; four tests pass.
+- Added formal task elapsed time from original task.json/exit.json write timestamps, captured once in measurement_timing.json for portability. This includes failed attempts and excludes judging; inner author timing retained separately. Four tests passed.
+- Added scripts/freeze_runtime.py for fresh reproductions and documented invocation. Capture smoke matched all13 current raw hashes. Added canonical LF hashes to current manifest and audit so Windows/Linux line endings alone do not invalidate code identity; runtime source files unchanged.
+- Latest formal audit: 14/72 resolved, zero errors, conservative usage ~$1.76508. Name Feifan Xia verified from same-course HW2 cover; student ID query remains pending.

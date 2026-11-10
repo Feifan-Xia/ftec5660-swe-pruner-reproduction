@@ -27,6 +27,13 @@ def summarize(phase):
         exit_path = directory / 'exit.json'
         exit_code = json.loads(exit_path.read_text()).get('returncode') if exit_path.exists() else None
         status = 'running' if not exit_path.exists() else ('answered' if valid else 'failed')
+        timing_path = directory / 'measurement_timing.json'
+        if phase == 'formal' and exit_path.exists() and not timing_path.exists():
+            start_ns, end_ns = meta.stat().st_mtime_ns, exit_path.stat().st_mtime_ns
+            timing_path.write_text(json.dumps({'start_ns':start_ns, 'end_ns':end_ns,
+                'seconds':(end_ns-start_ns)/1e9,
+                'source':'Original local task.json and exit.json write timestamps; captured once after execution. Includes process startup/cleanup, excludes judge.'}, indent=2))
+        timing = json.loads(timing_path.read_text()) if timing_path.exists() else {}
         observations = directory / 'observations.json'
         reads = json.loads(observations.read_text(encoding='utf-8')).get('reads', []) if observations.exists() else []
         events = [e for p in (directory / 'trajectories').rglob('*.traj.json')
@@ -35,6 +42,7 @@ def summarize(phase):
         pruned_observations = [o for o in tool_observations if o.get('pruned')]
         row = dict(phase=phase, mode=task['mode'], question_index=task['index'], repeat=task['repeat'],
                    status=status, completed_answer=valid, score=score.get('mean'), seconds=answer.get('time_cost'),
+                   elapsed_task_seconds=timing.get('seconds'),
                    api_calls=len(requests), input_tokens=sum(x.get('prompt_tokens', 0) for x in usage),
                    successful_api_calls=sum(x.get('status') == 200 for x in requests),
                    tool_observations=len(tool_observations), pruned_observations=len(pruned_observations),

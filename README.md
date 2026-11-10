@@ -111,6 +111,7 @@ The approved scope is eight questions, three conditions, and three repetitions. 
 
 ```bash
 python run_formal.py --plan-only
+python scripts/freeze_runtime.py  # Fresh checkout only; preserve existing study snapshots
 python run_formal.py
 ```
 

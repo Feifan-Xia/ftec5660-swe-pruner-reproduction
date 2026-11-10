@@ -20,7 +20,10 @@ def main():
         errors.append('Formal schedule does not match the approved 72 distinct attempts')
     frozen = json.loads((ROOT/'runs/formal/runtime_manifest.json').read_text())
     for name, expected_hash in frozen['files'].items():
-        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest() != expected_hash:
+        data = (ROOT/name).read_bytes()
+        raw_match = hashlib.sha256(data).hexdigest() == expected_hash
+        lf_match = hashlib.sha256(data.replace(b'\r\n', b'\n')).hexdigest() == frozen.get('canonical_lf_files', {}).get(name)
+        if not raw_match and not lf_match:
             errors.append('Runtime changed: ' + name)
     question_rows = [json.loads(x) for x in (ROOT/'upstream/downstream_eval/multi_turn/sweqa/questions/streamlink.jsonl').read_text(encoding='utf-8').splitlines()]
     ledger = [json.loads(x) for x in (ROOT/'runs/api_usage.jsonl').read_text().splitlines()]

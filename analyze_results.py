@@ -51,6 +51,7 @@ def main():
             'mean_score_completed': mean([r['score'] for r in scored]),
             'mean_score_failure_zero': mean([r['score'] if r in scored else 0 for r in group]),
             'mean_seconds_completed': mean([r['seconds'] for r in answered if r['seconds'] is not None]),
+            'mean_elapsed_seconds_all_attempts': mean([r['elapsed_task_seconds'] for r in group if r.get('elapsed_task_seconds') is not None]),
             'author_filtered_score': mean([r['score'] for r in scored if r['author_filtered_eligible']]),
             'author_filtered_n': sum(r['author_filtered_eligible'] is True for r in scored),
             'pruned_observations': sum(r['pruned_observations'] for r in group),
