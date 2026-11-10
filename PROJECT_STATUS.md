@@ -58,3 +58,7 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Existing CUDA-enabled PyTorch is now reused; GPU dependency installation/download was stopped. Model weights are complete. No additional >5 GB transfer is planned.
 - Windows API proxy PID 70604 uses httpx trust_env=False after an explicit-proxy TLS failure and a successful direct-client probe. Current pilot resumed in session 73056; repeated-call reliability is still under observation.
 - Recovery tool instructions now name the actual expand tool. Pilot skips existing validated score files to avoid duplicate judge calls.
+- Numerical adaptation checks completed in validate_pruner.py: two fixed probes, original attention-weight computation and masked padding to 8192; all token threshold decisions agreed, max probability delta 0.0165281. Evidence runs/pruner_numerical_validation.json. This is a bounded sensitivity check, not a general equivalence guarantee.
+- Deterministic component demo completed: demo.py, runs/demo.json; 1687 -> 169 tokens and exact line-range recovery. Two observation-store unit tests passed.
+- Recovery q43 r1 completed (65.1s, 31174 tokens, official rubric mean10); baseline q17 r1 completed (46.93s, 95230 tokens, mean8). Pilot still active in session73056; baseline q26 r1 currently making successful calls. Known conservative total at latest ledger row ~0.4073 USD under $1 cap.
+- Prepared configs/evaluation_protocol.md for 8 questions x3 conditions x3 repeats (72 scheduled attempts), preserving all failures and recording actual pruning activation. Formal approval remains pending.

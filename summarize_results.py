@@ -29,12 +29,19 @@ def summarize(phase):
         status = 'running' if exit_code is None else ('answered' if valid else 'failed')
         observations = directory / 'observations.json'
         reads = json.loads(observations.read_text(encoding='utf-8')).get('reads', []) if observations.exists() else []
+        events = [e for p in (directory / 'trajectories').rglob('*.traj.json')
+                  for e in json.loads(p.read_text(encoding='utf-8')).get('events', [])]
+        tool_observations = [e['observation'] for e in events if isinstance(e.get('observation'), dict)]
+        pruned_observations = [o for o in tool_observations if o.get('pruned')]
         row = dict(phase=phase, mode=task['mode'], question_index=task['index'], repeat=task['repeat'],
                    status=status, completed_answer=valid, score=score.get('mean'), seconds=answer.get('time_cost'),
                    api_calls=len(requests), input_tokens=sum(x.get('prompt_tokens', 0) for x in usage),
+                   successful_api_calls=sum(x.get('status') == 200 for x in requests),
+                   tool_observations=len(tool_observations), pruned_observations=len(pruned_observations),
                    output_tokens=sum(x.get('completion_tokens', 0) for x in usage),
                    cash_cost=sum(x.get('cost', 0) for x in usage),
                    go_allowance=sum(x.get('opencode', {}).get('allowance', 0) for x in usage),
+                   conservative_cost=sum(x.get('charged_bound_usd', 0) for x in requests if x.get('error') != 'ConnectError'),
                    recovery_reads=len(reads), repeated_lines=sum(x['repeated_lines'] for x in reads),
                    author_filtered_eligible=score.get('author_filtered_eligible'), path=str(directory.relative_to(ROOT)))
         row['total_tokens'] = row['input_tokens'] + row['output_tokens']
