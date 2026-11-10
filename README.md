@@ -145,7 +145,7 @@ python report/build_report.py
 python package_artifacts.py
 ```
 
-The report builder requires a reviewed `results/conclusion.txt`. Review every rendered report page before submission. `package_artifacts.py` creates a local ZIP with credential-checked evidence, normalized project paths, third-party licenses and a SHA-256 manifest. Public publishing and the student's recording/submission are separate user actions.
+The report builder requires a reviewed `results/conclusion.txt`. Review every rendered report page before submission. `package_artifacts.py` creates a local ZIP with credential-checked evidence, third-party licenses and a SHA-256 manifest. Raw `runs/` evidence retains its original bytes and recorded local paths so content IDs, character counts and exact recovery can be checked. Other text files normalize known project paths; the manifest records both original and packaged hashes. Public publishing and the student's recording/submission are separate user actions.
 
 Judge repair keeps the official rubric, model and temperature unchanged. Missing/invalid scores receive up to two additional attempts with a 4,096-token output ceiling; initial attempts use 2,048. Every response and billed request remains in the evidence. Valid scores are retained unchanged.
 

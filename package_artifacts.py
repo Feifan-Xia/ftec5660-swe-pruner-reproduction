@@ -53,9 +53,10 @@ def main():
             continue
         relative = source.relative_to(ROOT)
         data = source.read_bytes()
+        original_hash = hashlib.sha256(data).hexdigest()
         if any(secret in data for secret in secrets):
             raise RuntimeError(f'Credential detected in {relative}; bundle is incomplete and must be reviewed')
-        if source.suffix in ('.json', '.jsonl', '.log', '.md', '.csv'):
+        if relative.parts[0] != 'runs' and source.suffix in ('.json', '.jsonl', '.log', '.md', '.csv'):
             text = data.decode('utf-8')
             for alias in aliases:
                 text = text.replace(alias, '$PROJECT_ROOT').replace(json.dumps(alias)[1:-1], '$PROJECT_ROOT')
@@ -63,7 +64,8 @@ def main():
         target = destination / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
-        manifest.append({'path': relative.as_posix(), 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+        manifest.append({'path': relative.as_posix(), 'bytes': len(data),
+                         'sha256': hashlib.sha256(data).hexdigest(), 'source_sha256': original_hash})
     licenses = [('upstream/LICENSE', 'SWE-Pruner-LICENSE'), ('data/streamlink/LICENSE', 'Streamlink-LICENSE')]
     for source_name, name in licenses:
         source = ROOT / source_name
@@ -81,7 +83,7 @@ def main():
         manifest.append({'path':bundle.name, 'bytes':len(data), 'sha256':hashlib.sha256(data).hexdigest()})
     (destination / 'MANIFEST.json').write_text(json.dumps({'draft': args.draft,
         'git_revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-        'transformation': 'Known project-root paths replaced by $PROJECT_ROOT in text evidence; no result values changed.',
+        'transformation': 'Raw runs/ evidence is byte-preserved, including recorded local paths, content IDs and read lengths. Known project-root paths are replaced by $PROJECT_ROOT in other text files; source_sha256 records original file hashes.',
         'files': manifest}, indent=2), encoding='utf-8')
     archive = destination.with_suffix('.zip')
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as zipped:
