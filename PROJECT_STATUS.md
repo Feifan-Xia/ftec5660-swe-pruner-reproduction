@@ -27,3 +27,7 @@ Deadline: 2026-11-10 24:00 Asia/Shanghai.
 - Official runner prepared with credential-safe config logging, serial execution, and user-agent/session headers.
 - Live sessions: Torch install 95209; auxiliary dependencies 46358; model download 94597; SDK install 3620. Poll these handles before starting replacements.
 - Observation store tests passed (2). Actual integration with OpenHands and model serving still pending.
+- Model download completed: models/code-pruner/model.safetensors = 1345834856 bytes. Download session 94597 ended successfully; auxiliary session 46358 also completed.
+- Added recovery_tool.py OpenHands integration and run_task.py isolated one-question process runner. These require SDK runtime validation before paid runs.
+- Attention default adapted from flash_attention_2 to PyTorch SDPA for laptop portability, same across both pruner conditions. Must report this deviation and verify actual model output/peak memory; runtime validation pending.
+- Remaining: budget-metered API transport before trial; SDK integration validation; model service launch; pilot and budget confirmation; formal runs; scoring and artifacts.
