@@ -1,0 +1,21 @@
+{
+  "status": "pending_user_approval",
+  "measured_completed_pilot_tasks": 5,
+  "mean_task_conservative_usd": 0.0325761,
+  "max_task_conservative_usd": 0.0615801,
+  "mean_task_go_allowance": 0.006210388,
+  "mean_task_seconds": 104.404,
+  "formal_questions": [41, 14, 30, 8, 11, 46, 33, 29],
+  "conditions": ["baseline", "pruner", "recovery"],
+  "repeats": 3,
+  "formal_tasks": 72,
+  "expected_formal_agent_conservative_usd": 2.3454792,
+  "judge_reserve_usd": 0.22,
+  "stress_formal_agent_conservative_usd": 6.6506508,
+  "stress_formula": "72 * maximum measured completed task cost * 1.5",
+  "pilot_allowance_usd": 1.0,
+  "proposed_project_total_limit_usd": 8.0,
+  "additional_authorization_usd": 7.0,
+  "expected_formal_agent_hours": 2.08808,
+  "note": "Conservative uncached peak-price accounting, inclusive of setup/pilot/judging and unknown transport outcomes. Actual cash cost in observed Go responses is zero; allowance use is recorded separately. Five completed tasks give a preliminary estimate; remaining pilot tasks continue within the existing $1 ceiling."
+}

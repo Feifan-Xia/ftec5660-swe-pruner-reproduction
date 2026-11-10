@@ -20,11 +20,16 @@ def main():
     allowed = selection['pilot_indices' if args.phase == 'pilot' else 'evaluation_candidate_indices']
     if args.index not in allowed:
         parser.error('Question index is outside the declared phase split')
-    if args.phase == 'formal' and not (ROOT / 'configs/formal_approval.json').exists():
-        parser.error('Formal budget approval must be recorded first')
+    if args.phase == 'formal':
+        approval_path = ROOT / 'configs/formal_approval.json'
+        approval = json.loads(approval_path.read_text()) if approval_path.exists() else {}
+        if approval.get('approved') is not True or args.index not in approval.get('question_indices', []):
+            parser.error('Formal budget approval and question scope must be recorded first')
     source = ROOT / 'upstream/downstream_eval/multi_turn/sweqa'
     rows = [json.loads(x) for x in (source / 'questions/streamlink.jsonl').read_text().splitlines()]
     out = ROOT / f'runs/{args.phase}/{args.mode}/q{args.index}_r{args.repeat}'
+    if (out / 'task.json').exists():
+        parser.error('Attempt already exists; use a new identifier to preserve evidence')
     out.mkdir(parents=True, exist_ok=True)
     questions = out / 'questions'
     questions.mkdir(exist_ok=True)
