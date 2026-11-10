@@ -27,7 +27,7 @@ new_command='''            ["bwrap", "--unshare-all", "--die-with-parent",
              "--chdir", "/workspace", "/bin/sh", "-c", command],
             shell=False, capture_output=True, text=True, timeout=10'''
 assert old_command in tools
-tools=tools.replace(old_command,new_command)
+tools=tools.replace(old_command,new_command).replace('timeout=60.0','timeout=600.0')
 (DEST/'tool_utils.py').write_text(tools,encoding='utf-8')
 (DEST/'manifest.json').write_text(json.dumps({p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in DEST.glob('*.py')},indent=2))
 print('Prepared isolated GLM runtime with FinishAction extraction and 16384 output capacity.')

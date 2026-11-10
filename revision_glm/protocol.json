@@ -1,5 +1,9 @@
 {
-  "version": "glm46-matched-v1",
+  "version": "glm46-zai-fixed-v2",
+  "agent_provider": {"only": ["z-ai"], "allow_fallbacks": false},
+  "judge_provider": {"only": ["openai"], "allow_fallbacks": false},
+  "pruning_service_timeout_seconds": 600,
+  "prior_route_audit": "Mixed-route development batch retained under runs/glm/formal and excluded from primary comparisons. All 72 cells start fresh with a fixed provider.",
   "question_indices": [41, 14, 30, 8, 11, 46, 33, 29],
   "repeats": 3,
   "conditions": ["baseline", "pruner", "recovery"],

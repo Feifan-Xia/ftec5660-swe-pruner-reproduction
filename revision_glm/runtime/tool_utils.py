@@ -45,7 +45,7 @@ def _get_httpx_client() -> httpx.Client:
     global _httpx_client
     if _httpx_client is None:
         # Disable proxy for prune service requests (local service should not use proxy)
-        _httpx_client = httpx.Client(timeout=60.0, proxy=None, trust_env=False)
+        _httpx_client = httpx.Client(timeout=600.0, proxy=None, trust_env=False)
     return _httpx_client
 
 

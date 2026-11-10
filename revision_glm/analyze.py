@@ -7,17 +7,17 @@ def read(p,default=None):return json.loads(p.read_text(encoding='utf-8')) if p.e
 def mean(xs):return statistics.mean(xs) if xs else None
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('--partial',action='store_true');args=parser.parse_args()
- protocol=read(ROOT/'revision_glm/protocol.json');ledger=ROOT/'runs/glm/formal_usage.jsonl'
+ protocol=read(ROOT/'revision_glm/protocol.json');ledger=ROOT/'runs/glm/pinned/formal_usage.jsonl'
  calls=[json.loads(x) for x in ledger.read_text(encoding='utf-8').splitlines()] if ledger.exists() else []
  rows=[];attempts=[];pending=[]
  for index in protocol['question_indices']:
   for repeat in range(3):
    for mode in MODES:
-    base=ROOT/f'runs/glm/formal/{mode}/q{index}_r{repeat}';selection=read(base/'selection.json')
+    base=ROOT/f'runs/glm/pinned/formal/{mode}/q{index}_r{repeat}';selection=read(base/'selection.json')
     selected=selection.get('selected_attempt') if selection else None
     if selection is None:pending.append([index,repeat,mode])
     for p in sorted(base.glob('attempt*/task.json')):
-     task=read(p);d=p.parent;a=task['attempt'];session=f'glm-formal-{mode}-{index}-{repeat}-a{a}'
+     task=read(p);d=p.parent;a=task['attempt'];session=f'glm-pinned-{mode}-{index}-{repeat}-a{a}'
      req=[x for x in calls if x['session']==session];usage=[x.get('usage',{}) for x in req]
      answers=[json.loads(x) for f in (d/'answers').rglob('*answers.jsonl') for x in f.read_text(encoding='utf-8').splitlines() if x.strip()]
      answer=answers[-1] if answers else {};score=read(d/'score.json',{});qual=read(d/'qualification.json',{})

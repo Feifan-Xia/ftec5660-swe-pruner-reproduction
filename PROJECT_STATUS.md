@@ -1,3 +1,5 @@
+> Revision in progress, 2026-11-11: the earlier DeepSeek report/package below is superseded for final submission. A matched GLM-4.6 study is running under revision_glm/protocol.json; revised reports will be produced after all planned cells and evidence checks complete. User explicitly prioritized completeness and extended the deadline.
+
 # FTEC5660 SWE-Pruner reproduction
 
 Deadline: 2026-11-10 24:00 Asia/Shanghai.
