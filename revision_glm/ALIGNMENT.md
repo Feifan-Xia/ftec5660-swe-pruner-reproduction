@@ -27,7 +27,7 @@ All attempts and repairs remain visible. Fix reproducible infrastructure defects
 
 ## Authorization
 
-OpenRouter usage was approved by the user. The existing project ceiling remains $8 until a concrete revised estimate is approved. The new pilot has a $0.30 local guard; account balance is not spending authorization. Scope and expected formal/judge costs will be estimated from measured development runs before formal launch.
+OpenRouter usage was approved by the user. The user subsequently approved a $12 project ceiling, prioritizing complete comparisons. The dated authorization and prior-stage accounting are recorded in runs/glm/pinned/budget_authorization.json. Earlier pilot and $8-limit decisions remain documented in BUDGET.md.
 
 ## Development fixes verified before formal launch
 

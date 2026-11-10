@@ -1,0 +1,16 @@
+{
+  "errors": [],
+  "checks": {
+    "repository_files_verified": 641,
+    "frozen_files": 15,
+    "requests": 947,
+    "meter_conservative_usd": 2.68269995,
+    "known_provider_cost_usd": 2.56655245,
+    "unreconciled_requests": 1,
+    "project_conservative_usd": 7.92620608,
+    "primary_cells": 72,
+    "mechanism_cells": 72
+  },
+  "experiment_commit": "a514c2b08894707e4cb54a4a1d86a1b8fcb6bd64",
+  "status": "PASS"
+}

@@ -1,69 +1,56 @@
-# SWE-Pruner reproduction with recoverable tool observations
+# SWE-Pruner: GLM-4.6 reproduction and exact observation recovery
 
-FTEC5660 individual reproducibility project. The experiment uses the authors' SWE-QA/OpenHands pipeline on a fixed Streamlink subset, and adds an explicit tool for recovering saved original observations. The shared `ObservationStore` is intended for the XJ13 tool-observation study.
+FTEC5660 individual project · Xia Feifan · 1155204948.
 
-## Experiment status
+This project runs the authors' SWE-QA/OpenHands pipeline on eight fixed Streamlink questions. Three conditions share GLM-4.6, the repository, the questions and generation settings: full observations, SWE-Pruner, and SWE-Pruner with exact recovery. Each condition is executed three times per question. A separate 72-cell goal-shift experiment measures whether the added tool can recover evidence removed from the current context.
 
-Nine development condition/question combinations and all 72 approved formal attempts have completed. Each formal condition exported 23 valid answers from 24 attempts. Three initially truncated judge responses were repaired using the documented bounded procedure; all original responses remain available.
+## Read the results
 
-| Condition | Valid answers / attempts | Mean cumulative API tokens | Mean score of valid answers | Expansion calls |
-|---|---:|---:|---:|---:|
-| Baseline | 23 / 24 | 125,036 | 9.87 | 0 |
-| Pruner | 23 / 24 | 183,425 | 9.74 | 0 |
-| Recovery | 23 / 24 | 140,734 | 9.83 | 3 |
+- [Chinese report](report/glm/SWE-Pruner_report_zh.pdf) and [English report](report/glm/SWE-Pruner_report_en.pdf).
+- [Audited aggregate results](results/glm/analysis.json), [per-run measurements](results/glm/cells.json), [mechanism results](results/glm/mechanism.json), and [integrity audit](results/glm/audit.json).
+- [Protocol](revision_glm/protocol.json), [paper alignment](revision_glm/ALIGNMENT.md), and [reproduction instructions](revision_glm/README.md).
+- [Chinese recording script](demo_script_zh.md) and [submission checklist](SUBMISSION_CHECKLIST.md).
 
-Pruner used 46.7% more cumulative tokens than baseline; recovery used 23.3% fewer than pruner. Both paired question-bootstrap token intervals cross zero. The released model successfully compressed individual observations, while the local small-subset comparison did not reproduce aggregate token savings. See the report for failure-zero scores, uncertainty, runtime amendments and limitations.
+The numerical reference is the paper's Table 2, Streamlink with GLM-4.6: score 8.56 in both conditions and 54.4% lower cumulative tokens with pruning. The report compares the local measurements with that result and explains task coverage, serving and scoring differences. Historical DeepSeek and mixed-provider development records are retained separately; the revised primary comparison uses a fixed Z.AI provider with fallback disabled and threshold 0.5.
 
-Recorded project provider list cost is $0.8841, Go allowance consumption is 0.5304, and provider-reported cash charges are $0. Conservative budget accounting totals $4.4251 against the approved $8 ceiling. These totals include development and judging; the initial connectivity probe is covered in conservative accounting. Full evidence is distributed in the local submission ZIP; downloaded weights and source checkouts are obtained using the pinned setup below.
+## Final primary results
 
-## Conditions
+All 72 primary cells completed on their first agent attempt and were independently scored. The 72-cell mechanism study also completed. The integrity audit passes.
 
-1. `baseline`: authors' full-output Bash tool.
-2. `pruner`: authors' goal-conditioned pruning tool, released 0.6B weights, threshold 0.4.
-3. `recovery`: the same pruning tool plus an observation ID and an `expand` tool returning exact requested original lines (`ExpandObservation` registration).
+| Condition | Answers | Mean score / 10 | Mean cumulative tokens |
+|---|---:|---:|---:|
+| Full observations | 24/24 | 8.63 | 112,796 |
+| SWE-Pruner | 24/24 | 9.27 | 130,950 |
+| Pruner + exact recovery | 24/24 | 9.13 | 139,798 |
 
-Original observations are scoped to a task process. The recovery tool permits at most 200 lines per call and logs overlapping reads. All groups share the agent, model, question, and execution limits.
+Pruning increases cumulative tokens by 16.1% in this subset despite compressing actually pruned source text by 76.5%. Long unfiltered investigations, especially q11, dominate the discrepancy with the paper. Recovery adds 6.8% tokens versus pruning, with a −0.13 score change. Seventeen successful expansions expose new nonblank lines in sixteen cases; one trajectory reconstructs a whole file. The report provides paired intervals, per-question evidence and scoring sensitivity.
 
-```mermaid
-flowchart LR
-    A[Agent Bash action] --> B[Original tool output]
-    B --> C{Focus query supplied?}
-    C -->|Yes| D[Released SWE-Pruner model]
-    C -->|No| E[Full output]
-    D --> F[Observation delivered to agent]
-    E --> F
-    B --> G[Recovery condition: exact per-task store]
-    G --> H[Observation ID and line count]
-    H --> F
-    F --> I[Agent requests expand]
-    I --> G
-    G --> J[Exact requested lines and read log]
-    J --> F
-```
+## The modification
 
-## Sources
+`observation_store.py` saves exact captured tool text per task. `recovery_tool.py` adds an observation ID and inclusive one-based `expand` ranges, capped at 200 lines per call, to the authors' pruning tool. Every recovery records returned characters and overlapping reads. The agent can request missing evidence without executing the original command again.
 
-- [SWE-Pruner paper](https://arxiv.org/abs/2601.16746), Table 2: SWE-QA Streamlink.
-- [Authors' code](https://github.com/Ayanami1314/swe-pruner), commit `96171b5f3ecaf89745cbeb436c8893b57f3400bd` (MIT).
-- [Streamlink](https://github.com/streamlink/streamlink), commit `ab1f3656` (BSD-2-Clause).
-- Questions and reference answers: authors' `downstream_eval/multi_turn/sweqa/questions/streamlink.jsonl`.
+The independent goal-shift experiment supplies the same saved code observations after an import-inspection query, then asks for a string constant. Exact-match outcomes are full 24/24, pruned 3/24, recoverable 24/24. Recoverable observations use 55,617 cumulative tokens versus 24,082 for full observations. The report separates this controlled evidence-access result from autonomous repository QA, where the agent can also reread files.
 
-## Reuse in XJ13
-
-`observation_store.py` depends only on the Python standard library. It can store raw JSON responses, code, or other textual tool output independently of OpenHands and the GPU model:
+The standard-library store is reusable in XJ13:
 
 ```python
 from observation_store import ObservationStore
 
 store = ObservationStore(max_lines_per_read=200)
-raw_tool_output = '{\n  "answer": 42\n}'
-observation_id = store.put(raw_tool_output)
-restored = store.expand(observation_id, start=1, end=3)
-assert restored == raw_tool_output
-audit = store.manifest()  # Original text plus read and repeated-line accounting
+text = '{\n  "answer": 42\n}'
+observation_id = store.put(text)
+assert store.expand(observation_id, 1, 3) == text
+read_audit = store.manifest()
 ```
 
-Create one store per task. IDs identify exact saved content; line ranges are one-based and inclusive. `recovery_tool.py` supplies the OpenHands adapter. XJ13 can reuse the store behind its own tool interface and independently evaluate lookup, conditional, and aggregation tasks. JSON-key selection and automatic recovery policies are future extensions; this study evaluates the line-range interface.
+Instantiate a store per task. Ranges refer to saved observation lines; file line numbers printed inside a tool output are a separate coordinate system. The adapter's process-global store is task-scoped by the runner's one-process-per-attempt lifecycle. Integration into a multi-task server requires a separate store for each task.
+
+## Pinned sources
+
+- [Paper](https://arxiv.org/html/2601.16746v1), Table 2 and Appendix D.1.
+- [SWE-Pruner](https://github.com/Ayanami1314/swe-pruner), commit `96171b5f3ecaf89745cbeb436c8893b57f3400bd`, MIT.
+- [Streamlink](https://github.com/streamlink/streamlink), commit `ab1f3656`, BSD-2-Clause.
+- [Released skimmer](https://huggingface.co/ayanami-kitasan/code-pruner), revision `863cee3198c715c9df1faa422a3490e0832bb734`.
 
 ## Setup
 
@@ -89,75 +76,31 @@ uv venv --python $GpuPython --system-site-packages .venv-pruner
 uv pip install --python .venv-pruner/Scripts/python.exe -r requirements-pruner.txt
 .venv-pruner/Scripts/python.exe -m huggingface_hub.cli.hf download ayanami-kitasan/code-pruner --revision 863cee3198c715c9df1faa422a3490e0832bb734 --local-dir models/code-pruner --include '*.json' '*.txt' 'model.safetensors'
 .venv-pruner/Scripts/python.exe -m huggingface_hub.cli.hf download Qwen/Qwen3-Reranker-0.6B --revision e61197ed45024b0ed8a2d74b80b4d909f1255473 --local-dir models/qwen-backbone --include config.json
-.venv-pruner/Scripts/python.exe serve_pruner.py
+.venv-pruner/Scripts/python.exe revision_glm/serve.py
 ```
 
 Check the download route and existing cache first. The released weights occupy approximately 1.35 GB; a fresh GPU runtime can add several GB. Prefer direct access or the designated non-metered VPN route for downloads above 5 GB. Model file revisions, sizes and SHA-256 hashes are recorded in `configs/model_assets.json`. The exact tested nightly PyTorch build is recorded in `configs/environment_gpu.json`; availability of that historical build on a fresh machine is not guaranteed. A replacement GPU runtime requires re-running the numerical and demo checks.
 
 `python prepare_upstream.py` applies documented compatibility and accounting fixes. The script is idempotent. The tested GPU service uses an existing Windows PyTorch 2.9.0.dev20250705+cu129 installation, Transformers 4.57.1, BF16 stored weights and the upstream FP16 autocast. SDPA replaces Flash Attention, unused attention weights are omitted, and single-example inference omits masked right-padding. The agent runs separately in WSL Ubuntu 22.04 / Python 3.12 / OpenHands SDK 1.1.0. WSL mirrored networking accesses the Windows services through localhost.
 
-`validate_pruner.py` compares attention kernels and padding to 8192 on two fixed probes. All token decisions at threshold 0.4 agreed; probabilities differed by up to 0.01653. This is a limited numerical sensitivity check. Exact bitwise equivalence and broader equivalence remain unproven. The setup script now installs only the agent environment; GPU dependencies are managed separately.
+## Run and verify the revised experiment
 
-Create a local `.env` using `.env.example`. Keep credentials outside Git.
+Follow [revision_glm/README.md](revision_glm/README.md) to create the clean read-only repository snapshot, start the GPU service and OpenRouter meter, freeze the runtime, and run all 72 primary cells plus the separate 72-cell mechanism study. Use a fresh clone and a new run directory for a new experiment. Keep API credentials in local environment variables.
 
-## Run
-
-Start `serve_pruner.py` in the GPU environment (port 8000) and the budget proxy on port 8877. Run task/scoring commands in the WSL agent environment:
+Final analysis and evidence checks:
 
 ```bash
-python budget_proxy.py --limit 1 --port 8877
-python run_task.py --mode baseline --index 43
-python run_task.py --mode pruner --index 43
-python run_task.py --mode recovery --index 43
-python score_results.py runs/pilot/baseline/q43_r0
-python summarize_results.py --phase pilot
-```
-
-Use the appropriate completed attempt path when scoring. `configs/task_selection.json` records disjoint development and evaluation indices, sampling seed, and source hash. Formal runs require a recorded budget approval in `configs/formal_approval.json`.
-
-To reconstruct selection, shuffle `list(range(48))` with Python's `random.Random(5660).shuffle`. The first three indices are the development set, the next twenty are the candidate list, and the approved formal subset uses the first eight candidates. This reconstruction matches the frozen selection file.
-
-## Measurements
-
-The loopback proxy records provider usage for every request, separately preserving input/output tokens, cash cost, and Go allowance consumption. A conservative uncached peak-price ceiling controls pilot spending. Agent run tokens are aggregated from these per-request records. Judge calls have separate session IDs.
-
-The official five-dimensional rubric is retained. Current pilot scoring uses the same model as the agent and is marked accordingly; final analysis must describe this evaluator limitation. Execution failures remain in the primary task inventory. Author-filtered scores are secondary.
-
-## Validation
-
-Install `requirements-report.txt` in the analysis/report environment to run the statistical checks and rebuild the report. All commands below run from the project root; use the GPU environment for numerical validation.
-
-```bash
-python -m pip install -r requirements-report.txt
-python scripts/verify_assets.py
+python revision_glm/analyze.py
+python revision_glm/analyze_mechanism.py
+python revision_glm/analyze_recovery.py
+python revision_glm/verify_repository.py  # Linux/WSL snapshot verification
+python revision_glm/audit.py
 python -m unittest discover -s tests -v
-python validate_pruner.py  # GPU environment
-python demo.py             # Running local GPU service; no paid API
+python -m unittest discover -s revision_glm/tests -v
 ```
 
-## Formal evaluation and artifacts
+The shell isolation and final-answer tests run in Linux/WSL; run `test_attention.py` in the GPU environment. Reports are generated from the audited statistics and reviewed interpretation with `report/glm/figures.py`, `compose.py` and `render.py`. The renderer uses Windows Microsoft YaHei/Arial fonts. Reproducing report rendering requires those fonts or an explicitly selected replacement.
 
-The approved scope is eight questions, three conditions, and three repetitions. The total project budget ceiling is $8, including development and judging. Start the proxy with `--limit 8 --port 8877` only after the development proxy has stopped; its ledger carries prior usage forward. In the WSL agent environment:
+`revision_glm/package.py` creates the final local ZIP with the current code, bilingual reports, exact raw experiment evidence, file hashes, third-party licenses and a Git history bundle. It scans configured credentials and verifies all archived file hashes. Model weights and private local proxy configuration remain outside the package. `python scripts/verify_bundle.py PATH_TO_ZIP` independently checks the archive.
 
-```bash
-python run_formal.py --plan-only
-python scripts/freeze_runtime.py  # Fresh checkout only; preserve existing study snapshots
-python run_formal.py
-```
-
-In the analysis environment, after all scheduled attempts and available answer scores are recorded:
-
-```bash
-python repair_scores.py --phase formal  # Fill missing JSON scores; preserve initial responses
-python summarize_results.py --phase formal
-python audit_results.py
-python analyze_results.py
-python report/build_report.py
-python package_artifacts.py
-```
-
-The report builder requires a reviewed `results/conclusion.txt`. Review every rendered report page before submission. `package_artifacts.py` creates a local ZIP with credential-checked evidence, third-party licenses and a SHA-256 manifest. Raw `runs/` evidence retains its original bytes and recorded local paths so content IDs, character counts and exact recovery can be checked. Other text files normalize known project paths; the manifest records both original and packaged hashes. Public publishing and the student's recording/submission are separate user actions.
-
-Judge repair keeps the official rubric, model and temperature unchanged. Missing/invalid scores receive up to two additional attempts with a 4,096-token output ceiling; initial attempts use 2,048. Every response and billed request remains in the evidence. Valid scores are retained unchanged.
-
-Raw logs and downloaded assets are excluded from Git during development. The final publication package will include a reviewed, credential-free evidence bundle, environment lock, report and demo script.
+The source commit used at experiment launch and its exact archived files are recorded in `runs/glm/pinned/formal/runtime_manifest.json`. Subsequent commits add analysis, reporting and packaging. Recording, GitHub publication and course submission are completed by the student.
