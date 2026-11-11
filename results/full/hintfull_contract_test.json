@@ -1,0 +1,4 @@
+{
+  "pass": true,
+  "scope": "Only PrunerBashExecutor.__call__ changed; all schemas, descriptions and main runtime identical."
+}

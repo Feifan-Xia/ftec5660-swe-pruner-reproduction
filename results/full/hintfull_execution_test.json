@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "checks": [
+    "Complete captured output returned",
+    "Skimmer never called",
+    "Required-hint action schema retained",
+    "No fake compression metadata"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "version": "schema-matched-full-control-v1",
+  "question_indices": [
+    41,
+    14,
+    30,
+    8,
+    11,
+    46,
+    33,
+    29
+  ],
+  "population_size": 8,
+  "question_file_sha256": "af5d149b7a256b85d50c0d5971f42c3504f14f97632708bb06c1d486c6db0162",
+  "repeats": 1,
+  "conditions": [
+    "pruner"
+  ],
+  "planned_cells": 8,
+  "agent_model": "z-ai/glm-4.6",
+  "agent_provider": {
+    "only": [
+      "z-ai"
+    ],
+    "allow_fallbacks": false
+  },
+  "judge_model": "openai/gpt-5",
+  "judge_provider": {
+    "only": [
+      "openai"
+    ],
+    "allow_fallbacks": false
+  },
+  "temperature": 0,
+  "top_p": 1,
+  "prune_threshold": 0.5,
+  "agent_max_output_tokens": 16384,
+  "max_interaction_rounds": 50,
+  "max_seconds_per_question": 1800,
+  "pruner_chunk_tokens": 8192,
+  "pruner_padding": "Original right padding to 8192 with attention mask; no shortened input tensor.",
+  "attention": "SDPA with query-axis tiles of 256 and full key/value context; tested against untiled SDPA.",
+  "population": "Same eight questions selected before the initial model runs; all remain included. This is a diagnostic subset before any expansion.",
+  "order": "This control is run after the original required-hint first screen was launched; it is a diagnostic stage, with all eight fixed questions included. Time ordering is a limitation.",
+  "repeat_semantics": "First 16 cells are a diagnostic screen. Remaining 32 continue the same immutable configuration only after reviewing alignment; any repair creates a new version retaining all previous results.",
+  "judge_prompt": "Exact released five-dimensional SWE-QA rubric; low reasoning, max output 4096; unchanged from the prior study.",
+  "metrics": [
+    "provider cumulative input+output tokens including cached input",
+    "5-dimensional quality / 10",
+    "author round count",
+    "agent API request count",
+    "reasoning tokens",
+    "pruning activation",
+    "source tokens retained",
+    "latency",
+    "provider cost"
+  ],
+  "paper_target": "Table 2, Streamlink, GLM-4.6, full and SWE-Pruner rows.",
+  "paper_reference": {
+    "baseline": {
+      "score": 8.56,
+      "rounds": 18.2,
+      "tokens": 318200
+    },
+    "pruner": {
+      "score": 8.56,
+      "rounds": 25.0,
+      "tokens": 145100
+    }
+  },
+  "primary_analysis": "All eight fixed question clusters, one execution per question; paired bootstrap is descriptive. Report independent ordering and shared full/optional controls explicitly.",
+  "token_accounting": "Independent API ledger, checked against corrected runner. Report a separate 2x replay of the released double-counting metric, with unknown linkage to the published table.",
+  "retry_policy": "One additional attempt only for demonstrated infrastructure/export/pruning-service failure. Retain all attempts. Low scores never trigger replacement.",
+  "modification_phase": "Recovery remains a separate extension; this stage is a mechanism control.",
+  "unresolved_alignment": [
+    "Original model served as azure/glm-4.6 through a ByteDance gateway; this run uses the accessible Z.AI endpoint via OpenRouter.",
+    "Authors exact inference kernel and checkpoint revision unrecorded; published checkpoint replay is measured.",
+    "Released Streamlink and Reflex token columns cross-match the paper rows; preserve both sources.",
+    "Authors snapshot included additional unshared helper files.",
+    "Judge provider and inference details remain incompletely specified."
+  ],
+  "workspace": "Clean copies of Conan, Reflex and Streamlink at ./swe-repos/{repository}, matching the recorded shared source-root layout. Authors unpublished helper files and evaluation materials are absent.",
+  "artifact_reference": {
+    "full_input_plus_output": 142256.58333333334,
+    "pruner_input_plus_output": 101199.875,
+    "relative_change_percent": -28.86102517809662,
+    "fixed_eight_full": 190204,
+    "fixed_eight_pruner": 95309.625
+  },
+  "scope_change": "User requested fixed-subset verification before expansion; USD 28 has not been approved. Existing USD 12 meter remains authoritative.",
+  "expected_behavior": "Lower end-to-end tokens with comparable mean quality; report all fixed questions and interpret quality uncertainty, activation and missing evidence before scaling.",
+  "pruner_weight_dtype": "float32",
+  "precision_basis": "Released online_serving.py omits dtype; direct loading in pinned Transformers produces FP32 parameters. Published checkpoint contains BF16 backbone tensors and 15 FP32 tensors; previous explicit BF16 cast rounded the latter.",
+  "previous_stage": "Complete first repetition in runs/subset/formal uses BF16 weights and remains a separate diagnostic.",
+  "intervention": "Same required nonempty hint action and tool description as revision_hint. The executor returns the entire captured command output; it never calls the skimmer. All other runtime code remains identical.",
+  "interpretation": "Mechanism control separating the tool-interface/agent-path contrast from active filtering. Compare all eight questions to the required-hint arm at repeat0. Outcomes were not inspected when this control was specified.",
+  "screening": "Complete all eight cells at repeat 0 before evaluating. Preserve every question and failed attempt. No selection or retries based on scores.",
+  "comparator": "runs/hint/formal/pruner/*_r0; full and optional-reference rows from precision repeat0"
+}
