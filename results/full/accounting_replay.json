@@ -1,0 +1,440 @@
+{
+  "cells": 72,
+  "released_equals_double_ledger": true,
+  "corrected_equals_ledger": true,
+  "scope": "Verified released-code behavior; unpublished January experiment implementation cannot be inferred from this March code release. A shared multiplier leaves relative effects unchanged.",
+  "rows": [
+    {
+      "session": "glm-pinned-baseline-11-0-a0",
+      "ledger_total": 335063,
+      "released_total": 670126,
+      "corrected_total": 335063
+    },
+    {
+      "session": "glm-pinned-baseline-11-1-a0",
+      "ledger_total": 434354,
+      "released_total": 868708,
+      "corrected_total": 434354
+    },
+    {
+      "session": "glm-pinned-baseline-11-2-a0",
+      "ledger_total": 305129,
+      "released_total": 610258,
+      "corrected_total": 305129
+    },
+    {
+      "session": "glm-pinned-baseline-14-0-a0",
+      "ledger_total": 108003,
+      "released_total": 216006,
+      "corrected_total": 108003
+    },
+    {
+      "session": "glm-pinned-baseline-14-1-a0",
+      "ledger_total": 79747,
+      "released_total": 159494,
+      "corrected_total": 79747
+    },
+    {
+      "session": "glm-pinned-baseline-14-2-a0",
+      "ledger_total": 104330,
+      "released_total": 208660,
+      "corrected_total": 104330
+    },
+    {
+      "session": "glm-pinned-baseline-29-0-a0",
+      "ledger_total": 59266,
+      "released_total": 118532,
+      "corrected_total": 59266
+    },
+    {
+      "session": "glm-pinned-baseline-29-1-a0",
+      "ledger_total": 45239,
+      "released_total": 90478,
+      "corrected_total": 45239
+    },
+    {
+      "session": "glm-pinned-baseline-29-2-a0",
+      "ledger_total": 58970,
+      "released_total": 117940,
+      "corrected_total": 58970
+    },
+    {
+      "session": "glm-pinned-baseline-30-0-a0",
+      "ledger_total": 300007,
+      "released_total": 600014,
+      "corrected_total": 300007
+    },
+    {
+      "session": "glm-pinned-baseline-30-1-a0",
+      "ledger_total": 184316,
+      "released_total": 368632,
+      "corrected_total": 184316
+    },
+    {
+      "session": "glm-pinned-baseline-30-2-a0",
+      "ledger_total": 265011,
+      "released_total": 530022,
+      "corrected_total": 265011
+    },
+    {
+      "session": "glm-pinned-baseline-33-0-a0",
+      "ledger_total": 55091,
+      "released_total": 110182,
+      "corrected_total": 55091
+    },
+    {
+      "session": "glm-pinned-baseline-33-1-a0",
+      "ledger_total": 56296,
+      "released_total": 112592,
+      "corrected_total": 56296
+    },
+    {
+      "session": "glm-pinned-baseline-33-2-a0",
+      "ledger_total": 55873,
+      "released_total": 111746,
+      "corrected_total": 55873
+    },
+    {
+      "session": "glm-pinned-baseline-41-0-a0",
+      "ledger_total": 38160,
+      "released_total": 76320,
+      "corrected_total": 38160
+    },
+    {
+      "session": "glm-pinned-baseline-41-1-a0",
+      "ledger_total": 26770,
+      "released_total": 53540,
+      "corrected_total": 26770
+    },
+    {
+      "session": "glm-pinned-baseline-41-2-a0",
+      "ledger_total": 38263,
+      "released_total": 76526,
+      "corrected_total": 38263
+    },
+    {
+      "session": "glm-pinned-baseline-46-0-a0",
+      "ledger_total": 11904,
+      "released_total": 23808,
+      "corrected_total": 11904
+    },
+    {
+      "session": "glm-pinned-baseline-46-1-a0",
+      "ledger_total": 12104,
+      "released_total": 24208,
+      "corrected_total": 12104
+    },
+    {
+      "session": "glm-pinned-baseline-46-2-a0",
+      "ledger_total": 11917,
+      "released_total": 23834,
+      "corrected_total": 11917
+    },
+    {
+      "session": "glm-pinned-baseline-8-0-a0",
+      "ledger_total": 41213,
+      "released_total": 82426,
+      "corrected_total": 41213
+    },
+    {
+      "session": "glm-pinned-baseline-8-1-a0",
+      "ledger_total": 37009,
+      "released_total": 74018,
+      "corrected_total": 37009
+    },
+    {
+      "session": "glm-pinned-baseline-8-2-a0",
+      "ledger_total": 43071,
+      "released_total": 86142,
+      "corrected_total": 43071
+    },
+    {
+      "session": "glm-pinned-pruner-11-0-a0",
+      "ledger_total": 474781,
+      "released_total": 949562,
+      "corrected_total": 474781
+    },
+    {
+      "session": "glm-pinned-pruner-11-1-a0",
+      "ledger_total": 259485,
+      "released_total": 518970,
+      "corrected_total": 259485
+    },
+    {
+      "session": "glm-pinned-pruner-11-2-a0",
+      "ledger_total": 826860,
+      "released_total": 1653720,
+      "corrected_total": 826860
+    },
+    {
+      "session": "glm-pinned-pruner-14-0-a0",
+      "ledger_total": 63929,
+      "released_total": 127858,
+      "corrected_total": 63929
+    },
+    {
+      "session": "glm-pinned-pruner-14-1-a0",
+      "ledger_total": 128860,
+      "released_total": 257720,
+      "corrected_total": 128860
+    },
+    {
+      "session": "glm-pinned-pruner-14-2-a0",
+      "ledger_total": 128666,
+      "released_total": 257332,
+      "corrected_total": 128666
+    },
+    {
+      "session": "glm-pinned-pruner-29-0-a0",
+      "ledger_total": 86862,
+      "released_total": 173724,
+      "corrected_total": 86862
+    },
+    {
+      "session": "glm-pinned-pruner-29-1-a0",
+      "ledger_total": 87909,
+      "released_total": 175818,
+      "corrected_total": 87909
+    },
+    {
+      "session": "glm-pinned-pruner-29-2-a0",
+      "ledger_total": 82037,
+      "released_total": 164074,
+      "corrected_total": 82037
+    },
+    {
+      "session": "glm-pinned-pruner-30-0-a0",
+      "ledger_total": 144261,
+      "released_total": 288522,
+      "corrected_total": 144261
+    },
+    {
+      "session": "glm-pinned-pruner-30-1-a0",
+      "ledger_total": 231833,
+      "released_total": 463666,
+      "corrected_total": 231833
+    },
+    {
+      "session": "glm-pinned-pruner-30-2-a0",
+      "ledger_total": 126727,
+      "released_total": 253454,
+      "corrected_total": 126727
+    },
+    {
+      "session": "glm-pinned-pruner-33-0-a0",
+      "ledger_total": 67991,
+      "released_total": 135982,
+      "corrected_total": 67991
+    },
+    {
+      "session": "glm-pinned-pruner-33-1-a0",
+      "ledger_total": 71407,
+      "released_total": 142814,
+      "corrected_total": 71407
+    },
+    {
+      "session": "glm-pinned-pruner-33-2-a0",
+      "ledger_total": 70439,
+      "released_total": 140878,
+      "corrected_total": 70439
+    },
+    {
+      "session": "glm-pinned-pruner-41-0-a0",
+      "ledger_total": 39192,
+      "released_total": 78384,
+      "corrected_total": 39192
+    },
+    {
+      "session": "glm-pinned-pruner-41-1-a0",
+      "ledger_total": 25289,
+      "released_total": 50578,
+      "corrected_total": 25289
+    },
+    {
+      "session": "glm-pinned-pruner-41-2-a0",
+      "ledger_total": 25352,
+      "released_total": 50704,
+      "corrected_total": 25352
+    },
+    {
+      "session": "glm-pinned-pruner-46-0-a0",
+      "ledger_total": 22798,
+      "released_total": 45596,
+      "corrected_total": 22798
+    },
+    {
+      "session": "glm-pinned-pruner-46-1-a0",
+      "ledger_total": 17723,
+      "released_total": 35446,
+      "corrected_total": 17723
+    },
+    {
+      "session": "glm-pinned-pruner-46-2-a0",
+      "ledger_total": 13041,
+      "released_total": 26082,
+      "corrected_total": 13041
+    },
+    {
+      "session": "glm-pinned-pruner-8-0-a0",
+      "ledger_total": 39419,
+      "released_total": 78838,
+      "corrected_total": 39419
+    },
+    {
+      "session": "glm-pinned-pruner-8-1-a0",
+      "ledger_total": 53165,
+      "released_total": 106330,
+      "corrected_total": 53165
+    },
+    {
+      "session": "glm-pinned-pruner-8-2-a0",
+      "ledger_total": 54784,
+      "released_total": 109568,
+      "corrected_total": 54784
+    },
+    {
+      "session": "glm-pinned-recovery-11-0-a0",
+      "ledger_total": 493432,
+      "released_total": 986864,
+      "corrected_total": 493432
+    },
+    {
+      "session": "glm-pinned-recovery-11-1-a0",
+      "ledger_total": 478191,
+      "released_total": 956382,
+      "corrected_total": 478191
+    },
+    {
+      "session": "glm-pinned-recovery-11-2-a0",
+      "ledger_total": 619306,
+      "released_total": 1238612,
+      "corrected_total": 619306
+    },
+    {
+      "session": "glm-pinned-recovery-14-0-a0",
+      "ledger_total": 117009,
+      "released_total": 234018,
+      "corrected_total": 117009
+    },
+    {
+      "session": "glm-pinned-recovery-14-1-a0",
+      "ledger_total": 86296,
+      "released_total": 172592,
+      "corrected_total": 86296
+    },
+    {
+      "session": "glm-pinned-recovery-14-2-a0",
+      "ledger_total": 124129,
+      "released_total": 248258,
+      "corrected_total": 124129
+    },
+    {
+      "session": "glm-pinned-recovery-29-0-a0",
+      "ledger_total": 189803,
+      "released_total": 379606,
+      "corrected_total": 189803
+    },
+    {
+      "session": "glm-pinned-recovery-29-1-a0",
+      "ledger_total": 39282,
+      "released_total": 78564,
+      "corrected_total": 39282
+    },
+    {
+      "session": "glm-pinned-recovery-29-2-a0",
+      "ledger_total": 61839,
+      "released_total": 123678,
+      "corrected_total": 61839
+    },
+    {
+      "session": "glm-pinned-recovery-30-0-a0",
+      "ledger_total": 217249,
+      "released_total": 434498,
+      "corrected_total": 217249
+    },
+    {
+      "session": "glm-pinned-recovery-30-1-a0",
+      "ledger_total": 130006,
+      "released_total": 260012,
+      "corrected_total": 130006
+    },
+    {
+      "session": "glm-pinned-recovery-30-2-a0",
+      "ledger_total": 274603,
+      "released_total": 549206,
+      "corrected_total": 274603
+    },
+    {
+      "session": "glm-pinned-recovery-33-0-a0",
+      "ledger_total": 67475,
+      "released_total": 134950,
+      "corrected_total": 67475
+    },
+    {
+      "session": "glm-pinned-recovery-33-1-a0",
+      "ledger_total": 67408,
+      "released_total": 134816,
+      "corrected_total": 67408
+    },
+    {
+      "session": "glm-pinned-recovery-33-2-a0",
+      "ledger_total": 66628,
+      "released_total": 133256,
+      "corrected_total": 66628
+    },
+    {
+      "session": "glm-pinned-recovery-41-0-a0",
+      "ledger_total": 35560,
+      "released_total": 71120,
+      "corrected_total": 35560
+    },
+    {
+      "session": "glm-pinned-recovery-41-1-a0",
+      "ledger_total": 35110,
+      "released_total": 70220,
+      "corrected_total": 35110
+    },
+    {
+      "session": "glm-pinned-recovery-41-2-a0",
+      "ledger_total": 35563,
+      "released_total": 71126,
+      "corrected_total": 35563
+    },
+    {
+      "session": "glm-pinned-recovery-46-0-a0",
+      "ledger_total": 19112,
+      "released_total": 38224,
+      "corrected_total": 19112
+    },
+    {
+      "session": "glm-pinned-recovery-46-1-a0",
+      "ledger_total": 14867,
+      "released_total": 29734,
+      "corrected_total": 14867
+    },
+    {
+      "session": "glm-pinned-recovery-46-2-a0",
+      "ledger_total": 15805,
+      "released_total": 31610,
+      "corrected_total": 15805
+    },
+    {
+      "session": "glm-pinned-recovery-8-0-a0",
+      "ledger_total": 55934,
+      "released_total": 111868,
+      "corrected_total": 55934
+    },
+    {
+      "session": "glm-pinned-recovery-8-1-a0",
+      "ledger_total": 53749,
+      "released_total": 107498,
+      "corrected_total": 53749
+    },
+    {
+      "session": "glm-pinned-recovery-8-2-a0",
+      "ledger_total": 56788,
+      "released_total": 113576,
+      "corrected_total": 56788
+    }
+  ]
+}

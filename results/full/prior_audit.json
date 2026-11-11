@@ -1,0 +1,1211 @@
+{
+  "request_parameters": {
+    "{\"max_tokens\": 16384, \"reasoning\": null, \"seed\": null, \"temperature\": 0.0, \"top_p\": 1.0}": 772
+  },
+  "system_prompt_hashes": {
+    "0e89a5c6dd0c0250c836ad13129a0a3f76181a8920b68c64ba370e469bef61d3": 772
+  },
+  "cells": [
+    {
+      "mode": "baseline",
+      "index": 11,
+      "repeat": 0,
+      "ledger_tokens": 335063,
+      "runner_tokens": 335063,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.06002596
+    },
+    {
+      "mode": "baseline",
+      "index": 11,
+      "repeat": 1,
+      "ledger_tokens": 434354,
+      "runner_tokens": 434354,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0697372
+    },
+    {
+      "mode": "baseline",
+      "index": 11,
+      "repeat": 2,
+      "ledger_tokens": 305129,
+      "runner_tokens": 305129,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.05308956
+    },
+    {
+      "mode": "baseline",
+      "index": 14,
+      "repeat": 0,
+      "ledger_tokens": 108003,
+      "runner_tokens": 108003,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.023997
+    },
+    {
+      "mode": "baseline",
+      "index": 14,
+      "repeat": 1,
+      "ledger_tokens": 79747,
+      "runner_tokens": 79747,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.02149396
+    },
+    {
+      "mode": "baseline",
+      "index": 14,
+      "repeat": 2,
+      "ledger_tokens": 104330,
+      "runner_tokens": 104330,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.03154744
+    },
+    {
+      "mode": "baseline",
+      "index": 29,
+      "repeat": 0,
+      "ledger_tokens": 59266,
+      "runner_tokens": 59266,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01539992
+    },
+    {
+      "mode": "baseline",
+      "index": 29,
+      "repeat": 1,
+      "ledger_tokens": 45239,
+      "runner_tokens": 45239,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01689476
+    },
+    {
+      "mode": "baseline",
+      "index": 29,
+      "repeat": 2,
+      "ledger_tokens": 58970,
+      "runner_tokens": 58970,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01023256
+    },
+    {
+      "mode": "baseline",
+      "index": 30,
+      "repeat": 0,
+      "ledger_tokens": 300007,
+      "runner_tokens": 300007,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.07238948
+    },
+    {
+      "mode": "baseline",
+      "index": 30,
+      "repeat": 1,
+      "ledger_tokens": 184316,
+      "runner_tokens": 184316,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.03899536
+    },
+    {
+      "mode": "baseline",
+      "index": 30,
+      "repeat": 2,
+      "ledger_tokens": 265011,
+      "runner_tokens": 265011,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.051410120000000004
+    },
+    {
+      "mode": "baseline",
+      "index": 33,
+      "repeat": 0,
+      "ledger_tokens": 55091,
+      "runner_tokens": 55091,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01730516
+    },
+    {
+      "mode": "baseline",
+      "index": 33,
+      "repeat": 1,
+      "ledger_tokens": 56296,
+      "runner_tokens": 56296,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01226496
+    },
+    {
+      "mode": "baseline",
+      "index": 33,
+      "repeat": 2,
+      "ledger_tokens": 55873,
+      "runner_tokens": 55873,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01128412
+    },
+    {
+      "mode": "baseline",
+      "index": 41,
+      "repeat": 0,
+      "ledger_tokens": 38160,
+      "runner_tokens": 38160,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01075712
+    },
+    {
+      "mode": "baseline",
+      "index": 41,
+      "repeat": 1,
+      "ledger_tokens": 26770,
+      "runner_tokens": 26770,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.009232559999999999
+    },
+    {
+      "mode": "baseline",
+      "index": 41,
+      "repeat": 2,
+      "ledger_tokens": 38263,
+      "runner_tokens": 38263,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01112612
+    },
+    {
+      "mode": "baseline",
+      "index": 46,
+      "repeat": 0,
+      "ledger_tokens": 11904,
+      "runner_tokens": 11904,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.00525504
+    },
+    {
+      "mode": "baseline",
+      "index": 46,
+      "repeat": 1,
+      "ledger_tokens": 12104,
+      "runner_tokens": 12104,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.005432
+    },
+    {
+      "mode": "baseline",
+      "index": 46,
+      "repeat": 2,
+      "ledger_tokens": 11917,
+      "runner_tokens": 11917,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.00459372
+    },
+    {
+      "mode": "baseline",
+      "index": 8,
+      "repeat": 0,
+      "ledger_tokens": 41213,
+      "runner_tokens": 41213,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01123436
+    },
+    {
+      "mode": "baseline",
+      "index": 8,
+      "repeat": 1,
+      "ledger_tokens": 37009,
+      "runner_tokens": 37009,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01407868
+    },
+    {
+      "mode": "baseline",
+      "index": 8,
+      "repeat": 2,
+      "ledger_tokens": 43071,
+      "runner_tokens": 43071,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01243236
+    },
+    {
+      "mode": "pruner",
+      "index": 11,
+      "repeat": 0,
+      "ledger_tokens": 474781,
+      "runner_tokens": 474781,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.10752204
+    },
+    {
+      "mode": "pruner",
+      "index": 11,
+      "repeat": 1,
+      "ledger_tokens": 259485,
+      "runner_tokens": 259485,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.05796172
+    },
+    {
+      "mode": "pruner",
+      "index": 11,
+      "repeat": 2,
+      "ledger_tokens": 826860,
+      "runner_tokens": 826860,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.15495088
+    },
+    {
+      "mode": "pruner",
+      "index": 14,
+      "repeat": 0,
+      "ledger_tokens": 63929,
+      "runner_tokens": 63929,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01836444
+    },
+    {
+      "mode": "pruner",
+      "index": 14,
+      "repeat": 1,
+      "ledger_tokens": 128860,
+      "runner_tokens": 128860,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.02943984
+    },
+    {
+      "mode": "pruner",
+      "index": 14,
+      "repeat": 2,
+      "ledger_tokens": 128666,
+      "runner_tokens": 128666,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.03076088
+    },
+    {
+      "mode": "pruner",
+      "index": 29,
+      "repeat": 0,
+      "ledger_tokens": 86862,
+      "runner_tokens": 86862,
+      "hinted_actions": 2,
+      "pruned_observations": 2,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.022186
+    },
+    {
+      "mode": "pruner",
+      "index": 29,
+      "repeat": 1,
+      "ledger_tokens": 87909,
+      "runner_tokens": 87909,
+      "hinted_actions": 1,
+      "pruned_observations": 1,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.02414796
+    },
+    {
+      "mode": "pruner",
+      "index": 29,
+      "repeat": 2,
+      "ledger_tokens": 82037,
+      "runner_tokens": 82037,
+      "hinted_actions": 2,
+      "pruned_observations": 2,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.02178348
+    },
+    {
+      "mode": "pruner",
+      "index": 30,
+      "repeat": 0,
+      "ledger_tokens": 144261,
+      "runner_tokens": 144261,
+      "hinted_actions": 1,
+      "pruned_observations": 1,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.03691596
+    },
+    {
+      "mode": "pruner",
+      "index": 30,
+      "repeat": 1,
+      "ledger_tokens": 231833,
+      "runner_tokens": 231833,
+      "hinted_actions": 2,
+      "pruned_observations": 2,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0470998
+    },
+    {
+      "mode": "pruner",
+      "index": 30,
+      "repeat": 2,
+      "ledger_tokens": 126727,
+      "runner_tokens": 126727,
+      "hinted_actions": 1,
+      "pruned_observations": 1,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01957924
+    },
+    {
+      "mode": "pruner",
+      "index": 33,
+      "repeat": 0,
+      "ledger_tokens": 67991,
+      "runner_tokens": 67991,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0238986
+    },
+    {
+      "mode": "pruner",
+      "index": 33,
+      "repeat": 1,
+      "ledger_tokens": 71407,
+      "runner_tokens": 71407,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01911684
+    },
+    {
+      "mode": "pruner",
+      "index": 33,
+      "repeat": 2,
+      "ledger_tokens": 70439,
+      "runner_tokens": 70439,
+      "hinted_actions": 1,
+      "pruned_observations": 1,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01534756
+    },
+    {
+      "mode": "pruner",
+      "index": 41,
+      "repeat": 0,
+      "ledger_tokens": 39192,
+      "runner_tokens": 39192,
+      "hinted_actions": 2,
+      "pruned_observations": 2,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.013677759999999999
+    },
+    {
+      "mode": "pruner",
+      "index": 41,
+      "repeat": 1,
+      "ledger_tokens": 25289,
+      "runner_tokens": 25289,
+      "hinted_actions": 2,
+      "pruned_observations": 2,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.010845079999999998
+    },
+    {
+      "mode": "pruner",
+      "index": 41,
+      "repeat": 2,
+      "ledger_tokens": 25352,
+      "runner_tokens": 25352,
+      "hinted_actions": 2,
+      "pruned_observations": 2,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0107328
+    },
+    {
+      "mode": "pruner",
+      "index": 46,
+      "repeat": 0,
+      "ledger_tokens": 22798,
+      "runner_tokens": 22798,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.00663432
+    },
+    {
+      "mode": "pruner",
+      "index": 46,
+      "repeat": 1,
+      "ledger_tokens": 17723,
+      "runner_tokens": 17723,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.00548212
+    },
+    {
+      "mode": "pruner",
+      "index": 46,
+      "repeat": 2,
+      "ledger_tokens": 13041,
+      "runner_tokens": 13041,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.00548828
+    },
+    {
+      "mode": "pruner",
+      "index": 8,
+      "repeat": 0,
+      "ledger_tokens": 39419,
+      "runner_tokens": 39419,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0124098
+    },
+    {
+      "mode": "pruner",
+      "index": 8,
+      "repeat": 1,
+      "ledger_tokens": 53165,
+      "runner_tokens": 53165,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01897644
+    },
+    {
+      "mode": "pruner",
+      "index": 8,
+      "repeat": 2,
+      "ledger_tokens": 54784,
+      "runner_tokens": 54784,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.014304
+    },
+    {
+      "mode": "recovery",
+      "index": 11,
+      "repeat": 0,
+      "ledger_tokens": 493432,
+      "runner_tokens": 493432,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.08918656
+    },
+    {
+      "mode": "recovery",
+      "index": 11,
+      "repeat": 1,
+      "ledger_tokens": 478191,
+      "runner_tokens": 478191,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.07822884
+    },
+    {
+      "mode": "recovery",
+      "index": 11,
+      "repeat": 2,
+      "ledger_tokens": 619306,
+      "runner_tokens": 619306,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.10216408
+    },
+    {
+      "mode": "recovery",
+      "index": 14,
+      "repeat": 0,
+      "ledger_tokens": 117009,
+      "runner_tokens": 117009,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0394358
+    },
+    {
+      "mode": "recovery",
+      "index": 14,
+      "repeat": 1,
+      "ledger_tokens": 86296,
+      "runner_tokens": 86296,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.02213888
+    },
+    {
+      "mode": "recovery",
+      "index": 14,
+      "repeat": 2,
+      "ledger_tokens": 124129,
+      "runner_tokens": 124129,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.033855960000000004
+    },
+    {
+      "mode": "recovery",
+      "index": 29,
+      "repeat": 0,
+      "ledger_tokens": 189803,
+      "runner_tokens": 189803,
+      "hinted_actions": 2,
+      "pruned_observations": 2,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.04315732
+    },
+    {
+      "mode": "recovery",
+      "index": 29,
+      "repeat": 1,
+      "ledger_tokens": 39282,
+      "runner_tokens": 39282,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0138236
+    },
+    {
+      "mode": "recovery",
+      "index": 29,
+      "repeat": 2,
+      "ledger_tokens": 61839,
+      "runner_tokens": 61839,
+      "hinted_actions": 2,
+      "pruned_observations": 2,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01547524
+    },
+    {
+      "mode": "recovery",
+      "index": 30,
+      "repeat": 0,
+      "ledger_tokens": 217249,
+      "runner_tokens": 217249,
+      "hinted_actions": 1,
+      "pruned_observations": 1,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.04532092
+    },
+    {
+      "mode": "recovery",
+      "index": 30,
+      "repeat": 1,
+      "ledger_tokens": 130006,
+      "runner_tokens": 130006,
+      "hinted_actions": 1,
+      "pruned_observations": 1,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0272484
+    },
+    {
+      "mode": "recovery",
+      "index": 30,
+      "repeat": 2,
+      "ledger_tokens": 274603,
+      "runner_tokens": 274603,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.058662599999999995
+    },
+    {
+      "mode": "recovery",
+      "index": 33,
+      "repeat": 0,
+      "ledger_tokens": 67475,
+      "runner_tokens": 67475,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01740436
+    },
+    {
+      "mode": "recovery",
+      "index": 33,
+      "repeat": 1,
+      "ledger_tokens": 67408,
+      "runner_tokens": 67408,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.02014016
+    },
+    {
+      "mode": "recovery",
+      "index": 33,
+      "repeat": 2,
+      "ledger_tokens": 66628,
+      "runner_tokens": 66628,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.018475039999999998
+    },
+    {
+      "mode": "recovery",
+      "index": 41,
+      "repeat": 0,
+      "ledger_tokens": 35560,
+      "runner_tokens": 35560,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.013090880000000001
+    },
+    {
+      "mode": "recovery",
+      "index": 41,
+      "repeat": 1,
+      "ledger_tokens": 35110,
+      "runner_tokens": 35110,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.00741736
+    },
+    {
+      "mode": "recovery",
+      "index": 41,
+      "repeat": 2,
+      "ledger_tokens": 35563,
+      "runner_tokens": 35563,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.013145480000000001
+    },
+    {
+      "mode": "recovery",
+      "index": 46,
+      "repeat": 0,
+      "ledger_tokens": 19112,
+      "runner_tokens": 19112,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0065744
+    },
+    {
+      "mode": "recovery",
+      "index": 46,
+      "repeat": 1,
+      "ledger_tokens": 14867,
+      "runner_tokens": 14867,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.00639796
+    },
+    {
+      "mode": "recovery",
+      "index": 46,
+      "repeat": 2,
+      "ledger_tokens": 15805,
+      "runner_tokens": 15805,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.0067770799999999996
+    },
+    {
+      "mode": "recovery",
+      "index": 8,
+      "repeat": 0,
+      "ledger_tokens": 55934,
+      "runner_tokens": 55934,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.01999784
+    },
+    {
+      "mode": "recovery",
+      "index": 8,
+      "repeat": 1,
+      "ledger_tokens": 53749,
+      "runner_tokens": 53749,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.00857548
+    },
+    {
+      "mode": "recovery",
+      "index": 8,
+      "repeat": 2,
+      "ledger_tokens": 56788,
+      "runner_tokens": 56788,
+      "hinted_actions": 0,
+      "pruned_observations": 0,
+      "no_output": 0,
+      "error_outputs": [],
+      "agent_cost": 0.00979568
+    }
+  ],
+  "prunes": [
+    {
+      "mode": "pruner",
+      "index": 29,
+      "repeat": 0,
+      "info": {
+        "score": 0.9976769089698792,
+        "origin_token_cnt": 13052,
+        "left_token_cnt": 4231,
+        "model_input_token_cnt": 13144,
+        "prune_threshold": 0.5,
+        "context_focus_question": "Why is the CdpDomain class used in generating type-safe Python modules from CDP domain definitions?"
+      },
+      "raw_chars": 40816,
+      "output_chars": 13491
+    },
+    {
+      "mode": "pruner",
+      "index": 29,
+      "repeat": 0,
+      "info": {
+        "score": 0.9985561966896057,
+        "origin_token_cnt": 13052,
+        "left_token_cnt": 5004,
+        "model_input_token_cnt": 13160,
+        "prune_threshold": 0.5,
+        "context_focus_question": "What is the CdpDomain class, its fields, and its generate_code method doing? How does it orchestrate the generation of a Python module from a CDP domain definition?"
+      },
+      "raw_chars": 40816,
+      "output_chars": 16016
+    },
+    {
+      "mode": "pruner",
+      "index": 29,
+      "repeat": 1,
+      "info": {
+        "score": 0.9976769089698792,
+        "origin_token_cnt": 13052,
+        "left_token_cnt": 4231,
+        "model_input_token_cnt": 13144,
+        "prune_threshold": 0.5,
+        "context_focus_question": "Why is the CdpDomain class used in generating type-safe Python modules from CDP domain definitions?"
+      },
+      "raw_chars": 40816,
+      "output_chars": 13491
+    },
+    {
+      "mode": "pruner",
+      "index": 29,
+      "repeat": 2,
+      "info": {
+        "score": 0.9976769089698792,
+        "origin_token_cnt": 13052,
+        "left_token_cnt": 4231,
+        "model_input_token_cnt": 13144,
+        "prune_threshold": 0.5,
+        "context_focus_question": "Why is the CdpDomain class used in generating type-safe Python modules from CDP domain definitions?"
+      },
+      "raw_chars": 40816,
+      "output_chars": 13491
+    },
+    {
+      "mode": "pruner",
+      "index": 29,
+      "repeat": 2,
+      "info": {
+        "score": 0.9988840222358704,
+        "origin_token_cnt": 13052,
+        "left_token_cnt": 4199,
+        "model_input_token_cnt": 13155,
+        "prune_threshold": 0.5,
+        "context_focus_question": "What is the CdpDomain class, its fields, and how does its generate_code method work to produce a Python module from a CDP domain definition?"
+      },
+      "raw_chars": 40816,
+      "output_chars": 13430
+    },
+    {
+      "mode": "pruner",
+      "index": 30,
+      "repeat": 0,
+      "info": {
+        "score": 0.956308901309967,
+        "origin_token_cnt": 54349,
+        "left_token_cnt": 13107,
+        "model_input_token_cnt": 54450,
+        "prune_threshold": 0.5,
+        "context_focus_question": "What is the ScreencastFrameMetadata class and how does it facilitate frame rendering and synchronization in the Chrome DevTools Protocol screencast functionality?"
+      },
+      "raw_chars": 157424,
+      "output_chars": 40299
+    },
+    {
+      "mode": "pruner",
+      "index": 30,
+      "repeat": 1,
+      "info": {
+        "score": 0.956308901309967,
+        "origin_token_cnt": 54349,
+        "left_token_cnt": 13107,
+        "model_input_token_cnt": 54450,
+        "prune_threshold": 0.5,
+        "context_focus_question": "What is the ScreencastFrameMetadata class and how does it facilitate frame rendering and synchronization in the Chrome DevTools Protocol screencast functionality?"
+      },
+      "raw_chars": 157424,
+      "output_chars": 40299
+    },
+    {
+      "mode": "pruner",
+      "index": 30,
+      "repeat": 1,
+      "info": {
+        "score": 0.9268352389335632,
+        "origin_token_cnt": 6959,
+        "left_token_cnt": 749,
+        "model_input_token_cnt": 7056,
+        "prune_threshold": 0.5,
+        "context_focus_question": "How does the CDP client use screencast functionality, ScreencastFrameMetadata, and handle frame rendering/synchronization?"
+      },
+      "raw_chars": 25552,
+      "output_chars": 2859
+    },
+    {
+      "mode": "pruner",
+      "index": 30,
+      "repeat": 2,
+      "info": {
+        "score": 0.956308901309967,
+        "origin_token_cnt": 54349,
+        "left_token_cnt": 13107,
+        "model_input_token_cnt": 54450,
+        "prune_threshold": 0.5,
+        "context_focus_question": "What is the ScreencastFrameMetadata class and how does it facilitate frame rendering and synchronization in the Chrome DevTools Protocol screencast functionality?"
+      },
+      "raw_chars": 157424,
+      "output_chars": 40299
+    },
+    {
+      "mode": "pruner",
+      "index": 33,
+      "repeat": 2,
+      "info": {
+        "score": 0.9693241715431213,
+        "origin_token_cnt": 3171,
+        "left_token_cnt": 204,
+        "model_input_token_cnt": 3263,
+        "prune_threshold": 0.5,
+        "context_focus_question": "How does valid_request_args and prepare_new_request work to prevent duplicate entries in session parameters and headers?"
+      },
+      "raw_chars": 10507,
+      "output_chars": 713
+    },
+    {
+      "mode": "pruner",
+      "index": 41,
+      "repeat": 0,
+      "info": {
+        "score": 0.9865716695785522,
+        "origin_token_cnt": 7283,
+        "left_token_cnt": 137,
+        "model_input_token_cnt": 7375,
+        "prune_threshold": 0.5,
+        "context_focus_question": "Where in the TestIO class is the logic that determines the dirty flag state after loading cached data?"
+      },
+      "raw_chars": 23028,
+      "output_chars": 480
+    },
+    {
+      "mode": "pruner",
+      "index": 41,
+      "repeat": 0,
+      "info": {
+        "score": 0.1540575623512268,
+        "origin_token_cnt": 2791,
+        "left_token_cnt": 154,
+        "model_input_token_cnt": 2876,
+        "prune_threshold": 0.5,
+        "context_focus_question": "How is the dirty flag set or determined after loading cached data?"
+      },
+      "raw_chars": 8785,
+      "output_chars": 562
+    },
+    {
+      "mode": "pruner",
+      "index": 41,
+      "repeat": 1,
+      "info": {
+        "score": 0.9927672147750854,
+        "origin_token_cnt": 7283,
+        "left_token_cnt": 137,
+        "model_input_token_cnt": 7375,
+        "prune_threshold": 0.5,
+        "context_focus_question": "Where is the logic that determines the dirty flag state after loading cached data in the TestIO class?"
+      },
+      "raw_chars": 23028,
+      "output_chars": 480
+    },
+    {
+      "mode": "pruner",
+      "index": 41,
+      "repeat": 1,
+      "info": {
+        "score": 0.09947020560503006,
+        "origin_token_cnt": 2791,
+        "left_token_cnt": 137,
+        "model_input_token_cnt": 2874,
+        "prune_threshold": 0.5,
+        "context_focus_question": "How is the dirty flag determined after loading cached data?"
+      },
+      "raw_chars": 8785,
+      "output_chars": 512
+    },
+    {
+      "mode": "pruner",
+      "index": 41,
+      "repeat": 2,
+      "info": {
+        "score": 0.9865716695785522,
+        "origin_token_cnt": 7283,
+        "left_token_cnt": 137,
+        "model_input_token_cnt": 7375,
+        "prune_threshold": 0.5,
+        "context_focus_question": "Where in the TestIO class is the logic that determines the dirty flag state after loading cached data?"
+      },
+      "raw_chars": 23028,
+      "output_chars": 480
+    },
+    {
+      "mode": "pruner",
+      "index": 41,
+      "repeat": 2,
+      "info": {
+        "score": 0.09947020560503006,
+        "origin_token_cnt": 2791,
+        "left_token_cnt": 137,
+        "model_input_token_cnt": 2874,
+        "prune_threshold": 0.5,
+        "context_focus_question": "How is the dirty flag determined after loading cached data?"
+      },
+      "raw_chars": 8785,
+      "output_chars": 512
+    },
+    {
+      "mode": "recovery",
+      "index": 29,
+      "repeat": 0,
+      "info": {
+        "score": 0.7185944318771362,
+        "origin_token_cnt": 7,
+        "left_token_cnt": 7,
+        "model_input_token_cnt": 92,
+        "prune_threshold": 0.5,
+        "context_focus_question": "Find Python files that define or use the CdpDomain class"
+      },
+      "raw_chars": 33,
+      "output_chars": 33
+    },
+    {
+      "mode": "recovery",
+      "index": 29,
+      "repeat": 0,
+      "info": {
+        "score": 0.9983124732971191,
+        "origin_token_cnt": 13052,
+        "left_token_cnt": 5447,
+        "model_input_token_cnt": 13146,
+        "prune_threshold": 0.5,
+        "context_focus_question": "How is the CdpDomain class defined and used in generating type-safe Python modules from CDP domain definitions?"
+      },
+      "raw_chars": 40816,
+      "output_chars": 17238
+    },
+    {
+      "mode": "recovery",
+      "index": 29,
+      "repeat": 2,
+      "info": {
+        "score": 0.08269734680652618,
+        "origin_token_cnt": 7,
+        "left_token_cnt": 7,
+        "model_input_token_cnt": 94,
+        "prune_threshold": 0.5,
+        "context_focus_question": "Where is the CdpDomain class defined and used in the codebase?"
+      },
+      "raw_chars": 33,
+      "output_chars": 33
+    },
+    {
+      "mode": "recovery",
+      "index": 29,
+      "repeat": 2,
+      "info": {
+        "score": 0.9983124732971191,
+        "origin_token_cnt": 13052,
+        "left_token_cnt": 5447,
+        "model_input_token_cnt": 13146,
+        "prune_threshold": 0.5,
+        "context_focus_question": "How is the CdpDomain class defined and used in generating type-safe Python modules from CDP domain definitions?"
+      },
+      "raw_chars": 40816,
+      "output_chars": 17238
+    },
+    {
+      "mode": "recovery",
+      "index": 30,
+      "repeat": 0,
+      "info": {
+        "score": 0.956308901309967,
+        "origin_token_cnt": 54349,
+        "left_token_cnt": 13107,
+        "model_input_token_cnt": 54450,
+        "prune_threshold": 0.5,
+        "context_focus_question": "What is the ScreencastFrameMetadata class and how does it facilitate frame rendering and synchronization in the Chrome DevTools Protocol screencast functionality?"
+      },
+      "raw_chars": 157424,
+      "output_chars": 40299
+    },
+    {
+      "mode": "recovery",
+      "index": 30,
+      "repeat": 1,
+      "info": {
+        "score": 0.9695556163787842,
+        "origin_token_cnt": 54349,
+        "left_token_cnt": 4483,
+        "model_input_token_cnt": 54437,
+        "prune_threshold": 0.5,
+        "context_focus_question": "How is ScreencastFrameMetadata defined and used for frame rendering and synchronization?"
+      },
+      "raw_chars": 157424,
+      "output_chars": 14027
+    }
+  ],
+  "empty_commands": [],
+  "runner_ledger_token_mismatches": [],
+  "errors": [],
+  "primary_agent_cost": 2.03432528,
+  "primary_judge_cost": 0.5702867500000001
+}
