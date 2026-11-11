@@ -1,0 +1,101 @@
+{
+  "protocol": {
+    "indices": [
+      43,
+      26,
+      17
+    ],
+    "intervention": "Accessible BF16 Novita endpoint, same original optional tool contract; diagnostic first actions only, no shell execution.",
+    "provider": {
+      "only": [
+        "novita"
+      ],
+      "allow_fallbacks": false
+    },
+    "temporary_budget_reservation": 0.35
+  },
+  "rows": [
+    {
+      "index": 43,
+      "reserve": 0.0927454,
+      "started": 1794371191.2213237,
+      "status": 200,
+      "cost": 0.00182941,
+      "cost_kind": "provider_reported",
+      "provider": "Novita",
+      "generation_id": "gen-1794371233-0uQ6J9UBAbDoPuCnZgp0",
+      "tools": [
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "find . -type f -name \"*.py\" | head -50",
+            "security_risk": "LOW"
+          }
+        },
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "grep -rl \"transform_token\" --include=\"*.py\" .",
+            "security_risk": "LOW"
+          }
+        }
+      ],
+      "has_hint": false
+    },
+    {
+      "index": 26,
+      "reserve": 0.09282570000000001,
+      "started": 1794371239.9022279,
+      "status": 200,
+      "cost": 0.00183601,
+      "cost_kind": "provider_reported",
+      "provider": "Novita",
+      "generation_id": "gen-1794371239-FWz5XCPDDZ1zjJK8uJuA",
+      "tools": [
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "find / -type f -name \"*.js\" 2>/dev/null | head -50",
+            "security_risk": "LOW"
+          }
+        }
+      ],
+      "has_hint": false
+    },
+    {
+      "index": 17,
+      "reserve": 0.0927872,
+      "started": 1794371247.6824486,
+      "status": 200,
+      "cost": 0.00078584,
+      "cost_kind": "provider_reported",
+      "provider": "Novita",
+      "generation_id": "gen-1794371247-q4WA4Yo23YflgCASUBH7",
+      "tools": [
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "find /workspace -type f -name \"*.py\" | head -50",
+            "security_risk": "LOW"
+          }
+        },
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "grep -r \"CDPClientSession\" /workspace --include=\"*.py\" -l",
+            "security_risk": "LOW"
+          }
+        },
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "grep -r \"fail_unhandled_requests\" /workspace --include=\"*.py\" -l",
+            "security_risk": "LOW"
+          }
+        }
+      ],
+      "has_hint": false
+    }
+  ],
+  "total_cost": 0.00445126
+}

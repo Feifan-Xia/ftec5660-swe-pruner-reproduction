@@ -1,5 +1,7 @@
 # SWE-Pruner 复现偏差诊断
 
+> 本文件保留早期诊断过程。当前核实结论、实际 50 步配置及子集优先方案见 `DIAGNOSIS_V2.md`。
+
 ## 诊断目标
 
 复现对象为 SWE-Pruner 论文表 2 中 Streamlink × GLM-4.6 的 full 与 pruner 两行。作者以 OpenHands 驱动多步仓库探索，用 SWE-QA 的问题、参考答案和五维评分评价答案。原文平均 tokens 从 318.2K 降至 145.1K，质量均为 8.56/10。

@@ -1,0 +1,44 @@
+{
+  "local_fake_endpoint": true,
+  "actual_paid_requests": 0,
+  "wire_parameters": {
+    "model": "glm-4.6",
+    "temperature": 0.0,
+    "top_p": 1.0
+  },
+  "tool": {
+    "type": "function",
+    "function": {
+      "name": "pruner_bash",
+      "description": "Execute bash commands in the workspace.\n* Use this tool to run shell commands, navigate directories, search files, etc.\n* Commands are executed in the workspace directory.\n* Output is returned as text.\n\nThe meaning of argument `context_focus_question` (Optional):\n\nUse `context_focus_question` to filter large command outputs for relevant information.\n\n**Requirements:**\n- Must be a complete, self-contained question (not keywords/phrases)\n- Be specific for effective filtering\n- Don't include file-level info (filenames, line numbers) - use grep/sed instead\n\n**Good examples:**\n- Where is [some logic] implemented in [some class/function]?\n- Given [background], what's the [problem]?\n- How does the code implement [feature]?\n\n**Bad examples:**\n- load_raw function (too vague)\n- lines 50-100 of data_loader.py (contains file info)\n- fix bug in rwkv6.py (too vague)\n\n**IMPORTANT:** With pruner enabled, prefer `cat -n` or `nl -ba` with context_focus_question to see line numbers. Then you can use `sed` without filtering for more detailed context since you have line number information.\n\n**IMPORTANT:** If the command output is small and important like `ls`, just leave context_focus_question blank.\n",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "command": {
+            "type": "string",
+            "description": "Bash command to execute"
+          },
+          "context_focus_question": {
+            "type": "string",
+            "description": "Optional question for context-aware pruning. Use this to filter large command outputs for relevant information. Must be a complete, self-contained question (not keywords/phrases)."
+          },
+          "security_risk": {
+            "type": "string",
+            "description": "Security risk levels for actions.\n\nBased on OpenHands security risk levels but adapted for agent-sdk.\nInteger values allow for easy comparison and ordering.",
+            "enum": [
+              "UNKNOWN",
+              "LOW",
+              "MEDIUM",
+              "HIGH"
+            ]
+          }
+        },
+        "required": [
+          "command",
+          "security_risk"
+        ]
+      }
+    }
+  },
+  "exact_author_tool_match": true
+}

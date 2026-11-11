@@ -1,0 +1,205 @@
+{
+  "model": "azure/glm-4.6",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "max_output_tokens": null,
+  "temperature_field_default": null,
+  "source_path": "/home/feifa/ftec5660-swe-pruner/agent-env/lib/python3.12/site-packages/openhands/sdk/llm/llm.py",
+  "source_matches": [
+    {
+      "file": "message.py",
+      "line": 290,
+      "text": "\"name is required when tool_call_id is not None\""
+    },
+    {
+      "file": "message.py",
+      "line": 469,
+      "text": "# Only send back if we have an id; required by the param schema"
+    },
+    {
+      "file": "llm.py",
+      "line": 76,
+      "text": "from openhands.sdk.llm.utils.model_features import get_default_temperature, get_features"
+    },
+    {
+      "file": "llm.py",
+      "line": 152,
+      "text": "temperature: float | None = Field("
+    },
+    {
+      "file": "llm.py",
+      "line": 156,
+      "text": "\"Sampling temperature for response generation. \""
+    },
+    {
+      "file": "llm.py",
+      "line": 385,
+      "text": "if self.temperature is None:"
+    },
+    {
+      "file": "llm.py",
+      "line": 386,
+      "text": "self.temperature = get_default_temperature(self.model)"
+    },
+    {
+      "file": "llm.py",
+      "line": 391,
+      "text": "f\"temperature={self.temperature}\""
+    },
+    {
+      "file": "llm.py",
+      "line": 533,
+      "text": "# Merge retry-modified kwargs (like temperature) with call_kwargs"
+    },
+    {
+      "file": "chat_options.py",
+      "line": 20,
+      "text": "\"temperature\": llm.temperature,"
+    },
+    {
+      "file": "chat_options.py",
+      "line": 41,
+      "text": "out.pop(\"temperature\", None)"
+    },
+    {
+      "file": "chat_options.py",
+      "line": 65,
+      "text": "out.pop(\"temperature\", None)"
+    },
+    {
+      "file": "responses_options.py",
+      "line": 25,
+      "text": "out[\"temperature\"] = 1.0"
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 449,
+      "text": "PLEASE follow the format strictly! PLEASE EMIT ONE AND ONLY ONE FUNCTION CALL PER MESSAGE."
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 603,
+      "text": "required = set(schema.get(\"required\", []))"
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 608,
+      "text": "required_flag = \"required\" if name in required else \"optional\""
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 612,
+      "text": "f\" {required_flag}): {prop_desc}\""
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 658,
+      "text": "required_params = set(fn[\"parameters\"].get(\"required\", []))"
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 661,
+      "text": "is_required = param_name in required_params"
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 662,
+      "text": "param_status = \"required\" if is_required else \"optional\""
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 682,
+      "text": "ret += \"No parameters are required for this function.\\n\""
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 863,
+      "text": "required_params = set()"
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 864,
+      "text": "if \"parameters\" in matching_tool and \"required\" in matching_tool[\"parameters\"]:"
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 865,
+      "text": "required_params = set(matching_tool[\"parameters\"].get(\"required\", []))"
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 929,
+      "text": "# Check all required parameters are present"
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 930,
+      "text": "missing_params = required_params - found_params"
+    },
+    {
+      "file": "fn_call_converter.py",
+      "line": 933,
+      "text": "f\"Missing required parameters for function '{fn_name}': {missing_params}\""
+    },
+    {
+      "file": "model_features.py",
+      "line": 125,
+      "text": "# Default temperature mapping."
+    },
+    {
+      "file": "model_features.py",
+      "line": 126,
+      "text": "# Each entry: (pattern, default_temperature)"
+    },
+    {
+      "file": "model_features.py",
+      "line": 132,
+      "text": "def get_default_temperature(model: str) -> float:"
+    },
+    {
+      "file": "model_features.py",
+      "line": 133,
+      "text": "\"\"\"Return the default temperature for a given model pattern."
+    },
+    {
+      "file": "retry_mixin.py",
+      "line": 53,
+      "text": "# Only adjust temperature for LLMNoResponseError"
+    },
+    {
+      "file": "retry_mixin.py",
+      "line": 57,
+      "text": "current_temp = kwargs.get(\"temperature\", 0)"
+    },
+    {
+      "file": "retry_mixin.py",
+      "line": 59,
+      "text": "kwargs[\"temperature\"] = 1.0"
+    },
+    {
+      "file": "retry_mixin.py",
+      "line": 61,
+      "text": "\"LLMNoResponseError with temperature=0, \""
+    },
+    {
+      "file": "retry_mixin.py",
+      "line": 62,
+      "text": "\"setting temperature to 1.0 for next attempt.\""
+    },
+    {
+      "file": "retry_mixin.py",
+      "line": 66,
+      "text": "f\"LLMNoResponseError with temperature={current_temp}, \""
+    },
+    {
+      "file": "retry_mixin.py",
+      "line": 67,
+      "text": "\"keeping original temperature\""
+    },
+    {
+      "file": "multimodal.py",
+      "line": 65,
+      "text": "\"\"\"Ensure required models are present in llms_for_routing.\"\"\""
+    }
+  ]
+}

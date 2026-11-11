@@ -1,0 +1,39 @@
+{
+  "status": "pass",
+  "checks": [
+    "Main identical",
+    "All code except action declaration identical",
+    "Omitted/null/empty hint rejected",
+    "Nonempty hint accepted",
+    "Required minLength=1 schema"
+  ],
+  "new_action_schema": {
+    "additionalProperties": false,
+    "description": "Action for bash commands with context-aware pruning.",
+    "properties": {
+      "kind": {
+        "const": "PrunerBashAction",
+        "default": "PrunerBashAction",
+        "title": "Kind",
+        "type": "string"
+      },
+      "command": {
+        "description": "Bash command to execute",
+        "title": "Command",
+        "type": "string"
+      },
+      "context_focus_question": {
+        "description": "Required question for context-aware pruning. Use this to filter large command outputs for relevant information. Must be a complete, self-contained question (not keywords/phrases).",
+        "minLength": 1,
+        "title": "Context Focus Question",
+        "type": "string"
+      }
+    },
+    "required": [
+      "command",
+      "context_focus_question"
+    ],
+    "title": "PrunerBashAction",
+    "type": "object"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "rows": [
+    {
+      "index": 41,
+      "scores": {
+        "baseline": {
+          "correctness": 1,
+          "completeness": 1,
+          "clarity": 7,
+          "relevance": 2,
+          "reasoning": 3
+        },
+        "pruner": {
+          "correctness": 10,
+          "completeness": 10,
+          "clarity": 10,
+          "relevance": 10,
+          "reasoning": 10
+        }
+      },
+      "complete_pair": true,
+      "author_filtered_eligible": false
+    },
+    {
+      "index": 14,
+      "scores": {
+        "baseline": {
+          "correctness": 9,
+          "completeness": 9,
+          "clarity": 9,
+          "relevance": 9,
+          "reasoning": 9
+        },
+        "pruner": {
+          "correctness": 7,
+          "completeness": 9,
+          "clarity": 9,
+          "relevance": 9,
+          "reasoning": 8
+        }
+      },
+      "complete_pair": true,
+      "author_filtered_eligible": true
+    },
+    {
+      "index": 30,
+      "scores": {
+        "baseline": {
+          "correctness": 9,
+          "completeness": 8,
+          "clarity": 9,
+          "relevance": 10,
+          "reasoning": 9
+        },
+        "pruner": {
+          "correctness": 10,
+          "completeness": 8,
+          "clarity": 9,
+          "relevance": 10,
+          "reasoning": 9
+        }
+      },
+      "complete_pair": true,
+      "author_filtered_eligible": true
+    },
+    {
+      "index": 8,
+      "scores": {
+        "baseline": {
+          "correctness": 9,
+          "completeness": 9,
+          "clarity": 9,
+          "relevance": 9,
+          "reasoning": 9
+        },
+        "pruner": {
+          "correctness": 8,
+          "completeness": 7,
+          "clarity": 9,
+          "relevance": 9,
+          "reasoning": 8
+        }
+      },
+      "complete_pair": true,
+      "author_filtered_eligible": true
+    },
+    {
+      "index": 11,
+      "scores": {
+        "baseline": {
+          "correctness": 8,
+          "completeness": 10,
+          "clarity": 9,
+          "relevance": 9,
+          "reasoning": 9
+        },
+        "pruner": {
+          "correctness": 7,
+          "completeness": 7,
+          "clarity": 8,
+          "relevance": 6,
+          "reasoning": 7
+        }
+      },
+      "complete_pair": true,
+      "author_filtered_eligible": true
+    },
+    {
+      "index": 46,
+      "scores": {
+        "baseline": {
+          "correctness": 9,
+          "completeness": 9,
+          "clarity": 9,
+          "relevance": 9,
+          "reasoning": 9
+        },
+        "pruner": {
+          "correctness": 9,
+          "completeness": 10,
+          "clarity": 9,
+          "relevance": 9,
+          "reasoning": 9
+        }
+      },
+      "complete_pair": true,
+      "author_filtered_eligible": true
+    },
+    {
+      "index": 33,
+      "scores": {
+        "baseline": {
+          "correctness": 9,
+          "completeness": 9,
+          "clarity": 9,
+          "relevance": 9,
+          "reasoning": 9
+        },
+        "pruner": {
+          "correctness": 6,
+          "completeness": 7,
+          "clarity": 8,
+          "relevance": 9,
+          "reasoning": 7
+        }
+      },
+      "complete_pair": true,
+      "author_filtered_eligible": true
+    },
+    {
+      "index": 29,
+      "scores": {
+        "baseline": {
+          "correctness": 9,
+          "completeness": 10,
+          "clarity": 9,
+          "relevance": 9,
+          "reasoning": 9
+        },
+        "pruner": {
+          "correctness": 9,
+          "completeness": 10,
+          "clarity": 9,
+          "relevance": 10,
+          "reasoning": 9
+        }
+      },
+      "complete_pair": true,
+      "author_filtered_eligible": true
+    }
+  ],
+  "all_available_means": {
+    "baseline": 8.25,
+    "pruner": 8.6
+  },
+  "filtered_pair_n": 7,
+  "filtered_pair_means": {
+    "baseline": 9.028571428571428,
+    "pruner": 8.4
+  }
+}

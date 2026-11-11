@@ -23,7 +23,7 @@ The public author archive is linked near the end of the SWE-QA README: Google Dr
 - Historical experiment population is 8 of 48 questions, with 4 CDP questions. Full-population rerun is required for coverage.
 - Old local inference omitted masked right padding. Earlier token-level tests found a threshold disagreement on one probe. The new inference should restore the authors' 8192-position padding while retaining tested memory-bounded attention. Verify line-level outcomes on recorded observations.
 
-## Latest active state
+## Earlier state retained for chronology
 
 - User requires subset-first validation. USD 12 remains the approved total; USD 28 is unapproved.
 - Author reference archive is local at `runs/author_evidence/swepruner-sweqa-reproduce.zip` (23.9 MB). `DIAGNOSIS.md` now records the decisive findings: Streamlink/Reflex GLM token-column cross-match, exact system/tool prompt equality, source-root layout, 50-step SWE-QA cap, and actual hint coverage 996/996.
@@ -44,3 +44,25 @@ The public author archive is linked near the end of the SWE-QA README: Google Dr
 4. Launch within approved funds, completing three conditions fairly; retain all first attempts and blockers.
 5. Analyze quality, end-to-end token use, activation, fixed-trajectory compression, recovery and cost; compare paper rows in one table.
 6. Regenerate and visually inspect Chinese/English reports, reproduce commands and audited release ZIP.
+
+## Current state superseding the earlier snapshot
+
+- The user approved subset-first investigation; the total ceiling remains USD 12. Full 48-question expansion has not been approved at USD 28.
+- BF16 corrected-layout/padding screen is complete: 16/16 cells, eight questions, one repeat. Tokens 103,837 → 88,958 (−14.3%); quality 9.55 → 8.90 (−6.8%). Only one task used pruning. This stage remains diagnostic.
+- Published default FP32 replay exactly matches 7/8 author pruned texts, compared with BF16 5/8. Source token counts match 8/8. Explicit original fusion arithmetic yields the same texts as FP32 SDPA; the remaining q30 discrepancy is retained.
+- Active FP32 server: exec session 82701, port 8000, default query-tiled SDPA. Fixed precision driver session 10112 is finishing its first 16 cells; output `runs/precision/formal`. Sources are frozen and must stay unchanged.
+- Baseline system prompt and complete tools also exactly match the author's recorded baseline (`results/full/baseline_contract.json`). Pruner equality was verified earlier. This confirms that current activation differences occur with identical original tool contracts.
+- A separate, explicitly labeled required-hint policy intervention is frozen under `revision_hint/`, driver session 65008, four workers, eight initial cells. It makes only `PrunerBashAction.context_focus_question` a required nonempty string. AST isolation and schema checks passed. Reuses the measured precision-stage full/optional controls explicitly. This intervention is not labeled as the original optional protocol.
+- Current meter remains session 18947, port 8879; all stages use `runs/full/formal_usage.jsonl`. Conservative cumulative spending approximately USD 9.59, including six unresolved request reservations. No reserve was waived.
+- Analyze precision with `revision_precision/analyze.py --partial` and `revision_precision/effects.py --repeats 1`. Analyze required-hint with `revision_hint/analyze.py --partial`; once all eight cells are complete use `revision_full/compare_subset.py --repeats 1`.
+- Frozen precision protocol has a stale prose phrase “48 paired question clusters” inherited from the expansion plan. The machine-readable indices/population and implemented bootstrap use eight clusters. Preserve the frozen source and disclose this clerical erratum in the report; no data or analysis changes.
+- Subsequent repetitions/expansion depend on the complete fixed-subset evidence and remaining budget. Do not choose questions or retry runs based on score.
+
+### Continued subset validation
+
+- Precision first repetition complete 16/16: full 119857.5 tokens / 9.15 score; optional pruner 86617.25 / 9.00. Relative tokens −27.733%, quality −1.639%. Token bootstrap CI [−41.687%, +14.039%], quality [−4.507%, +1.309%]. Activation 1/8. `results/precision/effects_r1.json` preserves this screen.
+- Same immutable precision configuration now completing all three repetitions: driver session **47997**, four workers, `--repeats 3`; previously completed cells are reused. First driver 10112 finished normally.
+- Required-hint first screen still active, session **65008**. GPU requests are serialized and long CDP reads take longer; per-task time cap stays 1800 seconds. Complete all eight before analysis or subsequent repeats.
+- A pre-reserved standalone Novita/BF16 probe on development indices 43/26/17 finished 0/3 hint activation, cost USD 0.00445126. Its temporary USD 0.35 reservation was released and actual cost added to `prior_stage_conservative_usd`; meter limit reduced by the same actual amount. Unified meter ledger excludes these three requests; `runs/full/diagnostics/novita/` and `external_novita_probe_cost_usd` provide the separate receipt. All other new calls remain in the meter ledger.
+- Offline Azure transport reconstruction (`capture_azure_contract.py`) confirms identical author schema, optional hint, resolved temperature 0/top_p 1. No paid call. No source-level schema conversion explains the activation gap. First-user text matches 16/16 original author prompts.
+- Current cumulative conservative accounting approximately USD 10.07 including eight unresolved reservations. Keep total USD 12. Do not launch full 48-question experiment or assume USD 28 approval.

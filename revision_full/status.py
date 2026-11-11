@@ -3,7 +3,7 @@ import argparse,collections,json,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 folder=ROOT/'runs/full'
-parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['full','subset','precision'],default='full');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['full','subset','precision','hint'],default='full');args=parser.parse_args()
 study=ROOT/f'runs/{args.study}'
 def read(p):return json.loads(p.read_text(encoding='utf-8'))
 ledger=folder/'formal_usage.jsonl'
