@@ -1,0 +1,112 @@
+{
+  "glm": {
+    "config": {
+      "timestamp": "2025-12-19T12:18:13.519528",
+      "llm_config_keys": [
+        "model",
+        "base_url",
+        "api_version",
+        "usage_id"
+      ],
+      "llm": {
+        "model": "azure/glm-4.6",
+        "temperature": null,
+        "top_p": null,
+        "max_output_tokens": null,
+        "usage_id": "agent"
+      },
+      "processing": {
+        "max_iteration_per_run": 50,
+        "max_time_per_question": 1800,
+        "base_repo_path": "./swe-repos",
+        "questions_path": "./questions"
+      },
+      "prune": null,
+      "tools": [
+        "Bash"
+      ]
+    },
+    "answer_count": 48,
+    "trajectory_count": 48,
+    "mean_token_cost": 123743.95833333333,
+    "mean_input_plus_output": 142256.58333333334,
+    "answer_accounting_mismatch_count": 48,
+    "mean_rounds": 18.1875,
+    "scores_count": 46,
+    "mean_score_all": 8.208695652173914,
+    "pruning_tasks": 0,
+    "prune_calls": 0,
+    "hints": 0,
+    "action_count": 768,
+    "action_kinds": {
+      "OriginBashAction": 687,
+      "ThinkAction": 39,
+      "FinishAction": 39,
+      "null": 3
+    }
+  },
+  "glm-pruner": {
+    "config": {
+      "timestamp": "2025-12-18T23:43:12.718156",
+      "llm_config_keys": [
+        "model",
+        "base_url",
+        "api_version",
+        "usage_id"
+      ],
+      "llm": {
+        "model": "azure/glm-4.6",
+        "temperature": null,
+        "top_p": null,
+        "max_output_tokens": null,
+        "usage_id": "agent"
+      },
+      "processing": {
+        "max_iteration_per_run": 50,
+        "max_time_per_question": 1800,
+        "base_repo_path": "./swe-repos",
+        "questions_path": "./questions"
+      },
+      "prune": {
+        "prune_threshold": 0.5
+      },
+      "tools": [
+        "Bash"
+      ]
+    },
+    "answer_count": 48,
+    "trajectory_count": 48,
+    "mean_token_cost": 101199.875,
+    "mean_input_plus_output": 101199.875,
+    "answer_accounting_mismatch_count": 0,
+    "mean_rounds": 24.979166666666668,
+    "scores_count": 46,
+    "mean_score_all": 8.547826086956523,
+    "pruning_tasks": 48,
+    "prune_calls": 996,
+    "hints": 996,
+    "action_count": 1083,
+    "action_kinds": {
+      "PrunerBashAction": 996,
+      "null": 16,
+      "ThinkAction": 32,
+      "FinishAction": 39
+    }
+  },
+  "paired_filtered": {
+    "common": 46,
+    "eligible": 43,
+    "conditions": {
+      "glm": {
+        "score": 8.56279069767442,
+        "token_cost": 126663.67441860466,
+        "input_plus_output": 146482
+      },
+      "glm-pruner": {
+        "score": 8.56279069767442,
+        "token_cost": 101815.06976744186,
+        "input_plus_output": 101815.06976744186
+      }
+    }
+  }
+}

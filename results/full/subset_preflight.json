@@ -1,0 +1,10 @@
+{
+  "shell": "/workspace\nSNAPSHOT_READY",
+  "file_counts": {
+    "conan": 1120,
+    "reflex": 486,
+    "streamlink": 643
+  },
+  "source_layout": "./swe-repos/{conan,reflex,streamlink}",
+  "status": "PASS"
+}

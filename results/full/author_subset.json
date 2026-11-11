@@ -1,0 +1,446 @@
+{
+  "glm": [
+    {
+      "index": 43,
+      "tokens": 52958,
+      "reported_cost_field": 47270,
+      "commands": 13,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "grep -r \"transform_token\" . --include=\"*.py\""
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "tokens": 58053,
+      "reported_cost_field": 51370,
+      "commands": 15,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.js\" -o -name \"*.json\" -o -name \"*.md\" -o -name \"*.txt\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*n13tv*\" -o -name \"*N13TV*\" | head -20"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "tokens": 83246,
+      "reported_cost_field": 65318,
+      "commands": 5,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | xargs grep -l \"CDPClientSession\" | head -10"
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "tokens": 146211,
+      "reported_cost_field": 136576,
+      "commands": 49,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" -exec grep -l \"class TestIO\" {} \\;"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "tokens": 146726,
+      "reported_cost_field": 127746,
+      "commands": 13,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" -exec grep -l \"_get_streams\" {} \\;"
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "tokens": 289632,
+      "reported_cost_field": 244408,
+      "commands": 6,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" -o -name \"*.js\" -o -name \"*.ts\" -o -name \"*.java\" -o -name \"*.cpp\" -o -name \"*.h\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" -o -name \"*.js\" -o -name \"*.ts\" -o -name \"*.java\" -o -name \"*.cpp\" -o -name \"*.h\" | xargs grep -l \"ScreencastFrameMetadata\" 2>/dev/null"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "tokens": 193782,
+      "reported_cost_field": 162972,
+      "commands": 17,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" -o -name \"*.js\" -o -name \"*.ts\" -o -name \"*.java\" -o -name \"*.cpp\" -o -name \"*.h\" -o -name \"*.cs\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f \\( -name \"*.py\" -o -name \"*.js\" -o -name \"*.ts\" -o -name \"*.java\" -o -name \"*.cpp\" -o -name \"*.h\" -o -name \"*.cs\" \\) -exec grep -l \"DragData\\|DragIntercepted\\|setInterceptDrags\" {} \\;"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "tokens": 449310,
+      "reported_cost_field": 395630,
+      "commands": 24,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | grep -i websocket"
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "tokens": 18071,
+      "reported_cost_field": 15396,
+      "commands": 6,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | xargs grep -l \"decrypt_openssl\" 2>/dev/null"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "tokens": 60055,
+      "reported_cost_field": 51868,
+      "commands": 11,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | xargs grep -l \"DASHStream\\|test_dash_stream_url\" 2>/dev/null"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "tokens": 217845,
+      "reported_cost_field": 192210,
+      "commands": 18,
+      "hints": 0,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20"
+        },
+        {
+          "name": null,
+          "kind": "OriginBashAction",
+          "command": "find . -type f -name \"*.py\" | grep -i cdp"
+        }
+      ]
+    }
+  ],
+  "glm-pruner": [
+    {
+      "index": 43,
+      "tokens": 38151,
+      "reported_cost_field": 38151,
+      "commands": 11,
+      "hints": 11,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20",
+          "context_focus_question": "What Python files are in the codebase?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "grep -r \"transform_token\" . --include=\"*.py\"",
+          "context_focus_question": "Where is the transform_token method defined?"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "tokens": 63032,
+      "reported_cost_field": 63032,
+      "commands": 9,
+      "hints": 9,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.js\" -o -name \"*.ts\" -o -name \"*.json\" | head -20",
+          "context_focus_question": "What is the overall structure of the codebase and what types of files are present?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*n13tv*\" -o -name \"*N13TV*\" | head -20",
+          "context_focus_question": "Are there any files specifically related to N13TV plugin?"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "tokens": 209589,
+      "reported_cost_field": 209589,
+      "commands": 27,
+      "hints": 27,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20",
+          "context_focus_question": "What is the overall structure of this Python project?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | grep -i cdp",
+          "context_focus_question": "Find files related to CDP (Chrome DevTools Protocol)"
+        }
+      ]
+    },
+    {
+      "index": 41,
+      "tokens": 69734,
+      "reported_cost_field": 69734,
+      "commands": 15,
+      "hints": 15,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20",
+          "context_focus_question": "What Python files are in this repository?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" -exec grep -l \"TestIO\" {} \\;",
+          "context_focus_question": "Which files contain the TestIO class?"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "tokens": 69028,
+      "reported_cost_field": 69028,
+      "commands": 8,
+      "hints": 8,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20",
+          "context_focus_question": "What is the overall structure of this Python project?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | xargs grep -l \"_get_streams\" 2>/dev/null",
+          "context_focus_question": "Which files contain the _get_streams method?"
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "tokens": 66581,
+      "reported_cost_field": 66581,
+      "commands": 9,
+      "hints": 9,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" -o -name \"*.js\" -o -name \"*.ts\" -o -name \"*.json\" | head -20",
+          "context_focus_question": "What is the overall structure of the codebase and what programming languages are used?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | xargs grep -l \"ScreencastFrameMetadata\" 2>/dev/null",
+          "context_focus_question": "Find files containing the ScreencastFrameMetadata class"
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "tokens": 68778,
+      "reported_cost_field": 68778,
+      "commands": 12,
+      "hints": 12,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" -o -name \"*.js\" -o -name \"*.ts\" -o -name \"*.java\" -o -name \"*.cpp\" -o -name \"*.cs\" | head -20",
+          "context_focus_question": "What programming language and files are in this codebase?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f \\( -name \"*.py\" -o -name \"*.js\" -o -name \"*.ts\" -o -name \"*.java\" -o -name \"*.cpp\" -o -name \"*.cs\" \\) | xargs grep -l \"DragData\\|DragIntercepted\\|setInterceptDrags\" 2>/dev/null",
+          "context_focus_question": "Which files contain references to DragData, DragIntercepted, or setInterceptDrags?"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "tokens": 335187,
+      "reported_cost_field": 335187,
+      "commands": 33,
+      "hints": 33,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20",
+          "context_focus_question": "What is the overall structure of the Python codebase?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | grep -i websocket",
+          "context_focus_question": "Find WebSocket related files"
+        }
+      ]
+    },
+    {
+      "index": 46,
+      "tokens": 17478,
+      "reported_cost_field": 17478,
+      "commands": 7,
+      "hints": 7,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20",
+          "context_focus_question": "What is the overall structure of the Python codebase?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | xargs grep -l \"decrypt_openssl\" 2>/dev/null",
+          "context_focus_question": "Find files containing decrypt_openssl function"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "tokens": 67240,
+      "reported_cost_field": 67240,
+      "commands": 24,
+      "hints": 24,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20",
+          "context_focus_question": "What is the overall structure of the Python codebase?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | xargs grep -l \"DASHStream\\|test_dash_stream_url\" 2>/dev/null",
+          "context_focus_question": "Which files contain DASHStream or test_dash_stream_url?"
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "tokens": 68451,
+      "reported_cost_field": 68451,
+      "commands": 23,
+      "hints": 23,
+      "first_commands": [
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | head -20",
+          "context_focus_question": "What is the overall structure of this Python codebase?"
+        },
+        {
+          "name": null,
+          "kind": "PrunerBashAction",
+          "command": "find . -type f -name \"*.py\" | xargs grep -l \"CdpDomain\" 2>/dev/null",
+          "context_focus_question": "Which files contain the CdpDomain class?"
+        }
+      ]
+    }
+  ]
+}

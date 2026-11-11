@@ -1,0 +1,93 @@
+{
+  "version": "artifact-aligned-fixed-subset-v1",
+  "question_indices": [
+    41,
+    14,
+    30,
+    8,
+    11,
+    46,
+    33,
+    29
+  ],
+  "population_size": 8,
+  "question_file_sha256": "af5d149b7a256b85d50c0d5971f42c3504f14f97632708bb06c1d486c6db0162",
+  "repeats": 3,
+  "conditions": [
+    "baseline",
+    "pruner"
+  ],
+  "planned_cells": 48,
+  "agent_model": "z-ai/glm-4.6",
+  "agent_provider": {
+    "only": [
+      "z-ai"
+    ],
+    "allow_fallbacks": false
+  },
+  "judge_model": "openai/gpt-5",
+  "judge_provider": {
+    "only": [
+      "openai"
+    ],
+    "allow_fallbacks": false
+  },
+  "temperature": 0,
+  "top_p": 1,
+  "prune_threshold": 0.5,
+  "agent_max_output_tokens": 16384,
+  "max_interaction_rounds": 50,
+  "max_seconds_per_question": 1800,
+  "pruner_chunk_tokens": 8192,
+  "pruner_padding": "Original right padding to 8192 with attention mask; no shortened input tensor.",
+  "attention": "SDPA with query-axis tiles of 256 and full key/value context; tested against untiled SDPA.",
+  "population": "Same eight questions selected before the initial model runs; all remain included. This is a diagnostic subset before any expansion.",
+  "order": "Three repeat executions, alternating condition order by question ordinal and repetition. First complete repetition 0 over all eight questions; then assess configuration and continue repeats 1–2.",
+  "repeat_semantics": "First 16 cells are a diagnostic screen. Remaining 32 continue the same immutable configuration only after reviewing alignment; any repair creates a new version retaining all previous results.",
+  "judge_prompt": "Exact released five-dimensional SWE-QA rubric; low reasoning, max output 4096; unchanged from the prior study.",
+  "metrics": [
+    "provider cumulative input+output tokens including cached input",
+    "5-dimensional quality / 10",
+    "author round count",
+    "agent API request count",
+    "reasoning tokens",
+    "pruning activation",
+    "source tokens retained",
+    "latency",
+    "provider cost"
+  ],
+  "paper_target": "Table 2, Streamlink, GLM-4.6, full and SWE-Pruner rows.",
+  "paper_reference": {
+    "baseline": {
+      "score": 8.56,
+      "rounds": 18.2,
+      "tokens": 318200
+    },
+    "pruner": {
+      "score": 8.56,
+      "rounds": 25.0,
+      "tokens": 145100
+    }
+  },
+  "primary_analysis": "All 48 paired question clusters; preserve all three executions. Paired cluster bootstrap 10000 resamples seed 5660. Also report released stats.py score-one exclusion as a labeled secondary analysis.",
+  "token_accounting": "Independent API ledger, checked against corrected runner. Report a separate 2x replay of the released double-counting metric, with unknown linkage to the published table.",
+  "retry_policy": "One additional attempt only for demonstrated infrastructure/export/pruning-service failure. Retain all attempts. Low scores never trigger replacement.",
+  "modification_phase": "After matched reproduction behavior has been investigated, freeze and evaluate lossless recovery independently.",
+  "unresolved_alignment": [
+    "Original model served as azure/glm-4.6 through a ByteDance gateway; this run uses the accessible Z.AI endpoint via OpenRouter.",
+    "Authors exact inference kernel and checkpoint revision unrecorded; published checkpoint replay is measured.",
+    "Released Streamlink and Reflex token columns cross-match the paper rows; preserve both sources.",
+    "Authors snapshot included additional unshared helper files.",
+    "Judge provider and inference details remain incompletely specified."
+  ],
+  "workspace": "Clean copies of Conan, Reflex and Streamlink at ./swe-repos/{repository}, matching the recorded shared source-root layout. Authors unpublished helper files and evaluation materials are absent.",
+  "artifact_reference": {
+    "full_input_plus_output": 142256.58333333334,
+    "pruner_input_plus_output": 101199.875,
+    "relative_change_percent": -28.86102517809662,
+    "fixed_eight_full": 190204,
+    "fixed_eight_pruner": 95309.625
+  },
+  "scope_change": "User requested fixed-subset verification before expansion; USD 28 has not been approved. Existing USD 12 meter remains authoritative.",
+  "expected_behavior": "Lower end-to-end tokens with comparable mean quality; report all fixed questions and interpret quality uncertainty, activation and missing evidence before scaling."
+}

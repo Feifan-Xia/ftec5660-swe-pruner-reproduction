@@ -8,6 +8,12 @@ Investigate the discrepancy, repair verified deviations, complete the released S
 
 Approved project ceiling: USD 12. Historical conservative accounting: USD 7.92620608. A concrete request for USD 28 total is pending: 48 questions × 3 repetitions × 3 conditions = 432 new cells, estimated USD 15–16, plus historical spending and diagnostic/retry margin. No spending beyond USD 12 without a reply.
 
+### User steering on 2026-11-11
+
+The user answered the budget request by asking to obtain the expected behavior on a subset before expanding. **USD 28 is not approved.** Keep USD 12. The currently launched three-question block (43, 26, 17; three repeats, full/pruner) now serves as a development diagnostic, not the final full-population experiment. Preserve the frozen source and all outputs. Inspect the authors' newly discovered reference trajectories before deciding further configuration changes or launch scope. Expand only after the fixed-subset comparison has been reviewed against the target behavior.
+
+The public author archive is linked near the end of the SWE-QA README: Google Drive ID `18YPXGHuiqox8zUMt06l9j0nFt_zXMK75`, file `swepruner-sweqa-reproduce.zip`, 23,888,187 bytes, published 2026-03-08. Connector metadata/fetch succeeded; downloading to local disk is in progress. This archive is essential evidence for exact prompts, activation, token accounting and reported-table provenance.
+
 ## Verified findings
 
 - Historical 72 cells: all 772 agent requests used GLM-4.6, Z.AI, temperature 0, top_p 1, output cap 16384; one system-prompt hash throughout. Provider reasoning metadata is present (usually short/dynamic).
