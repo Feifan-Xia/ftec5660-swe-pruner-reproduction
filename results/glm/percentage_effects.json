@@ -1,0 +1,84 @@
+{
+  "definition": "100 * (treatment mean / control mean - 1); each bootstrap resamples question clusters and recomputes both means",
+  "seed": 5660,
+  "resamples": 10000,
+  "paired": {
+    "pruner-baseline:total_tokens": {
+      "relative_change_percent": 16.094825987604477,
+      "ci95_percent": [
+        -18.633649284912945,
+        42.45443678490264
+      ]
+    },
+    "pruner-baseline:score": {
+      "relative_change_percent": 7.335907335907321,
+      "ci95_percent": [
+        0.3530450132391838,
+        20.487264673311167
+      ]
+    },
+    "recovery-pruner:total_tokens": {
+      "relative_change_percent": 6.75618316092923,
+      "ci95_percent": [
+        1.7681796698467922,
+        17.190106764356127
+      ]
+    },
+    "recovery-pruner:score": {
+      "relative_change_percent": -1.4388489208633004,
+      "ci95_percent": [
+        -5.515370705244116,
+        1.4388489208633226
+      ]
+    }
+  },
+  "leave_one_question_out": {
+    "8": {
+      "total_tokens": 15.841400750943713,
+      "score": 8.240534521158116
+    },
+    "11": {
+      "total_tokens": -3.1163326309599726,
+      "score": 7.675438596491246
+    },
+    "14": {
+      "total_tokens": 16.825036252197712,
+      "score": 8.886389201349832
+    },
+    "29": {
+      "total_tokens": 13.459931884774168,
+      "score": 8.773903262092219
+    },
+    "30": {
+      "total_tokens": 34.846601136393815,
+      "score": 7.991120976692567
+    },
+    "33": {
+      "total_tokens": 15.478379397806009,
+      "score": 6.68859649122806
+    },
+    "41": {
+      "total_tokens": 17.245737472795742,
+      "score": 2.393340270551514
+    },
+    "46": {
+      "total_tokens": 15.651017284115131,
+      "score": 8.426966292134818
+    }
+  },
+  "mechanism_sr_percent": {
+    "full": 100.0,
+    "pruned": 12.5,
+    "recoverable": 100.0
+  },
+  "mechanism_token_increase_percent": 169.26652142338418,
+  "mechanism_fee_increase_percent": 57.532124127806725,
+  "author_runtime_contract_ast_equal": {
+    "PrunerBashAction": true,
+    "PrunerBashExecutor": true,
+    "BashObservation": true,
+    "OriginBashExecutor": true,
+    "PrunerBashTool": true,
+    "OriginBashTool": true
+  }
+}

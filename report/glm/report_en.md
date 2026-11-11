@@ -6,7 +6,7 @@ FTEC5660 Individual Reproducibility Project · 11 November 2026
 
 ## Abstract
 
-We reproduce the 0.6B neural-skimmer method in SWE-Pruner: Self-Adaptive Context Pruning for Coding Agents using its released OpenHands/SWE-QA code. OpenHands executes repository exploration; SWE-QA supplies repository questions and reference-based scoring. The numerical target is Table 2's Streamlink/GLM-4.6 full-observation and SWE-Pruner rows: both score 8.56, while mean cumulative tokens fall from 318.2K to 145.1K (−54.4%). We complete 72 runs across eight selected questions, three conditions and three executions. Full/pruned observations score 8.63/9.27 and use 112.8K/131.0K mean tokens (+16.1%). Processed tool text shrinks 76.5%, while end-to-end token use changes in the opposite direction to the published result. Our modification adds task-scoped original-observation storage and bounded exact line recovery. In autonomous QA, recovery changes score by −0.13 and increases tokens 6.8% relative to pruning. In a separate 72-run goal-shift study, exact matches improve from 3/24 to 24/24, with total tokens rising from 20,655 to 55,617. The modification restores omitted evidence; its downstream utility depends on retrieval decisions and interaction cost.
+We reproduce the 0.6B neural-skimmer method in SWE-Pruner: Self-Adaptive Context Pruning for Coding Agents using its released OpenHands/SWE-QA code. OpenHands executes repository exploration; SWE-QA supplies repository questions and reference-based scoring. The numerical target is Table 2's Streamlink/GLM-4.6 full-observation and SWE-Pruner rows: both score 8.56, while mean cumulative tokens fall from 318.2K to 145.1K (−54.4%). We complete 72 runs across eight selected questions, three conditions and three executions. Full/pruned observations score 8.63/9.27 and use 112.8K/131.0K mean tokens (+16.1%). Processed tool text shrinks 76.5%, while end-to-end token use changes in the opposite direction to the published result. Our modification adds task-scoped original-observation storage and bounded exact line recovery. It raises goal-shift SR from 12.5% to 100% (+87.5 percentage points) at 169.3% higher cumulative token cost; autonomous QA scores decrease 1.4% with 6.8% more tokens. The two studies characterize evidence recovery and the cost of autonomous retrieval decisions.
 
 ## 1. Introduction
 
@@ -16,7 +16,7 @@ The numerical target is the full-observation and SWE-Pruner rows for Streamlink 
 
 The reproduced pipeline compresses processed source text by 76.5%, while mean task tokens rise from 112.8K to 131.0K (+16.1%) and score rises from 8.63 to 9.27. The local token point estimate therefore reverses the published −54.4% direction. Pruning activates in 10/24 tasks, and q11's long investigation strongly influences the aggregate; the paired token-difference interval spans zero. These observations bound the result by population, serving configuration and investigation behavior.
 
-Our modification stores original observations per task and adds `expand(observation_id, start, end)`, retrieving up to 200 exact lines per call after the investigation focus changes. Autonomous QA scores 9.13 with 139.8K tokens: −0.13 points and +6.8% tokens relative to pruning. A separate 72-run goal-shift study raises exact matches from 3/24 to 24/24, with total tokens increasing from 20,655 to 55,617. Together, these experiments establish evidence recovery and quantify its cost; downstream utility depends on the agent's choice of ranges.
+Our modification adds task-scoped original-observation storage and bounded exact line recovery. It raises goal-shift SR from 12.5% to 100% (+87.5 percentage points) at 169.3% higher cumulative token cost; autonomous QA scores decrease 1.4% with 6.8% more tokens. The `expand(observation_id, start, end)` interface returns up to 200 original lines per call. The mechanism study establishes evidence recovery, while autonomous outcomes motivate better range selection and stopping policies.
 
 <!-- page -->
 
@@ -90,26 +90,26 @@ Table 3. Published and reproduced GLM-4.6 results. Changes use each study's own 
 
 | Source / condition | Score / 10 | Total tokens K | Mean rounds | Token change | Score change |
 | --- | --- | --- | --- | --- | --- |
-| Paper · Full observations | 8.56 | 318.2 | 18.2 | +0.0% | +0.00 |
-| Paper · SWE-Pruner | 8.56 | 145.1 | 25.0 | -54.4% | +0.00 |
-| Ours · Full observations | 8.63 ± 0.10 | 112.8 ± 5.0 | 13.5 | +0.0% | +0.00 |
-| Ours · SWE-Pruner | 9.27 ± 0.09 | 131.0 ± 30.6 | 15.1 | +16.1% | +0.63 |
-| Ours · + Exact recovery | 9.13 ± 0.25 | 139.8 ± 23.4 | 14.4 | +23.9% | +0.50 |
+| Paper · Full observations | 8.56 | 318.2 | 18.2 | +0.0% | +0.0% |
+| Paper · SWE-Pruner | 8.56 | 145.1 | 25.0 | -54.4% | +0.0% |
+| Ours · Full observations | 8.63 ± 0.10 | 112.8 ± 5.0 | 13.5 | +0.0% | +0.0% |
+| Ours · SWE-Pruner | 9.27 ± 0.09 | 131.0 ± 30.6 | 15.1 | +16.1% | +7.3% |
+| Ours · + Exact recovery | 9.13 ± 0.25 | 139.8 ± 23.4 | 14.4 | +23.9% | +5.8% |
 
 Published rows are the Streamlink aggregates in Table 2; local rows cover eight selected questions × three executions, all 24/24 answered and scored per condition. Populations differ; published SD is unavailable. Rounds follow author stats.py agent/user events. Local full/pruner/recovery API calls average 10.75/9.83/11.58.
 
-Pruning reduces published tokens by 54.4%; locally they increased by 16.1%. Score differences are 0.00 and +0.63. Author score filtering retains all 24 local pairs, leaving Table 3 scores unchanged. Sections 3 and 5 describe population, route and judge differences.
+Pruning reduces published tokens by 54.4%; locally they increased by 16.1%. Relative score changes are 0.0% and +7.3%. Author score filtering retains all 24 local pairs, leaving Table 3 scores unchanged. Sections 3 and 5 describe population, route and judge differences.
 
 ![Figure 1. Means and sample standard deviations over three executions per question: cumulative API tokens and GPT-5 rubric score.](question_results.png)
 
 Table 4. Paired differences and 95% confidence intervals within the reproduction.
 
-| Paired comparison | Token difference K [95% CI] | Score difference [95% CI] |
+| Paired comparison | Token change % [95% CI] | Score change % [95% CI] |
 | --- | --- | --- |
-| Pruner − full | +18.2 [-22.9, 66.7] | +0.63 [0.04, 1.52] |
-| Recovery − pruner | +8.8 [1.8, 18.8] | -0.13 [-0.52, 0.13] |
+| Pruner − full | +16.1% [-18.6, 42.5] | +7.3% [0.4, 20.5] |
+| Recovery − pruner | +6.8% [1.8, 17.2] | -1.4% [-5.5, 1.4] |
 
-Intervals resample eight question clusters 10,000 times with seed 5660, retaining each question’s three executions together. These paired intervals describe subset differences; figure error bars describe within-question execution variation.
+Change = 100 × (treatment mean / control mean − 1). Intervals, also in percent, resample eight question clusters 10,000 times with seed 5660, recomputing both means and retaining all three executions per question. Figure error bars show within-question SD.
 
 <!-- page -->
 
@@ -119,15 +119,15 @@ Intervals resample eight question clusters 10,000 times with seed 5660, retainin
 
 
 
-Pruning activates in 10/24 tasks: 16 calls reduce 268,659 source tokens to 63,009, a 76.5% reduction. Recovery activates pruning in 4/24 tasks. Autonomous choices also change repository-reading paths.
+Pruning activates in 41.7% (10/24) of tasks: 16 calls reduce 268,659 source tokens to 63,009, a 76.5% reduction. Recovery activates pruning in 16.7% (4/24) of tasks. Autonomous choices also change repository-reading paths.
 
 We inspect q30 and q11, the largest mean token decrease and increase. For q30, full/pruned means are 249.8K/167.6K. In repetition 1, page.py shrinks from 54,349 source tokens to 13,107; peak input falls from 40,427 to 18,258, with 11/10 API calls. Local compression translates into cumulative savings on this trajectory.
 
-For q11, full/pruned means are 358.2K/520.4K; all three pruning-condition executions omit the focus question. Repetition 3 recursively searches the CDP directory for deserializers and event parsing, repeatedly carrying full results. Peak input reaches 43,299 and total tokens 826,860, versus 15,306 and 305,129 for full observations. This reflects tool selection and investigation paths. A post-hoc influence check omitting q11 gives a −2.4K token difference across the other seven questions. Primary statistics retain all eight; the token interval spans both directions.
+For q11, full/pruned means are 358.2K/520.4K; all three pruning-condition executions omit the focus question. Repetition 3 recursively searches the CDP directory for deserializers and event parsing, repeatedly carrying full results. Peak input reaches 43,299 and total tokens 826,860, versus 15,306 and 305,129 for full observations. This reflects tool selection and investigation paths. A post-hoc influence check omitting q11 gives 3.1% lower tokens across the other seven questions (−2.4K mean difference). Primary statistics retain all eight; the token interval spans both directions.
 
 ![Figure 2. Cached/uncached input and output composition, and provider-reported agent cost for selected formal executions.](resource_breakdown.png)
 
-The score gain concentrates in q41: full/pruned means are 5.00/8.53. The question asks for TestIO.test_load_data; full answers foreground production Cache logic, while pruned answers directly locate the test. The first full answer scores 4.6 despite explaining the dirty mechanism correctly. Original scores remain unchanged. Omitting q41 in a post-hoc influence check changes the score difference from +0.63 to +0.22, illustrating sensitivity to one question and answer granularity.
+The score gain concentrates in q41: full/pruned means are 5.00/8.53. The question asks for TestIO.test_load_data; full answers foreground production Cache logic, while pruned answers directly locate the test. The first full answer scores 4.6 despite explaining the dirty mechanism correctly. Original scores remain unchanged. Omitting q41 in a post-hoc influence check changes the relative score gain from 7.3% to 2.4%, illustrating sensitivity to one question and answer granularity.
 
 <!-- page -->
 
@@ -135,31 +135,31 @@ The score gain concentrates in q41: full/pruned means are 5.00/8.53. The questio
 
 
 
-Recovery succeeds in 4/24 tasks, with 21 expansion actions and 17 successful reads, returning 62,921 characters and 8 repeated lines. Compared with the preceding display, 16/17 reads expose previously absent nonblank lines. Relative to pruning, score changes by -0.13 and tokens increased by 6.8%. Task difficulty and self-selected tool use also affect uptake; the following intervention isolates access to saved evidence.
+Recovery succeeds in 4/24 tasks, with 21 expansion actions and 17 successful reads, returning 62,921 characters and 8 repeated lines. Compared with the preceding display, 16/17 reads expose previously absent nonblank lines. Relative to pruning, score changes by -1.4% and tokens increased by 6.8%. Task difficulty and self-selected tool use also affect uptake; the following intervention isolates access to saved evidence.
 
 In q29 repetition 1, the agent reconstructs the entire 1,032-line generator through eight successful reads, with seven overlapping lines. Two 201-line inclusive ranges are rejected and then corrected. Recovery uses 189,803 tokens versus 59,266 for full observations; both score 10. The interface delegates reading decisions to the agent, which can choose full reconstruction. In q30, selected expansions instead expose missing class definitions. These traces illustrate both evidence recovery and the cost of the chosen retrieval policy.
 
 
 
-Eligible pinned plugin files contain 25–180 lines and an uppercase string constant. After sorting filenames, seed 5660 selects eight files. Each observation is pruned for an import-inspection goal; a follow-up asks for the exact selected constant. Full, pruned and recoverable observations are compared over three executions, scored by exact JSON-string equality. Selection precedes model calls, and every selected case remains in the analysis. Each file fits within one 200-line expansion, so this test primarily measures evidence accessibility; the main-study traces additionally show range selection in long observations.
+Eligible pinned plugin files contain 25–180 lines and an uppercase string constant. After sorting filenames, seed 5660 selects eight files. Each observation is pruned for an import-inspection goal; a follow-up asks for the exact selected constant. Full, pruned and recoverable observations are compared over three executions, scored by exact JSON-string equality; SR is the percentage of planned runs that match. Selection precedes model calls, and every selected case remains in the analysis. Each file fits within one 200-line expansion, so this test primarily measures evidence accessibility; the main-study traces additionally show range selection in long observations.
 
 Table 5. Accuracy and resource use under the fixed goal-shift intervention, 24 runs per condition.
 
-| Condition | Exact match | Input tokens | Output tokens | Total tokens | Cost USD |
+| Condition | SR% (count) | Input tokens | Output tokens | Total tokens | Cost USD |
 | --- | --- | --- | --- | --- | --- |
-| Full | 24/24 | 20,709 | 3,373 | 24,082 | 0.019846 |
-| Pruned | 3/24 | 14,070 | 6,585 | 20,655 | 0.022615 |
-| Recoverable | 24/24 | 52,482 | 3,135 | 55,617 | 0.035627 |
+| Full | 100.0% (24/24) | 20,709 | 3,373 | 24,082 | 0.019846 |
+| Pruned | 12.5% (3/24) | 14,070 | 6,585 | 20,655 | 0.022615 |
+| Recoverable | 100.0% (24/24) | 52,482 | 3,135 | 55,617 | 0.035627 |
 
-Full observations achieve 24/24, pruned observations 3/24, and recoverable observations 24/24. Seven targets were removed; the surviving nrk.py target is answered correctly in all conditions. The recovery condition makes 29 successful range reads, retrieving 28,315 characters and repairing missing-evidence errors in these fixed cases.
+SR is 100% (24/24) for full observations, 12.5% (3/24) after pruning, and 100% (24/24) with recovery. Seven targets were removed; the surviving nrk.py target is answered correctly in all conditions. The recovery condition makes 29 successful range reads, retrieving 28,315 characters and repairing missing-evidence errors in these fixed cases.
 
-The trade-off is substantial: tokens total 24,082 / 20,655 / 55,617 for full / pruned / recoverable observations, costing $0.019846 / $0.022615 / $0.035627. Pruned-only output rises to 6,585 tokens versus 3,373 for full observations; more expensive output makes the smaller-token condition costlier. Recovery mainly increases input: 52,482 versus 20,709, reflecting additional turns and retransmitted context. This supports preserving evidence for later goals. Repository agents can also reread files, so autonomous net utility is assessed separately.
+Relative to pruning, recovery increases tokens 169.3% and API fees 57.5%. Tokens total 24,082 / 20,655 / 55,617 for full / pruned / recoverable observations, costing $0.019846 / $0.022615 / $0.035627. Pruned-only output rises to 6,585 tokens versus 3,373 for full observations; more expensive output makes the smaller-token condition costlier. Recovery mainly increases input: 52,482 versus 20,709, reflecting additional turns and retransmitted context. This supports preserving evidence for later goals. Repository agents can also reread files, so autonomous net utility is assessed separately.
 
 <!-- page -->
 
 ## 5. Discussion and limitations
 
-Eight of 48 released questions are evaluated, with CDP accounting for half. Long generated code can influence pruning gains. Repetitions and question-cluster bootstrap intervals describe this subset; broader coverage requires a larger experiment.
+The main weaknesses are population coverage and causal attribution. Eight questions cover 16.7% of the release; half concern CDP, and q11 strongly influences the aggregate. A post-hoc omission leaves only 3.1% savings. Optional focus-triggered pruning follows paper §3.2 and the release [1,2]. Six tool/interface ASTs match the author implementation; frozen configuration and usage audits pass. Evidence establishes local compression and recovery, while a robust end-to-end estimate requires full-population evaluation and a separately labelled fixed-trajectory or trigger-policy ablation.
 
 Model/provider pins control deployment variation within this comparison. The paper's exact deployment, quantization and judge configuration are incompletely specified. Reference-based rubric scores also depend on answer focus, reference granularity and judge behavior. Raw scores are retained alongside code-grounded case inspection.
 
@@ -167,9 +167,9 @@ The study uses a read-only snapshot, an 8GB GPU and a shared local pruning servi
 
 ## 6. Conclusion
 
-The released pipeline executes and compresses long observations. In this eight-question subset, source text processed by the skimmer shrinks 76.5%, while cumulative tokens increase 16.1% and score rises 0.63. The local resource trade-off differs from the paper's aggregate saving; q11's investigation trajectory has the largest influence.
+The released pipeline executes and compresses long observations. In this eight-question subset, source text processed by the skimmer shrinks 76.5%, while cumulative tokens increase 16.1% and score rises 7.3%. The local resource trade-off differs from the paper's aggregate saving; q11's investigation trajectory has the largest influence.
 
-Exact recovery improves goal-shift correctness from 3/24 to 24/24. Autonomous QA instead uses 6.8% more tokens than pruning and changes score by −0.13, with a score interval spanning zero. Traces show both missing-evidence retrieval and full-file reconstruction.
+Exact recovery improves goal-shift SR from 12.5% to 100% with 169.3% more tokens. Autonomous QA instead uses 6.8% more tokens than pruning and decreases mean score by 1.4%, with a score interval spanning zero. Traces show both missing-evidence retrieval and full-file reconstruction.
 
 Broaden question coverage and define retrieval budgets, indexing and stopping policies on development data before freezing evaluation. Future work can reuse task-scoped storage and compare structured-record projection and slicing through evidence coverage, repeated reads and total interaction cost.
 

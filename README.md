@@ -27,13 +27,13 @@ All 72 primary cells completed on their first agent attempt and were independent
 
 The manuscript places published and reproduced values in Table 3, with within-study changes, rounds and uncertainty. Local results cover eight selected questions and three executions; the paper reports its Streamlink population. Method, experimental setup, results, discussion and conclusion form the main text; implementation adaptations and artifact details appear in Appendix A.
 
-Pruning increases cumulative tokens by 16.1% in this subset despite compressing actually pruned source text by 76.5%. Long unfiltered investigations, especially q11, dominate the discrepancy with the paper. Recovery adds 6.8% tokens versus pruning, with a −0.13 score change. Seventeen successful expansions expose new nonblank lines in sixteen cases; one trajectory reconstructs a whole file. The report provides paired intervals, per-question evidence and scoring sensitivity.
+Pruning increases cumulative tokens by 16.1% in this subset despite compressing actually pruned source text by 76.5%. Long unfiltered investigations, especially q11, dominate the discrepancy with the paper. Recovery adds 6.8% tokens versus pruning, with a 1.4% relative score decrease. Seventeen successful expansions expose new nonblank lines in sixteen cases; one trajectory reconstructs a whole file. The report provides paired intervals, per-question evidence and scoring sensitivity.
 
 ## The modification
 
 `observation_store.py` saves exact captured tool text per task. `recovery_tool.py` adds an observation ID and inclusive one-based `expand` ranges, capped at 200 lines per call, to the authors' pruning tool. Every recovery records returned characters and overlapping reads. The agent can request missing evidence without executing the original command again.
 
-The independent goal-shift experiment supplies the same saved code observations after an import-inspection query, then asks for a string constant. Exact-match outcomes are full 24/24, pruned 3/24, recoverable 24/24. Recoverable observations use 55,617 cumulative tokens versus 24,082 for full observations. The report separates this controlled evidence-access result from autonomous repository QA, where the agent can also reread files.
+The independent goal-shift experiment supplies the same saved code observations after an import-inspection query, then asks for a string constant. Exact-match SR is 100% (24/24) for full, 12.5% (3/24) for pruned and 100% (24/24) for recoverable observations. Recoverable observations use 55,617 cumulative tokens versus 24,082 for full observations. The report separates this controlled evidence-access result from autonomous repository QA, where the agent can also reread files.
 
 The standard-library store is reusable in XJ13:
 
@@ -97,6 +97,7 @@ Final analysis and evidence checks:
 python revision_glm/analyze.py
 python revision_glm/analyze_mechanism.py
 python revision_glm/analyze_recovery.py
+python revision_glm/percentage_summary.py
 python revision_glm/verify_repository.py  # Linux/WSL snapshot verification
 python revision_glm/audit.py
 python -m unittest discover -s tests -v

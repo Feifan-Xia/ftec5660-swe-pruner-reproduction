@@ -16,7 +16,7 @@ The numerical target is the full-observation and SWE-Pruner rows for Streamlink 
 
 The reproduced pipeline compresses processed source text by 76.5%, while mean task tokens rise from 112.8K to 131.0K (+16.1%) and score rises from 8.63 to 9.27. The local token point estimate therefore reverses the published −54.4% direction. Pruning activates in 10/24 tasks, and q11's long investigation strongly influences the aggregate; the paired token-difference interval spans zero. These observations bound the result by population, serving configuration and investigation behavior.
 
-Our modification stores original observations per task and adds `expand(observation_id, start, end)`, retrieving up to 200 exact lines per call after the investigation focus changes. Autonomous QA scores 9.13 with 139.8K tokens: −0.13 points and +6.8% tokens relative to pruning. A separate 72-run goal-shift study raises exact matches from 3/24 to 24/24, with total tokens increasing from 20,655 to 55,617. Together, these experiments establish evidence recovery and quantify its cost; downstream utility depends on the agent's choice of ranges.
+Our modification adds task-scoped original-observation storage and bounded exact line recovery. It raises goal-shift SR from 12.5% to 100% (+87.5 percentage points) at 169.3% higher cumulative token cost; autonomous QA scores decrease 1.4% with 6.8% more tokens. The `expand(observation_id, start, end)` interface returns up to 200 original lines per call. The mechanism study establishes evidence recovery, while autonomous outcomes motivate better range selection and stopping policies.
 
 <!-- page -->
 
@@ -120,19 +120,19 @@ In q29 repetition 1, the agent reconstructs the entire 1,032-line generator thro
 
 
 
-Eligible pinned plugin files contain 25–180 lines and an uppercase string constant. After sorting filenames, seed 5660 selects eight files. Each observation is pruned for an import-inspection goal; a follow-up asks for the exact selected constant. Full, pruned and recoverable observations are compared over three executions, scored by exact JSON-string equality. Selection precedes model calls, and every selected case remains in the analysis. Each file fits within one 200-line expansion, so this test primarily measures evidence accessibility; the main-study traces additionally show range selection in long observations.
+Eligible pinned plugin files contain 25–180 lines and an uppercase string constant. After sorting filenames, seed 5660 selects eight files. Each observation is pruned for an import-inspection goal; a follow-up asks for the exact selected constant. Full, pruned and recoverable observations are compared over three executions, scored by exact JSON-string equality; SR is the percentage of planned runs that match. Selection precedes model calls, and every selected case remains in the analysis. Each file fits within one 200-line expansion, so this test primarily measures evidence accessibility; the main-study traces additionally show range selection in long observations.
 
 {{MECHANISM_TABLE}}
 
-Full observations achieve 24/24, pruned observations 3/24, and recoverable observations 24/24. Seven targets were removed; the surviving nrk.py target is answered correctly in all conditions. The recovery condition makes 29 successful range reads, retrieving 28,315 characters and repairing missing-evidence errors in these fixed cases.
+SR is 100% (24/24) for full observations, 12.5% (3/24) after pruning, and 100% (24/24) with recovery. Seven targets were removed; the surviving nrk.py target is answered correctly in all conditions. The recovery condition makes 29 successful range reads, retrieving 28,315 characters and repairing missing-evidence errors in these fixed cases.
 
-The trade-off is substantial: tokens total 24,082 / 20,655 / 55,617 for full / pruned / recoverable observations, costing $0.019846 / $0.022615 / $0.035627. Pruned-only output rises to 6,585 tokens versus 3,373 for full observations; more expensive output makes the smaller-token condition costlier. Recovery mainly increases input: 52,482 versus 20,709, reflecting additional turns and retransmitted context. This supports preserving evidence for later goals. Repository agents can also reread files, so autonomous net utility is assessed separately.
+Relative to pruning, recovery increases tokens 169.3% and API fees 57.5%. Tokens total 24,082 / 20,655 / 55,617 for full / pruned / recoverable observations, costing $0.019846 / $0.022615 / $0.035627. Pruned-only output rises to 6,585 tokens versus 3,373 for full observations; more expensive output makes the smaller-token condition costlier. Recovery mainly increases input: 52,482 versus 20,709, reflecting additional turns and retransmitted context. This supports preserving evidence for later goals. Repository agents can also reread files, so autonomous net utility is assessed separately.
 
 <!-- page -->
 
 ## 5. Discussion and limitations
 
-Eight of 48 released questions are evaluated, with CDP accounting for half. Long generated code can influence pruning gains. Repetitions and question-cluster bootstrap intervals describe this subset; broader coverage requires a larger experiment.
+The main weaknesses are population coverage and causal attribution. Eight questions cover 16.7% of the release; half concern CDP, and q11 strongly influences the aggregate. A post-hoc omission leaves only 3.1% savings. Optional focus-triggered pruning follows paper §3.2 and the release [1,2]. Six tool/interface ASTs match the author implementation; frozen configuration and usage audits pass. Evidence establishes local compression and recovery, while a robust end-to-end estimate requires full-population evaluation and a separately labelled fixed-trajectory or trigger-policy ablation.
 
 Model/provider pins control deployment variation within this comparison. The paper's exact deployment, quantization and judge configuration are incompletely specified. Reference-based rubric scores also depend on answer focus, reference granularity and judge behavior. Raw scores are retained alongside code-grounded case inspection.
 

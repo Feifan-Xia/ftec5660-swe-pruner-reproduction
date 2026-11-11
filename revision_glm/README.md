@@ -58,6 +58,7 @@ After all planned runs finish:
 python revision_glm/analyze.py
 python revision_glm/analyze_mechanism.py
 python revision_glm/analyze_recovery.py
+python revision_glm/percentage_summary.py
 python revision_glm/verify_repository.py
 python revision_glm/audit.py
 ```

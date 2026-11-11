@@ -34,6 +34,7 @@ def change(value, zh):
 def main():
     analysis = read(ROOT / "results/glm/analysis.json")
     cells = read(ROOT / "results/glm/cells.json")
+    percentages = read(ROOT / "results/glm/percentage_effects.json")
     mechanism = read(ROOT / "results/glm/mechanism.json")
     recovery = read(ROOT / "results/glm/recovery_trace_analysis.json")
     audit = read(ROOT / "results/glm/audit.json")
@@ -47,8 +48,8 @@ def main():
     recovery_reduction = (
         1 - c["recovery"]["mean_total_tokens"] / c["pruner"]["mean_total_tokens"]
     )
-    score_delta = c["pruner"]["mean_score"] - c["baseline"]["mean_score"]
-    recovery_delta = c["recovery"]["mean_score"] - c["pruner"]["mean_score"]
+    score_delta = 100 * (c["pruner"]["mean_score"] / c["baseline"]["mean_score"] - 1)
+    recovery_delta = 100 * (c["recovery"]["mean_score"] / c["pruner"]["mean_score"] - 1)
     for language in ["zh", "en"]:
         zh = language == "zh"
         labels = (
@@ -69,7 +70,7 @@ def main():
                 f"{stat['average_tokens']/1000:.1f}",
                 f"{stat['average_rounds']:.1f}",
                 f"{(stat['average_tokens']/paper_base['average_tokens']-1)*100:+.1f}%",
-                f"{stat['average_score']-paper_base['average_score']:+.2f}",
+                f"{100*(stat['average_score']/paper_base['average_score']-1):+.1f}%",
             ])
         for mode, label in zip(MODES, labels):
             stat = c[mode]
@@ -81,7 +82,7 @@ def main():
                 f"{stat['mean_total_tokens']/1000:.1f} ± {token_sd:.1f}",
                 f"{stat['mean_author_rounds']:.1f}",
                 f"{(stat['mean_total_tokens']/c['baseline']['mean_total_tokens']-1)*100:+.1f}%",
-                f"{stat['mean_score']-c['baseline']['mean_score']:+.2f}",
+                f"{100*(stat['mean_score']/c['baseline']['mean_score']-1):+.1f}%",
             ])
         headers = (["来源与条件", "评分 / 10", "累计 tokens K", "平均轮数", "token 变化", "评分变化"] if zh
                    else ["Source / condition", "Score / 10", "Total tokens K", "Mean rounds", "Token change", "Score change"])
@@ -98,50 +99,50 @@ def main():
             ("pruner", "baseline", "剪枝－完整" if zh else "Pruner − full"),
             ("recovery", "pruner", "恢复－剪枝" if zh else "Recovery − pruner"),
         ]:
-            token = analysis["paired"][f"{treatment}-{control}:total_tokens"]
-            score = analysis["paired"][f"{treatment}-{control}:score"]
+            token = percentages["paired"][f"{treatment}-{control}:total_tokens"]
+            score = percentages["paired"][f"{treatment}-{control}:score"]
             paired_rows.append(
                 [
                     label,
-                    f"{token['mean_difference']/1000:+.1f} [{token['ci95'][0]/1000:.1f}, {token['ci95'][1]/1000:.1f}]",
-                    f"{score['mean_difference']:+.2f} [{score['ci95'][0]:.2f}, {score['ci95'][1]:.2f}]",
+                    f"{token['relative_change_percent']:+.1f}% [{token['ci95_percent'][0]:.1f}, {token['ci95_percent'][1]:.1f}]",
+                    f"{score['relative_change_percent']:+.1f}% [{score['ci95_percent'][0]:.1f}, {score['ci95_percent'][1]:.1f}]",
                 ]
             )
         fields["UNCERTAINTY"] = ("表 4. 本次复现内部的配对差异与 95% 置信区间。" if zh else "Table 4. Paired differences and 95% confidence intervals within the reproduction.") + "\n\n" + table(
             (
-                ["配对比较", "token 差 K [95% 区间]", "评分差 [95% 区间]"]
+                ["配对比较", "token 相对变化 [95% 区间]", "评分相对变化 [95% 区间]"]
                 if zh
                 else [
                     "Paired comparison",
-                    "Token difference K [95% CI]",
-                    "Score difference [95% CI]",
+                    "Token change % [95% CI]",
+                    "Score change % [95% CI]",
                 ]
             ),
             paired_rows,
         )
         fields["UNCERTAINTY"] += "\n\n" + (
-            "区间以 8 道题为 cluster，保留每题内部三次执行，使用种子 5660 重采样 10,000 次。这一配对统计描述子集中的差异，图中的 SD 描述每题执行波动。"
+            "变化率为（处理组均值／对照组均值−1）×100%。以八题为 cluster，保留题内三次执行，种子 5660 重采样 10,000 次并重算两组均值；区间同为百分比。图中 SD 描述题内执行波动。"
             if zh
-            else "Intervals resample eight question clusters 10,000 times with seed 5660, retaining each question’s three executions together. These paired intervals describe subset differences; figure error bars describe within-question execution variation."
+            else "Change = 100 × (treatment mean / control mean − 1). Intervals, also in percent, resample eight question clusters 10,000 times with seed 5660, recomputing both means and retaining all three executions per question. Figure error bars show within-question SD."
         )
         filtered = analysis["author_filtered_pairs"]["pruner-baseline"]
         fields["PAPER_COMPARISON"] = (
-            f"剪枝相对完整观测的 tokens 在论文中降低 54.4%，本次{change(reduction, True)}；评分差分别为 0.00 与 {score_delta:+.2f}。作者评分过滤规则保留本次全部 {filtered['n']} 对题次，过滤口径下的本次评分与表 3 一致。固定路由、样本构成和评分部署的差异见第 3、5 节。"
-            if zh else f"Pruning reduces published tokens by 54.4%; locally they {change(reduction, False)}. Score differences are 0.00 and {score_delta:+.2f}. Author score filtering retains all {filtered['n']} local pairs, leaving Table 3 scores unchanged. Sections 3 and 5 describe population, route and judge differences."
+            f"剪枝相对完整观测的 tokens 在论文中降低 54.4%，本次{change(reduction, True)}；评分相对变化分别为 0.0% 与 {score_delta:+.1f}%。作者评分过滤规则保留本次全部 {filtered['n']} 对题次，过滤口径下的本次评分与表 3 一致。固定路由、样本构成和评分部署的差异见第 3、5 节。"
+            if zh else f"Pruning reduces published tokens by 54.4%; locally they {change(reduction, False)}. Relative score changes are 0.0% and {score_delta:+.1f}%. Author score filtering retains all {filtered['n']} local pairs, leaving Table 3 scores unchanged. Sections 3 and 5 describe population, route and judge differences."
         )
         r = c["recovery"]
         fields["AUTONOMOUS_RECOVERY"] = (
-            f"恢复组在 {r['expansion_tasks']}/24 个任务中成功展开，记录 {r['sum_expand_tool_actions']} 次展开动作和 {r['sum_expand_calls']} 次成功读取，返回 {r['sum_expanded_chars']:,} 个字符，其中重复行 {r['sum_repeated_lines']} 行。对照上一次展示内容，{recovery['reads_exposing_new_lines']}/{recovery['successful_reads']} 次读取暴露了此前未展示的非空行。相对剪枝组，评分变化 {recovery_delta:+.2f}、累计 tokens {change(recovery_reduction, True)}。是否展开还受任务难度和 Agent 自选行为影响；下面通过固定上下文干预检查取回证据这一机制。"
+            f"恢复组在 {r['expansion_tasks']}/24 个任务中成功展开，记录 {r['sum_expand_tool_actions']} 次展开动作和 {r['sum_expand_calls']} 次成功读取，返回 {r['sum_expanded_chars']:,} 个字符，其中重复行 {r['sum_repeated_lines']} 行。对照上一次展示内容，{recovery['reads_exposing_new_lines']}/{recovery['successful_reads']} 次读取暴露了此前未展示的非空行。相对剪枝组，评分变化 {recovery_delta:+.1f}%、累计 tokens {change(recovery_reduction, True)}。是否展开还受任务难度和 Agent 自选行为影响；下面通过固定上下文干预检查取回证据这一机制。"
             if zh
-            else f"Recovery succeeds in {r['expansion_tasks']}/24 tasks, with {r['sum_expand_tool_actions']} expansion actions and {r['sum_expand_calls']} successful reads, returning {r['sum_expanded_chars']:,} characters and {r['sum_repeated_lines']} repeated lines. Compared with the preceding display, {recovery['reads_exposing_new_lines']}/{recovery['successful_reads']} reads expose previously absent nonblank lines. Relative to pruning, score changes by {recovery_delta:+.2f} and tokens {change(recovery_reduction, False)}. Task difficulty and self-selected tool use also affect uptake; the following intervention isolates access to saved evidence."
+            else f"Recovery succeeds in {r['expansion_tasks']}/24 tasks, with {r['sum_expand_tool_actions']} expansion actions and {r['sum_expand_calls']} successful reads, returning {r['sum_expanded_chars']:,} characters and {r['sum_repeated_lines']} repeated lines. Compared with the preceding display, {recovery['reads_exposing_new_lines']}/{recovery['successful_reads']} reads expose previously absent nonblank lines. Relative to pruning, score changes by {recovery_delta:+.1f}% and tokens {change(recovery_reduction, False)}. Task difficulty and self-selected tool use also affect uptake; the following intervention isolates access to saved evidence."
         )
         fields["MECHANISM_TABLE"] = (
             "表 5. 固定目标变化实验的准确性与资源消耗，三组各 24 次。"
             if zh else "Table 5. Accuracy and resource use under the fixed goal-shift intervention, 24 runs per condition."
         ) + "\n\n" + table(
-            (["条件", "精确匹配", "输入 tokens", "输出 tokens", "累计 tokens", "费用 USD"] if zh
-             else ["Condition", "Exact match", "Input tokens", "Output tokens", "Total tokens", "Cost USD"]),
-            [[label, f"{mechanism['conditions'][mode]['correct']}/24",
+            (["条件", "SR%（成功数）", "输入 tokens", "输出 tokens", "累计 tokens", "费用 USD"] if zh
+             else ["Condition", "SR% (count)", "Input tokens", "Output tokens", "Total tokens", "Cost USD"]),
+            [[label, f"{100*mechanism['conditions'][mode]['correct']/24:.1f}% ({mechanism['conditions'][mode]['correct']}/24)",
               f"{mechanism['conditions'][mode]['input_tokens']:,}",
               f"{mechanism['conditions'][mode]['output_tokens']:,}",
               f"{mechanism['conditions'][mode]['input_tokens']+mechanism['conditions'][mode]['output_tokens']:,}",
