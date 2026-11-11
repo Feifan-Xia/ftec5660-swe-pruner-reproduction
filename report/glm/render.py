@@ -70,7 +70,7 @@ def render(source, destination, language):
             fontName=font_bold,
             fontSize=15,
             leading=21,
-            textColor=TEAL,
+            textColor=NAVY,
             spaceBefore=5,
             spaceAfter=9,
             keepWithNext=True,
@@ -106,7 +106,7 @@ def render(source, destination, language):
             fontName=font_bold,
             fontSize=8.2,
             leading=11.5,
-            textColor=colors.white,
+            textColor=NAVY,
             wordWrap="CJK" if chinese else None,
         ),
     }
@@ -143,18 +143,13 @@ def render(source, destination, language):
             table.setStyle(
                 TableStyle(
                     [
-                        ("BACKGROUND", (0, 0), (-1, 0), TEAL),
-                        (
-                            "ROWBACKGROUNDS",
-                            (0, 1),
-                            (-1, -1),
-                            [colors.white, colors.HexColor("#F1F5F8")],
-                        ),
+                        ("LINEABOVE", (0, 0), (-1, 0), 0.8, NAVY),
+                        ("LINEBELOW", (0, 0), (-1, 0), 0.5, NAVY),
                         ("VALIGN", (0, 0), (-1, -1), "TOP"),
                         ("LEFTPADDING", (0, 0), (-1, -1), 6),
                         ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-                        ("TOPPADDING", (0, 0), (-1, -1), 5),
-                        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+                        ("TOPPADDING", (0, 0), (-1, -1), 4),
+                        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
                         (
                             "LINEBELOW",
                             (0, -1),

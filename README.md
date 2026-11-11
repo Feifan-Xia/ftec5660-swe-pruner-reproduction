@@ -17,11 +17,15 @@ The numerical reference is the paper's Table 2, Streamlink with GLM-4.6: score 8
 
 All 72 primary cells completed on their first agent attempt and were independently scored. The 72-cell mechanism study also completed. The integrity audit passes.
 
-| Condition | Answers | Mean score / 10 | Mean cumulative tokens |
+| Source and condition | Answers | Mean score / 10 | Mean cumulative tokens |
 |---|---:|---:|---:|
-| Full observations | 24/24 | 8.63 | 112,796 |
-| SWE-Pruner | 24/24 | 9.27 | 130,950 |
-| Pruner + exact recovery | 24/24 | 9.13 | 139,798 |
+| Paper, full observations | Published Streamlink aggregate | 8.56 | 318,200 |
+| Paper, SWE-Pruner | Published Streamlink aggregate | 8.56 | 145,100 |
+| Reproduction, full observations | 24/24 | 8.63 | 112,796 |
+| Reproduction, SWE-Pruner | 24/24 | 9.27 | 130,950 |
+| Reproduction, pruner + exact recovery | 24/24 | 9.13 | 139,798 |
+
+The manuscript places published and reproduced values in Table 3, with within-study changes, rounds and uncertainty. Local results cover eight selected questions and three executions; the paper reports its Streamlink population. Method, experimental setup, results, discussion and conclusion form the main text; implementation adaptations and artifact details appear in Appendix A.
 
 Pruning increases cumulative tokens by 16.1% in this subset despite compressing actually pruned source text by 76.5%. Long unfiltered investigations, especially q11, dominate the discrepancy with the paper. Recovery adds 6.8% tokens versus pruning, with a −0.13 score change. Seventeen successful expansions expose new nonblank lines in sixteen cases; one trajectory reconstructs a whole file. The report provides paired intervals, per-question evidence and scoring sensitivity.
 

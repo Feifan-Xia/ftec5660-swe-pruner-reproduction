@@ -57,55 +57,42 @@ def main():
             else ["Full observations", "SWE-Pruner", "+ Exact recovery"]
         )
         fields = dict(notes[language])
+        reference = read(ROOT / "configs/paper_reference.json")
+        published = {r["condition"]: r for r in reference["rows"] if r["model"] == "GLM-4.6"}
+        paper_base = published["baseline"]
         main_rows = []
+        for mode, label in zip(["baseline", "pruner"], labels[:2]):
+            stat = published[mode]
+            main_rows.append([
+                ("原文 · " if zh else "Paper · ") + label,
+                f"{stat['average_score']:.2f}",
+                f"{stat['average_tokens']/1000:.1f}",
+                f"{stat['average_rounds']:.1f}",
+                f"{(stat['average_tokens']/paper_base['average_tokens']-1)*100:+.1f}%",
+                f"{stat['average_score']-paper_base['average_score']:+.2f}",
+            ])
         for mode, label in zip(MODES, labels):
             stat = c[mode]
             score_sd = statistics.stdev(x["score"] for x in stat["repeat_means"])
-            token_sd = (
-                statistics.stdev(x["tokens"] for x in stat["repeat_means"]) / 1000
-            )
-            main_rows.append(
-                [
-                    label,
-                    f"{stat['answered']}/24",
-                    f"{stat['mean_score']:.2f} ± {score_sd:.2f}",
-                    f"{stat['mean_total_tokens']/1000:.1f} ± {token_sd:.1f}",
-                    f"{stat['mean_author_rounds']:.1f}",
-                    f"{stat['mean_api_requests']:.1f}",
-                ]
-            )
-        headers = (
-            [
-                "条件",
-                "完整答案",
-                "评分均值 ± SD",
-                "tokens K ± SD",
-                "作者轮数",
-                "API 请求",
-            ]
-            if zh
-            else [
-                "Condition",
-                "Answers",
-                "Score ± SD",
-                "Tokens K ± SD",
-                "Author rounds",
-                "API calls",
-            ]
-        )
+            token_sd = statistics.stdev(x["tokens"] for x in stat["repeat_means"]) / 1000
+            main_rows.append([
+                ("本次 · " if zh else "Ours · ") + label,
+                f"{stat['mean_score']:.2f} ± {score_sd:.2f}",
+                f"{stat['mean_total_tokens']/1000:.1f} ± {token_sd:.1f}",
+                f"{stat['mean_author_rounds']:.1f}",
+                f"{(stat['mean_total_tokens']/c['baseline']['mean_total_tokens']-1)*100:+.1f}%",
+                f"{stat['mean_score']-c['baseline']['mean_score']:+.2f}",
+            ])
+        headers = (["来源与条件", "评分 / 10", "累计 tokens K", "平均轮数", "token 变化", "评分变化"] if zh
+                   else ["Source / condition", "Score / 10", "Total tokens K", "Mean rounds", "Token change", "Score change"])
         fields["MAIN_RESULTS"] = (
-            "全部 72 个计划项已完成并获得独立评分，每组 24 个。均值使用相同的八题、三次执行；SD 是三次整组均值的样本标准差。作者轮数按其 stats.py 计算所有 agent/user 来源事件，API 请求数另列。\n\n"
-            if zh
-            else "All 72 planned cells are resolved and independently scored, 24 per condition. Means use the same eight questions and three executions; SD is the sample deviation of the three whole-subset means. Author rounds count agent/user-source events using stats.py; API requests are shown separately.\n\n"
-        ) + table(headers, main_rows)
-        if zh:
-            fields[
-                "MAIN_RESULTS"
-            ] += f"\n\n相对完整观测，剪枝组累计 tokens {change(reduction, True)}，平均评分变化 {score_delta:+.2f}。加入恢复后，相对剪枝组 tokens {change(recovery_reduction, True)}，评分变化 {recovery_delta:+.2f}。"
-        else:
-            fields[
-                "MAIN_RESULTS"
-            ] += f"\n\nRelative to full observations, pruning tokens {change(reduction, False)}, with a {score_delta:+.2f} score change. Relative to pruning, recovery tokens {change(recovery_reduction, False)}, with a {recovery_delta:+.2f} score change."
+            "表 3. 原论文与本次复现的 GLM-4.6 结果。变化列相对于各自研究的完整观测组；本次均值 ± SD 来自三次八题整组均值。"
+            if zh else "Table 3. Published and reproduced GLM-4.6 results. Changes use each study's own full-observation baseline. Local mean ± SD summarizes three eight-question repetition means."
+        ) + "\n\n" + table(headers, main_rows)
+        fields["MAIN_RESULTS"] += "\n\n" + (
+            "原文为表 2 的 Streamlink 汇总；本次为预选八题×三次，每组 24/24 均完成并评分。两者采用不同题目范围；原文未提供表内 SD。轮数按作者 stats.py 统计 agent/user 来源事件。本次完整／剪枝／恢复的平均 API 请求数为 10.75／9.83／11.58。"
+            if zh else "Published rows are the Streamlink aggregates in Table 2; local rows cover eight selected questions × three executions, all 24/24 answered and scored per condition. Populations differ; published SD is unavailable. Rounds follow author stats.py agent/user events. Local full/pruner/recovery API calls average 10.75/9.83/11.58."
+        )
         paired_rows = []
         for treatment, control, label in [
             ("pruner", "baseline", "剪枝－完整" if zh else "Pruner − full"),
@@ -120,7 +107,7 @@ def main():
                     f"{score['mean_difference']:+.2f} [{score['ci95'][0]:.2f}, {score['ci95'][1]:.2f}]",
                 ]
             )
-        fields["UNCERTAINTY"] = table(
+        fields["UNCERTAINTY"] = ("表 4. 本次复现内部的配对差异与 95% 置信区间。" if zh else "Table 4. Paired differences and 95% confidence intervals within the reproduction.") + "\n\n" + table(
             (
                 ["配对比较", "token 差 K [95% 区间]", "评分差 [95% 区间]"]
                 if zh
@@ -139,9 +126,8 @@ def main():
         )
         filtered = analysis["author_filtered_pairs"]["pruner-baseline"]
         fields["PAPER_COMPARISON"] = (
-            f"本地剪枝组相对完整观测的 tokens {change(reduction, True)}，论文报告降低 54.4%；本地评分差为 {score_delta:+.2f}，论文为 0.00。作者过滤规则在两组共同且五维均不为 1 的题次上保留 {filtered['n']} 对，过滤后完整／剪枝评分为 {filtered['control_score']:.2f}/{filtered['treatment_score']:.2f}。本地范围、评分部署和运行环境已明确记录，因此数值差异需要结合轨迹解释。"
-            if zh
-            else f"Locally, pruning tokens {change(reduction, False)}, compared with the paper’s 54.4% decrease; the local score difference is {score_delta:+.2f}, versus 0.00 in the paper. The authors’ pairwise filtering rule retains {filtered['n']} pairs with all dimensions above one; filtered full/pruner scores are {filtered['control_score']:.2f}/{filtered['treatment_score']:.2f}. Population, scoring deployment and environment differences require trajectory-level interpretation."
+            f"剪枝相对完整观测的 tokens 在论文中降低 54.4%，本次{change(reduction, True)}；评分差分别为 0.00 与 {score_delta:+.2f}。作者评分过滤规则保留本次全部 {filtered['n']} 对题次，过滤口径下的本次评分与表 3 一致。固定路由、样本构成和评分部署的差异见第 3、5 节。"
+            if zh else f"Pruning reduces published tokens by 54.4%; locally they {change(reduction, False)}. Score differences are 0.00 and {score_delta:+.2f}. Author score filtering retains all {filtered['n']} local pairs, leaving Table 3 scores unchanged. Sections 3 and 5 describe population, route and judge differences."
         )
         r = c["recovery"]
         fields["AUTONOMOUS_RECOVERY"] = (
@@ -149,27 +135,19 @@ def main():
             if zh
             else f"Recovery succeeds in {r['expansion_tasks']}/24 tasks, with {r['sum_expand_tool_actions']} expansion actions and {r['sum_expand_calls']} successful reads, returning {r['sum_expanded_chars']:,} characters and {r['sum_repeated_lines']} repeated lines. Compared with the preceding display, {recovery['reads_exposing_new_lines']}/{recovery['successful_reads']} reads expose previously absent nonblank lines. Relative to pruning, score changes by {recovery_delta:+.2f} and tokens {change(recovery_reduction, False)}. Task difficulty and self-selected tool use also affect uptake; the following intervention isolates access to saved evidence."
         )
-        fields["MECHANISM_TABLE"] = table(
-            (
-                ["文件", "目标值保留", "完整", "剪后", "可恢复"]
-                if zh
-                else ["File", "Target retained", "Full", "Pruned", "Recoverable"]
-            ),
-            [
-                [
-                    Path(case["path"]).name,
-                    (
-                        ("是" if case["target_value_retained"] else "否")
-                        if zh
-                        else str(case["target_value_retained"])
-                    ),
-                    *[
-                        f"{case['conditions'][mode]['correct']}/3"
-                        for mode in ["full", "pruned", "recoverable"]
-                    ],
-                ]
-                for case in mechanism["cases"]
-            ],
+        fields["MECHANISM_TABLE"] = (
+            "表 5. 固定目标变化实验的准确性与资源消耗，三组各 24 次。"
+            if zh else "Table 5. Accuracy and resource use under the fixed goal-shift intervention, 24 runs per condition."
+        ) + "\n\n" + table(
+            (["条件", "精确匹配", "输入 tokens", "输出 tokens", "累计 tokens", "费用 USD"] if zh
+             else ["Condition", "Exact match", "Input tokens", "Output tokens", "Total tokens", "Cost USD"]),
+            [[label, f"{mechanism['conditions'][mode]['correct']}/24",
+              f"{mechanism['conditions'][mode]['input_tokens']:,}",
+              f"{mechanism['conditions'][mode]['output_tokens']:,}",
+              f"{mechanism['conditions'][mode]['input_tokens']+mechanism['conditions'][mode]['output_tokens']:,}",
+              f"{mechanism['conditions'][mode]['cost']:.6f}"]
+             for mode,label in zip(["full","pruned","recoverable"],
+                ["完整观测","剪后观测","精确恢复"] if zh else ["Full","Pruned","Recoverable"])],
         )
         fields["NUMERICAL_TABLE"] = table(
             (
@@ -204,9 +182,9 @@ def main():
         counts = "/".join(str(first[m]["answered"]) for m in MODES)
         checks = audit["checks"]
         fields["COMPLETENESS_AND_COST"] = (
-            f"主实验首轮三组分别导出 {counts} 个完整答案，共保存 {analysis['attempts']} 条正式尝试；最终所有 72 个计划项均完成评分。固定路由主实验与机制实验已报告 API 费用合计 ${checks['known_provider_cost_usd']:.4f}；包含旧阶段、开发记录和保守占用的项目账本为 ${checks['project_conservative_usd']:.4f}，用户批准上限为 $12。原始记录、启动快照和逐项审计均随材料保存。"
+            f"主实验首轮三组分别导出 {counts} 个完整答案，共保存 {analysis['attempts']} 条正式尝试；最终所有 72 个计划项均完成评分。固定路由主实验与机制实验已报告 API 费用合计 ${checks['known_provider_cost_usd']:.4f}；包含旧阶段、开发记录和保守占用的项目账本为 ${checks['project_conservative_usd']:.4f}。原始记录、启动快照和逐项审计均随材料保存。"
             if zh
-            else f"First attempts export {counts} complete answers in full/pruner/recovery order; {analysis['attempts']} formal attempts are retained and all 72 planned cells are scored. Fixed-route main/mechanism calls report ${checks['known_provider_cost_usd']:.4f}. Project accounting, including earlier stages, development and conservative reservations, totals ${checks['project_conservative_usd']:.4f} against the approved $12 ceiling. Raw evidence, launch snapshots and cell-level audit accompany the report."
+            else f"First attempts export {counts} complete answers in full/pruner/recovery order; {analysis['attempts']} formal attempts are retained and all 72 planned cells are scored. Fixed-route main/mechanism calls report ${checks['known_provider_cost_usd']:.4f}. Project accounting, including earlier stages, development and conservative reservations, totals ${checks['project_conservative_usd']:.4f}. Raw evidence, launch snapshots and cell-level audit accompany the report."
         )
         source = (OUT / f"template_{language}.md").read_text(encoding="utf-8")
         for key, value in fields.items():
