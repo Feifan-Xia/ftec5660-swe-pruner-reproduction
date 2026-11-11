@@ -1,17 +1,22 @@
 """Replay the first substantial original observation for each fixed pilot question."""
-import hashlib,json,time,zipfile
+import argparse,hashlib,json,time,zipfile
 from pathlib import Path
 import httpx
 ROOT=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser();parser.add_argument('--variant',choices=['bf16','fp32','fp32_original_fusion'],default='bf16');args=parser.parse_args()
 z=zipfile.ZipFile(ROOT/'runs/author_evidence/swepruner-sweqa-reproduce.zip')
 qs=[json.loads(x)['question'] for x in (ROOT/'upstream/downstream_eval/multi_turn/sweqa/questions/streamlink.jsonl').read_text(encoding='utf-8').splitlines()]
 indices=[41,14,30,8,11,46,33,29]
 by_question={t['question']:(n,t) for n in z.namelist() if n.startswith('traj-full-glm-pruner/streamlink/') and n.endswith('.traj.json') for t in [json.loads(z.read(n))]}
-folder=ROOT/'runs/full/diagnostics/author_replay';folder.mkdir(parents=True,exist_ok=True)
+folder=ROOT/('runs/full/diagnostics/author_replay' if args.variant=='bf16' else 'runs/full/diagnostics/author_replay_'+args.variant);folder.mkdir(parents=True,exist_ok=True)
 client=httpx.Client(trust_env=False,timeout=600)
 for _ in range(120):
     try:
-        response=client.get('http://127.0.0.1:8000/health',timeout=5);response.raise_for_status();break
+        response=client.get('http://127.0.0.1:8000/health',timeout=5);response.raise_for_status()
+        expected='torch.float32' if args.variant.startswith('fp32') else 'torch.bfloat16'
+        assert response.json()['dtype']==expected,response.json()
+        if args.variant=='fp32_original_fusion':assert response.json()['attention_backend']=='original-mha-tiled-256'
+        break
     except httpx.HTTPError:time.sleep(3)
 else:raise RuntimeError('Pruner service unavailable')
 rows=[]
@@ -31,4 +36,5 @@ for index in indices:
          'exact_pruned_text_match':result['pruned_code']==obs['output'],'author_score':info['score'],'local_score':result['score']}
     target.write_text(json.dumps(row,indent=2),encoding='utf-8');rows.append(row)
     print(json.dumps(row),flush=True)
-(ROOT/'results/full/author_pruning_replay.json').write_text(json.dumps(rows,indent=2),encoding='utf-8')
+destination='author_pruning_replay.json' if args.variant=='bf16' else 'author_pruning_replay_'+args.variant+'.json'
+(ROOT/'results/full'/destination).write_text(json.dumps(rows,indent=2),encoding='utf-8')

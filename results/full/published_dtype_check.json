@@ -1,0 +1,11 @@
+{
+  "call": "SwePrunerForCodePruning.from_pretrained(path, config=local_backbone_config); no dtype override, as in released online_serving.py",
+  "config_dtype_before": "torch.bfloat16",
+  "config_dtype_after": "torch.float32",
+  "parameter_counts_by_dtype": {
+    "torch.float32": 634337034
+  },
+  "device": "cpu",
+  "reproduction_override": "torch_dtype=torch.bfloat16",
+  "torch": "2.9.0.dev20250705+cu129"
+}

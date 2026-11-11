@@ -1,0 +1,18 @@
+{
+  "streamlink": {
+    "source_count": 48,
+    "archive_count": 48,
+    "same_repo_matches": 48,
+    "other_repo_matches": {
+      "reflex": 0
+    }
+  },
+  "reflex": {
+    "source_count": 48,
+    "archive_count": 48,
+    "same_repo_matches": 48,
+    "other_repo_matches": {
+      "streamlink": 0
+    }
+  }
+}

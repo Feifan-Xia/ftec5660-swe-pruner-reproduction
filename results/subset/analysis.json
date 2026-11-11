@@ -1,0 +1,597 @@
+{
+  "planned": 48,
+  "pending": [
+    [
+      41,
+      1,
+      "baseline"
+    ],
+    [
+      41,
+      1,
+      "pruner"
+    ],
+    [
+      41,
+      2,
+      "baseline"
+    ],
+    [
+      41,
+      2,
+      "pruner"
+    ],
+    [
+      14,
+      1,
+      "baseline"
+    ],
+    [
+      14,
+      1,
+      "pruner"
+    ],
+    [
+      14,
+      2,
+      "baseline"
+    ],
+    [
+      14,
+      2,
+      "pruner"
+    ],
+    [
+      30,
+      1,
+      "baseline"
+    ],
+    [
+      30,
+      1,
+      "pruner"
+    ],
+    [
+      30,
+      2,
+      "baseline"
+    ],
+    [
+      30,
+      2,
+      "pruner"
+    ],
+    [
+      8,
+      1,
+      "baseline"
+    ],
+    [
+      8,
+      1,
+      "pruner"
+    ],
+    [
+      8,
+      2,
+      "baseline"
+    ],
+    [
+      8,
+      2,
+      "pruner"
+    ],
+    [
+      11,
+      1,
+      "baseline"
+    ],
+    [
+      11,
+      1,
+      "pruner"
+    ],
+    [
+      11,
+      2,
+      "baseline"
+    ],
+    [
+      11,
+      2,
+      "pruner"
+    ],
+    [
+      46,
+      1,
+      "baseline"
+    ],
+    [
+      46,
+      1,
+      "pruner"
+    ],
+    [
+      46,
+      2,
+      "baseline"
+    ],
+    [
+      46,
+      2,
+      "pruner"
+    ],
+    [
+      33,
+      1,
+      "baseline"
+    ],
+    [
+      33,
+      1,
+      "pruner"
+    ],
+    [
+      33,
+      2,
+      "baseline"
+    ],
+    [
+      33,
+      2,
+      "pruner"
+    ],
+    [
+      29,
+      1,
+      "baseline"
+    ],
+    [
+      29,
+      1,
+      "pruner"
+    ],
+    [
+      29,
+      2,
+      "baseline"
+    ],
+    [
+      29,
+      2,
+      "pruner"
+    ]
+  ],
+  "selected_cells": 16,
+  "attempts": 16,
+  "final": false,
+  "conditions": {
+    "baseline": {
+      "n": 8,
+      "answered": 8,
+      "qualified": 8,
+      "scored": 8,
+      "mean_score": 9.55,
+      "failure_zero_score": 9.55,
+      "pruning_tasks": 0,
+      "expansion_tasks": 0,
+      "mean_total_tokens": 103837.25,
+      "mean_input_tokens": 101625.375,
+      "mean_output_tokens": 2211.875,
+      "mean_cached_tokens": 87232,
+      "mean_api_requests": 10.625,
+      "mean_author_rounds": 13.125,
+      "mean_seconds": 134.18125,
+      "mean_max_input_tokens": 14766.625,
+      "sum_cost": 0.18478136,
+      "sum_conservative_cost": 0.18478136,
+      "sum_stored_observation_bytes": 0,
+      "sum_stored_observations": 0,
+      "sum_prune_calls": 0,
+      "sum_raw_pruned_tokens": 0,
+      "sum_kept_pruned_tokens": 0,
+      "sum_expand_calls": 0,
+      "sum_expand_tool_actions": 0,
+      "sum_expanded_chars": 0,
+      "sum_repeated_lines": 0,
+      "sum_repeated_exact_commands": 0,
+      "sum_tool_timeout_observations": 0,
+      "median_total_tokens": 52232.5,
+      "dimension_means": {
+        "correctness": 9.5,
+        "completeness": 9.75,
+        "relevance": 9.5,
+        "clarity": 9.5,
+        "reasoning": 9.5
+      },
+      "repeat_means": [
+        {
+          "repeat": 0,
+          "tokens": 103837.25,
+          "score": 9.55
+        },
+        {
+          "repeat": 1,
+          "tokens": null,
+          "score": null
+        },
+        {
+          "repeat": 2,
+          "tokens": null,
+          "score": null
+        }
+      ]
+    },
+    "pruner": {
+      "n": 8,
+      "answered": 8,
+      "qualified": 8,
+      "scored": 8,
+      "mean_score": 8.9,
+      "failure_zero_score": 8.9,
+      "pruning_tasks": 1,
+      "expansion_tasks": 0,
+      "mean_total_tokens": 88958.125,
+      "mean_input_tokens": 86888.75,
+      "mean_output_tokens": 2069.375,
+      "mean_cached_tokens": 69616,
+      "mean_api_requests": 8.5,
+      "mean_author_rounds": 12.25,
+      "mean_seconds": 137.31125,
+      "mean_max_input_tokens": 15272.75,
+      "sum_cost": 0.18059228,
+      "sum_conservative_cost": 0.31207228,
+      "sum_stored_observation_bytes": 0,
+      "sum_stored_observations": 0,
+      "sum_prune_calls": 1,
+      "sum_raw_pruned_tokens": 54349,
+      "sum_kept_pruned_tokens": 5881,
+      "sum_expand_calls": 0,
+      "sum_expand_tool_actions": 0,
+      "sum_expanded_chars": 0,
+      "sum_repeated_lines": 0,
+      "sum_repeated_exact_commands": 0,
+      "sum_tool_timeout_observations": 0,
+      "median_total_tokens": 56721.0,
+      "dimension_means": {
+        "correctness": 8.5,
+        "completeness": 9.125,
+        "relevance": 9.125,
+        "clarity": 8.875,
+        "reasoning": 8.875
+      },
+      "repeat_means": [
+        {
+          "repeat": 0,
+          "tokens": 88958.125,
+          "score": 8.9
+        },
+        {
+          "repeat": 1,
+          "tokens": null,
+          "score": null
+        },
+        {
+          "repeat": 2,
+          "tokens": null,
+          "score": null
+        }
+      ]
+    }
+  },
+  "paired": {
+    "pruner-baseline:total_tokens": {
+      "pairs": [],
+      "mean_difference": null,
+      "ci95": null
+    },
+    "pruner-baseline:score": {
+      "pairs": [],
+      "mean_difference": null,
+      "ci95": null
+    }
+  },
+  "first_attempt": {
+    "baseline": {
+      "n": 8,
+      "answered": 8,
+      "qualified": 8,
+      "scored": 8,
+      "mean_score": 9.55,
+      "failure_zero_score": 9.55,
+      "pruning_tasks": 0,
+      "expansion_tasks": 0,
+      "mean_total_tokens": 103837.25,
+      "mean_input_tokens": 101625.375,
+      "mean_output_tokens": 2211.875,
+      "mean_cached_tokens": 87232,
+      "mean_api_requests": 10.625,
+      "mean_author_rounds": 13.125,
+      "mean_seconds": 134.18125,
+      "mean_max_input_tokens": 14766.625,
+      "sum_cost": 0.18478136,
+      "sum_conservative_cost": 0.18478136,
+      "sum_stored_observation_bytes": 0,
+      "sum_stored_observations": 0,
+      "sum_prune_calls": 0,
+      "sum_raw_pruned_tokens": 0,
+      "sum_kept_pruned_tokens": 0,
+      "sum_expand_calls": 0,
+      "sum_expand_tool_actions": 0,
+      "sum_expanded_chars": 0,
+      "sum_repeated_lines": 0,
+      "sum_repeated_exact_commands": 0,
+      "sum_tool_timeout_observations": 0,
+      "median_total_tokens": 52232.5,
+      "dimension_means": {
+        "correctness": 9.5,
+        "completeness": 9.75,
+        "relevance": 9.5,
+        "clarity": 9.5,
+        "reasoning": 9.5
+      },
+      "repeat_means": [
+        {
+          "repeat": 0,
+          "tokens": 103837.25,
+          "score": 9.55
+        },
+        {
+          "repeat": 1,
+          "tokens": null,
+          "score": null
+        },
+        {
+          "repeat": 2,
+          "tokens": null,
+          "score": null
+        }
+      ]
+    },
+    "pruner": {
+      "n": 8,
+      "answered": 8,
+      "qualified": 8,
+      "scored": 8,
+      "mean_score": 8.9,
+      "failure_zero_score": 8.9,
+      "pruning_tasks": 1,
+      "expansion_tasks": 0,
+      "mean_total_tokens": 88958.125,
+      "mean_input_tokens": 86888.75,
+      "mean_output_tokens": 2069.375,
+      "mean_cached_tokens": 69616,
+      "mean_api_requests": 8.5,
+      "mean_author_rounds": 12.25,
+      "mean_seconds": 137.31125,
+      "mean_max_input_tokens": 15272.75,
+      "sum_cost": 0.18059228,
+      "sum_conservative_cost": 0.31207228,
+      "sum_stored_observation_bytes": 0,
+      "sum_stored_observations": 0,
+      "sum_prune_calls": 1,
+      "sum_raw_pruned_tokens": 54349,
+      "sum_kept_pruned_tokens": 5881,
+      "sum_expand_calls": 0,
+      "sum_expand_tool_actions": 0,
+      "sum_expanded_chars": 0,
+      "sum_repeated_lines": 0,
+      "sum_repeated_exact_commands": 0,
+      "sum_tool_timeout_observations": 0,
+      "median_total_tokens": 56721.0,
+      "dimension_means": {
+        "correctness": 8.5,
+        "completeness": 9.125,
+        "relevance": 9.125,
+        "clarity": 8.875,
+        "reasoning": 8.875
+      },
+      "repeat_means": [
+        {
+          "repeat": 0,
+          "tokens": 88958.125,
+          "score": 8.9
+        },
+        {
+          "repeat": 1,
+          "tokens": null,
+          "score": null
+        },
+        {
+          "repeat": 2,
+          "tokens": null,
+          "score": null
+        }
+      ]
+    }
+  },
+  "author_filtered_pairs": {
+    "pruner-baseline": {
+      "n": 8,
+      "treatment_score": 8.9,
+      "control_score": 9.55
+    }
+  },
+  "question_means": [
+    {
+      "index": 41,
+      "mode": "baseline",
+      "n": 1,
+      "score": 9.2,
+      "total_tokens": 17895,
+      "api_requests": 3,
+      "author_rounds": 7,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 41,
+      "mode": "pruner",
+      "n": 1,
+      "score": 8.8,
+      "total_tokens": 34807,
+      "api_requests": 4,
+      "author_rounds": 8,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 14,
+      "mode": "baseline",
+      "n": 1,
+      "score": 9.4,
+      "total_tokens": 62473,
+      "api_requests": 10,
+      "author_rounds": 12,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 14,
+      "mode": "pruner",
+      "n": 1,
+      "score": 9.4,
+      "total_tokens": 83673,
+      "api_requests": 10,
+      "author_rounds": 12,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 30,
+      "mode": "baseline",
+      "n": 1,
+      "score": 10.0,
+      "total_tokens": 223416,
+      "api_requests": 9,
+      "author_rounds": 11,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 30,
+      "mode": "pruner",
+      "n": 1,
+      "score": 8.6,
+      "total_tokens": 62115,
+      "api_requests": 7,
+      "author_rounds": 13,
+      "prune_calls": 1,
+      "expand_calls": 0
+    },
+    {
+      "index": 8,
+      "mode": "baseline",
+      "n": 1,
+      "score": 10.0,
+      "total_tokens": 44241,
+      "api_requests": 6,
+      "author_rounds": 8,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 8,
+      "mode": "pruner",
+      "n": 1,
+      "score": 9.2,
+      "total_tokens": 51327,
+      "api_requests": 5,
+      "author_rounds": 10,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 11,
+      "mode": "baseline",
+      "n": 1,
+      "score": 8.8,
+      "total_tokens": 356443,
+      "api_requests": 38,
+      "author_rounds": 40,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 11,
+      "mode": "pruner",
+      "n": 1,
+      "score": 7.8,
+      "total_tokens": 351426,
+      "api_requests": 27,
+      "author_rounds": 29,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 46,
+      "mode": "baseline",
+      "n": 1,
+      "score": 9.8,
+      "total_tokens": 21765,
+      "api_requests": 5,
+      "author_rounds": 9,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 46,
+      "mode": "pruner",
+      "n": 1,
+      "score": 10.0,
+      "total_tokens": 13669,
+      "api_requests": 3,
+      "author_rounds": 7,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 33,
+      "mode": "baseline",
+      "n": 1,
+      "score": 9.2,
+      "total_tokens": 57579,
+      "api_requests": 8,
+      "author_rounds": 10,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 33,
+      "mode": "pruner",
+      "n": 1,
+      "score": 7.8,
+      "total_tokens": 73347,
+      "api_requests": 8,
+      "author_rounds": 11,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 29,
+      "mode": "baseline",
+      "n": 1,
+      "score": 10.0,
+      "total_tokens": 46886,
+      "api_requests": 6,
+      "author_rounds": 8,
+      "prune_calls": 0,
+      "expand_calls": 0
+    },
+    {
+      "index": 29,
+      "mode": "pruner",
+      "n": 1,
+      "score": 9.6,
+      "total_tokens": 41301,
+      "api_requests": 4,
+      "author_rounds": 8,
+      "prune_calls": 0,
+      "expand_calls": 0
+    }
+  ],
+  "leave_one_question_out": {
+    "pruner-baseline:total_tokens": [],
+    "pruner-baseline:score": []
+  }
+}

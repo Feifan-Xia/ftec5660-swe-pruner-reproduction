@@ -1,0 +1,195 @@
+[
+  {
+    "index": 43,
+    "variant": "default",
+    "tools": [
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find . -type f -name \"*.py\" | head -50",
+          "security_risk": "LOW"
+        }
+      },
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "grep -rl \"transform_token\" --include=\"*.py\" .",
+          "security_risk": "LOW"
+        }
+      }
+    ],
+    "has_hint": false,
+    "reasoning_tokens": 50,
+    "cost": 0.00065444
+  },
+  {
+    "index": 43,
+    "variant": "enabled",
+    "tools": [
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find . -type f -name \"*.py\" | head -50",
+          "security_risk": "LOW"
+        }
+      },
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "grep -rl \"transform_token\" --include=\"*.py\" .",
+          "security_risk": "LOW"
+        }
+      }
+    ],
+    "has_hint": false,
+    "reasoning_tokens": 50,
+    "cost": 0.00065444
+  },
+  {
+    "index": 43,
+    "variant": "disabled",
+    "tools": [
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find . -type f -name \"*.py\" | head -50",
+          "security_risk": "LOW"
+        }
+      },
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "grep -rl \"transform_token\" --include=\"*.py\" .",
+          "security_risk": "LOW"
+        }
+      }
+    ],
+    "has_hint": false,
+    "reasoning_tokens": 0,
+    "cost": 0.00054444
+  },
+  {
+    "index": 26,
+    "variant": "default",
+    "tools": [
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find . -type f -name \"*.js\" -o -name \"*.ts\" -o -name \"*.json\" | head -50",
+          "security_risk": "LOW"
+        }
+      }
+    ],
+    "has_hint": false,
+    "reasoning_tokens": 46,
+    "cost": 0.00061104
+  },
+  {
+    "index": 26,
+    "variant": "enabled",
+    "tools": [
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find . -type f -name \"*.js\" -o -name \"*.ts\" -o -name \"*.json\" -o -name \"*.py\" | head -80",
+          "security_risk": "LOW"
+        }
+      }
+    ],
+    "has_hint": false,
+    "reasoning_tokens": 52,
+    "cost": 0.00063964
+  },
+  {
+    "index": 26,
+    "variant": "disabled",
+    "tools": [
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find / -type f -name \"*.js\" 2>/dev/null | grep -i n13tv | head -20",
+          "security_risk": "LOW"
+        }
+      }
+    ],
+    "has_hint": false,
+    "reasoning_tokens": 0,
+    "cost": 0.00050544
+  },
+  {
+    "index": 17,
+    "variant": "default",
+    "tools": [
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find / -type f -name \"*.py\" | xargs grep -l \"CDPClientSession\" 2>/dev/null | head -20",
+          "security_risk": "LOW"
+        }
+      },
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find / -type f -name \"*.py\" | xargs grep -l \"fail_unhandled_requests\" 2>/dev/null | head -20",
+          "security_risk": "LOW"
+        }
+      }
+    ],
+    "has_hint": false,
+    "reasoning_tokens": 49,
+    "cost": 0.00073004
+  },
+  {
+    "index": 17,
+    "variant": "enabled",
+    "tools": [
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find / -type f -name \"*.py\" 2>/dev/null | xargs grep -l \"CDPClientSession\" 2>/dev/null | head -20",
+          "security_risk": "LOW"
+        }
+      },
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find / -type f -name \"*.py\" 2>/dev/null | xargs grep -l \"fail_unhandled_requests\" 2>/dev/null | head -20",
+          "security_risk": "LOW"
+        }
+      }
+    ],
+    "has_hint": false,
+    "reasoning_tokens": 68,
+    "cost": 0.00079384
+  },
+  {
+    "index": 17,
+    "variant": "disabled",
+    "tools": [
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "find . -type f -name \"*.py\" | head -50",
+          "security_risk": "LOW"
+        }
+      },
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "grep -r \"fail_unhandled_requests\" --include=\"*.py\" -l",
+          "security_risk": "LOW"
+        }
+      },
+      {
+        "name": "pruner_bash",
+        "arguments": {
+          "command": "grep -r \"CDPClientSession\" --include=\"*.py\" -l",
+          "security_risk": "LOW"
+        }
+      }
+    ],
+    "has_hint": false,
+    "reasoning_tokens": 0,
+    "cost": 0.00063324
+  }
+]

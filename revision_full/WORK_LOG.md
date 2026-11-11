@@ -23,6 +23,19 @@ The public author archive is linked near the end of the SWE-QA README: Google Dr
 - Historical experiment population is 8 of 48 questions, with 4 CDP questions. Full-population rerun is required for coverage.
 - Old local inference omitted masked right padding. Earlier token-level tests found a threshold disagreement on one probe. The new inference should restore the authors' 8192-position padding while retaining tested memory-bounded attention. Verify line-level outcomes on recorded observations.
 
+## Latest active state
+
+- User requires subset-first validation. USD 12 remains the approved total; USD 28 is unapproved.
+- Author reference archive is local at `runs/author_evidence/swepruner-sweqa-reproduce.zip` (23.9 MB). `DIAGNOSIS.md` now records the decisive findings: Streamlink/Reflex GLM token-column cross-match, exact system/tool prompt equality, source-root layout, 50-step SWE-QA cap, and actual hint coverage 996/996.
+- All 22 historical pruned observations replay exactly under the historical kernel. Restoring 8192 padding changes 8 line decisions in 6 observations. Eight author inputs replay with 5 exact pruned texts under BF16.
+- A further **verified precision defect**: the released server calls `from_pretrained` without dtype and loads FP32 parameters under the pinned Transformers. Our previous explicit BF16 cast rounded the checkpoint's 15 FP32 tensors. `results/full/published_dtype_check.json` records this. New `serve_fp32.py` preserves the released loading behavior.
+- Current BF16, padding-restored, source-root-corrected screen is running for the original fixed eight questions, one repeat × two modes = 16 cells. Runner session **29149**, source `revision_subset/`, outputs `runs/subset/formal`. Complete all 16 and preserve this stage as a diagnostic. It has 12 completed cells at the most recent check, with q11 baseline still active. Never change its GPU service midway.
+- GPU BF16 service session **19081**, port 8000. Budget meter session **18947**, port 8879, direct agent route (`AGENT_HTTPS_PROXY=''`), Sakura proxy for the judge. Proxy process **81960**, port 7898. The first new-stage proxy agent attempts incurred three retained transport reserves; after restoring direct agent networking, subset calls have no transport errors so far.
+- `runs/full/formal` contains two completed baseline development runs (q17/q43) from the abandoned three-question setup. Its runner was stopped after both completed; preserve them and their charges. All new-stage fees share `runs/full/formal_usage.jsonl` and `budget_authorization.json`.
+- The next precision-only correction is prepared under `revision_precision/` but **not frozen or launched**. It references unchanged `revision_subset/runtime`, uses the same fixed eight questions, source-root layout, 50-step cap, and requires FP32 health. First finish the BF16 screen; stop only its owned GPU server, start `revision_full/serve_fp32.py`, replay the same eight author observations with `replay_author_pruning.py --variant fp32`, verify memory and line-level agreement, then freeze and run the corrected paired subset. Use up to 8 workers for speed if the budget reservation headroom allows.
+- Analyze complete screens with `revision_subset/analyze.py --partial` then `effects.py --repeats 1`; for precision use corresponding scripts. The analyzers deliberately keep the planned three-repeat denominator separate from the first-repeat screen.
+- `revision_full/status.py --study subset` shows current cell/budget state. Current conservative project spending is approximately USD 8.67, with existing USD 12 enforcement.
+
 ## Next steps
 
 1. Complete code/history/SDK metric audit and shell failure audit.

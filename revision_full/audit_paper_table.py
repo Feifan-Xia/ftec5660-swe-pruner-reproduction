@@ -28,4 +28,8 @@ for repo in refs:
             item['artifact_filtered_score']=statistics.mean(statistics.mean(score_dicts[position][q]['score'].values()) for q in eligible)
             table.append(item)
 out=ROOT/'results/full/author_table_audit.json';out.write_text(json.dumps(table,indent=2),encoding='utf-8')
+source_questions={repo:{json.loads(x)['question'] for x in (ROOT/f'upstream/downstream_eval/multi_turn/sweqa/questions/{repo}.jsonl').read_text(encoding='utf-8').splitlines() if x.strip()} for repo in ['streamlink','reflex']}
+archive_questions={repo:{r['question'] for r in rows(f'answer-glm/{repo}_answers.jsonl')} for repo in source_questions}
+identity={repo:{'source_count':len(source_questions[repo]),'archive_count':len(archive_questions[repo]),'same_repo_matches':len(source_questions[repo]&archive_questions[repo]),'other_repo_matches':{other:len(archive_questions[repo]&source_questions[other]) for other in source_questions if other!=repo}} for repo in source_questions}
+(ROOT/'results/full/author_dataset_identity.json').write_text(json.dumps(identity,indent=2),encoding='utf-8')
 for r in table:print(f"{r['repo']:10} {r['model']:6} {r['condition']:8} paper={r['published_tokens']/1000:7.1f}K artifact={r['artifact_input_plus_output']/1000:7.1f}K score={r['artifact_filtered_score']:.4f} rounds={r['artifact_rounds']:.4f}")

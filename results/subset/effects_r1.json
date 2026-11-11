@@ -1,0 +1,195 @@
+{
+  "questions": [
+    41,
+    14,
+    30,
+    8,
+    11,
+    46,
+    33,
+    29
+  ],
+  "repetitions": 1,
+  "cells": 16,
+  "effects": {
+    "score": {
+      "baseline": 9.55,
+      "pruner": 8.9,
+      "relative_percent": -6.806282722513091,
+      "cluster_bootstrap_ci95_percent": [
+        -10.817941952506605,
+        -2.8277634961439646
+      ]
+    },
+    "total_tokens": {
+      "baseline": 103837.25,
+      "pruner": 88958.125,
+      "relative_percent": -14.329274898940414,
+      "cluster_bootstrap_ci95_percent": [
+        -50.20838437974157,
+        24.957884256472585
+      ]
+    },
+    "author_rounds": {
+      "baseline": 13.125,
+      "pruner": 12.25,
+      "relative_percent": -6.666666666666665,
+      "cluster_bootstrap_ci95_percent": [
+        -19.512195121951216,
+        13.157894736842103
+      ]
+    },
+    "api_requests": {
+      "baseline": 10.625,
+      "pruner": 8.5,
+      "relative_percent": -19.999999999999996,
+      "cluster_bootstrap_ci95_percent": [
+        -27.710843373493976,
+        -4.081632653061229
+      ]
+    }
+  },
+  "question_means": [
+    {
+      "index": 41,
+      "baseline": {
+        "score": 9.2,
+        "total_tokens": 17895,
+        "author_rounds": 7,
+        "api_requests": 3,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 8.8,
+        "total_tokens": 34807,
+        "author_rounds": 8,
+        "api_requests": 4,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 14,
+      "baseline": {
+        "score": 9.4,
+        "total_tokens": 62473,
+        "author_rounds": 12,
+        "api_requests": 10,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 9.4,
+        "total_tokens": 83673,
+        "author_rounds": 12,
+        "api_requests": 10,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 30,
+      "baseline": {
+        "score": 10.0,
+        "total_tokens": 223416,
+        "author_rounds": 11,
+        "api_requests": 9,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 8.6,
+        "total_tokens": 62115,
+        "author_rounds": 13,
+        "api_requests": 7,
+        "prune_calls": 1
+      }
+    },
+    {
+      "index": 8,
+      "baseline": {
+        "score": 10.0,
+        "total_tokens": 44241,
+        "author_rounds": 8,
+        "api_requests": 6,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 9.2,
+        "total_tokens": 51327,
+        "author_rounds": 10,
+        "api_requests": 5,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 11,
+      "baseline": {
+        "score": 8.8,
+        "total_tokens": 356443,
+        "author_rounds": 40,
+        "api_requests": 38,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 7.8,
+        "total_tokens": 351426,
+        "author_rounds": 29,
+        "api_requests": 27,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 46,
+      "baseline": {
+        "score": 9.8,
+        "total_tokens": 21765,
+        "author_rounds": 9,
+        "api_requests": 5,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 10.0,
+        "total_tokens": 13669,
+        "author_rounds": 7,
+        "api_requests": 3,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 33,
+      "baseline": {
+        "score": 9.2,
+        "total_tokens": 57579,
+        "author_rounds": 10,
+        "api_requests": 8,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 7.8,
+        "total_tokens": 73347,
+        "author_rounds": 11,
+        "api_requests": 8,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 29,
+      "baseline": {
+        "score": 10.0,
+        "total_tokens": 46886,
+        "author_rounds": 8,
+        "api_requests": 6,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 9.6,
+        "total_tokens": 41301,
+        "author_rounds": 8,
+        "api_requests": 4,
+        "prune_calls": 0
+      }
+    }
+  ],
+  "activation": {
+    "pruner_tasks": 1,
+    "pruner_task_percent": 12.5,
+    "calls": 1
+  }
+}
