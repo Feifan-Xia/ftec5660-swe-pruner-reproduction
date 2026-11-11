@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "published_function_identical": true,
+  "legacy_full_observation": "Observation: []",
+  "corrected_full_observation": "Observation: Raw Output: \nvisible code",
+  "corrected_pruned_observation": "Observation: Filtered some outputs, good try! Pruned output: \nkept line",
+  "raw_removed_text_excluded": true,
+  "all_other_runtime_ast_unchanged": true,
+  "scope": "Terminal fallback only. Active OpenHands tool messages already used to_llm_content correctly. Frozen original runs are preserved; repaired terminal synthesis uses the identical saved trajectory."
+}

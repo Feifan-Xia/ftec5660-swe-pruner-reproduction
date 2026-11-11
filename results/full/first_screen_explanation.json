@@ -1,0 +1,69 @@
+{
+  "screen": "Fixed eight questions, precision r0; all 16 cells included",
+  "tokens_per_api_request": {
+    "baseline": 9219.807692307691,
+    "pruner": 8999.194805194806,
+    "relative_percent": -2.3928144108357974
+  },
+  "request_count_relative_percent": -25.96153846153846,
+  "total_token_relative_percent": -27.733141438791897,
+  "question_deltas": [
+    {
+      "index": 41,
+      "token_delta": -7320,
+      "prune_calls": 0,
+      "full_calls": 4,
+      "pruner_calls": 3
+    },
+    {
+      "index": 14,
+      "token_delta": -31678,
+      "prune_calls": 0,
+      "full_calls": 13,
+      "pruner_calls": 10
+    },
+    {
+      "index": 30,
+      "token_delta": -19041,
+      "prune_calls": 1,
+      "full_calls": 15,
+      "pruner_calls": 8
+    },
+    {
+      "index": 8,
+      "token_delta": 6867,
+      "prune_calls": 0,
+      "full_calls": 6,
+      "pruner_calls": 5
+    },
+    {
+      "index": 11,
+      "token_delta": -253325,
+      "prune_calls": 0,
+      "full_calls": 48,
+      "pruner_calls": 33
+    },
+    {
+      "index": 46,
+      "token_delta": -96,
+      "prune_calls": 0,
+      "full_calls": 3,
+      "pruner_calls": 3
+    },
+    {
+      "index": 33,
+      "token_delta": 20340,
+      "prune_calls": 0,
+      "full_calls": 9,
+      "pruner_calls": 9
+    },
+    {
+      "index": 29,
+      "token_delta": 18331,
+      "prune_calls": 0,
+      "full_calls": 6,
+      "pruner_calls": 6
+    }
+  ],
+  "interpretation": "Total-token ratio factorizes exactly into request-count ratio and mean-tokens-per-request ratio. Only one task invoked pruning. Independent online paths and prompt/tool-name differences contribute to the observed contrast; the numerical precision fix alone is not identified as its cause."
+}

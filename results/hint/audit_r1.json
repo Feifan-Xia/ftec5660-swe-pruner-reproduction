@@ -1,0 +1,56 @@
+{
+  "study": "hint",
+  "repeats": 1,
+  "planned": 8,
+  "complete": 8,
+  "pending": [],
+  "errors": [],
+  "frozen_source_files_verified": 16,
+  "first_agent_attempt_percent": 37.5,
+  "retries": [
+    {
+      "index": 14,
+      "repeat": 0,
+      "mode": "pruner",
+      "selected_attempt": 1,
+      "attempts": 2,
+      "score": 10.0
+    },
+    {
+      "index": 11,
+      "repeat": 0,
+      "mode": "pruner",
+      "selected_attempt": 3,
+      "attempts": 4,
+      "score": 8.0
+    },
+    {
+      "index": 46,
+      "repeat": 0,
+      "mode": "pruner",
+      "selected_attempt": 1,
+      "attempts": 2,
+      "score": 9.8
+    },
+    {
+      "index": 33,
+      "repeat": 0,
+      "mode": "pruner",
+      "selected_attempt": 2,
+      "attempts": 3,
+      "score": 9.0
+    },
+    {
+      "index": 29,
+      "repeat": 0,
+      "mode": "pruner",
+      "selected_attempt": 1,
+      "attempts": 2,
+      "score": 9.4
+    }
+  ],
+  "project_conservative_usd": 11.328939573000003,
+  "ceiling_usd": 12,
+  "recovery_wrapper_sha256": "8dca04b1a99c995ddc76cc75721b61f6664e0a5e56615447f6d3d4f170ce107a",
+  "scope": "Frozen runtime hashes, fixed question-only inputs, selected-answer existence, score arithmetic, bounded infrastructure retry provenance and reconciled budget. Failed prior attempts remain in their original directories."
+}

@@ -1,0 +1,16 @@
+{
+  "duplicates": [
+    {
+      "policy": "First valid score in request-start order, irrespective of score. Duplicate judge responses and their billing remain preserved.",
+      "reason": "Concurrent resume and active driver both requested the same saved answer.",
+      "all_valid_request_ids": [
+        "e2856be1283847bfaeb60a300e3cd74d",
+        "bff5a770e4604962861f00ef68b00004"
+      ],
+      "selected_request_id": "e2856be1283847bfaeb60a300e3cd74d",
+      "previous_mean": 8.2,
+      "selected_mean": 9.0
+    }
+  ],
+  "scope": "Completed selected executions only; retain every request, response and cost."
+}

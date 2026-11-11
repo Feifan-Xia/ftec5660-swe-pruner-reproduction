@@ -1,0 +1,73 @@
+{
+  "scope": "Counterfactual terminal branch on identical completed agent prefixes. Subtract original terminal usage and add repaired terminal usage; preserve full prior attempts and both terminal branches for actual billing. No tasks or scores selected by outcome.",
+  "repairs": [
+    {
+      "stage": "hint",
+      "index": 11,
+      "repeat": 0,
+      "mode": "pruner",
+      "before": {
+        "score": 8.0,
+        "total_tokens": 509016,
+        "input_tokens": 503424,
+        "output_tokens": 5592,
+        "cost": 0.08216736
+      },
+      "after": {
+        "score": 8.8,
+        "total_tokens": 518941,
+        "input_tokens": 512853,
+        "output_tokens": 6088,
+        "cost": 0.08891595999999999
+      },
+      "score_relative_percent": 10.000000000000009,
+      "whole_task_tokens_relative_percent": 1.9498404765272648,
+      "wire_tool_messages_verified": 49,
+      "observations_restored": 50
+    },
+    {
+      "stage": "precision",
+      "index": 11,
+      "repeat": 1,
+      "mode": "baseline",
+      "before": {
+        "score": 7.0,
+        "total_tokens": 618545,
+        "input_tokens": 612406,
+        "output_tokens": 6139,
+        "cost": 0.10134364
+      },
+      "after": {
+        "score": 8.0,
+        "total_tokens": 633501,
+        "input_tokens": 627143,
+        "output_tokens": 6358,
+        "cost": 0.11066764
+      },
+      "score_relative_percent": 14.28571428571428,
+      "whole_task_tokens_relative_percent": 2.4179324058880125,
+      "wire_tool_messages_verified": 49,
+      "observations_restored": 50
+    }
+  ],
+  "precision_corrected_effects": {
+    "score": {
+      "baseline": 9.041666666666666,
+      "pruner": 9.116666666666667,
+      "relative_percent": 0.8294930875576201,
+      "cluster_bootstrap_ci95_percent": [
+        -0.536672629695889,
+        2.099236641221358
+      ]
+    },
+    "total_tokens": {
+      "baseline": 136997.54166666666,
+      "pruner": 112346.20833333333,
+      "relative_percent": -17.993996850916727,
+      "cluster_bootstrap_ci95_percent": [
+        -29.611340880072824,
+        8.726572513202967
+      ]
+    }
+  }
+}

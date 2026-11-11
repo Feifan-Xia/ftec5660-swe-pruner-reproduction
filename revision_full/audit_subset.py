@@ -2,7 +2,7 @@
 import argparse,hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['precision','hint','hintfull','recovery'],required=True);parser.add_argument('--repeats',type=int,choices=[1,3],required=True);parser.add_argument('--partial',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['precision','hint','hintfull','recovery','optional'],required=True);parser.add_argument('--repeats',type=int,choices=[1,3],required=True);parser.add_argument('--partial',action='store_true');args=parser.parse_args()
 def read(p):return json.loads(p.read_text(encoding='utf-8'))
 base=ROOT/f'runs/{args.study}/formal';protocol=read(ROOT/f'revision_{args.study}/protocol.json')
 manifest=read(base/'runtime_manifest.json');errors=[];pending=[];rows=[]
@@ -36,10 +36,14 @@ for i in protocol['question_indices']:
             assert answers[-1]['answer'].strip() and answers[-1]['answer']!='No answer found'
             for a in range(selected):
                 old=read(cell/f'attempt{a}/qualification.json');assert not old['qualified']
-                assert set(old['reasons'])<={'budget_guard_interruption','process_failure','missing_answer','pruning_service_failure'}
+                assert set(old['reasons'])<={'budget_guard_interruption','process_failure','missing_answer','pruning_service_failure','usage_receipt_missing'}
             rows.append({'index':i,'repeat':repeat,'mode':mode,'selected_attempt':selected,'attempts':len(attempts),'score':scores['mean']})
 auth=read(ROOT/'runs/full/budget_authorization.json')
 ledger=[json.loads(x) for x in (ROOT/'runs/full/formal_usage.jsonl').read_text().splitlines()]
+for row in rows:
+    session=f"glm-{args.study}-{row['mode']}-{row['index']}-{row['repeat']}-a{row['selected_attempt']}"
+    calls=[r for r in ledger if r['session']==session]
+    assert calls and all(r.get('usage') or r.get('error')=='ConnectError' for r in calls),'Selected run has incomplete usage receipts: '+session
 spent=auth['prior_stage_conservative_usd']+sum(r['cost'] for r in ledger)
 assert spent<=auth['project_limit_usd']+1e-8
 out={'study':args.study,'repeats':args.repeats,'planned':len(protocol['question_indices'])*len(modes)*args.repeats,'complete':len(rows),'pending':pending,'errors':errors,

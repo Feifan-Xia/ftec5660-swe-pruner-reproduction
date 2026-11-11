@@ -8,6 +8,24 @@ def load(name,namespace):
     exec(compile(ast.Module(body=[node],type_ignores=[]),'<recovery-function>','exec'),namespace)
     return namespace[name]
 class RecoveryFlowTests(unittest.TestCase):
+    def test_concurrent_judge_is_rejected_before_paid_call(self):
+        with tempfile.TemporaryDirectory() as d:
+            out=Path(d);(out/'judge_active.lock').write_text('active')
+            called=[];namespace={'unlocked_judge':lambda p:called.append(p),'time':__import__('time'),'json':json}
+            node=[n for n in TREE.body if isinstance(n,ast.FunctionDef) and n.name=='judge'][-1]
+            exec(compile(ast.Module(body=[node],type_ignores=[]),'<exclusive-judge>','exec'),namespace)
+            with self.assertRaisesRegex(RuntimeError,'already active'):namespace['judge'](out)
+            self.assertEqual(called,[])
+            self.assertTrue((out/'judge_active.lock').exists())
+    def test_judge_lock_released_after_transport_failure(self):
+        with tempfile.TemporaryDirectory() as d:
+            out=Path(d)
+            def fail(p):raise RuntimeError('transport')
+            namespace={'unlocked_judge':fail,'time':__import__('time'),'json':json}
+            node=[n for n in TREE.body if isinstance(n,ast.FunctionDef) and n.name=='judge'][-1]
+            exec(compile(ast.Module(body=[node],type_ignores=[]),'<exclusive-judge>','exec'),namespace)
+            with self.assertRaisesRegex(RuntimeError,'transport'):namespace['judge'](out)
+            self.assertFalse((out/'judge_active.lock').exists())
     def test_budget_checked_before_new_attempt(self):
         with tempfile.TemporaryDirectory() as d:
             called=[]

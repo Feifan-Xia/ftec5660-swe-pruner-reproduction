@@ -1,0 +1,319 @@
+{
+  "source_definition": "Author fields are recalculated from the authors released executions, dated December 2025. Local fields summarize our three independent executions per identical question. Author data are reference evidence, not locally reproduced runs.",
+  "archive_sha256": "eebd5c69165b46a753c82e23e9c082d9aaadb7532ed348bb886c2d267cf89c2b",
+  "question_indices": [
+    41,
+    14,
+    30,
+    8,
+    11,
+    46,
+    33,
+    29
+  ],
+  "author_repetitions": 1,
+  "local_repetitions": 3,
+  "means": {
+    "baseline": {
+      "author_tokens": 190204,
+      "author_score": 8.25,
+      "local_mean_tokens": 136374.375,
+      "local_mean_score": 9.0
+    },
+    "pruner": {
+      "author_tokens": 95309.625,
+      "author_score": 8.6,
+      "local_mean_tokens": 112346.20833333333,
+      "local_mean_score": 9.116666666666667
+    }
+  },
+  "relative_changes_percent": {
+    "author_tokens": -49.89084088662699,
+    "author_score": 4.2424242424242475,
+    "local_mean_tokens": -17.619268038197553,
+    "local_mean_score": 1.2962962962963065
+  },
+  "saving_gap_decomposition": {
+    "author_absolute_saving_per_task": 94894.375,
+    "local_absolute_saving_per_task": 24028.16666666667,
+    "saving_gap_tokens": 70866.20833333333,
+    "lower_local_full_tokens": 53829.625,
+    "higher_local_pruner_tokens": 17036.58333333333,
+    "lower_full_share_of_absolute_gap_percent": 75.9595105565711,
+    "scope": "Arithmetic decomposition of the absolute saving gap. It does not identify a causal effect of provider, prompt or sampling."
+  },
+  "records": [
+    {
+      "index": 41,
+      "question_sha256": "c47f844f9dbc000ad529fb05fc1f69d70a6fcbae31881d0b257c8adb7b6b1352",
+      "mode": "baseline",
+      "author_answer_member": "answer-glm/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm/streamlink_answers_baseline_score.jsonl",
+      "author_timestamp": "2025-12-19T13:20:35.343182",
+      "author_tokens": 146211,
+      "author_score": 2.8,
+      "local_paths": [
+        "runs/precision/formal/baseline/q41_r0/attempt0",
+        "runs/precision/formal/baseline/q41_r1/attempt0",
+        "runs/precision/formal/baseline/q41_r2/attempt0"
+      ],
+      "local_mean_tokens": 32305.666666666668,
+      "local_mean_score": 8.666666666666666
+    },
+    {
+      "index": 14,
+      "question_sha256": "a4b48c27c2f1d8ec77133d235dab78de2ae385121a16ce49639733e53e8eeaef",
+      "mode": "baseline",
+      "author_answer_member": "answer-glm/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm/streamlink_answers_baseline_score.jsonl",
+      "author_timestamp": "2025-12-19T12:39:05.580124",
+      "author_tokens": 146726,
+      "author_score": 9,
+      "local_paths": [
+        "runs/precision/formal/baseline/q14_r0/attempt0",
+        "runs/precision/formal/baseline/q14_r1/attempt0",
+        "runs/precision/formal/baseline/q14_r2/attempt0"
+      ],
+      "local_mean_tokens": 119604.66666666667,
+      "local_mean_score": 9.666666666666668
+    },
+    {
+      "index": 30,
+      "question_sha256": "ce042e20858915c2dc322c0679a2f03f01dbc7f2c1ffcc4b30d4512ce5b6ca11",
+      "mode": "baseline",
+      "author_answer_member": "answer-glm/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm/streamlink_answers_baseline_score.jsonl",
+      "author_timestamp": "2025-12-19T13:01:42.119795",
+      "author_tokens": 289632,
+      "author_score": 9,
+      "local_paths": [
+        "runs/precision/formal/baseline/q30_r0/attempt0",
+        "runs/precision/formal/baseline/q30_r1/attempt0",
+        "runs/precision/formal/baseline/q30_r2/attempt0"
+      ],
+      "local_mean_tokens": 181571.66666666666,
+      "local_mean_score": 9.0
+    },
+    {
+      "index": 8,
+      "question_sha256": "c100b9676ae4f7e02630f8c5661a87338f83af8b3a5769bc6c0284fbc8be5757",
+      "mode": "baseline",
+      "author_answer_member": "answer-glm/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm/streamlink_answers_baseline_score.jsonl",
+      "author_timestamp": "2025-12-19T12:30:54.968424",
+      "author_tokens": 193782,
+      "author_score": 9,
+      "local_paths": [
+        "runs/precision/formal/baseline/q8_r0/attempt0",
+        "runs/precision/formal/baseline/q8_r1/attempt0",
+        "runs/precision/formal/baseline/q8_r2/attempt1"
+      ],
+      "local_mean_tokens": 43339,
+      "local_mean_score": 9.333333333333334
+    },
+    {
+      "index": 11,
+      "question_sha256": "6e1b9dd861b79ee72b3671cfbf0a2ee928b32f7b6ca3bc310ed2fdf9ad33577a",
+      "mode": "baseline",
+      "author_answer_member": "answer-glm/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm/streamlink_answers_baseline_score.jsonl",
+      "author_timestamp": "2025-12-19T12:34:53.900093",
+      "author_tokens": 449310,
+      "author_score": 9,
+      "local_paths": [
+        "runs/precision/formal/baseline/q11_r0/attempt0",
+        "runs/precision/formal/baseline/q11_r1/attempt0",
+        "runs/precision/formal/baseline/q11_r2/attempt3"
+      ],
+      "local_mean_tokens": 583965.6666666666,
+      "local_mean_score": 8.133333333333333
+    },
+    {
+      "index": 46,
+      "question_sha256": "12afbd0db80e6e66c8ff186251361c92d1862f0cef0b197af96c141785929c00",
+      "mode": "baseline",
+      "author_answer_member": "answer-glm/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm/streamlink_answers_baseline_score.jsonl",
+      "author_timestamp": "2025-12-19T13:31:15.053874",
+      "author_tokens": 18071,
+      "author_score": 9,
+      "local_paths": [
+        "runs/precision/formal/baseline/q46_r0/attempt0",
+        "runs/precision/formal/baseline/q46_r1/attempt1",
+        "runs/precision/formal/baseline/q46_r2/attempt0"
+      ],
+      "local_mean_tokens": 16403.666666666668,
+      "local_mean_score": 9.333333333333334
+    },
+    {
+      "index": 33,
+      "question_sha256": "9dc3d630b5ca3d9ed6a6cd6856114afe96805f42083b43d1b0f30c01f1474bb6",
+      "mode": "baseline",
+      "author_answer_member": "answer-glm/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm/streamlink_answers_baseline_score.jsonl",
+      "author_timestamp": "2025-12-19T13:07:04.279904",
+      "author_tokens": 60055,
+      "author_score": 9,
+      "local_paths": [
+        "runs/precision/formal/baseline/q33_r0/attempt0",
+        "runs/precision/formal/baseline/q33_r1/attempt0",
+        "runs/precision/formal/baseline/q33_r2/attempt0"
+      ],
+      "local_mean_tokens": 73075.66666666667,
+      "local_mean_score": 8.2
+    },
+    {
+      "index": 29,
+      "question_sha256": "04b536de63b3722db1755c0671cdec5a0870120e137b3b12ece17dd2786c85da",
+      "mode": "baseline",
+      "author_answer_member": "answer-glm/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm/streamlink_answers_baseline_score.jsonl",
+      "author_timestamp": "2025-12-19T13:00:50.853208",
+      "author_tokens": 217845,
+      "author_score": 9.2,
+      "local_paths": [
+        "runs/precision/formal/baseline/q29_r0/attempt0",
+        "runs/precision/formal/baseline/q29_r1/attempt1",
+        "runs/precision/formal/baseline/q29_r2/attempt0"
+      ],
+      "local_mean_tokens": 40729,
+      "local_mean_score": 9.666666666666666
+    },
+    {
+      "index": 41,
+      "question_sha256": "c47f844f9dbc000ad529fb05fc1f69d70a6fcbae31881d0b257c8adb7b6b1352",
+      "mode": "pruner",
+      "author_answer_member": "answer-glm-pruner/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm-pruner/streamlink_answers_pruner_score.jsonl",
+      "author_timestamp": "2025-12-19T02:01:22.107308",
+      "author_tokens": 69734,
+      "author_score": 10,
+      "local_paths": [
+        "runs/precision/formal/pruner/q41_r0/attempt0",
+        "runs/precision/formal/pruner/q41_r1/attempt0",
+        "runs/precision/formal/pruner/q41_r2/attempt1"
+      ],
+      "local_mean_tokens": 32810,
+      "local_mean_score": 8.666666666666666
+    },
+    {
+      "index": 14,
+      "question_sha256": "a4b48c27c2f1d8ec77133d235dab78de2ae385121a16ce49639733e53e8eeaef",
+      "mode": "pruner",
+      "author_answer_member": "answer-glm-pruner/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm-pruner/streamlink_answers_pruner_score.jsonl",
+      "author_timestamp": "2025-12-19T00:23:55.727563",
+      "author_tokens": 69028,
+      "author_score": 8.4,
+      "local_paths": [
+        "runs/precision/formal/pruner/q14_r0/attempt0",
+        "runs/precision/formal/pruner/q14_r1/attempt1",
+        "runs/precision/formal/pruner/q14_r2/attempt1"
+      ],
+      "local_mean_tokens": 71760,
+      "local_mean_score": 9.4
+    },
+    {
+      "index": 30,
+      "question_sha256": "ce042e20858915c2dc322c0679a2f03f01dbc7f2c1ffcc4b30d4512ce5b6ca11",
+      "mode": "pruner",
+      "author_answer_member": "answer-glm-pruner/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm-pruner/streamlink_answers_pruner_score.jsonl",
+      "author_timestamp": "2025-12-19T01:27:22.987651",
+      "author_tokens": 66581,
+      "author_score": 9.2,
+      "local_paths": [
+        "runs/precision/formal/pruner/q30_r0/attempt0",
+        "runs/precision/formal/pruner/q30_r1/attempt0",
+        "runs/precision/formal/pruner/q30_r2/attempt0"
+      ],
+      "local_mean_tokens": 113382,
+      "local_mean_score": 9.066666666666666
+    },
+    {
+      "index": 8,
+      "question_sha256": "c100b9676ae4f7e02630f8c5661a87338f83af8b3a5769bc6c0284fbc8be5757",
+      "mode": "pruner",
+      "author_answer_member": "answer-glm-pruner/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm-pruner/streamlink_answers_pruner_score.jsonl",
+      "author_timestamp": "2025-12-19T00:04:47.362606",
+      "author_tokens": 68778,
+      "author_score": 8.2,
+      "local_paths": [
+        "runs/precision/formal/pruner/q8_r0/attempt0",
+        "runs/precision/formal/pruner/q8_r1/attempt0",
+        "runs/precision/formal/pruner/q8_r2/attempt0"
+      ],
+      "local_mean_tokens": 46221.333333333336,
+      "local_mean_score": 9.466666666666667
+    },
+    {
+      "index": 11,
+      "question_sha256": "6e1b9dd861b79ee72b3671cfbf0a2ee928b32f7b6ca3bc310ed2fdf9ad33577a",
+      "mode": "pruner",
+      "author_answer_member": "answer-glm-pruner/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm-pruner/streamlink_answers_pruner_score.jsonl",
+      "author_timestamp": "2025-12-19T00:17:14.640864",
+      "author_tokens": 335187,
+      "author_score": 7,
+      "local_paths": [
+        "runs/precision/formal/pruner/q11_r0/attempt0",
+        "runs/precision/formal/pruner/q11_r1/attempt1",
+        "runs/precision/formal/pruner/q11_r2/attempt2"
+      ],
+      "local_mean_tokens": 474235,
+      "local_mean_score": 8.666666666666666
+    },
+    {
+      "index": 46,
+      "question_sha256": "12afbd0db80e6e66c8ff186251361c92d1862f0cef0b197af96c141785929c00",
+      "mode": "pruner",
+      "author_answer_member": "answer-glm-pruner/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm-pruner/streamlink_answers_pruner_score.jsonl",
+      "author_timestamp": "2025-12-19T02:19:02.744188",
+      "author_tokens": 17478,
+      "author_score": 9.2,
+      "local_paths": [
+        "runs/precision/formal/pruner/q46_r0/attempt0",
+        "runs/precision/formal/pruner/q46_r1/attempt0",
+        "runs/precision/formal/pruner/q46_r2/attempt0"
+      ],
+      "local_mean_tokens": 16044.333333333334,
+      "local_mean_score": 9.6
+    },
+    {
+      "index": 33,
+      "question_sha256": "9dc3d630b5ca3d9ed6a6cd6856114afe96805f42083b43d1b0f30c01f1474bb6",
+      "mode": "pruner",
+      "author_answer_member": "answer-glm-pruner/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm-pruner/streamlink_answers_pruner_score.jsonl",
+      "author_timestamp": "2025-12-19T01:36:17.954579",
+      "author_tokens": 67240,
+      "author_score": 7.4,
+      "local_paths": [
+        "runs/precision/formal/pruner/q33_r0/attempt0",
+        "runs/precision/formal/pruner/q33_r1/attempt1",
+        "runs/precision/formal/pruner/q33_r2/attempt0"
+      ],
+      "local_mean_tokens": 77991.66666666667,
+      "local_mean_score": 8.466666666666667
+    },
+    {
+      "index": 29,
+      "question_sha256": "04b536de63b3722db1755c0671cdec5a0870120e137b3b12ece17dd2786c85da",
+      "mode": "pruner",
+      "author_answer_member": "answer-glm-pruner/streamlink_answers.jsonl",
+      "author_score_member": "answer-glm-pruner/streamlink_answers_pruner_score.jsonl",
+      "author_timestamp": "2025-12-19T01:25:10.728246",
+      "author_tokens": 68451,
+      "author_score": 9.4,
+      "local_paths": [
+        "runs/precision/formal/pruner/q29_r0/attempt0",
+        "runs/precision/formal/pruner/q29_r1/attempt0",
+        "runs/precision/formal/pruner/q29_r2/attempt0"
+      ],
+      "local_mean_tokens": 66325.33333333333,
+      "local_mean_score": 9.6
+    }
+  ]
+}

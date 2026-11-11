@@ -1,0 +1,48 @@
+{
+  "time": 1794376370.2704926,
+  "shared_credential_source": "fbd4c8ff-5c35-476d-9a5c-0b065f897e20",
+  "entrypoint_sources": [
+    "revision_glm/proxy.py",
+    "revision_glm/judge_pilot.py",
+    "revision_glm/meter.py",
+    "revision_full/probe_novita.py"
+  ],
+  "historical_ledger_receipts": [
+    {
+      "path": "runs/glm/usage.jsonl",
+      "known_provider_receipts_usd": 0.14421616,
+      "sha256": "a528ead0ffda859facb685b207c69fba512874c08f90e0e46279e6efbdcf8125"
+    },
+    {
+      "path": "runs/glm/judge_usage.jsonl",
+      "known_provider_receipts_usd": 0.00425375,
+      "sha256": "21f6bfbdda4c3ef4ef9b65129a4041825968850dfd45db32927328468e8d4f4e"
+    },
+    {
+      "path": "runs/glm/formal_usage.jsonl",
+      "known_provider_receipts_usd": 0.41632852,
+      "sha256": "dfbf770fc8105ecd030392fbc56bdbd2749456b8a0f6393fec44a35add09ff6e"
+    },
+    {
+      "path": "runs/glm/pinned/formal_usage.jsonl",
+      "known_provider_receipts_usd": 2.56655245,
+      "sha256": "671622a76d3780955494afdfa4aa3367dc1d320a2d8ab0274b6878e98bea6729"
+    }
+  ],
+  "novita_receipt_usd": 0.00445126,
+  "sample_receipts_reverified": [
+    {
+      "generation_id": "gen-1794327578-ahOkZ1cZCCbxxwRY6hzV",
+      "service_total_cost": 0.0018292,
+      "ledger_cost": 0.0018292
+    },
+    {
+      "generation_id": "gen-1794328337-henkCUGk6cbqsFjpNYLL",
+      "service_total_cost": 0.00053408,
+      "ledger_cost": 0.00053408
+    }
+  ],
+  "current_key_lifetime_usage_usd": 6.802592293,
+  "deduplicated_known_historical_charges_usd": 3.1358021400000005,
+  "basis": "The earlier aggregate bound added entire lifetime key usage to the entire historical carry. These historical provider-reported charges use the same OR credential and are already included in lifetime usage. Remove only that duplicated known amount; retain all unresolved old allowances and all subsequent request reservations. Approved ceiling stays USD12."
+}

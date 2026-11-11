@@ -14,3 +14,9 @@ report/preview_page*.png
 report/*_draft.pdf
 report/glm/layout_preview/
 results/*_console.json
+
+report/revised/layout_preview/
+report/revised/layout_draft.pdf
+
+report/revised/subset_preview/
+results/full/manuscript_evidence_console.txt

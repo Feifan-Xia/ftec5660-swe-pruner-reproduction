@@ -1,0 +1,15 @@
+{
+  "study": "precision",
+  "repeats": 1,
+  "planned": 16,
+  "complete": 16,
+  "pending": [],
+  "errors": [],
+  "frozen_source_files_verified": 16,
+  "first_agent_attempt_percent": 100.0,
+  "retries": [],
+  "project_conservative_usd": 8.489882020000001,
+  "ceiling_usd": 12,
+  "recovery_wrapper_sha256": "1df08435160e699c43f0da0c9f06298e5e1a920146031ae1e33de7d954f89585",
+  "scope": "Frozen runtime hashes, fixed question-only inputs, selected-answer existence, score arithmetic, bounded infrastructure retry provenance and reconciled budget. Failed prior attempts remain in their original directories."
+}

@@ -1,0 +1,215 @@
+{
+  "pass": true,
+  "cells": 24,
+  "stored_observations": 217,
+  "successful_reads": 12,
+  "reads_exposing_new_nonblank_lines": 12,
+  "unmatched_initial_displays": 0,
+  "reads": [
+    {
+      "index": 30,
+      "repeat": 2,
+      "observation_id": "obs_a4ef6d2b2bfaa532",
+      "start": 835,
+      "end": 900,
+      "repeated_lines": 0,
+      "returned_chars": 2391,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 19,
+      "new_line_examples": [
+        "835\t            transition_type=TransitionType.from_json(json[\"transitionType\"]),",
+        "836\t        )",
+        "837",
+        "838"
+      ]
+    },
+    {
+      "index": 30,
+      "repeat": 2,
+      "observation_id": "obs_a4ef6d2b2bfaa532",
+      "start": 2700,
+      "end": 2730,
+      "repeated_lines": 0,
+      "returned_chars": 914,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 23,
+      "new_line_examples": [
+        "2700\t    }",
+        "2701\t    yield cmd_dict",
+        "2702",
+        "2703"
+      ]
+    },
+    {
+      "index": 30,
+      "repeat": 2,
+      "observation_id": "obs_a4ef6d2b2bfaa532",
+      "start": 3870,
+      "end": 3920,
+      "repeated_lines": 0,
+      "returned_chars": 1733,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 5,
+      "new_line_examples": [
+        "3870\t    def from_json(cls, json: T_JSON_DICT) -> NavigatedWithinDocument:",
+        "3871\t        return cls(",
+        "3918",
+        "3919"
+      ]
+    },
+    {
+      "index": 30,
+      "repeat": 2,
+      "observation_id": "obs_a4ef6d2b2bfaa532",
+      "start": 3070,
+      "end": 3180,
+      "repeated_lines": 0,
+      "returned_chars": 3720,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 71,
+      "new_line_examples": [
+        "3070\t        \"params\": params,",
+        "3071\t    }",
+        "3072\t    yield cmd_dict",
+        "3073"
+      ]
+    },
+    {
+      "index": 29,
+      "repeat": 1,
+      "observation_id": "obs_c083d0b85ea2042e",
+      "start": 830,
+      "end": 950,
+      "repeated_lines": 0,
+      "returned_chars": 5032,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 83,
+      "new_line_examples": [
+        "830\t        return refs",
+        "831",
+        "832",
+        "833\t@dataclass"
+      ]
+    },
+    {
+      "index": 29,
+      "repeat": 1,
+      "observation_id": "obs_c083d0b85ea2042e",
+      "start": 950,
+      "end": 1032,
+      "repeated_lines": 1,
+      "returned_chars": 3210,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 82,
+      "new_line_examples": [
+        "951\t    logger.setLevel(args.loglevel.upper())",
+        "952",
+        "953\t    output_path = OUTPUT_PATH / Path(*args.package.split(\".\"))",
+        "954\t    logger.info(f\"Output: {output_path}\")"
+      ]
+    },
+    {
+      "index": 29,
+      "repeat": 1,
+      "observation_id": "obs_c083d0b85ea2042e",
+      "start": 1,
+      "end": 90,
+      "repeated_lines": 0,
+      "returned_chars": 3648,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 85,
+      "new_line_examples": [
+        "1\t#!/usr/bin/env python",
+        "2",
+        "3\t# initially copied from the \"python-chrome-devtools-protocol\" project:",
+        "4\t# https://raw.githubusercontent.com/HyperionGray/python-chrome-devtools-protocol/5463a5f3d201/generator/generate.py"
+      ]
+    },
+    {
+      "index": 29,
+      "repeat": 2,
+      "observation_id": "obs_c083d0b85ea2042e",
+      "start": 1,
+      "end": 100,
+      "repeated_lines": 0,
+      "returned_chars": 3860,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 96,
+      "new_line_examples": [
+        "1\t#!/usr/bin/env python",
+        "2",
+        "3\t# initially copied from the \"python-chrome-devtools-protocol\" project:",
+        "4\t# https://raw.githubusercontent.com/HyperionGray/python-chrome-devtools-protocol/5463a5f3d201/generator/generate.py"
+      ]
+    },
+    {
+      "index": 29,
+      "repeat": 2,
+      "observation_id": "obs_c083d0b85ea2042e",
+      "start": 833,
+      "end": 1032,
+      "repeated_lines": 0,
+      "returned_chars": 8191,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 182,
+      "new_line_examples": [
+        "833\t@dataclass",
+        "834\tclass CdpDomain:",
+        "844",
+        "845\t    @property"
+      ]
+    },
+    {
+      "index": 29,
+      "repeat": 2,
+      "observation_id": "obs_c083d0b85ea2042e",
+      "start": 370,
+      "end": 500,
+      "repeated_lines": 0,
+      "returned_chars": 5348,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 60,
+      "new_line_examples": [
+        "370\tclass CdpType:",
+        "374\t    description: str | None",
+        "375\t    type: str",
+        "381\t    @classmethod"
+      ]
+    },
+    {
+      "index": 29,
+      "repeat": 2,
+      "observation_id": "obs_c083d0b85ea2042e",
+      "start": 501,
+      "end": 700,
+      "repeated_lines": 0,
+      "returned_chars": 7987,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 128,
+      "new_line_examples": [
+        "501\t        assigns = (p.generate_to_json(dict_=\"json\") for p in props)",
+        "502\t        def_to_json += indent(\"\\n\".join(assigns), 4)",
+        "503\t        def_to_json += \"\\n\"",
+        "504\t        def_to_json += indent(\"return json\", 4)"
+      ]
+    },
+    {
+      "index": 29,
+      "repeat": 2,
+      "observation_id": "obs_c083d0b85ea2042e",
+      "start": 700,
+      "end": 832,
+      "repeated_lines": 1,
+      "returned_chars": 5446,
+      "prior_pruned_display_found": true,
+      "new_nonblank_lines": 128,
+      "new_line_examples": [
+        "702\t        doc = \"\"",
+        "703\t        if self.description:",
+        "704\t            doc = self.description",
+        "705\t        if self.experimental:"
+      ]
+    }
+  ],
+  "scope": "Character-exact bounded reads, hash identity, overlap counts and chronological new visible text. Initial visibility includes both full and pruned observations. Text exposure does not establish causal use in the final answer."
+}

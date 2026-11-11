@@ -1,0 +1,279 @@
+{
+  "fixed_indices": [
+    41,
+    14,
+    30,
+    8,
+    11,
+    46,
+    33,
+    29
+  ],
+  "cells": 16,
+  "repeats": 1,
+  "means": {
+    "hint": {
+      "score": 9.2,
+      "total_tokens": 177635.5,
+      "api_requests": 20.125,
+      "author_rounds": 22,
+      "prune_calls": 18.5,
+      "expand_calls": 0,
+      "completed_execution_percent": 100,
+      "first_attempt_execution_percent": 37.5,
+      "expansion_task_percent": 0.0,
+      "expanded_chars": 0,
+      "repeated_lines": 0,
+      "all_attempt_total_tokens": 2413243,
+      "all_attempt_conservative_api_cost": 0.43446355999999997
+    },
+    "recovery": {
+      "score": 9.325,
+      "total_tokens": 156943,
+      "api_requests": 15.625,
+      "author_rounds": 17.625,
+      "prune_calls": 10.625,
+      "expand_calls": 2.625,
+      "completed_execution_percent": 100,
+      "first_attempt_execution_percent": 100.0,
+      "expansion_task_percent": 62.5,
+      "expanded_chars": 68749,
+      "repeated_lines": 17,
+      "all_attempt_total_tokens": 1255544,
+      "all_attempt_conservative_api_cost": 0.25882272
+    }
+  },
+  "effects": {
+    "score": {
+      "relative_percent": 1.3586956521739024,
+      "cluster_bootstrap_ci95_percent": [
+        -1.5706806282722585,
+        4.336043360433606
+      ]
+    },
+    "total_tokens": {
+      "relative_percent": -11.648853973445627,
+      "cluster_bootstrap_ci95_percent": [
+        -48.77050530880715,
+        47.123974375423636
+      ]
+    },
+    "api_requests": {
+      "relative_percent": -22.360248447204967,
+      "cluster_bootstrap_ci95_percent": [
+        -47.398843930635834,
+        5.882352941176472
+      ]
+    },
+    "author_rounds": {
+      "relative_percent": -19.886363636363637,
+      "cluster_bootstrap_ci95_percent": [
+        -43.36734693877551,
+        5.47945205479452
+      ]
+    }
+  },
+  "question_pairs": [
+    {
+      "index": 41,
+      "hint": {
+        "score": 9.0,
+        "total_tokens": 87372,
+        "api_requests": 14,
+        "author_rounds": 16,
+        "prune_calls": 12,
+        "expand_calls": 0,
+        "attempt": 0,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      },
+      "recovery": {
+        "score": 9.4,
+        "total_tokens": 110704,
+        "api_requests": 13,
+        "author_rounds": 15,
+        "prune_calls": 4,
+        "expand_calls": 7,
+        "attempt": 0,
+        "expanded_chars": 27884,
+        "repeated_lines": 4
+      }
+    },
+    {
+      "index": 14,
+      "hint": {
+        "score": 10.0,
+        "total_tokens": 111943,
+        "api_requests": 13,
+        "author_rounds": 15,
+        "prune_calls": 11,
+        "expand_calls": 0,
+        "attempt": 1,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      },
+      "recovery": {
+        "score": 9.4,
+        "total_tokens": 86538,
+        "api_requests": 10,
+        "author_rounds": 12,
+        "prune_calls": 7,
+        "expand_calls": 1,
+        "attempt": 0,
+        "expanded_chars": 5325,
+        "repeated_lines": 0
+      }
+    },
+    {
+      "index": 30,
+      "hint": {
+        "score": 9.0,
+        "total_tokens": 110919,
+        "api_requests": 14,
+        "author_rounds": 16,
+        "prune_calls": 13,
+        "expand_calls": 0,
+        "attempt": 0,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      },
+      "recovery": {
+        "score": 9.8,
+        "total_tokens": 294236,
+        "api_requests": 17,
+        "author_rounds": 19,
+        "prune_calls": 15,
+        "expand_calls": 0,
+        "attempt": 0,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      }
+    },
+    {
+      "index": 8,
+      "hint": {
+        "score": 9.4,
+        "total_tokens": 46410,
+        "api_requests": 8,
+        "author_rounds": 10,
+        "prune_calls": 6,
+        "expand_calls": 0,
+        "attempt": 0,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      },
+      "recovery": {
+        "score": 9.2,
+        "total_tokens": 76112,
+        "api_requests": 10,
+        "author_rounds": 12,
+        "prune_calls": 7,
+        "expand_calls": 0,
+        "attempt": 0,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      }
+    },
+    {
+      "index": 11,
+      "hint": {
+        "score": 8.0,
+        "total_tokens": 509016,
+        "api_requests": 51,
+        "author_rounds": 52,
+        "prune_calls": 50,
+        "expand_calls": 0,
+        "attempt": 3,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      },
+      "recovery": {
+        "score": 8.2,
+        "total_tokens": 464479,
+        "api_requests": 44,
+        "author_rounds": 46,
+        "prune_calls": 37,
+        "expand_calls": 5,
+        "attempt": 0,
+        "expanded_chars": 9160,
+        "repeated_lines": 0
+      }
+    },
+    {
+      "index": 46,
+      "hint": {
+        "score": 9.8,
+        "total_tokens": 39192,
+        "api_requests": 8,
+        "author_rounds": 10,
+        "prune_calls": 7,
+        "expand_calls": 0,
+        "attempt": 1,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      },
+      "recovery": {
+        "score": 10.0,
+        "total_tokens": 65719,
+        "api_requests": 12,
+        "author_rounds": 14,
+        "prune_calls": 8,
+        "expand_calls": 0,
+        "attempt": 0,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      }
+    },
+    {
+      "index": 33,
+      "hint": {
+        "score": 9.0,
+        "total_tokens": 280560,
+        "api_requests": 38,
+        "author_rounds": 40,
+        "prune_calls": 36,
+        "expand_calls": 0,
+        "attempt": 2,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      },
+      "recovery": {
+        "score": 9.2,
+        "total_tokens": 74080,
+        "api_requests": 11,
+        "author_rounds": 13,
+        "prune_calls": 5,
+        "expand_calls": 4,
+        "attempt": 0,
+        "expanded_chars": 11006,
+        "repeated_lines": 11
+      }
+    },
+    {
+      "index": 29,
+      "hint": {
+        "score": 9.4,
+        "total_tokens": 235672,
+        "api_requests": 15,
+        "author_rounds": 17,
+        "prune_calls": 13,
+        "expand_calls": 0,
+        "attempt": 1,
+        "expanded_chars": 0,
+        "repeated_lines": 0
+      },
+      "recovery": {
+        "score": 9.4,
+        "total_tokens": 83676,
+        "api_requests": 8,
+        "author_rounds": 10,
+        "prune_calls": 2,
+        "expand_calls": 4,
+        "attempt": 0,
+        "expanded_chars": 15374,
+        "repeated_lines": 2
+      }
+    }
+  ],
+  "scope": "Task-local raw storage plus bounded line recovery, shared required-hint schema. Sequential diagnostic stage; same eight questions. Timing and independently sampled paths limit causal precision. Exact-string mechanism results remain separate."
+}

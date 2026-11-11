@@ -1,0 +1,195 @@
+{
+  "questions": [
+    41,
+    14,
+    30,
+    8,
+    11,
+    46,
+    33,
+    29
+  ],
+  "repetitions": 3,
+  "cells": 48,
+  "effects": {
+    "score": {
+      "baseline": 9.0,
+      "pruner": 9.116666666666667,
+      "relative_percent": 1.2962962962963065,
+      "cluster_bootstrap_ci95_percent": [
+        -0.4492362982928988,
+        3.183520599250933
+      ]
+    },
+    "total_tokens": {
+      "baseline": 136374.375,
+      "pruner": 112346.20833333333,
+      "relative_percent": -17.619268038197553,
+      "cluster_bootstrap_ci95_percent": [
+        -29.547716998043317,
+        8.726572513202967
+      ]
+    },
+    "author_rounds": {
+      "baseline": 15.416666666666666,
+      "pruner": 14.25,
+      "relative_percent": -7.567567567567568,
+      "cluster_bootstrap_ci95_percent": [
+        -14.683544303797468,
+        9.130434782608688
+      ]
+    },
+    "api_requests": {
+      "baseline": 12.708333333333334,
+      "pruner": 10.458333333333334,
+      "relative_percent": -17.704918032786885,
+      "cluster_bootstrap_ci95_percent": [
+        -21.505376344086013,
+        -8.124999999999993
+      ]
+    }
+  },
+  "question_means": [
+    {
+      "index": 41,
+      "baseline": {
+        "score": 8.666666666666666,
+        "total_tokens": 32305.666666666668,
+        "author_rounds": 8,
+        "api_requests": 4.666666666666667,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 8.666666666666666,
+        "total_tokens": 32810,
+        "author_rounds": 8,
+        "api_requests": 4,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 14,
+      "baseline": {
+        "score": 9.666666666666668,
+        "total_tokens": 119604.66666666667,
+        "author_rounds": 15.333333333333334,
+        "api_requests": 13.333333333333334,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 9.4,
+        "total_tokens": 71760,
+        "author_rounds": 11.666666666666666,
+        "api_requests": 9.666666666666666,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 30,
+      "baseline": {
+        "score": 9.0,
+        "total_tokens": 181571.66666666666,
+        "author_rounds": 15,
+        "api_requests": 10.666666666666666,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 9.066666666666666,
+        "total_tokens": 113382,
+        "author_rounds": 14,
+        "api_requests": 9.333333333333334,
+        "prune_calls": 1
+      }
+    },
+    {
+      "index": 8,
+      "baseline": {
+        "score": 9.333333333333334,
+        "total_tokens": 43339,
+        "author_rounds": 8,
+        "api_requests": 6,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 9.466666666666667,
+        "total_tokens": 46221.333333333336,
+        "author_rounds": 9,
+        "api_requests": 5.333333333333333,
+        "prune_calls": 0.3333333333333333
+      }
+    },
+    {
+      "index": 11,
+      "baseline": {
+        "score": 8.133333333333333,
+        "total_tokens": 583965.6666666666,
+        "author_rounds": 49.666666666666664,
+        "api_requests": 48,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 8.666666666666666,
+        "total_tokens": 474235,
+        "author_rounds": 42,
+        "api_requests": 38,
+        "prune_calls": 0.3333333333333333
+      }
+    },
+    {
+      "index": 46,
+      "baseline": {
+        "score": 9.333333333333334,
+        "total_tokens": 16403.666666666668,
+        "author_rounds": 8,
+        "api_requests": 3.6666666666666665,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 9.6,
+        "total_tokens": 16044.333333333334,
+        "author_rounds": 7.666666666666667,
+        "api_requests": 3.3333333333333335,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 33,
+      "baseline": {
+        "score": 8.2,
+        "total_tokens": 73075.66666666667,
+        "author_rounds": 12,
+        "api_requests": 10,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 8.466666666666667,
+        "total_tokens": 77991.66666666667,
+        "author_rounds": 10.666666666666666,
+        "api_requests": 8,
+        "prune_calls": 0
+      }
+    },
+    {
+      "index": 29,
+      "baseline": {
+        "score": 9.666666666666666,
+        "total_tokens": 40729,
+        "author_rounds": 7.333333333333333,
+        "api_requests": 5.333333333333333,
+        "prune_calls": 0
+      },
+      "pruner": {
+        "score": 9.6,
+        "total_tokens": 66325.33333333333,
+        "author_rounds": 11,
+        "api_requests": 6,
+        "prune_calls": 0.3333333333333333
+      }
+    }
+  ],
+  "activation": {
+    "pruner_tasks": 6,
+    "pruner_task_percent": 25.0,
+    "calls": 6
+  }
+}

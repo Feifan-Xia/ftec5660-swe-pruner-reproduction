@@ -1,10 +1,24 @@
-# SWE-Pruner: GLM-4.6 reproduction and exact observation recovery
+# SWE-Pruner reproduction and bounded observation recovery
 
-FTEC5660 individual project · Xia Feifan · 1155204948.
+FTEC5660 · Xia Feifan · 1155204948.
 
-This project runs the authors' SWE-QA/OpenHands pipeline on eight fixed Streamlink questions. Three conditions share GLM-4.6, the repository, the questions and generation settings: full observations, SWE-Pruner, and SWE-Pruner with exact recovery. Each condition is executed three times per question. A separate 72-cell goal-shift experiment measures whether the added tool can recover evidence removed from the current context.
+## Current evidence
 
-## Read the results
+The corrected fixed-subset study is complete: eight questions × three repetitions × three conditions = **72/72 answered and scored executions**, with complete API usage receipts. Full / original optional-hint SWE-Pruner / recovery means are **136.4K / 112.3K / 125.1K tokens** and **9.00 / 9.12 / 9.24 quality**.
+
+SWE-Pruner reduces mean tokens by **17.6%** and increases mean quality by **1.3%**; both question-cluster intervals include zero. Recovery adds **11.3% tokens** for **1.4% higher mean quality**, whose interval includes zero. Pruning activates in 25.0% of original-pruner tasks. The authors' own released executions on the identical eight questions reduce tokens by 49.9%; these are reference records, distinct from our local runs.
+
+- [Chinese evidence draft, 8 pages](report/revised/subset_draft_zh.pdf) and [English evidence draft, 7 pages](report/revised/subset_draft_en.pdf).
+- [Unified numerical evidence](results/full/manuscript_evidence.json), [same-question author/local mapping](results/full/author_same_questions.json), and [72-cell study instructions](revision_full/README_CURRENT.md).
+- [Original full/pruner audit](results/precision/audit_r3.json), [recovery audit](results/optional/audit_r3.json), and [exact recovery trace audit](results/optional/recovery_trace_analysis.json).
+- [Original protocol](revision_precision/protocol.json), [recovery protocol](revision_optional/protocol.json), and [terminal serialization repair](revision_full/fix_terminal_history.py).
+- [Full-population expansion plan](revision_full/FULL_EXPANSION_PLAN.md): 360 remaining executions, pending additional budget approval. The requested full scope remains open; these are interim completed-subset reports.
+
+A separate matched required-hint diagnostic completes 24 executions. Its forced filtering increases calls; recovery reduces tokens in that setting. A controlled evidence-shift study completes 72 trials with exact-match SR **100.0% / 12.5% / 100.0%** for full / pruned / recoverable observations; recovery costs **196.4% more tokens than pruning**. These findings have separate denominators and appear separately in the reports.
+
+The report also documents the paper/archive token correspondence, workspace/padding/precision repairs, usage double-counting, and a terminal-summary bug that discarded visible observations. Original trajectories, failed attempts and repaired branches remain preserved. Historical reports below describe earlier configurations.
+
+## Historical reports and results
 
 - [Chinese report](report/glm/SWE-Pruner_report_zh.pdf) and [English report](report/glm/SWE-Pruner_report_en.pdf).
 - [Audited aggregate results](results/glm/analysis.json), [per-run measurements](results/glm/cells.json), [mechanism results](results/glm/mechanism.json), and [integrity audit](results/glm/audit.json).
@@ -13,7 +27,7 @@ This project runs the authors' SWE-QA/OpenHands pipeline on eight fixed Streamli
 
 The numerical reference is the paper's Table 2, Streamlink with GLM-4.6: score 8.56 in both conditions and 54.4% lower cumulative tokens with pruning. The report compares the local measurements with that result and explains task coverage, serving and scoring differences. Historical DeepSeek and mixed-provider development records are retained separately; the revised primary comparison uses a fixed Z.AI provider with fallback disabled and threshold 0.5.
 
-## Final primary results
+## Completed historical primary results
 
 All 72 primary cells completed on their first agent attempt and were independently scored. The 72-cell mechanism study also completed. The integrity audit passes.
 

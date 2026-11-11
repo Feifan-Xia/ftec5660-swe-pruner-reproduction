@@ -1,0 +1,213 @@
+{
+  "fixed_indices": [
+    41,
+    14,
+    30,
+    8,
+    11,
+    46,
+    33,
+    29
+  ],
+  "cells": 16,
+  "repeats": 1,
+  "means": {
+    "matched_full": {
+      "score": 9.325,
+      "total_tokens": 134056,
+      "api_requests": 10.125,
+      "author_rounds": 12.5,
+      "seconds": 108.81,
+      "prune_calls": 0,
+      "completed_sr_percent": 100,
+      "first_attempt_sr_percent": 37.5,
+      "all_attempt_mean_tokens": 198585.0,
+      "all_attempt_known_api_cost": 0.3569344,
+      "actual_pruning_task_percent": 0.0,
+      "source_compression_percent": null
+    },
+    "required_pruner": {
+      "score": 9.2,
+      "total_tokens": 177635.5,
+      "api_requests": 20.125,
+      "author_rounds": 22,
+      "seconds": 551.42125,
+      "prune_calls": 18.5,
+      "completed_sr_percent": 100,
+      "first_attempt_sr_percent": 37.5,
+      "all_attempt_mean_tokens": 301655.375,
+      "all_attempt_known_api_cost": 0.43446355999999997,
+      "actual_pruning_task_percent": 100.0,
+      "source_compression_percent": 68.27603723786069
+    }
+  },
+  "effects": {
+    "score": {
+      "relative_percent": -1.3404825737265424,
+      "cluster_bootstrap_ci95_percent": [
+        -3.513513513513511,
+        0.7915567282322122
+      ]
+    },
+    "total_tokens": {
+      "relative_percent": 32.508429313122875,
+      "cluster_bootstrap_ci95_percent": [
+        -21.631935032077344,
+        199.38553640379672
+      ]
+    },
+    "api_requests": {
+      "relative_percent": 98.76543209876543,
+      "cluster_bootstrap_ci95_percent": [
+        50.847457627118644,
+        217.3076923076923
+      ]
+    },
+    "author_rounds": {
+      "relative_percent": 76.0,
+      "cluster_bootstrap_ci95_percent": [
+        37.17948717948718,
+        155.26315789473685
+      ]
+    }
+  },
+  "question_pairs": [
+    {
+      "index": 41,
+      "matched_full": {
+        "score": 9.4,
+        "total_tokens": 49433,
+        "api_requests": 6,
+        "prune_calls": 0,
+        "attempt": 0
+      },
+      "required_pruner": {
+        "score": 9.0,
+        "total_tokens": 87372,
+        "api_requests": 14,
+        "prune_calls": 12,
+        "attempt": 0
+      }
+    },
+    {
+      "index": 14,
+      "matched_full": {
+        "score": 9.6,
+        "total_tokens": 93163,
+        "api_requests": 10,
+        "prune_calls": 0,
+        "attempt": 0
+      },
+      "required_pruner": {
+        "score": 10.0,
+        "total_tokens": 111943,
+        "api_requests": 13,
+        "prune_calls": 11,
+        "attempt": 1
+      }
+    },
+    {
+      "index": 30,
+      "matched_full": {
+        "score": 9.0,
+        "total_tokens": 281835,
+        "api_requests": 8,
+        "prune_calls": 0,
+        "attempt": 2
+      },
+      "required_pruner": {
+        "score": 9.0,
+        "total_tokens": 110919,
+        "api_requests": 14,
+        "prune_calls": 13,
+        "attempt": 0
+      }
+    },
+    {
+      "index": 8,
+      "matched_full": {
+        "score": 9.4,
+        "total_tokens": 54402,
+        "api_requests": 6,
+        "prune_calls": 0,
+        "attempt": 0
+      },
+      "required_pruner": {
+        "score": 9.4,
+        "total_tokens": 46410,
+        "api_requests": 8,
+        "prune_calls": 6,
+        "attempt": 0
+      }
+    },
+    {
+      "index": 11,
+      "matched_full": {
+        "score": 8.6,
+        "total_tokens": 471949,
+        "api_requests": 35,
+        "prune_calls": 0,
+        "attempt": 3
+      },
+      "required_pruner": {
+        "score": 8.0,
+        "total_tokens": 509016,
+        "api_requests": 51,
+        "prune_calls": 50,
+        "attempt": 3
+      }
+    },
+    {
+      "index": 46,
+      "matched_full": {
+        "score": 10.0,
+        "total_tokens": 20162,
+        "api_requests": 4,
+        "prune_calls": 0,
+        "attempt": 2
+      },
+      "required_pruner": {
+        "score": 9.8,
+        "total_tokens": 39192,
+        "api_requests": 8,
+        "prune_calls": 7,
+        "attempt": 1
+      }
+    },
+    {
+      "index": 33,
+      "matched_full": {
+        "score": 9.2,
+        "total_tokens": 72669,
+        "api_requests": 8,
+        "prune_calls": 0,
+        "attempt": 2
+      },
+      "required_pruner": {
+        "score": 9.0,
+        "total_tokens": 280560,
+        "api_requests": 38,
+        "prune_calls": 36,
+        "attempt": 2
+      }
+    },
+    {
+      "index": 29,
+      "matched_full": {
+        "score": 9.4,
+        "total_tokens": 28835,
+        "api_requests": 4,
+        "prune_calls": 0,
+        "attempt": 2
+      },
+      "required_pruner": {
+        "score": 9.4,
+        "total_tokens": 235672,
+        "api_requests": 15,
+        "prune_calls": 13,
+        "attempt": 1
+      }
+    }
+  ],
+  "interpretation": "Mechanism diagnostic: identical required-hint tool schema, active pruning versus full-output executor. Independently ordered online runs, eight question clusters. Includes failure/retry sensitivity; timing reflects shared GPU and network scheduling."
+}

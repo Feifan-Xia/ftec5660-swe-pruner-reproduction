@@ -1,0 +1,40 @@
+{
+  "study": "optional",
+  "repeats": 3,
+  "planned": 24,
+  "complete": 24,
+  "pending": [],
+  "errors": [],
+  "frozen_source_files_verified": 17,
+  "first_agent_attempt_percent": 87.5,
+  "retries": [
+    {
+      "index": 41,
+      "repeat": 2,
+      "mode": "recovery",
+      "selected_attempt": 1,
+      "attempts": 2,
+      "score": 8.8
+    },
+    {
+      "index": 14,
+      "repeat": 1,
+      "mode": "recovery",
+      "selected_attempt": 1,
+      "attempts": 2,
+      "score": 9.8
+    },
+    {
+      "index": 30,
+      "repeat": 1,
+      "mode": "recovery",
+      "selected_attempt": 1,
+      "attempts": 2,
+      "score": 9.0
+    }
+  ],
+  "project_conservative_usd": 9.694301663000001,
+  "ceiling_usd": 12,
+  "recovery_wrapper_sha256": "d2622f6dc2f4eef108c95001994a59b37695a025e43bf95ea19f9f8271ea20c2",
+  "scope": "Frozen runtime hashes, fixed question-only inputs, selected-answer existence, score arithmetic, bounded infrastructure retry provenance and reconciled budget. Failed prior attempts remain in their original directories."
+}

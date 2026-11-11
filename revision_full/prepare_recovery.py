@@ -13,7 +13,7 @@ for name in ['run_study.py','freeze.py','analyze.py']:
     (dest/name).write_text(text,encoding='utf-8')
 (dest/'runtime').mkdir(exist_ok=True)
 for name in ['main.py','tool_utils.py']:(dest/'runtime'/name).write_bytes((ROOT/'revision_hint/runtime'/name).read_bytes())
-p=json.loads((ROOT/'revision_hint/protocol.json').read_text())
+p=json.loads((ROOT/'revision_hint/protocol.json').read_text(encoding='utf-8'))
 p.update(version='required-hint-recovery-v1',repeats=1,conditions=['recovery'],planned_cells=8,
     intervention='Add the existing task-local raw observation store and bounded ExpandObservation tool to the required-hint agent. The main runtime, pruning action and executor are byte-identical to revision_hint. recovery_tool.py layers storage and range retrieval over that executor.',
     comparator='Complete eight repeat0 cells from revision_hint; same fixed question set, model, source repositories, step/time limits, skimmer and judge.',

@@ -1,5 +1,13 @@
 # SWE-Pruner 子集复现诊断
 
+## 当前完整结果
+
+原协议 full/pruner/recovery 三组72项全部完成并通过 usage 完整性审计。Full/pruner 的平均tokens为136.4K/112.3K，下降17.6%；评分9.00/9.12，相对提高1.3%。作者公开运行记录中相同八题为190.2K/95.3K，下降49.9%；该参考来自作者自己的历史执行。本地实际剪枝覆盖25%，原作100%。
+
+原始可选提示的恢复修改：评分相对pruner提高1.4%，tokens增加11.3%，质量区间跨零。24项恢复中12次成功读取均精确匹配并暴露新文本；7次超长、2次越界请求保留。必填提示24项诊断与72项机制实验完整完成，结果分别报告。
+
+终止分支证据序列化缺陷已修复；两条同前缀重放保持原始版本，避免与自主重跑混淆。最新分析为 `results/full/manuscript_evidence.json`，双语稿为 `report/revised/subset_draft_zh.pdf`（8页）和 `subset_draft_en.pdf`（7页）。余下40题的360项扩展方案已准备，USD24提案仍待批准，当前上限USD12。下文阶段表保留早期诊断时点，完整结果以上述文件为准。
+
 ## 研究对象与固定范围
 
 复现对象为论文表 2 的 Streamlink × GLM-4.6 full/pruner 对照。OpenHands 是执行框架，SWE-QA 是问题、参考答案与评分流程，SWE-Pruner 对工具输出做任务相关剪枝。检验目标为累计 API tokens 下降并保持答案质量。用户要求先完成固定子集诊断，再考虑扩大题量；已批准总预算为 USD 12。
@@ -27,7 +35,9 @@
 
 旧推理省略 masked right padding 并显式使用 BF16。恢复每块 8192 padding 后，历史 22 个剪枝观测中有 6 个观测合计改变 8 个保留行判定。作者服务默认加载 FP32，checkpoint 含 15 个 FP32 tensors；旧 BF16 强制转换会舍入这些参数。当前恢复 FP32。固定八题各取作者首次超过 1000 字符的观测，精确剪枝文本匹配从 5/8 提升为 7/8；源 tokenizer 计数全部一致。残余 q30 的保留 tokens 为作者 982、本地 920。原融合注意力算术诊断得到与 FP32 SDPA 相同的文本。
 
-当前 GPU 服务使用 query-axis tiled SDPA，完整保留 key/value 注意力范围，峰值约 6.45 GiB。原硬件与 FlashAttention 内核仍有差异。固定输入重放量化数值适配影响；独立在线运行的均值变化还包含调查路径波动。
+当前 GPU 服务使用 query-axis tiled SDPA，完整保留 key/value 注意力范围，峰值约 6.5 GiB。原硬件与 FlashAttention 内核仍有差异。固定输入重放量化数值适配影响；独立在线运行的均值变化还包含调查路径波动。
+
+精度术语：FP32 指权重加载精度。发布代码的前向计算采用 FP16 autocast，再把 logits 转回 FP32；本地保留该处理。旧显式 BF16 转换主要额外舍入 checkpoint 中原本为 FP32 的 15 个 tensors。
 
 ## 触发策略与独立修改
 

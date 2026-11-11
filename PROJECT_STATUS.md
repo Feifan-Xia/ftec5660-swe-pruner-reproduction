@@ -1,3 +1,5 @@
+> 当前权威状态见 README 的 Current evidence 与 revision_full/README_CURRENT.md。原协议三组72项、必填提示诊断24项、机制72项已完成；全题扩展待追加预算。以下保留早期项目记录。
+
 # FTEC5660 最终状态
 
 GLM 修订完成全部 72 个主实验与 72 个机制测试，审计 PASS。最新报告位于 report/glm，中英文均 8 页。最终 ZIP 由 release/LATEST_GLM.json 指向。历史 DeepSeek 与混合 provider 结果保留为开发记录。

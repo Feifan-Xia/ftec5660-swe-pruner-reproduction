@@ -1,0 +1,1102 @@
+{
+  "final": true,
+  "pending": [],
+  "n": 72,
+  "conditions": {
+    "full": {
+      "n": 24,
+      "correct": 24,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 20709,
+      "output_tokens": 3407,
+      "cost": 0.019607199999999998
+    },
+    "pruned": {
+      "n": 24,
+      "correct": 3,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 14070,
+      "output_tokens": 4798,
+      "cost": 0.0189976
+    },
+    "recoverable": {
+      "n": 24,
+      "correct": 24,
+      "expands": 29,
+      "returned_chars": 30189,
+      "input_tokens": 52775,
+      "output_tokens": 3148,
+      "cost": 0.03708532
+    }
+  },
+  "cases": [
+    {
+      "case": 0,
+      "path": "src/streamlink/plugins/nrk.py",
+      "constant": "_URL_MANIFEST",
+      "target_value_retained": true,
+      "source_tokens": 753,
+      "retained_tokens": 663,
+      "conditions": {
+        "full": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        },
+        "pruned": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        },
+        "recoverable": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        }
+      }
+    },
+    {
+      "case": 1,
+      "path": "src/streamlink/plugins/vk.py",
+      "constant": "API_URL",
+      "target_value_retained": false,
+      "source_tokens": 1061,
+      "retained_tokens": 678,
+      "conditions": {
+        "full": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        },
+        "pruned": {
+          "n": 3,
+          "correct": 0,
+          "expands": 0
+        },
+        "recoverable": {
+          "n": 3,
+          "correct": 3,
+          "expands": 5
+        }
+      }
+    },
+    {
+      "case": 2,
+      "path": "src/streamlink/plugins/dailymotion.py",
+      "constant": "_URL_API_USER_VIDEO",
+      "target_value_retained": false,
+      "source_tokens": 1123,
+      "retained_tokens": 504,
+      "conditions": {
+        "full": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        },
+        "pruned": {
+          "n": 3,
+          "correct": 0,
+          "expands": 0
+        },
+        "recoverable": {
+          "n": 3,
+          "correct": 3,
+          "expands": 3
+        }
+      }
+    },
+    {
+      "case": 3,
+      "path": "src/streamlink/plugins/goodgame.py",
+      "constant": "_API_STREAMS_CHANNEL",
+      "target_value_retained": false,
+      "source_tokens": 1018,
+      "retained_tokens": 404,
+      "conditions": {
+        "full": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        },
+        "pruned": {
+          "n": 3,
+          "correct": 0,
+          "expands": 0
+        },
+        "recoverable": {
+          "n": 3,
+          "correct": 3,
+          "expands": 6
+        }
+      }
+    },
+    {
+      "case": 4,
+      "path": "src/streamlink/plugins/sbscokr.py",
+      "constant": "_URL_API_CHANNELS",
+      "target_value_retained": false,
+      "source_tokens": 662,
+      "retained_tokens": 517,
+      "conditions": {
+        "full": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        },
+        "pruned": {
+          "n": 3,
+          "correct": 0,
+          "expands": 0
+        },
+        "recoverable": {
+          "n": 3,
+          "correct": 3,
+          "expands": 6
+        }
+      }
+    },
+    {
+      "case": 5,
+      "path": "src/streamlink/plugins/zdf_mediathek.py",
+      "constant": "PLAYER_ID",
+      "target_value_retained": false,
+      "source_tokens": 729,
+      "retained_tokens": 621,
+      "conditions": {
+        "full": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        },
+        "pruned": {
+          "n": 3,
+          "correct": 0,
+          "expands": 0
+        },
+        "recoverable": {
+          "n": 3,
+          "correct": 3,
+          "expands": 3
+        }
+      }
+    },
+    {
+      "case": 6,
+      "path": "src/streamlink/plugins/huajiao.py",
+      "constant": "URL_LAPI",
+      "target_value_retained": false,
+      "source_tokens": 564,
+      "retained_tokens": 395,
+      "conditions": {
+        "full": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        },
+        "pruned": {
+          "n": 3,
+          "correct": 0,
+          "expands": 0
+        },
+        "recoverable": {
+          "n": 3,
+          "correct": 3,
+          "expands": 3
+        }
+      }
+    },
+    {
+      "case": 7,
+      "path": "src/streamlink/plugins/cnbce.py",
+      "constant": "_URL_API",
+      "target_value_retained": false,
+      "source_tokens": 248,
+      "retained_tokens": 170,
+      "conditions": {
+        "full": {
+          "n": 3,
+          "correct": 3,
+          "expands": 0
+        },
+        "pruned": {
+          "n": 3,
+          "correct": 0,
+          "expands": 0
+        },
+        "recoverable": {
+          "n": 3,
+          "correct": 3,
+          "expands": 3
+        }
+      }
+    }
+  ],
+  "rows": [
+    {
+      "case": 0,
+      "mode": "full",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": true,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 845,
+      "output_tokens": 144,
+      "cost": 0.0008238
+    },
+    {
+      "case": 0,
+      "mode": "full",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": true,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 845,
+      "output_tokens": 156,
+      "cost": 0.0008502
+    },
+    {
+      "case": 0,
+      "mode": "full",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": true,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 845,
+      "output_tokens": 144,
+      "cost": 0.0008238
+    },
+    {
+      "case": 0,
+      "mode": "pruned",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": true,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 754,
+      "output_tokens": 142,
+      "cost": 0.0007648
+    },
+    {
+      "case": 0,
+      "mode": "pruned",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": true,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 754,
+      "output_tokens": 141,
+      "cost": 0.0007626
+    },
+    {
+      "case": 0,
+      "mode": "pruned",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": true,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 754,
+      "output_tokens": 147,
+      "cost": 0.0007758
+    },
+    {
+      "case": 0,
+      "mode": "recoverable",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": true,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 965,
+      "output_tokens": 121,
+      "cost": 0.0008452
+    },
+    {
+      "case": 0,
+      "mode": "recoverable",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": true,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 965,
+      "output_tokens": 121,
+      "cost": 0.00078248
+    },
+    {
+      "case": 0,
+      "mode": "recoverable",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": true,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 965,
+      "output_tokens": 134,
+      "cost": 0.00081108
+    },
+    {
+      "case": 1,
+      "mode": "full",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 1152,
+      "output_tokens": 100,
+      "cost": 0.0009112
+    },
+    {
+      "case": 1,
+      "mode": "full",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 1152,
+      "output_tokens": 118,
+      "cost": 0.0009508
+    },
+    {
+      "case": 1,
+      "mode": "full",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 1152,
+      "output_tokens": 137,
+      "cost": 0.0009926
+    },
+    {
+      "case": 1,
+      "mode": "pruned",
+      "repeat": 0,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 768,
+      "output_tokens": 126,
+      "cost": 0.000738
+    },
+    {
+      "case": 1,
+      "mode": "pruned",
+      "repeat": 1,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 768,
+      "output_tokens": 150,
+      "cost": 0.0007908
+    },
+    {
+      "case": 1,
+      "mode": "pruned",
+      "repeat": 2,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 768,
+      "output_tokens": 166,
+      "cost": 0.000826
+    },
+    {
+      "case": 1,
+      "mode": "recoverable",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 2,
+      "returned_chars": 1923,
+      "input_tokens": 3763,
+      "output_tokens": 149,
+      "cost": 0.00214656
+    },
+    {
+      "case": 1,
+      "mode": "recoverable",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 2,
+      "returned_chars": 1923,
+      "input_tokens": 3788,
+      "output_tokens": 159,
+      "cost": 0.0026226
+    },
+    {
+      "case": 1,
+      "mode": "recoverable",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 1620,
+      "input_tokens": 2426,
+      "output_tokens": 107,
+      "cost": 0.001691
+    },
+    {
+      "case": 2,
+      "mode": "full",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 1217,
+      "output_tokens": 195,
+      "cost": 0.0011592
+    },
+    {
+      "case": 2,
+      "mode": "full",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 1217,
+      "output_tokens": 186,
+      "cost": 0.0011394
+    },
+    {
+      "case": 2,
+      "mode": "full",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 1217,
+      "output_tokens": 182,
+      "cost": 0.0011306
+    },
+    {
+      "case": 2,
+      "mode": "pruned",
+      "repeat": 0,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 596,
+      "output_tokens": 122,
+      "cost": 0.000626
+    },
+    {
+      "case": 2,
+      "mode": "pruned",
+      "repeat": 1,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 596,
+      "output_tokens": 235,
+      "cost": 0.0008746
+    },
+    {
+      "case": 2,
+      "mode": "pruned",
+      "repeat": 2,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 596,
+      "output_tokens": 131,
+      "cost": 0.0006458
+    },
+    {
+      "case": 2,
+      "mode": "recoverable",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 1426,
+      "input_tokens": 2041,
+      "output_tokens": 114,
+      "cost": 0.0014754
+    },
+    {
+      "case": 2,
+      "mode": "recoverable",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 1426,
+      "input_tokens": 2056,
+      "output_tokens": 129,
+      "cost": 0.0015174
+    },
+    {
+      "case": 2,
+      "mode": "recoverable",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 1426,
+      "input_tokens": 2056,
+      "output_tokens": 129,
+      "cost": 0.0015174
+    },
+    {
+      "case": 3,
+      "mode": "full",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 1114,
+      "output_tokens": 147,
+      "cost": 0.0009918
+    },
+    {
+      "case": 3,
+      "mode": "full",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 1114,
+      "output_tokens": 145,
+      "cost": 0.0009874
+    },
+    {
+      "case": 3,
+      "mode": "full",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 1114,
+      "output_tokens": 143,
+      "cost": 0.000983
+    },
+    {
+      "case": 3,
+      "mode": "pruned",
+      "repeat": 0,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 498,
+      "output_tokens": 144,
+      "cost": 0.0006156
+    },
+    {
+      "case": 3,
+      "mode": "pruned",
+      "repeat": 1,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 498,
+      "output_tokens": 147,
+      "cost": 0.0006222
+    },
+    {
+      "case": 3,
+      "mode": "pruned",
+      "repeat": 2,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 498,
+      "output_tokens": 125,
+      "cost": 0.0005738
+    },
+    {
+      "case": 3,
+      "mode": "recoverable",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 2,
+      "returned_chars": 1555,
+      "input_tokens": 2845,
+      "output_tokens": 164,
+      "cost": 0.0020678
+    },
+    {
+      "case": 3,
+      "mode": "recoverable",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 2,
+      "returned_chars": 1555,
+      "input_tokens": 2839,
+      "output_tokens": 161,
+      "cost": 0.0020576
+    },
+    {
+      "case": 3,
+      "mode": "recoverable",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 2,
+      "returned_chars": 1555,
+      "input_tokens": 2843,
+      "output_tokens": 163,
+      "cost": 0.0020644
+    },
+    {
+      "case": 4,
+      "mode": "full",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 759,
+      "output_tokens": 161,
+      "cost": 0.0008096
+    },
+    {
+      "case": 4,
+      "mode": "full",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 759,
+      "output_tokens": 164,
+      "cost": 0.0005026
+    },
+    {
+      "case": 4,
+      "mode": "full",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 759,
+      "output_tokens": 167,
+      "cost": 0.0008228
+    },
+    {
+      "case": 4,
+      "mode": "pruned",
+      "repeat": 0,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 613,
+      "output_tokens": 362,
+      "cost": 0.0011642
+    },
+    {
+      "case": 4,
+      "mode": "pruned",
+      "repeat": 1,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 613,
+      "output_tokens": 457,
+      "cost": 0.0013732
+    },
+    {
+      "case": 4,
+      "mode": "pruned",
+      "repeat": 2,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 613,
+      "output_tokens": 639,
+      "cost": 0.0017736
+    },
+    {
+      "case": 4,
+      "mode": "recoverable",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 2,
+      "returned_chars": 1239,
+      "input_tokens": 3148,
+      "output_tokens": 201,
+      "cost": 0.00226828
+    },
+    {
+      "case": 4,
+      "mode": "recoverable",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 2,
+      "returned_chars": 1428,
+      "input_tokens": 3169,
+      "output_tokens": 200,
+      "cost": 0.0023414
+    },
+    {
+      "case": 4,
+      "mode": "recoverable",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 2,
+      "returned_chars": 1428,
+      "input_tokens": 3169,
+      "output_tokens": 200,
+      "cost": 0.00221596
+    },
+    {
+      "case": 5,
+      "mode": "full",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 822,
+      "output_tokens": 121,
+      "cost": 0.0007594
+    },
+    {
+      "case": 5,
+      "mode": "full",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 822,
+      "output_tokens": 122,
+      "cost": 0.0007616
+    },
+    {
+      "case": 5,
+      "mode": "full",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 822,
+      "output_tokens": 119,
+      "cost": 0.000755
+    },
+    {
+      "case": 5,
+      "mode": "pruned",
+      "repeat": 0,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 713,
+      "output_tokens": 151,
+      "cost": 0.00076
+    },
+    {
+      "case": 5,
+      "mode": "pruned",
+      "repeat": 1,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 713,
+      "output_tokens": 242,
+      "cost": 0.0009602
+    },
+    {
+      "case": 5,
+      "mode": "pruned",
+      "repeat": 2,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 713,
+      "output_tokens": 163,
+      "cost": 0.0007864
+    },
+    {
+      "case": 5,
+      "mode": "recoverable",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 719,
+      "input_tokens": 2085,
+      "output_tokens": 91,
+      "cost": 0.0014512000000000001
+    },
+    {
+      "case": 5,
+      "mode": "recoverable",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 719,
+      "input_tokens": 2085,
+      "output_tokens": 91,
+      "cost": 0.0014512000000000001
+    },
+    {
+      "case": 5,
+      "mode": "recoverable",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 719,
+      "input_tokens": 2085,
+      "output_tokens": 91,
+      "cost": 0.00088672
+    },
+    {
+      "case": 6,
+      "mode": "full",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 654,
+      "output_tokens": 114,
+      "cost": 0.0006432
+    },
+    {
+      "case": 6,
+      "mode": "full",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 654,
+      "output_tokens": 132,
+      "cost": 0.0006828
+    },
+    {
+      "case": 6,
+      "mode": "full",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 654,
+      "output_tokens": 135,
+      "cost": 0.0006894
+    },
+    {
+      "case": 6,
+      "mode": "pruned",
+      "repeat": 0,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 487,
+      "output_tokens": 146,
+      "cost": 0.0006134
+    },
+    {
+      "case": 6,
+      "mode": "pruned",
+      "repeat": 1,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 487,
+      "output_tokens": 153,
+      "cost": 0.0006288
+    },
+    {
+      "case": 6,
+      "mode": "pruned",
+      "repeat": 2,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 487,
+      "output_tokens": 146,
+      "cost": 0.0006134
+    },
+    {
+      "case": 6,
+      "mode": "recoverable",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 2763,
+      "input_tokens": 2033,
+      "output_tokens": 108,
+      "cost": 0.0014574
+    },
+    {
+      "case": 6,
+      "mode": "recoverable",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 2763,
+      "input_tokens": 2033,
+      "output_tokens": 105,
+      "cost": 0.0013880799999999999
+    },
+    {
+      "case": 6,
+      "mode": "recoverable",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 696,
+      "input_tokens": 1642,
+      "output_tokens": 107,
+      "cost": 0.00115788
+    },
+    {
+      "case": 7,
+      "mode": "full",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 340,
+      "output_tokens": 125,
+      "cost": 0.000479
+    },
+    {
+      "case": 7,
+      "mode": "full",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 340,
+      "output_tokens": 119,
+      "cost": 0.0004658
+    },
+    {
+      "case": 7,
+      "mode": "full",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 340,
+      "output_tokens": 131,
+      "cost": 0.0004922
+    },
+    {
+      "case": 7,
+      "mode": "pruned",
+      "repeat": 0,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 261,
+      "output_tokens": 189,
+      "cost": 0.0005724
+    },
+    {
+      "case": 7,
+      "mode": "pruned",
+      "repeat": 1,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 261,
+      "output_tokens": 189,
+      "cost": 0.0005724
+    },
+    {
+      "case": 7,
+      "mode": "pruned",
+      "repeat": 2,
+      "correct": false,
+      "target_value_retained": false,
+      "expands": 0,
+      "returned_chars": 0,
+      "input_tokens": 261,
+      "output_tokens": 185,
+      "cost": 0.0005636
+    },
+    {
+      "case": 7,
+      "mode": "recoverable",
+      "repeat": 0,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 1102,
+      "input_tokens": 1260,
+      "output_tokens": 103,
+      "cost": 0.0009826000000000001
+    },
+    {
+      "case": 7,
+      "mode": "recoverable",
+      "repeat": 1,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 1102,
+      "input_tokens": 1257,
+      "output_tokens": 100,
+      "cost": 0.0009741999999999999
+    },
+    {
+      "case": 7,
+      "mode": "recoverable",
+      "repeat": 2,
+      "correct": true,
+      "target_value_retained": false,
+      "expands": 1,
+      "returned_chars": 1102,
+      "input_tokens": 1257,
+      "output_tokens": 100,
+      "cost": 0.00091148
+    }
+  ]
+}

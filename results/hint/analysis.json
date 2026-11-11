@@ -1,0 +1,317 @@
+{
+  "planned": 24,
+  "pending": [
+    [
+      41,
+      1,
+      "pruner"
+    ],
+    [
+      41,
+      2,
+      "pruner"
+    ],
+    [
+      14,
+      1,
+      "pruner"
+    ],
+    [
+      14,
+      2,
+      "pruner"
+    ],
+    [
+      30,
+      1,
+      "pruner"
+    ],
+    [
+      30,
+      2,
+      "pruner"
+    ],
+    [
+      8,
+      1,
+      "pruner"
+    ],
+    [
+      8,
+      2,
+      "pruner"
+    ],
+    [
+      11,
+      1,
+      "pruner"
+    ],
+    [
+      11,
+      2,
+      "pruner"
+    ],
+    [
+      46,
+      1,
+      "pruner"
+    ],
+    [
+      46,
+      2,
+      "pruner"
+    ],
+    [
+      33,
+      1,
+      "pruner"
+    ],
+    [
+      33,
+      2,
+      "pruner"
+    ],
+    [
+      29,
+      1,
+      "pruner"
+    ],
+    [
+      29,
+      2,
+      "pruner"
+    ]
+  ],
+  "selected_cells": 8,
+  "attempts": 16,
+  "final": false,
+  "conditions": {
+    "pruner": {
+      "n": 8,
+      "answered": 8,
+      "qualified": 8,
+      "scored": 8,
+      "mean_score": 9.2,
+      "failure_zero_score": 9.2,
+      "pruning_tasks": 8,
+      "expansion_tasks": 0,
+      "mean_total_tokens": 177635.5,
+      "mean_input_tokens": 174888.25,
+      "mean_output_tokens": 2747.25,
+      "mean_cached_tokens": 158704,
+      "mean_api_requests": 20.125,
+      "mean_author_rounds": 22,
+      "mean_seconds": 551.42125,
+      "mean_max_input_tokens": 11704.625,
+      "sum_cost": 0.26569552,
+      "sum_conservative_cost": 0.26569552,
+      "sum_stored_observation_bytes": 0,
+      "sum_stored_observations": 0,
+      "sum_prune_calls": 148,
+      "sum_raw_pruned_tokens": 181106,
+      "sum_kept_pruned_tokens": 57454,
+      "sum_expand_calls": 0,
+      "sum_expand_tool_actions": 0,
+      "sum_expanded_chars": 0,
+      "sum_repeated_lines": 0,
+      "sum_repeated_exact_commands": 9,
+      "sum_tool_timeout_observations": 0,
+      "median_total_tokens": 111431.0,
+      "dimension_means": {
+        "correctness": 9,
+        "completeness": 9.375,
+        "relevance": 9.25,
+        "clarity": 9.25,
+        "reasoning": 9.125
+      },
+      "repeat_means": [
+        {
+          "repeat": 0,
+          "tokens": 177635.5,
+          "score": 9.2
+        },
+        {
+          "repeat": 1,
+          "tokens": null,
+          "score": null
+        },
+        {
+          "repeat": 2,
+          "tokens": null,
+          "score": null
+        }
+      ]
+    }
+  },
+  "paired": {
+    "pruner-baseline:total_tokens": {
+      "pairs": [],
+      "mean_difference": null,
+      "ci95": null
+    },
+    "pruner-baseline:score": {
+      "pairs": [],
+      "mean_difference": null,
+      "ci95": null
+    }
+  },
+  "first_attempt": {
+    "pruner": {
+      "n": 8,
+      "answered": 8,
+      "qualified": 3,
+      "scored": 3,
+      "mean_score": 9.133333333333333,
+      "failure_zero_score": 3.425,
+      "pruning_tasks": 7,
+      "expansion_tasks": 0,
+      "mean_total_tokens": 51292.5,
+      "mean_input_tokens": 50363,
+      "mean_output_tokens": 929.5,
+      "mean_cached_tokens": 43088,
+      "mean_api_requests": 8.125,
+      "mean_author_rounds": 9.625,
+      "mean_seconds": 230.93375,
+      "mean_max_input_tokens": 6218.5,
+      "sum_cost": 0.08919664000000001,
+      "sum_conservative_cost": 0.53867164,
+      "sum_stored_observation_bytes": 0,
+      "sum_stored_observations": 0,
+      "sum_prune_calls": 55,
+      "sum_raw_pruned_tokens": 115441,
+      "sum_kept_pruned_tokens": 26061,
+      "sum_expand_calls": 0,
+      "sum_expand_tool_actions": 0,
+      "sum_expanded_chars": 0,
+      "sum_repeated_lines": 0,
+      "sum_repeated_exact_commands": 3,
+      "sum_tool_timeout_observations": 0,
+      "median_total_tokens": 44862.0,
+      "dimension_means": {
+        "correctness": 9,
+        "completeness": 9,
+        "relevance": 9.666666666666666,
+        "clarity": 9,
+        "reasoning": 9
+      },
+      "repeat_means": [
+        {
+          "repeat": 0,
+          "tokens": 51292.5,
+          "score": 9.133333333333333
+        },
+        {
+          "repeat": 1,
+          "tokens": null,
+          "score": null
+        },
+        {
+          "repeat": 2,
+          "tokens": null,
+          "score": null
+        }
+      ]
+    }
+  },
+  "author_filtered_pairs": {
+    "pruner-baseline": {
+      "n": 0,
+      "treatment_score": null,
+      "control_score": null
+    }
+  },
+  "question_means": [
+    {
+      "index": 41,
+      "mode": "pruner",
+      "n": 1,
+      "score": 9.0,
+      "total_tokens": 87372,
+      "api_requests": 14,
+      "author_rounds": 16,
+      "prune_calls": 12,
+      "expand_calls": 0
+    },
+    {
+      "index": 14,
+      "mode": "pruner",
+      "n": 1,
+      "score": 10.0,
+      "total_tokens": 111943,
+      "api_requests": 13,
+      "author_rounds": 15,
+      "prune_calls": 11,
+      "expand_calls": 0
+    },
+    {
+      "index": 30,
+      "mode": "pruner",
+      "n": 1,
+      "score": 9.0,
+      "total_tokens": 110919,
+      "api_requests": 14,
+      "author_rounds": 16,
+      "prune_calls": 13,
+      "expand_calls": 0
+    },
+    {
+      "index": 8,
+      "mode": "pruner",
+      "n": 1,
+      "score": 9.4,
+      "total_tokens": 46410,
+      "api_requests": 8,
+      "author_rounds": 10,
+      "prune_calls": 6,
+      "expand_calls": 0
+    },
+    {
+      "index": 11,
+      "mode": "pruner",
+      "n": 1,
+      "score": 8.0,
+      "total_tokens": 509016,
+      "api_requests": 51,
+      "author_rounds": 52,
+      "prune_calls": 50,
+      "expand_calls": 0
+    },
+    {
+      "index": 46,
+      "mode": "pruner",
+      "n": 1,
+      "score": 9.8,
+      "total_tokens": 39192,
+      "api_requests": 8,
+      "author_rounds": 10,
+      "prune_calls": 7,
+      "expand_calls": 0
+    },
+    {
+      "index": 33,
+      "mode": "pruner",
+      "n": 1,
+      "score": 9.0,
+      "total_tokens": 280560,
+      "api_requests": 38,
+      "author_rounds": 40,
+      "prune_calls": 36,
+      "expand_calls": 0
+    },
+    {
+      "index": 29,
+      "mode": "pruner",
+      "n": 1,
+      "score": 9.4,
+      "total_tokens": 235672,
+      "api_requests": 15,
+      "author_rounds": 17,
+      "prune_calls": 13,
+      "expand_calls": 0
+    }
+  ],
+  "leave_one_question_out": {
+    "pruner-baseline:total_tokens": [],
+    "pruner-baseline:score": []
+  }
+}

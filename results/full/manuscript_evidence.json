@@ -1,0 +1,440 @@
+{
+  "groups": {
+    "original_full": {
+      "n": 24,
+      "questions": 8,
+      "score": 9.0,
+      "tokens": 136374.375,
+      "requests": 12.708333333333334,
+      "rounds": 15.416666666666666,
+      "seconds": 142.69958333333332,
+      "pruning_task_percent": 0.0,
+      "expand_task_percent": 0.0,
+      "prune_calls": 0,
+      "expand_calls": 0,
+      "raw": 0,
+      "kept": 0,
+      "selected_agent_usd": 0.6771046000000001,
+      "first_attempt_percent": 83.33333333333333,
+      "execution_complete_percent": 100.0
+    },
+    "original_pruner": {
+      "n": 24,
+      "questions": 8,
+      "score": 9.116666666666667,
+      "tokens": 112346.20833333333,
+      "requests": 10.458333333333334,
+      "rounds": 14.25,
+      "seconds": 148.85208333333333,
+      "pruning_task_percent": 25.0,
+      "expand_task_percent": 0.0,
+      "prune_calls": 6,
+      "expand_calls": 0,
+      "raw": 199487,
+      "kept": 37030,
+      "selected_agent_usd": 0.58983692,
+      "first_attempt_percent": 75.0,
+      "execution_complete_percent": 100.0
+    },
+    "repaired_full": {
+      "n": 24,
+      "questions": 8,
+      "score": 9.041666666666666,
+      "tokens": 136997.54166666666,
+      "requests": 12.708333333333334,
+      "rounds": 15.416666666666666,
+      "seconds": 142.69958333333332,
+      "pruning_task_percent": 0.0,
+      "expand_task_percent": 0.0,
+      "prune_calls": 0,
+      "expand_calls": 0,
+      "raw": 0,
+      "kept": 0,
+      "selected_agent_usd": 0.6864285999999999,
+      "first_attempt_percent": 83.33333333333333,
+      "execution_complete_percent": 100.0
+    },
+    "required_full": {
+      "n": 8,
+      "questions": 8,
+      "score": 9.325,
+      "tokens": 134056,
+      "requests": 10.125,
+      "rounds": 12.5,
+      "seconds": 108.81,
+      "pruning_task_percent": 0.0,
+      "expand_task_percent": 0.0,
+      "prune_calls": 0,
+      "expand_calls": 0,
+      "raw": 0,
+      "kept": 0,
+      "selected_agent_usd": 0.24990368000000002,
+      "first_attempt_percent": 37.5,
+      "execution_complete_percent": 100.0
+    },
+    "required_pruner": {
+      "n": 8,
+      "questions": 8,
+      "score": 9.2,
+      "tokens": 177635.5,
+      "requests": 20.125,
+      "rounds": 22,
+      "seconds": 551.42125,
+      "pruning_task_percent": 100.0,
+      "expand_task_percent": 0.0,
+      "prune_calls": 148,
+      "expand_calls": 0,
+      "raw": 181106,
+      "kept": 57454,
+      "selected_agent_usd": 0.26569552,
+      "first_attempt_percent": 37.5,
+      "execution_complete_percent": 100.0
+    },
+    "required_pruner_repaired": {
+      "n": 8,
+      "questions": 8,
+      "score": 9.3,
+      "tokens": 178876.125,
+      "requests": 20.125,
+      "rounds": 22,
+      "seconds": 551.42125,
+      "pruning_task_percent": 100.0,
+      "expand_task_percent": 0.0,
+      "prune_calls": 148,
+      "expand_calls": 0,
+      "raw": 181106,
+      "kept": 57454,
+      "selected_agent_usd": 0.27244412,
+      "first_attempt_percent": 37.5,
+      "execution_complete_percent": 100.0
+    },
+    "required_recovery": {
+      "n": 8,
+      "questions": 8,
+      "score": 9.325,
+      "tokens": 156943,
+      "requests": 15.625,
+      "rounds": 17.625,
+      "seconds": 231.69875,
+      "pruning_task_percent": 100.0,
+      "expand_task_percent": 62.5,
+      "prune_calls": 85,
+      "expand_calls": 21,
+      "raw": 148149,
+      "kept": 52937,
+      "selected_agent_usd": 0.25882272,
+      "first_attempt_percent": 100.0,
+      "execution_complete_percent": 100.0
+    },
+    "optional_recovery": {
+      "n": 24,
+      "questions": 8,
+      "score": 9.241666666666667,
+      "tokens": 125071.79166666667,
+      "requests": 11.083333333333334,
+      "rounds": 13.916666666666666,
+      "seconds": 118.66916666666667,
+      "pruning_task_percent": 16.666666666666668,
+      "expand_task_percent": 12.5,
+      "prune_calls": 6,
+      "expand_calls": 12,
+      "raw": 134828,
+      "kept": 19462,
+      "selected_agent_usd": 0.6538402,
+      "first_attempt_percent": 87.5,
+      "execution_complete_percent": 100.0
+    }
+  },
+  "comparisons": {
+    "original": {
+      "score": {
+        "relative_percent": 1.2962962962963065,
+        "ci95_percent": [
+          -0.4492362982928988,
+          3.183520599250933
+        ]
+      },
+      "total_tokens": {
+        "relative_percent": -17.619268038197553,
+        "ci95_percent": [
+          -29.547716998043317,
+          8.726572513202967
+        ]
+      },
+      "api_requests": {
+        "relative_percent": -17.704918032786885,
+        "ci95_percent": [
+          -21.505376344086013,
+          -8.124999999999993
+        ]
+      }
+    },
+    "terminal_repaired": {
+      "score": {
+        "relative_percent": 0.8294930875576201,
+        "ci95_percent": [
+          -0.536672629695889,
+          2.099236641221358
+        ]
+      },
+      "total_tokens": {
+        "relative_percent": -17.993996850916727,
+        "ci95_percent": [
+          -29.611340880072824,
+          8.726572513202967
+        ]
+      },
+      "api_requests": {
+        "relative_percent": -17.704918032786885,
+        "ci95_percent": [
+          -21.505376344086013,
+          -8.124999999999993
+        ]
+      }
+    },
+    "activation_raw": {
+      "score": {
+        "relative_percent": -1.3404825737265424,
+        "ci95_percent": [
+          -3.513513513513511,
+          0.7915567282322122
+        ]
+      },
+      "total_tokens": {
+        "relative_percent": 32.508429313122875,
+        "ci95_percent": [
+          -21.631935032077344,
+          199.38553640379672
+        ]
+      },
+      "api_requests": {
+        "relative_percent": 98.76543209876543,
+        "ci95_percent": [
+          50.847457627118644,
+          217.3076923076923
+        ]
+      }
+    },
+    "activation_repaired": {
+      "score": {
+        "relative_percent": -0.2680965147452974,
+        "ci95_percent": [
+          -1.8817204301075363,
+          1.5706806282722363
+        ]
+      },
+      "total_tokens": {
+        "relative_percent": 33.433882108969385,
+        "ci95_percent": [
+          -21.371196395444013,
+          199.38553640379672
+        ]
+      },
+      "api_requests": {
+        "relative_percent": 98.76543209876543,
+        "ci95_percent": [
+          50.847457627118644,
+          217.3076923076923
+        ]
+      }
+    },
+    "required_recovery_raw": {
+      "score": {
+        "relative_percent": 1.3586956521739024,
+        "ci95_percent": [
+          -1.5706806282722585,
+          4.336043360433606
+        ]
+      },
+      "total_tokens": {
+        "relative_percent": -11.648853973445627,
+        "ci95_percent": [
+          -48.77050530880715,
+          47.123974375423636
+        ]
+      },
+      "api_requests": {
+        "relative_percent": -22.360248447204967,
+        "ci95_percent": [
+          -47.398843930635834,
+          5.882352941176472
+        ]
+      }
+    },
+    "required_recovery_repaired": {
+      "score": {
+        "relative_percent": 0.2688172043010528,
+        "ci95_percent": [
+          -2.9891304347826164,
+          3.7837837837837895
+        ]
+      },
+      "total_tokens": {
+        "relative_percent": -12.261627984170609,
+        "ci95_percent": [
+          -48.77050530880715,
+          46.73122051456642
+        ]
+      },
+      "api_requests": {
+        "relative_percent": -22.360248447204967,
+        "ci95_percent": [
+          -47.398843930635834,
+          5.882352941176472
+        ]
+      }
+    },
+    "optional_recovery": {
+      "score": {
+        "relative_percent": 1.3711151736745864,
+        "ci95_percent": [
+          -2.023919043238276,
+          4.037558685446019
+        ]
+      },
+      "total_tokens": {
+        "relative_percent": 11.327114214283318,
+        "ci95_percent": [
+          0.8879188149675254,
+          35.35823191129958
+        ]
+      },
+      "api_requests": {
+        "relative_percent": 5.976095617529875,
+        "ci95_percent": [
+          -1.3435700575815779,
+          23.456790123456805
+        ]
+      }
+    }
+  },
+  "comparison_groups": {
+    "original": [
+      "original_full",
+      "original_pruner"
+    ],
+    "terminal_repaired": [
+      "repaired_full",
+      "original_pruner"
+    ],
+    "activation_raw": [
+      "required_full",
+      "required_pruner"
+    ],
+    "activation_repaired": [
+      "required_full",
+      "required_pruner_repaired"
+    ],
+    "required_recovery_raw": [
+      "required_pruner",
+      "required_recovery"
+    ],
+    "required_recovery_repaired": [
+      "required_pruner_repaired",
+      "required_recovery"
+    ],
+    "optional_recovery": [
+      "original_pruner",
+      "optional_recovery"
+    ]
+  },
+  "source_paths": [
+    "runs/hint/formal/pruner/q11_r0/attempt3",
+    "runs/hint/formal/pruner/q14_r0/attempt1",
+    "runs/hint/formal/pruner/q29_r0/attempt1",
+    "runs/hint/formal/pruner/q30_r0/attempt0",
+    "runs/hint/formal/pruner/q33_r0/attempt2",
+    "runs/hint/formal/pruner/q41_r0/attempt0",
+    "runs/hint/formal/pruner/q46_r0/attempt1",
+    "runs/hint/formal/pruner/q8_r0/attempt0",
+    "runs/hintfull/formal/pruner/q11_r0/attempt3",
+    "runs/hintfull/formal/pruner/q14_r0/attempt0",
+    "runs/hintfull/formal/pruner/q29_r0/attempt2",
+    "runs/hintfull/formal/pruner/q30_r0/attempt2",
+    "runs/hintfull/formal/pruner/q33_r0/attempt2",
+    "runs/hintfull/formal/pruner/q41_r0/attempt0",
+    "runs/hintfull/formal/pruner/q46_r0/attempt2",
+    "runs/hintfull/formal/pruner/q8_r0/attempt0",
+    "runs/optional/formal/recovery/q11_r0/attempt0",
+    "runs/optional/formal/recovery/q11_r1/attempt0",
+    "runs/optional/formal/recovery/q11_r2/attempt0",
+    "runs/optional/formal/recovery/q14_r0/attempt0",
+    "runs/optional/formal/recovery/q14_r1/attempt1",
+    "runs/optional/formal/recovery/q14_r2/attempt0",
+    "runs/optional/formal/recovery/q29_r0/attempt0",
+    "runs/optional/formal/recovery/q29_r1/attempt0",
+    "runs/optional/formal/recovery/q29_r2/attempt0",
+    "runs/optional/formal/recovery/q30_r0/attempt0",
+    "runs/optional/formal/recovery/q30_r1/attempt1",
+    "runs/optional/formal/recovery/q30_r2/attempt0",
+    "runs/optional/formal/recovery/q33_r0/attempt0",
+    "runs/optional/formal/recovery/q33_r1/attempt0",
+    "runs/optional/formal/recovery/q33_r2/attempt0",
+    "runs/optional/formal/recovery/q41_r0/attempt0",
+    "runs/optional/formal/recovery/q41_r1/attempt0",
+    "runs/optional/formal/recovery/q41_r2/attempt1",
+    "runs/optional/formal/recovery/q46_r0/attempt0",
+    "runs/optional/formal/recovery/q46_r1/attempt0",
+    "runs/optional/formal/recovery/q46_r2/attempt0",
+    "runs/optional/formal/recovery/q8_r0/attempt0",
+    "runs/optional/formal/recovery/q8_r1/attempt0",
+    "runs/optional/formal/recovery/q8_r2/attempt0",
+    "runs/precision/formal/baseline/q11_r0/attempt0",
+    "runs/precision/formal/baseline/q11_r1/attempt0",
+    "runs/precision/formal/baseline/q11_r2/attempt3",
+    "runs/precision/formal/baseline/q14_r0/attempt0",
+    "runs/precision/formal/baseline/q14_r1/attempt0",
+    "runs/precision/formal/baseline/q14_r2/attempt0",
+    "runs/precision/formal/baseline/q29_r0/attempt0",
+    "runs/precision/formal/baseline/q29_r1/attempt1",
+    "runs/precision/formal/baseline/q29_r2/attempt0",
+    "runs/precision/formal/baseline/q30_r0/attempt0",
+    "runs/precision/formal/baseline/q30_r1/attempt0",
+    "runs/precision/formal/baseline/q30_r2/attempt0",
+    "runs/precision/formal/baseline/q33_r0/attempt0",
+    "runs/precision/formal/baseline/q33_r1/attempt0",
+    "runs/precision/formal/baseline/q33_r2/attempt0",
+    "runs/precision/formal/baseline/q41_r0/attempt0",
+    "runs/precision/formal/baseline/q41_r1/attempt0",
+    "runs/precision/formal/baseline/q41_r2/attempt0",
+    "runs/precision/formal/baseline/q46_r0/attempt0",
+    "runs/precision/formal/baseline/q46_r1/attempt1",
+    "runs/precision/formal/baseline/q46_r2/attempt0",
+    "runs/precision/formal/baseline/q8_r0/attempt0",
+    "runs/precision/formal/baseline/q8_r1/attempt0",
+    "runs/precision/formal/baseline/q8_r2/attempt1",
+    "runs/precision/formal/pruner/q11_r0/attempt0",
+    "runs/precision/formal/pruner/q11_r1/attempt1",
+    "runs/precision/formal/pruner/q11_r2/attempt2",
+    "runs/precision/formal/pruner/q14_r0/attempt0",
+    "runs/precision/formal/pruner/q14_r1/attempt1",
+    "runs/precision/formal/pruner/q14_r2/attempt1",
+    "runs/precision/formal/pruner/q29_r0/attempt0",
+    "runs/precision/formal/pruner/q29_r1/attempt0",
+    "runs/precision/formal/pruner/q29_r2/attempt0",
+    "runs/precision/formal/pruner/q30_r0/attempt0",
+    "runs/precision/formal/pruner/q30_r1/attempt0",
+    "runs/precision/formal/pruner/q30_r2/attempt0",
+    "runs/precision/formal/pruner/q33_r0/attempt0",
+    "runs/precision/formal/pruner/q33_r1/attempt1",
+    "runs/precision/formal/pruner/q33_r2/attempt0",
+    "runs/precision/formal/pruner/q41_r0/attempt0",
+    "runs/precision/formal/pruner/q41_r1/attempt0",
+    "runs/precision/formal/pruner/q41_r2/attempt1",
+    "runs/precision/formal/pruner/q46_r0/attempt0",
+    "runs/precision/formal/pruner/q46_r1/attempt0",
+    "runs/precision/formal/pruner/q46_r2/attempt0",
+    "runs/precision/formal/pruner/q8_r0/attempt0",
+    "runs/precision/formal/pruner/q8_r1/attempt0",
+    "runs/precision/formal/pruner/q8_r2/attempt0",
+    "runs/recovery/formal/recovery/q11_r0/attempt0",
+    "runs/recovery/formal/recovery/q14_r0/attempt0",
+    "runs/recovery/formal/recovery/q29_r0/attempt0",
+    "runs/recovery/formal/recovery/q30_r0/attempt0",
+    "runs/recovery/formal/recovery/q33_r0/attempt0",
+    "runs/recovery/formal/recovery/q41_r0/attempt0",
+    "runs/recovery/formal/recovery/q46_r0/attempt0",
+    "runs/recovery/formal/recovery/q8_r0/attempt0"
+  ],
+  "scope": "All planned cells in each complete study. Repaired full and required-pruner groups replace only affected terminal-summary branches on identical fixed agent prefixes; raw results remain separate. Optional recovery is a later independent stage."
+}

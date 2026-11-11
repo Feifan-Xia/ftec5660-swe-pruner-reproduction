@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "checks": [
+    "Optional-hint pruning binding",
+    "Raw text stored outside visible compressed observation",
+    "Exact bounded range expansion",
+    "Persisted expansion trace"
+  ]
+}
