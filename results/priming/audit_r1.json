@@ -1,0 +1,32 @@
+{
+  "study": "priming",
+  "repeats": 1,
+  "planned": 6,
+  "complete": 6,
+  "pending": [],
+  "errors": [],
+  "frozen_source_files_verified": 18,
+  "first_agent_attempt_percent": 66.66666666666667,
+  "retries": [
+    {
+      "index": 26,
+      "repeat": 0,
+      "mode": "pruner",
+      "selected_attempt": 3,
+      "attempts": 4,
+      "score": 7.0
+    },
+    {
+      "index": 17,
+      "repeat": 0,
+      "mode": "pruner",
+      "selected_attempt": 3,
+      "attempts": 4,
+      "score": 7.4
+    }
+  ],
+  "project_conservative_usd": 9.468679073,
+  "ceiling_usd": 12,
+  "recovery_wrapper_sha256": "ee8c1ba79cf49e353be27d219abc98ab195d482373b4a5341b07d7dfbae49219",
+  "scope": "Frozen runtime hashes, fixed question-only inputs, selected-answer existence, score arithmetic, bounded infrastructure retry provenance and reconciled budget. Failed prior attempts remain in their original directories."
+}

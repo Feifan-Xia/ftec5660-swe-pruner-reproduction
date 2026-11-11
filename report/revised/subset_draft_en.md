@@ -4,11 +4,11 @@ Xia Feifan · 1155204948
 
 FTEC5660 Individual Reproducibility Project · November 2026
 
-Completed subset evidence draft · Full-population extension pending
+Completed subset evidence draft · Small-scope alignment diagnosis
 
 ## Abstract
 
-We reproduce SWE-Pruner's repository question-answering experiment using the released OpenHands/SWE-QA implementation, targeting the Streamlink and GLM-4.6 rows of Table 2. After correcting the workspace, step limit, padding and parameter-loading precision, eight fixed questions with three repetitions per condition show 17.6% lower cumulative API tokens and a 1.3% increase in mean answer quality. All three repetitions reduce tokens, but the question-cluster interval includes zero and only 25.0% of pruning tasks activate the skimmer. The authors' released executions on the identical eight questions reduce tokens by 49.9%, establishing a substantial remaining gap. We add task-local storage of captured tool output and exact recovery of bounded line ranges. Under the original optional-hint protocol, recovery increases mean quality by 1.4% at an 11.3% token overhead; the quality interval includes zero. A controlled evidence-retrieval experiment increases exact-match success from 12.5% to 100.0% at a 196.4% token overhead. Artifact audits, matched policy diagnostics and complete failed-attempt records explain the observed tradeoffs and delimit the reproduction claim.
+We reproduce SWE-Pruner's repository question-answering experiment using the released OpenHands/SWE-QA implementation, targeting the Streamlink and GLM-4.6 rows of Table 2. After correcting the workspace, step limit, padding and parameter-loading precision, eight fixed questions with three repetitions per condition show 17.6% lower cumulative API tokens and a 1.3% increase in mean answer quality. All three repetitions reduce tokens, but the question-cluster interval includes zero and only 25.0% of pruning tasks activate the skimmer. The authors' released executions on the identical eight questions reduce tokens by 49.9%, establishing a substantial remaining gap. A complete replay of 131 author observations achieves 96.9% exact text agreement and 81.12% compression versus the authors' 81.11%, focusing the remaining gap on hint use and search paths. We add task-local storage of captured tool output and exact recovery of bounded line ranges. Under the original optional-hint protocol, recovery increases mean quality by 1.4% at an 11.3% token overhead; the quality interval includes zero. A controlled evidence-retrieval experiment increases exact-match success from 12.5% to 100.0% at a 196.4% token overhead. Artifact audits, matched policy diagnostics and complete failed-attempt records explain the observed tradeoffs and delimit the reproduction claim.
 
 ## 1. Introduction
 
@@ -67,6 +67,16 @@ Restoring masked right padding changes eight retained-line decisions across six 
 
 System prompts, complete tool schemas and the 16 initial user prompts for the two original conditions match the author records. A local fake-response capture of the published Azure SDK path also preserves optional hints, temperature zero and top_p one. The original model was served as `azure/glm-4.6` through a ByteDance gateway; our accessible route is GLM-4.6 through OpenRouter/Z.AI with fallback disabled [4]. The original service internals, hardware kernels and actual downloaded checkpoint revision remain incompletely specified.
 
+Replaying all 131 saved pruning observations from the same eight questions, with original text and hints including short and unchanged outputs, produces 127 exact text matches (96.9%).
+
+| Fixed-input measure | Author record | Local replay |
+|---|---:|---:|
+| Source tokens | 194,517 | 194,517 |
+| Retained tokens | 36,751 | 36,724 |
+| Text compression | 81.11% | 81.12% |
+
+Table 1a. Complete same-input skimmer replay: 131/131 completed, zero service failures. Line diffs retain four residual disagreements. The compression difference is 0.014 percentage points. This establishes close component fidelity on known author inputs and focuses the online diagnosis on hint use, commands and rereading.
+
 ### 3.3 Usage and terminal-summary repairs
 
 An independent request ledger validates cumulative input and output. Replaying the released runner's simultaneous accumulation of SDK totals and per-call usages gives exactly twice the independent usage in 72 historical tasks. Mutually exclusive accounting branches correct this defect. The public SWE-QA code postdates the paper, so the relationship between that code path and published accounting is uncertain. A uniform factor alone preserves relative token changes.
@@ -122,7 +132,11 @@ On identical questions, author absolute savings are 94.9K tokens per task versus
 
 ### 5.2 Activation and repeated reading
 
-Original optional pruning compresses 199,487 source tokens to 37,030 (81.4%) across six calls in six tasks. Task coverage is 25.0%, versus 100.0% in the author records. In the first local repetition, q11 contributes 95.3% of net savings without activating the skimmer. Full and pruner tool descriptions differ, so investigation strategy as well as online variability can affect paths even when no text is filtered.
+Across all three repetitions, the local 17.6% token reduction factorizes into 17.7% fewer API requests and 0.1% more tokens per request. The aggregate benefit primarily reflects shorter paths, with limited evidence of sustained context reduction. Local optional pruning uses hints in 6/254 Bash actions (2.4%), versus 131/131 in the authors' same-question records; task-level activation is 25% versus 100%.
+
+Author full trajectories contain nine command timeouts across four questions, versus one in their pruning arm and zero in both local arms. In q41, four timeouts precede repeated searches for Streamlink's TestIO inside Conan; author full reaches 50 steps and scores 2.8, while local mean quality is 8.67 and usage is 32.3K versus 146.2K. Author full q8 has three timeouts and cross-repository search, using 193.8K versus 43.3K locally. These traces identify additional search and failure costs; independent causal contributions require controlled intervention. All tasks and failures remain included.
+
+Original optional pruning compresses 199,487 source tokens to 37,030 (81.4%) across six calls in six tasks. Task coverage is 25.0%, versus 100.0% in the author records. Full and pruner tool descriptions differ, so investigation strategy as well as online variability can affect paths even when no text is filtered.
 
 | Required-hint diagnostic | Quality | Tokens K | API requests | Pruning coverage |
 |---|---|---|---|---|
@@ -147,17 +161,31 @@ The controlled experiment uses eight fixed source observations of 25–180 lines
 
 ![Figure 2. Controlled evidence-retrieval results, 24 trials per condition. Exact-match SR and cumulative follow-up API tokens are reported separately.](figures/mechanism.png)
 
+### 5.4 First-request priming development screen
+
+Three disjoint development questions (43, 26, 17) require a nonempty hint only on the first API request, then restore the original optional schema. Matched full and pruner use identical interfaces and priming; only executor filtering differs. All six cells complete, all three pruning tasks use later hints, and request-level schema checks pass.
+
+| Development measure | Matched full | Primed pruner | Relative change |
+|---|---:|---:|---:|
+| Mean cumulative tokens K | 102.5 | 63.9 | −37.7% |
+| Mean quality / 10 | 9.07 | 8.13 | −10.3% |
+| Mean API requests | 9.67 | 8.67 | −10.3% |
+
+Table 6. One repetition per development question. Full/pruner scores are 10/10, 9.2/7.0 and 8.0/7.4. The quality decline exceeds the predeclared 2% tolerance, stopping fixed-eight confirmation of this candidate. Both q26 and q17 require three preserved transport failures before their first complete, receipt-backed fourth execution; transport changes add a run-period limitation.
+
+A source audit identifies reference disagreements: q17 describes normal Fetch.failRequest fallback as raising CDPError and terminating the session, whereas the pinned code and test support blocking the request. For q26, main_js_url_re scans HTML before a separate JavaScript response is searched with user_id_re; the reference describes both scanning the same JS content. Generated answers also contain unsupported regex-complexity claims. Official scores and the failed gate remain unchanged. Source excerpts and hashes are retained in development_reference_audit.json. This screen provides insufficient evidence of quality preservation.
+
 ## 6. Limitations and Reproducibility
 
 The complete subset preserves all eight questions, but its breadth remains smaller than the released 48-question population. Question heterogeneity produces wide intervals. Original and local model/judge serving and unreleased helper files differ. Required-hint filtering is an explicit policy intervention. Sequential stages and shared GPU scheduling affect elapsed time, which is retained as an operational record rather than treated as a controlled speed comparison. Five-dimensional LLM scores provide useful answer comparisons, while small score changes require cautious interpretation alongside answer text.
 
 All 72 primary executions have complete answers, scores and transmitted-request usage. Final execution completeness is 100.0%; first-attempt completeness is 81.9% overall, 79.2% for full/pruner and 87.5% for recovery. The diagnostic 24 and mechanism 72 cells are also complete. Network/VPN changes caused simultaneous resets and occasional DNS/SSL failures. Original failures, missing-receipt attempts, replacements and duplicated judge responses remain auditable.
 
-Frozen protocols, source hashes, source commits, per-task question inputs, trajectories, answers, judge responses and request usage form the provenance chain. Scripts generate the reported aggregates and intervals. Conservative project accounting is approximately $9.69 against the approved $12 ceiling; the full-population extension is awaiting a separate budget decision. The student's recording and explanation use the accompanying demo script. AI assistance supported implementation, analysis and manuscript preparation.
+Frozen protocols, source hashes, source commits, per-task question inputs, trajectories, answers, judge responses and request usage form the provenance chain. Scripts generate the reported aggregates and intervals. Including the new diagnostics and account-level reconciliation of overlapping reservations, conservative project accounting is approximately $9.47 against the approved $12 ceiling. Full-population expansion is deferred while small-scope alignment takes priority. The student's recording and explanation use the accompanying demo script. AI assistance supported implementation, analysis and manuscript preparation.
 
 ## 7. Conclusion
 
-The corrected fixed-subset reproduction recovers a mean token-reduction direction with broadly maintained answer quality: 17.6% fewer tokens and 1.3% higher mean quality across three complete repetitions. The authors' identical-question reduction of 49.9% and complete pruning activation remain substantially different. Baseline paths, hint behavior, numerical alignment and terminal evidence handling each contribute distinct evidence about this gap. Task-local exact recovery provides auditable access to omitted observations, with a 1.4% mean quality increase at 11.3% token overhead under the original protocol and a large exact-retrieval benefit at substantial cost in the controlled experiment. Full-population validation remains the next required stage of the project.
+The corrected fixed-subset reproduction recovers a mean token-reduction direction with broadly maintained answer quality: 17.6% fewer tokens and 1.3% higher mean quality across three complete repetitions. The authors' identical-question reduction of 49.9% and complete pruning activation remain substantially different. Baseline paths, hint behavior, numerical alignment and terminal evidence handling each contribute distinct evidence about this gap. Task-local exact recovery provides auditable access to omitted observations, with a 1.4% mean quality increase at 11.3% token overhead under the original protocol and a large exact-retrieval benefit at substantial cost in the controlled experiment. The current priority is controlled policy alignment on the fixed small scope before expansion.
 
 ## References
 

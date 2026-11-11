@@ -2,6 +2,10 @@
 
 ## Completed scope
 
+Latest small-scope diagnosis: see `GAP_FINDINGS.md`. Complete author-input replay (131 observations) isolates skimmer fidelity; `results/full/trajectory_gap_audit.json` measures hint/path discrepancies. A disjoint first-request priming screen completes six cells and fails its frozen quality gate (−37.7% tokens, −10.3% quality). Its frozen protocol and sources are in `revision_priming/` and `runs/priming/formal/`. The reference audit preserves two source/reference disagreements without replacing official scores. Full-population expansion is deferred; approved budget remains USD12, current conservative USD9.4687.
+
+Recompute this extension with `revision_priming/analyze.py`, `revision_full/analyze_priming.py`, `revision_full/audit_subset.py --study priming --repeats 1`, `revision_full/audit_development_references.py`, and `revision_full/summarize_gap.py`. The reference audit reads the pinned checkout under `data/paper-workspace/`; its saved JSON embeds cited source excerpts and hashes for archive-only review.
+
 The corrected fixed subset contains eight questions × three repetitions × full, original optional-hint pruning and optional-hint recovery: 72 complete executions. A required-hint diagnostic contributes 24 executions and the corrected controlled recovery experiment contributes 72. Full Streamlink expansion remains pending; its prepared schedule contains the remaining 40 questions × three conditions × three repetitions.
 
 | Evidence | Location |

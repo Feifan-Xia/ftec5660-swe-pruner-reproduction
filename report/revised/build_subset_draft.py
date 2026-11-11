@@ -12,7 +12,7 @@ def row(label,key,note):
 values={
 'ABSTRACT_RESULTS':'固定八题、每组重复三次的 48 项问答全部完成。修复执行目录、步数、padding 与参数加载精度后，原始可选提示协议的累计 tokens 降低 17.6%，评分提高 1.3%；三个重复的 token 方向一致，问题 cluster 区间跨零，剪枝触发覆盖率为 25.0%。',
 'ABSTRACT_MODIFICATION':'在强制触发诊断中，恢复相对剪枝降低 11.6% tokens、提高 1.4% 评分；在固定证据目标变化实验中，精确匹配 SR 从 12.5% 提升至 100.0%，累计 tokens 增加 196.4%。原始可选提示下的恢复三重复正在完成，以检验该修改在原协议中的实际收益。',
-'INTRO_REPRODUCTION':'修正后原协议得到 136.4K → 112.3K tokens（−17.6%）和 9.00 → 9.12 评分（+1.3%）。相比旧配置的 +16.1% tokens，端到端方向恢复为下降；平均降幅与作者公开 Streamlink 产物的 −28.9% 仍有差距，低触发覆盖率也限制了对剪枝机制的归因。',
+'INTRO_REPRODUCTION':'修正后原协议得到 136.4K → 112.3K tokens（−17.6%）和 9.00 → 9.12 评分（+1.3%）。相比旧配置的 +16.1% tokens，端到端方向恢复为下降；平均降幅与作者相同八题记录的 −49.9% 仍有差距，低触发覆盖率也限制了对剪枝机制的归因。',
 'INTRO_MODIFICATION':'在必填 hint 的八题诊断中，恢复使调用次数减少 22.4%、累计 tokens 减少 11.6%、评分提高 1.4%；受控目标变化实验的 SR 提升 87.5 个百分点，代价为 196.4% 更多 tokens。原始可选 hint 下的完整三重复用于补充其正常工作负载收益。',
 'AUTHOR_TABLE':table(['仓库与来源','full tokens K','pruner tokens K','变化','full/pruner 评分'],[
  ['Streamlink，论文表 2','318.2','145.1','−54.4%','8.56 / 8.56'],
@@ -79,10 +79,20 @@ if 'optional_recovery' in g:
     values['MODIFICATION_ANALYSIS']=f"原协议恢复组平均质量为 9.24，相对 pruner 的 9.12 提高 1.4%，95% 问题 cluster 区间为 [{ci('optional_recovery','score')}]；tokens 从 112.3K 增至 125.1K（+11.3%），区间为 [{ci('optional_recovery','total_tokens')}]，请求数增加 6.0%。由此观察到较明确的 token 代价和不确定的小幅质量收益。恢复在三项任务中被使用，共 12 次成功读取、51,480 返回字符和两行重复读取，均逐字符匹配原始切片，并提供新的非空文本。另有七次请求超过 200 行上限、两次范围越界，均返回错误提示；这些失败计入实际回合与 tokens，说明行范围选择仍有接口使用成本。\n\n必填提示诊断的八题恢复组全部在首轮完成，五题使用恢复。21 次成功读取均暴露此前未显示的非空文本，共返回 68,749 字符，重复读取 17 行。相对修复后的必填剪枝，tokens 降低 12.3%、评分提高 0.3%；区间分别为 [{ci('required_recovery_repaired','total_tokens')}] 和 [{ci('required_recovery_repaired','score')}]。强制过滤增加了重复检索，恢复在这一场景的作用更大；原始可选提示保留 Bash 直接重读路径，额外恢复工具的平均代价更明显。两组独立路径和较少问题簇限制了因果精度。\n\n![图 2. 发布数值配置下的固定证据目标变化实验，三组各 24 项。左图为精确匹配 SR，右图为累计 API tokens。](figures/mechanism.png)"
     values['COMPLETENESS_COST']='原始可选提示下三组共 72 项的最终执行完成率为 100.0%，首轮完成率为 81.9%；原协议 full/pruner 的 48 项为 79.2%，恢复 24 项为 87.5%。所有选定执行都有完整 transmitted-request usage。必填提示诊断 24 项与机制 72 项也全部完成。网络切换引发的连接重置、DNS/SSL 故障与缺失回执均保留；一个并发续评造成的重复评分按预先规定保留最早有效响应，两次响应和费用均可查。新续评入口加入同题互斥锁和精确 cell 定位。项目保守账本累计约 $9.69，批准上限为 $12；全题扩展的预算仍待确认。表中 tokens 对应选定完整执行，全部尝试费用及未知上界另列于账本。'
     values['CONCLUSION']='在配置与计量修复后，固定 Streamlink 八题的原协议 GLM-4.6 复现得到平均 17.6% tokens 节省和 1.3% 评分增加，三轮 token 方向一致。相同八题的作者公开运行记录节省 49.9%，差距同时涉及 full 调查路径和 pruner 行为，当前属于方向一致、幅度与机制覆盖仍有偏差的部分复现。新增任务级原始观测恢复在原协议下提高平均评分 1.4%、增加 tokens 11.3%；质量收益仍有不确定性。受控目标变化实验把 SR 从 12.5% 提升到 100.0%，伴随显著额外成本。完整问答、机制实验与失败轨迹共同界定了该修改的功能、收益与代价；全题扩展将继续检验总体适用范围。'
+from gap_sections import ZH_FIDELITY, ZH_TRAJECTORY, ZH_DEVELOPMENT
+values['ABSTRACT_RESULTS'] += '作者同一八题的累计 tokens 下降 49.9%。全部 131 条作者观测重放得到 96.9% 逐字匹配，压缩率为本地 81.12%、作者 81.11%；剩余差距集中于 hint 使用与搜索路径。'
+values['INTRO_REPRODUCTION'] += '同一输入下的剪枝器压缩率已高度一致；本地 Bash hint 使用率为 2.4%，作者为 100%，作者 full 还包含九次命令超时。'
+values['CONCLUSION'] = values['CONCLUSION'].replace('全题扩展将继续检验总体适用范围。','当前优先在固定小范围内验证策略对齐，再评估扩展。')
 text=(HERE/'template_zh.md').read_text(encoding='utf-8')
+text=text.replace('### 3.3 Token 账本验证', ZH_FIDELITY+'\n\n### 3.3 Token 账本验证')
+start=text.index('固定八题首轮配置修复后的'); end=text.index('\n\n### 5.3',start)
+text=text[:start]+ZH_TRAJECTORY+text[end:]
 for key,value in values.items():text=text.replace('{{'+key+'}}',value)
 assert not re.search(r'\{\{.*?\}\}',text)
 assert all('?' not in line and '？' not in line for line in text.splitlines() if line.startswith('#'))
-text=text.replace('FTEC5660 Individual Reproducibility Project · 2026 年 11 月','FTEC5660 Individual Reproducibility Project · 2026 年 11 月\n\n固定 subset 验证稿 · 全题扩展进行中')
+text=text.replace('FTEC5660 Individual Reproducibility Project · 2026 年 11 月','FTEC5660 Individual Reproducibility Project · 2026 年 11 月\n\n固定 subset 验证稿 · 小范围对齐诊断')
+text=text.replace('## 6. 讨论与可复查性',ZH_DEVELOPMENT+'## 6. 讨论与可复查性')
+text=text.replace('项目保守账本累计约 $9.69，批准上限为 $12；全题扩展的预算仍待确认。','纳入本轮诊断并按账户用量去除重复预留后，项目保守累计约 $9.47，批准上限为 $12；全题扩展暂缓，优先完成小范围策略对齐。')
+text=text.replace('全题结果将在扩展完成后更新。','当前优先进行固定小范围策略验证。')
 (HERE/'subset_draft_zh.md').write_text(text,encoding='utf-8')
 print('Built subset draft with traceable completed evidence; full-population delivery remains active.')

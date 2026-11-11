@@ -1,0 +1,55 @@
+{
+  "scope": "Post-hoc source audit of the two lower-scoring development questions. Preserve all official scores, all three questions, and the failed predeclared gate. No corrected aggregate or retroactive exclusion.",
+  "source_commit": "ab1f36560005253ca6a290a614730bf18a29a7f9",
+  "rows": [
+    {
+      "index": 17,
+      "reference": "The fail_unhandled_requests parameter in CDPClientSession controls whether unhandled network requests should raise exceptions or be silently ignored. When set to True, any request that isn't explicitly handled by a RequestPausedHandler will result in a CDPError being raised, terminating the session. When set to False, unhandled requests are automatically continued without intervention. This parameter directly impacts the CDP protocol's Fetch.requestPaused event handling, where the RequestPausedHandler evaluates whether to intercept, modify, or continue requests based on the fail_unhandled_requests flag and registered handler callbacks.",
+      "finding": "The reference says fail_unhandled_requests=True raises CDPError and terminates the session. The normal fallback dispatches fail_request, which sends Fetch.failRequest with BlockedByClient and records the handled ID. The matching test expects fail_request. Generic transport/protocol errors remain possible; the flag alone does not implement the reference's unconditional exception.",
+      "source": [
+        {
+          "path": "data/paper-workspace/swe-repos/streamlink/src/streamlink/webbrowser/cdp/client.py",
+          "sha256": "a64b7837180b8ac03325bc48e3eca3ff50bb5fdfbd36d1646787c3f7d2504687",
+          "start": 363,
+          "end": 377,
+          "text": "363:     async def fail_request(\n364:         self,\n365:         request: fetch.RequestPaused,\n366:         error_reason: str | None = None,\n367:     ):\n368:         \"\"\"\n369:         Let a request fail, with an optional error reason which defaults to ``BlockedByClient``.\n370:         \"\"\"\n371:         await self.cdp_session.send(\n372:             fetch.fail_request(\n373:                 request_id=request.request_id,\n374:                 error_reason=network.ErrorReason(error_reason or network.ErrorReason.BLOCKED_BY_CLIENT),\n375:             ),\n376:         )\n377:         self._requests_handled.add(request.request_id)"
+        },
+        {
+          "path": "data/paper-workspace/swe-repos/streamlink/src/streamlink/webbrowser/cdp/client.py",
+          "sha256": "a64b7837180b8ac03325bc48e3eca3ff50bb5fdfbd36d1646787c3f7d2504687",
+          "start": 436,
+          "end": 449,
+          "text": "436:     async def _on_fetch_request_paused(self) -> None:\n437:         request: fetch.RequestPaused\n438:         async for request in self.cdp_session.listen(fetch.RequestPaused, max_buffer_size=self._max_buffer_size):\n439:             for handler in self._request_handlers:\n440:                 if not handler.matches(request):\n441:                     continue\n442:                 await handler.async_handler(self, request)\n443:                 if request.request_id in self._requests_handled:\n444:                     break\n445:             else:\n446:                 if self._fail_unhandled:\n447:                     await self.fail_request(request)\n448:                 else:\n449:                     await self.continue_request(request)"
+        },
+        {
+          "path": "data/paper-workspace/swe-repos/streamlink/tests/webbrowser/cdp/test_client.py",
+          "sha256": "1a02c9d6d26d7f8738f6e5e004690154ca21e227a41d023768e6f6b2e7cdca9e",
+          "start": 893,
+          "end": 943,
+          "text": "893:     async def test_unhandled_fail(\n894:         self,\n895:         monkeypatch: pytest.MonkeyPatch,\n896:         cdp_client_session: CDPClientSession,\n897:         websocket_connection: FakeWebsocketConnection,\n898:         nursery: trio.Nursery,\n899:     ):\n900:         # make unhandled requests fail\n901:         cdp_client_session._fail_unhandled = True\n902: \n903:         mock_fail_request = AsyncMock()\n904:         mock_continue_request = AsyncMock()\n905:         monkeypatch.setattr(cdp_client_session, \"fail_request\", mock_fail_request)\n906:         monkeypatch.setattr(cdp_client_session, \"continue_request\", mock_continue_request)\n907: \n908:         handler_foo = async_handler()\n909:         handler_bar = async_handler()\n910:         cdp_client_session.add_request_handler(handler_foo, url_pattern=\"http://foo/\")\n911:         cdp_client_session.add_request_handler(handler_bar, url_pattern=\"http://bar/\")\n912: \n913:         nursery.start_soon(cdp_client_session._on_fetch_request_paused)\n914:         await wait_all_tasks_blocked()\n915: \n916:         # language=json\n917:         await websocket_connection.sender.send(\"\"\"\n918:             {\n919:                 \"method\": \"Fetch.requestPaused\",\n920:                 \"params\": {\n921:                     \"requestId\": \"request-1\",\n922:                     \"frameId\": \"frame-1\",\n923:                     \"request\": {\n924:                         \"url\": \"http://bar/\",\n925:                         \"method\": \"GET\",\n926:                         \"headers\": {},\n927:                         \"initialPriority\": \"VeryHigh\",\n928:                         \"referrerPolicy\": \"strict-origin-when-cross-origin\"\n929:                     },\n930:                     \"resourceType\": \"Document\",\n931:                     \"responseStatusCode\": 200\n932:                 },\n933:                 \"sessionId\": \"56789\"\n934:             }\n935:         \"\"\")\n936:         await wait_all_tasks_blocked()\n937:         assert \"request-1\" not in cdp_client_session._requests_handled\n938:         assert handler_foo.call_args_list == []\n939:         assert handler_bar.call_args_list == [call(cdp_client_session, ANY)]\n940:         assert isinstance(handler_bar.call_args_list[0][0][1], RequestPaused)\n941:         assert mock_fail_request.call_args_list == [call(ANY)]\n942:         assert mock_continue_request.call_args_list == []\n943:         assert isinstance(mock_fail_request.call_args_list[0][0][0], RequestPaused)"
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "reference": "The performance degradation occurs because the current implementation uses sequential regex searches (main_js_url_re, user_id_re) on the JavaScript file content, which requires multiple full scans of the potentially large file. Each regex operation has O(n) complexity where n is the file size, and when performed sequentially without caching or combined pattern matching, this results in O(m*n) complexity where m is the number of patterns. This becomes particularly problematic with large JavaScript files or when the patterns are located far apart in the file, causing increased memory usage and processing time that directly impacts stream startup latency for users.",
+      "finding": "The reference describes main_js_url_re and user_id_re scanning the same JavaScript content. The code applies main_js_url_re to the initial HTML response, then replaces res with the downloaded JavaScript response before user_id_re. O(m*n) repeated scans describe a hypothetical workload, not these two searches on one current input. Both generated answers also contain unsupported regex-performance generalizations.",
+      "source": [
+        {
+          "path": "data/paper-workspace/swe-repos/streamlink/src/streamlink/plugins/n13tv.py",
+          "sha256": "4c89fc3a1f71139a39ae809ef751e7ac644bd95205a48faf24a95088872f9083",
+          "start": 25,
+          "end": 27,
+          "text": "25:     main_js_url_re = re.compile(r'type=\"text/javascript\" src=\"(.*?main\\..+\\.js)\"')\n26:     user_id_re = re.compile(r'\"data-ccid\":\"(.*?)\"')\n27:     video_name_re = re.compile(r'\"videoRef\":\"(.*?)\"')"
+        },
+        {
+          "path": "data/paper-workspace/swe-repos/streamlink/src/streamlink/plugins/n13tv.py",
+          "sha256": "4c89fc3a1f71139a39ae809ef751e7ac644bd95205a48faf24a95088872f9083",
+          "start": 123,
+          "end": 148,
+          "text": "123:     def _get_streams(self):\n124:         url_type = self.match.group(1)\n125:         log.debug(\"URL type={0}\".format(url_type))\n126: \n127:         res = self.session.http.get(self.url)\n128: \n129:         if url_type != \"live\":\n130:             m = self.video_name_re.search(res.text)\n131:             video_name = m and m.group(1)\n132:             if not video_name:\n133:                 raise PluginError(\"Could not determine video_name\")\n134:             log.debug(\"Video name={0}\".format(video_name))\n135: \n136:         m = self.main_js_url_re.search(res.text)\n137:         main_js_path = m and m.group(1)\n138:         if not main_js_path:\n139:             raise PluginError(\"Could not determine main_js_path\")\n140:         log.debug(\"Main JS path={0}\".format(main_js_path))\n141: \n142:         res = self.session.http.get(urljoin(self.url, main_js_path))\n143: \n144:         m = self.user_id_re.search(res.text)\n145:         user_id = m and m.group(1)\n146:         if not user_id:\n147:             raise PluginError(\"Could not determine user_id\")\n148:         log.debug(\"User ID={0}\".format(user_id))"
+        }
+      ]
+    }
+  ]
+}

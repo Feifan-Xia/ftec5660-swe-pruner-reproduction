@@ -1,5 +1,16 @@
 # FTEC5660 full-population reproduction revision
 
+## 2026-11-11 small-scope gap diagnosis, latest checkpoint
+
+- User defers population expansion and prioritizes understanding the gap and near-author gains on a small scope. USD24 remains unapproved; ceiling USD12. Working target fixed8 x3, at least40% fewer cumulative tokens, no more than2% relative quality loss, complete outcomes and cluster intervals. Target remains unmet.
+- Complete local GPU replay of all131author pruning inputs:127 exact outputs (96.9466%), author compression81.1065%, local81.1204%, no failures. Four output diffs preserved. Fixed-input fidelity is separate from autonomous end-to-end benefit.
+- Full trajectory audit: author131/131Bash hints vs local6/254; authorfull9timeouts across4/8questions, localfullzero. Local original token reduction17.6193% factors into requests-17.7049% and tokens/request+0.1041%. Same-question authorfull190204 vs local136374, authorpruner95309.6 vs local112346.2. Arithmetic gap decomposition76%lowerlocalbaseline/24%higherlocalpruner is not causal attribution.
+- Required-but-empty-allowed schema12-call probe failed; identical-output hint-history6-call probe passed initial screen. First-request-only priming then frozen on disjoint dev43,26,17, matchedfull/pruner6cells. All6complete and wire-audited: tokens102504.33->63892.67(-37.6683%), score9.0667->8.1333(-10.2941%). All3pruner tasks have subsequent hints. Frozen quality gate FAILED; candidate stops before fixed8 confirmation. All official scores retained.
+- q26 andq17 each had3attempts missing usage receipts before completeattempt3. Retryv4/v5 were explicit infrastructure-only amendments; frozenruntime18files verified. Project-only proxy moved SakuraUSIEPL01->02; globalVPNunchanged. SSEadapter now preserves request metadata/rawchunks, assembles only completed+usage-backed responses, avoids tailerrors afterDONE. FirstGLMcanarycancelled499 receipt saved; newroutecanarysuccessful. Currentservices meter5615,proxy81553,GPU98698; pilot82821finished. No agent experiments remain running.
+- Account-bound refresh captured keylifetime8.009699013 plus retainedhistoricalunknown1.3167848, releasing1.46035186 duplicatedreservation. Current conservative after completedpilot USD9.468679073. Grossmeterlimit includes bookkeepingoffset, authorization remains12.
+- Source audit developmentq17: reference claims normal CDPError/termination, code dispatches Fetch.failRequest/BlockedByClient; q26 reference puts HTML andJSregex on sameJSinput. Generated answers also contain unsupportedregexclaims. Evidence snippets/hashes saved; no scorechanges/exclusions and failedgate remains.
+- MainChinese/Englishreports updated with131replay, fulltrajectory evidence, sixcellfailedscreen and referenceaudit; both8pages. All21unit tests pass. Latestdiagnostic summary revision_full/GAP_FINDINGS.md. Newpackage pending finalrendercheck and source snapshot. Priorrelease063837Z is historical.
+
 ## Active objective
 
 Investigate the discrepancy, repair verified deviations, complete the released Streamlink population under a frozen paper-aligned protocol, then evaluate the recovery modification and rewrite both reports. The historical eight-question study remains intact. The user prioritizes completion over the previous deadline.

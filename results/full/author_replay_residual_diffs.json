@@ -1,0 +1,30 @@
+[
+  {
+    "index": 14,
+    "event": 13,
+    "diff": "--- author\n+++ local\n@@ -1,5 +1,4 @@\n-(filtered 22 lines)\n-@pluginmatcher(re.compile(r\"https?://(?:www\\.)?cmmedia\\.es\"))\n+(filtered 23 lines)\n class CMMedia(Plugin):\n     @staticmethod\n     def is_restricted(data):",
+    "author_kept": 252,
+    "local_kept": 233
+  },
+  {
+    "index": 30,
+    "event": 9,
+    "diff": "--- author\n+++ local\n@@ -67,11 +67,7 @@\n     BACK_FORWARD_CACHE_RESTORE = \"BackForwardCacheRestore\"\n (filtered 13 lines)\n     NOT_PRIMARY_MAIN_FRAME = \"NotPrimaryMainFrame\"\n-(filtered 211 lines)\n-    #: - EmbedderExtensionSentMessageToCachedFrame: the extension ID.\n-(filtered 546 lines)\n-    :returns: A tuple with the following items:\n-\n+(filtered 760 lines)\n         0. **frameId** - Frame id that has navigated (or failed to navigate)\n (filtered 196 lines)\n def screencast_frame_ack(\n@@ -82,12 +78,11 @@\n (filtered 123 lines)\n     width: int,\n     height: int,\n-(filtered 19 lines)\n-    :param height: Overriding height value in pixels (minimum 0, maximum 10000000). 0 disables the override.\n-(filtered 219 lines)\n+(filtered 239 lines)\n     max_width: int | None = None,\n     max_height: int | None = None,\n-(filtered 800 lines)\n+    every_nth_frame: int | None = None,\n+(filtered 799 lines)\n class ScreencastFrame:\n     \"\"\"\n     **EXPERIMENTAL**",
+    "author_kept": 982,
+    "local_kept": 920
+  },
+  {
+    "index": 30,
+    "event": 15,
+    "diff": "--- author\n+++ local\n@@ -23,4 +23,6 @@\n class ScreencastVisibilityChangedEvent(TypedDict):\n     visible: \"bool\"\n     \"\"\"True if the page is visible.\"\"\"\n-(filtered 18 lines)\n+(filtered 13 lines)\n+    \"\"\"Whether or not it was triggered by user gesture.\"\"\"\n+(filtered 4 lines)",
+    "author_kept": 198,
+    "local_kept": 215
+  },
+  {
+    "index": 11,
+    "event": 11,
+    "diff": "--- author\n+++ local\n@@ -41,13 +41,14 @@\n (filtered 246 lines)\n         return cls(\n             identifier=RequestId.from_json(json[\"identifier\"]),\n-(filtered 4 lines)\n+            local_addr=str(json[\"localAddr\"]),\n+            local_port=int(json[\"localPort\"]),\n+            timestamp=MonotonicTime.from_json(json[\"timestamp\"]),\n+            remote_addr=str(json[\"remoteAddr\"]) if \"remoteAddr\" in json else None,\n             remote_port=int(json[\"remotePort\"]) if \"remotePort\" in json else None,\n         )\n (filtered 101 lines)\n     headers: Headers\n-(filtered 9 lines)\n-        return cls(\n-(filtered 2 lines)\n+(filtered 12 lines)\n             headers=Headers.from_json(json[\"headers\"]),\n (filtered 293 lines)",
+    "author_kept": 384,
+    "local_kept": 421
+  }
+]

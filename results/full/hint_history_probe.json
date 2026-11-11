@@ -1,0 +1,251 @@
+{
+  "rows": [
+    {
+      "index": 43,
+      "prefix": "one_author_action",
+      "variant": "without_hint",
+      "source_member": "traj-full-glm-pruner/streamlink/streamlink_q44.traj.json",
+      "tool_calls": [
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "grep -rl \"transform_token\" . --include=\"*.py\" 2>/dev/null",
+            "security_risk": "LOW"
+          }
+        }
+      ],
+      "has_hint": false,
+      "all_bash_empty": true,
+      "usage": {
+        "prompt_tokens": 3416,
+        "completion_tokens": 40,
+        "total_tokens": 3456,
+        "cost": 0.00050688,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 3328,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00050688,
+          "upstream_inference_prompt_cost": 0.00041888,
+          "upstream_inference_completions_cost": 8.8e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    {
+      "index": 43,
+      "prefix": "one_author_action",
+      "variant": "with_hint",
+      "source_member": "traj-full-glm-pruner/streamlink/streamlink_q44.traj.json",
+      "tool_calls": [
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "grep -rl \"transform_token\" . --include=\"*.py\" 2>/dev/null",
+            "security_risk": "LOW"
+          }
+        }
+      ],
+      "has_hint": false,
+      "all_bash_empty": true,
+      "usage": {
+        "prompt_tokens": 3432,
+        "completion_tokens": 40,
+        "total_tokens": 3472,
+        "cost": 0.00064192,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 3072,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00064192,
+          "upstream_inference_prompt_cost": 0.00055392,
+          "upstream_inference_completions_cost": 8.8e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    {
+      "index": 26,
+      "prefix": "one_author_action",
+      "variant": "without_hint",
+      "source_member": "traj-full-glm-pruner/streamlink/streamlink_q27.traj.json",
+      "tool_calls": [
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "find . -type f \\( -name \"*.js\" -o -name \"*.ts\" -o -name \"*.py\" \\) | grep -i \"n13tv\\|N13TV\\|n13\" | head -20",
+            "security_risk": "LOW"
+          }
+        }
+      ],
+      "has_hint": false,
+      "all_bash_empty": true,
+      "usage": {
+        "prompt_tokens": 3478,
+        "completion_tokens": 70,
+        "total_tokens": 3548,
+        "cost": 0.00054736,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 3456,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00054736,
+          "upstream_inference_prompt_cost": 0.00039336,
+          "upstream_inference_completions_cost": 0.000154
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    {
+      "index": 26,
+      "prefix": "one_author_action",
+      "variant": "with_hint",
+      "source_member": "traj-full-glm-pruner/streamlink/streamlink_q27.traj.json",
+      "tool_calls": [
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "find . -type f \\( -name \"*.js\" -o -name \"*.ts\" -o -name \"*.py\" \\) | xargs grep -li \"N13TV\\|n13tv\\|n13.tv\\|n13_tv\" 2>/dev/null",
+            "security_risk": "LOW",
+            "context_focus_question": "Find files related to the N13TV plugin"
+          }
+        }
+      ],
+      "has_hint": true,
+      "all_bash_empty": false,
+      "usage": {
+        "prompt_tokens": 3502,
+        "completion_tokens": 95,
+        "total_tokens": 3597,
+        "cost": 0.00080492,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 3072,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00080492,
+          "upstream_inference_prompt_cost": 0.00059592,
+          "upstream_inference_completions_cost": 0.000209
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    {
+      "index": 17,
+      "prefix": "one_author_action",
+      "variant": "without_hint",
+      "source_member": "traj-full-glm-pruner/streamlink/streamlink_q18.traj.json",
+      "tool_calls": [
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "grep -r \"CDPClientSession\" --include=\"*.py\" -l",
+            "security_risk": "LOW"
+          }
+        }
+      ],
+      "has_hint": false,
+      "all_bash_empty": true,
+      "usage": {
+        "prompt_tokens": 3421,
+        "completion_tokens": 38,
+        "total_tokens": 3459,
+        "cost": 0.00050548,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 3328,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00050548,
+          "upstream_inference_prompt_cost": 0.00042188,
+          "upstream_inference_completions_cost": 8.36e-05
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    {
+      "index": 17,
+      "prefix": "one_author_action",
+      "variant": "with_hint",
+      "source_member": "traj-full-glm-pruner/streamlink/streamlink_q18.traj.json",
+      "tool_calls": [
+        {
+          "name": "pruner_bash",
+          "arguments": {
+            "command": "find . -type f -name \"*.py\" | xargs grep -l \"CDPClientSession\" 2>/dev/null",
+            "security_risk": "LOW",
+            "context_focus_question": "Find files that contain CDPClientSession class definition or usage"
+          }
+        }
+      ],
+      "has_hint": true,
+      "all_bash_empty": false,
+      "usage": {
+        "prompt_tokens": 3438,
+        "completion_tokens": 67,
+        "total_tokens": 3505,
+        "cost": 0.00070492,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 3072,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.00070492,
+          "upstream_inference_prompt_cost": 0.00055752,
+          "upstream_inference_completions_cost": 0.0001474
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ],
+  "counts": {
+    "with_hint": 2,
+    "without_hint": 0
+  },
+  "go_gate_passed": true
+}

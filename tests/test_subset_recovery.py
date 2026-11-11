@@ -8,6 +8,15 @@ def load(name,namespace):
     exec(compile(ast.Module(body=[node],type_ignores=[]),'<recovery-function>','exec'),namespace)
     return namespace[name]
 class RecoveryFlowTests(unittest.TestCase):
+    def test_third_receipt_attempt_requires_explicit_study_limit(self):
+        for limit,expected in [(1,[0,1]),(2,[0,1,2])]:
+            attempted=[];selected=[]
+            fake=types.SimpleNamespace(MODES=['pruner'],OUT=Path('unused'),NETWORK_RECEIPT_RETRY_LIMIT=limit,read=lambda p:{'qualified':False,'reasons':['usage_receipt_missing']},write=lambda p,v:selected.append(v))
+            def execute(job,attempt):attempted.append(attempt);return attempt
+            f=load('block',{'run':fake,'guarded_run':execute,'qualify':lambda a:a==2,'judge':lambda a:None})
+            f(0,26,1)
+            self.assertEqual(attempted,expected)
+            self.assertEqual(selected[-1]['selected_attempt'],2 if limit==2 else None)
     def test_concurrent_judge_is_rejected_before_paid_call(self):
         with tempfile.TemporaryDirectory() as d:
             out=Path(d);(out/'judge_active.lock').write_text('active')

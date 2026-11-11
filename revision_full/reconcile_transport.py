@@ -7,6 +7,8 @@ rows=[json.loads(x) for x in (ROOT/'runs/full/formal_usage.jsonl').read_text().s
 auth_path=ROOT/'runs/full/budget_authorization.json';auth=json.loads(auth_path.read_text())
 already=auth.get('transport_reconciliations',{})
 covered=set(auth.get('account_bound_reconciliation',{}).get('covered_request_ids',[]))
+for refresh in auth.get('account_bound_refreshes',[]):
+    covered.update(refresh['covered_request_ids'])
 adjustments=[];unresolved=[]
 for row in rows:
     if row.get('cost_kind')!='unreconciled_reserve' or row['request_id'] in already or row['request_id'] in covered:continue

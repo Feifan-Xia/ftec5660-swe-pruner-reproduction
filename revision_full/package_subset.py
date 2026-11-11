@@ -7,7 +7,7 @@ from revision_glm.package import credential_literals
 
 names=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard'],cwd=ROOT,text=True,encoding='utf-8').splitlines()
 paths={ROOT/name for name in names if (ROOT/name).is_file()}
-for folder in ['runs/precision','runs/optional','runs/hint','runs/hintfull','runs/recovery','runs/full']:
+for folder in ['runs/precision','runs/optional','runs/hint','runs/hintfull','runs/recovery','runs/priming','runs/full']:
     for p in (ROOT/folder).rglob('*'):
         if not p.is_file() or '__pycache__' in p.parts:continue
         if p.suffix in {'.json','.jsonl','.txt','.py','.md'} or (p.name=='console.log' and 'formal' in p.parts):paths.add(p)
@@ -16,7 +16,7 @@ for name in ['runs/author_evidence/swepruner-sweqa-reproduce.zip','runs/author_e
     if p.exists():paths.add(p)
 for p in (ROOT/'upstream/downstream_eval/multi_turn/sweqa').rglob('*'):
     if p.is_file() and '__pycache__' not in p.parts:paths.add(p)
-for stage in ['precision','optional','hint','hintfull','recovery']:
+for stage in ['precision','optional','hint','hintfull','recovery','priming']:
     snapshot=json.loads((ROOT/f'runs/{stage}/formal/runtime_manifest.json').read_text(encoding='utf-8'))
     for name in snapshot['files']:
         p=(ROOT/name).resolve();assert p.is_relative_to(ROOT) and p.is_file()
@@ -34,6 +34,7 @@ meta={'scope':'Completed fixed-subset evidence snapshot. Full48-question extensi
       'git_revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
       'git_status':subprocess.check_output(['git','status','--short'],cwd=ROOT,text=True,encoding='utf-8'),
       'primary_cells':72,'required_hint_diagnostic_cells':24,'mechanism_cells':72,
+      'author_observation_replays':131,'priming_development_cells':6,'priming_gate':'failed quality tolerance; all official scores retained',
       'secret_scan':'Known local API credential literals and key-shaped patterns checked before writing; proxy configurations, environment files, model weights and virtual environments excluded.',
       'files':manifest}
 print(f'Scanned {len(manifest)} files; writing evidence snapshot.',flush=True)

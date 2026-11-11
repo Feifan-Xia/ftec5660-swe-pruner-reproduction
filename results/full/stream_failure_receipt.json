@@ -1,0 +1,27 @@
+{
+  "id": "gen-1794382018-hbtcDqvWQg7alek0ga4A",
+  "provider_name": "Z.AI",
+  "model": "z-ai/glm-4.6",
+  "latency": 4251,
+  "generation_time": 5934,
+  "cancelled": true,
+  "finish_reason": null,
+  "native_finish_reason": null,
+  "tokens_prompt": 3590,
+  "tokens_completion": 86,
+  "native_tokens_prompt": 3590,
+  "native_tokens_completion": 86,
+  "native_tokens_reasoning": 63,
+  "total_cost": 0.0023432,
+  "provider_responses": [
+    {
+      "endpoint_id": "a87bfa67-bad9-4ce3-8c20-99b61249cfc3",
+      "id": "20261111152659f87327c44e1e45ff",
+      "is_byok": false,
+      "latency": 4250,
+      "model_permaslug": "z-ai/glm-4.6",
+      "provider_name": "Z.AI",
+      "status": 499
+    }
+  ]
+}

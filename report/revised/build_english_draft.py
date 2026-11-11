@@ -176,6 +176,15 @@ The corrected fixed-subset reproduction recovers a mean token-reduction directio
 
 [4] OpenRouter Provider Routing. Accessed November 11, 2026. [Documentation](https://openrouter.ai/docs/guides/routing/provider-selection)
 '''
+from gap_sections import EN_FIDELITY, EN_TRAJECTORY, EN_DEVELOPMENT
+text=text.replace("We add task-local storage", "A complete replay of 131 author observations achieves 96.9% exact text agreement and 81.12% compression versus the authors' 81.11%, focusing the remaining gap on hint use and search paths. We add task-local storage",1)
+text=text.replace('### 3.3 Usage and terminal-summary repairs',EN_FIDELITY+'\n\n### 3.3 Usage and terminal-summary repairs')
+text=text.replace('### 5.2 Activation and repeated reading','### 5.2 Activation and repeated reading\n\n'+EN_TRAJECTORY)
+text=text.replace('In the first local repetition, q11 contributes 95.3% of net savings without activating the skimmer. ','')
+text=text.replace('Completed subset evidence draft · Full-population extension pending','Completed subset evidence draft · Small-scope alignment diagnosis')
+text=text.replace('Full-population validation remains the next required stage of the project.','The current priority is controlled policy alignment on the fixed small scope before expansion.')
+text=text.replace('## 6. Limitations and Reproducibility',EN_DEVELOPMENT+'## 6. Limitations and Reproducibility')
+text=text.replace('Conservative project accounting is approximately $9.69 against the approved $12 ceiling; the full-population extension is awaiting a separate budget decision.','Including the new diagnostics and account-level reconciliation of overlapping reservations, conservative project accounting is approximately $9.47 against the approved $12 ceiling. Full-population expansion is deferred while small-scope alignment takes priority.')
 assert all('?' not in line for line in text.splitlines() if line.startswith('#'))
 (HERE/'subset_draft_en.md').write_text(text,encoding='utf-8')
 print('Built English completed-subset evidence draft; full-population scope remains active.')

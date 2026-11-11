@@ -4,15 +4,19 @@ FTEC5660 · Xia Feifan · 1155204948.
 
 ## Current evidence
 
+Current priority: investigate the fixed-scope gap before population expansion. [Gap findings](revision_full/GAP_FINDINGS.md) record 131/131 author-observation replays: **96.9% exact text agreement**, compression **81.12% local / 81.11% author**. Author Bash hints occur in 100% of recorded calls versus 2.4% locally; author full trajectories also contain nine command timeouts versus zero locally.
+
+A disjoint three-question first-request-priming screen completes **6/6** matched executions: tokens **−37.7%**, official quality **−10.3%**. It fails its predeclared quality gate, so this candidate stops before fixed-eight confirmation. [Source audit](results/full/development_reference_audit.json) records two reference-answer disagreements while preserving all official scores. The small-scope target remains ≥40% token reduction with quality loss ≤2%; it is currently unmet. Conservative project accounting is **$9.47 / $12** after documented account-level reservation reconciliation. Full48 expansion is deferred.
+
 The corrected fixed-subset study is complete: eight questions × three repetitions × three conditions = **72/72 answered and scored executions**, with complete API usage receipts. Full / original optional-hint SWE-Pruner / recovery means are **136.4K / 112.3K / 125.1K tokens** and **9.00 / 9.12 / 9.24 quality**.
 
 SWE-Pruner reduces mean tokens by **17.6%** and increases mean quality by **1.3%**; both question-cluster intervals include zero. Recovery adds **11.3% tokens** for **1.4% higher mean quality**, whose interval includes zero. Pruning activates in 25.0% of original-pruner tasks. The authors' own released executions on the identical eight questions reduce tokens by 49.9%; these are reference records, distinct from our local runs.
 
-- [Chinese evidence draft, 8 pages](report/revised/subset_draft_zh.pdf) and [English evidence draft, 7 pages](report/revised/subset_draft_en.pdf).
+- [Chinese evidence draft, 8 pages](report/revised/subset_draft_zh.pdf) and [English evidence draft, 8 pages](report/revised/subset_draft_en.pdf).
 - [Unified numerical evidence](results/full/manuscript_evidence.json), [same-question author/local mapping](results/full/author_same_questions.json), and [72-cell study instructions](revision_full/README_CURRENT.md).
 - [Original full/pruner audit](results/precision/audit_r3.json), [recovery audit](results/optional/audit_r3.json), and [exact recovery trace audit](results/optional/recovery_trace_analysis.json).
 - [Original protocol](revision_precision/protocol.json), [recovery protocol](revision_optional/protocol.json), and [terminal serialization repair](revision_full/fix_terminal_history.py).
-- [Full-population expansion plan](revision_full/FULL_EXPANSION_PLAN.md): 360 remaining executions, pending additional budget approval. The requested full scope remains open; these are interim completed-subset reports.
+- [Full-population expansion plan](revision_full/FULL_EXPANSION_PLAN.md): 360 remaining executions, deferred while small-scope alignment takes priority. These are interim evidence reports.
 
 A separate matched required-hint diagnostic completes 24 executions. Its forced filtering increases calls; recovery reduces tokens in that setting. A controlled evidence-shift study completes 72 trials with exact-match SR **100.0% / 12.5% / 100.0%** for full / pruned / recoverable observations; recovery costs **196.4% more tokens than pruning**. These findings have separate denominators and appear separately in the reports.
 

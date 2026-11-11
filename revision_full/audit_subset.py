@@ -2,7 +2,7 @@
 import argparse,hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['precision','hint','hintfull','recovery','optional'],required=True);parser.add_argument('--repeats',type=int,choices=[1,3],required=True);parser.add_argument('--partial',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['precision','hint','hintfull','recovery','optional','priming'],required=True);parser.add_argument('--repeats',type=int,choices=[1,3],required=True);parser.add_argument('--partial',action='store_true');args=parser.parse_args()
 def read(p):return json.loads(p.read_text(encoding='utf-8'))
 base=ROOT/f'runs/{args.study}/formal';protocol=read(ROOT/f'revision_{args.study}/protocol.json')
 manifest=read(base/'runtime_manifest.json');errors=[];pending=[];rows=[]
@@ -25,7 +25,10 @@ for i in protocol['question_indices']:
                 if task['attempt']>=2:
                     assert (base/'transport_recovery_v2.json').exists()
                     if task['attempt']==3:assert (base/'transport_recovery_v3.json').exists()
-                    for a in range(task['attempt']):assert read(cell/f'attempt{a}/qualification.json')['reasons']==['budget_guard_interruption']
+                    reasons=[read(cell/f'attempt{a}/qualification.json')['reasons'] for a in range(task['attempt'])]
+                    budget_only=all(r==['budget_guard_interruption'] for r in reasons)
+                    receipt_only=(args.study=='priming' and task['attempt'] in [2,3] and (base/('transport_recovery_v4.json' if task['attempt']==2 else 'transport_recovery_v5.json')).exists() and all(r==['usage_receipt_missing'] for r in reasons))
+                    assert budget_only or receipt_only
             if not selection.exists() or read(selection)['selected_attempt'] is None:
                 pending.append([i,repeat,mode]);continue
             selected=read(selection)['selected_attempt'];out=cell/f'attempt{selected}'

@@ -1,4 +1,4 @@
-> 当前权威状态见 README 的 Current evidence 与 revision_full/README_CURRENT.md。原协议三组72项、必填提示诊断24项、机制72项已完成；全题扩展待追加预算。以下保留早期项目记录。
+> 当前权威状态见 README 的 Current evidence、revision_full/GAP_FINDINGS.md 与 revision_full/README_CURRENT.md。当前优先小范围对齐：131 条作者观测重放高度一致；三题首次引导开发实验节省 37.7% tokens、官方评分下降 10.3%，未通过预设质量门槛。固定八题接近作者收益的目标仍待达到，全题扩展暂缓。保守累计 $9.47，批准上限 $12。以下保留早期项目记录。
 
 # FTEC5660 最终状态
 

@@ -9,7 +9,7 @@ from pathlib import Path
 import httpx
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
-parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['precision','hint','hintfull','recovery','optional'],required=True);parser.add_argument('--workers',type=int,default=3);parser.add_argument('--repeats',type=int,choices=[1,3],default=3);parser.add_argument('--receipt-only',action='store_true');parser.add_argument('--judge-only',action='store_true');parser.add_argument('--cell',help='Exact qINDEX_rREPEAT cell for a targeted judge-only resume');parser.add_argument('--one',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['precision','hint','hintfull','recovery','optional','priming'],required=True);parser.add_argument('--workers',type=int,default=3);parser.add_argument('--repeats',type=int,choices=[1,3],default=3);parser.add_argument('--receipt-only',action='store_true');parser.add_argument('--judge-only',action='store_true');parser.add_argument('--cell',help='Exact qINDEX_rREPEAT cell for a targeted judge-only resume');parser.add_argument('--one',action='store_true');args=parser.parse_args()
 if args.cell:
     import re
     assert args.judge_only and re.fullmatch(r'q\d+_r\d+',args.cell),'--cell requires judge-only and an exact cell name'
@@ -19,6 +19,18 @@ note=ROOT/f'runs/{args.study}/formal/transport_recovery_amendment.json'
 if not note.exists():note.write_text(json.dumps(amendment,indent=2),encoding='utf-8')
 original_qualify=run.qualify;original_judge=run.judge
 original_run=run.run
+if args.study=='priming':
+    run.NETWORK_RECEIPT_RETRY_LIMIT=3
+    run.write(ROOT/'runs/priming/formal/transport_recovery_v5.json', {
+        'scope':'Priming development pilot; one final attempt after actual transport change.',
+        'cause':'Three q26 and q17 attempts each lost at least one response/usage receipt. Stream canary captured provider cancelled=true/status499.',
+        'repair':'Project-only SakuraCat US IEPL02; upstream SSE heartbeats with complete-JSON assembly and immutable raw chunks. Both GLM tool calls and GPT5 JSON canaries verified. Model generation parameters and Z.AI/OpenAI route unchanged.',
+        'policy':'Allow attempt3 only when all previous attempts fail solely for missing receipts. At most four attempts total. Scores and token improvements never trigger retries. All old answers and costs retained; USD12 cap unchanged.'})
+    run.write(ROOT/'runs/priming/formal/transport_recovery_v4.json', {
+        'scope':'Priming development pilot only; no changes to old selected studies.',
+        'cause':'q26 attempts0 and1 each have one post-send ReadError without usage. All answers and requests remain intact. Judge q17 also lost a response.',
+        'repair':'After drivers drained, switch only network transport to the already configured project proxy and disable connection reuse. Same Z.AI/OpenAI model providers and all frozen agent settings.',
+        'policy':'Permit attempt2 only when attempts0 and1 both fail solely for missing usage receipts. No attempt3 for missing receipts. Accept first qualified result regardless of score. Shared USD12 ceiling applies.'})
 receipt_note=ROOT/f'runs/{args.study}/formal/receipt_completeness_amendment.json'
 if not receipt_note.exists():
     run.write(receipt_note,{'time':time.time(),'policy':'Require usage receipts for every transmitted agent request in a selected run. A ConnectError reconciled as pre-transmission is exempt. Missing post-send usage makes the attempt an infrastructure failure; preserve its answer and score and use the original one bounded retry. Apply to every condition, regardless of scores or token direction.','reason':'An offline completeness audit found missing usage in precision/pruner q14_r1, q14_r2, q41_r2. Network errors can otherwise understate cumulative tokens.'})
@@ -87,7 +99,9 @@ def block(number,index,repeats=3):
             for attempt in range(4):
                 if attempt>=2:
                     previous=[run.read(cell/f'attempt{a}'/'qualification.json') for a in range(attempt)]
-                    if any(p.get('reasons')!=['budget_guard_interruption'] for p in previous):break
+                    budget_only=all(p.get('reasons')==['budget_guard_interruption'] for p in previous)
+                    receipt_only=(attempt<=getattr(run,'NETWORK_RECEIPT_RETRY_LIMIT',1) and all(p.get('reasons')==['usage_receipt_missing'] for p in previous))
+                    if not (budget_only or receipt_only):break
                 out=guarded_run(job,attempt)
                 if qualify(out):
                     judge(out);selected=attempt;break
