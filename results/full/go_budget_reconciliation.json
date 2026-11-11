@@ -1,0 +1,40 @@
+{
+  "old_go_stage_uncached_bound_usd": 4.425063,
+  "reconciled_go_stage_usd": 0.9469923000000015,
+  "released_estimate_usd": 3.4780703999999982,
+  "settled_usage_rows": 1062,
+  "recorded_cash_usd": 0,
+  "retained_unresolved_bounds_usd": 0.0629085,
+  "retained_initial_probe_bound_usd": 2.97e-05,
+  "network_list_cost_usd": 4.68e-05,
+  "ledger_sha256": "4ab79a60f6a71d616f91017e961d11a36d9ca8e9caca18c9778f480e16e0e7c4",
+  "basis": "User requested actual-usage recalibration. Use provider-recorded list costs for settled Go usage (cash charged zero); preserve missing-usage bounds, initial probe bound and every OpenRouter reservation. USD 12 ceiling stays unchanged.",
+  "authorization_before": {
+    "project_limit_usd": 12,
+    "prior_stage_conservative_usd": 7.93065734,
+    "margin_usd": 0.15,
+    "meter_limit_usd": 3.91934266,
+    "authorization": "Existing explicit user approval of USD 12; a USD 28 increase is pending and is not assumed.",
+    "external_novita_probe_cost_usd": 0.00445126
+  },
+  "authorization_after": {
+    "project_limit_usd": 12,
+    "prior_stage_conservative_usd": 4.4525869400000015,
+    "margin_usd": 0.15,
+    "meter_limit_usd": 7.397413059999998,
+    "authorization": "Existing explicit user approval of USD 12; a USD 28 increase is pending and is not assumed.",
+    "external_novita_probe_cost_usd": 0.00445126,
+    "go_usage_reconciliation": {
+      "old_go_stage_uncached_bound_usd": 4.425063,
+      "reconciled_go_stage_usd": 0.9469923000000015,
+      "released_estimate_usd": 3.4780703999999982,
+      "settled_usage_rows": 1062,
+      "recorded_cash_usd": 0,
+      "retained_unresolved_bounds_usd": 0.0629085,
+      "retained_initial_probe_bound_usd": 2.97e-05,
+      "network_list_cost_usd": 4.68e-05,
+      "ledger_sha256": "4ab79a60f6a71d616f91017e961d11a36d9ca8e9caca18c9778f480e16e0e7c4",
+      "basis": "User requested actual-usage recalibration. Use provider-recorded list costs for settled Go usage (cash charged zero); preserve missing-usage bounds, initial probe bound and every OpenRouter reservation. USD 12 ceiling stays unchanged."
+    }
+  }
+}

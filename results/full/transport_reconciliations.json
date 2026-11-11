@@ -1,0 +1,460 @@
+{
+  "adjustments": [
+    {
+      "request_id": "685e1ea2bd2c4ffab3927c8bc1f29e99",
+      "session": "judge-hint-pruner-30-0-a0-j0",
+      "original_bound": 0.11368750000000001,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11368750000000001
+    },
+    {
+      "request_id": "0dd47a295c3b48fdbcb234f7e39d428b",
+      "session": "judge-hint-pruner-30-0-a0-j1",
+      "original_bound": 0.11368750000000001,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11368750000000001
+    },
+    {
+      "request_id": "8d5efb836a154374b595e85c5bee30a6",
+      "session": "judge-hint-pruner-30-0-a0-j2",
+      "original_bound": 0.11368750000000001,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11368750000000001
+    },
+    {
+      "request_id": "70e46748298b46f89da79c84a1b39607",
+      "session": "judge-precision-baseline-41-2-a0-j0",
+      "original_bound": 0.10747250000000001,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.10747250000000001
+    },
+    {
+      "request_id": "fe92ef59a2a546fc9269a67dd1e9168d",
+      "session": "judge-precision-baseline-41-2-a0-j1",
+      "original_bound": 0.10747250000000001,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.10747250000000001
+    },
+    {
+      "request_id": "3ec9858aeda74b179fcb973f7b03eaf7",
+      "session": "judge-precision-pruner-41-2-a0-j0",
+      "original_bound": 0.1075875,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.1075875
+    },
+    {
+      "request_id": "d9c654e7d88c49f0ac3a340342bf10c0",
+      "session": "judge-hint-pruner-41-0-a0-j1",
+      "original_bound": 0.106425,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.106425
+    },
+    {
+      "request_id": "c77c60924e804cc6b021b7c19d7a1eea",
+      "session": "judge-precision-pruner-30-1-a0-j1",
+      "original_bound": 0.11195250000000001,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11195250000000001
+    },
+    {
+      "request_id": "c89d5c8b433545fcb05f7dd0d0787381",
+      "session": "judge-hint-pruner-41-0-a0-j2",
+      "original_bound": 0.106425,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.106425
+    },
+    {
+      "request_id": "2493703f32f5427caab3e95c6ce52b15",
+      "session": "judge-precision-pruner-30-1-a0-j2",
+      "original_bound": 0.11195250000000001,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11195250000000001
+    },
+    {
+      "request_id": "cd49d3cf70b54d7d98ac4b20e887322d",
+      "session": "judge-hintfull-pruner-8-0-a0-repair0",
+      "original_bound": 0.1076025,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.1076025
+    },
+    {
+      "request_id": "66492d78234248dabce22397e42c11c7",
+      "session": "judge-hintfull-pruner-8-0-a0-repair1",
+      "original_bound": 0.1076025,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.1076025
+    },
+    {
+      "request_id": "b72865a9f7b0420ea7c7a9e5f6da3573",
+      "session": "judge-hintfull-pruner-8-0-a0-repair2",
+      "original_bound": 0.1076025,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.1076025
+    },
+    {
+      "request_id": "cf1ab1af9d5c44bfa017dd21e72c405b",
+      "session": "judge-hintfull-pruner-8-0-a0-repair3",
+      "original_bound": 0.1076025,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.1076025
+    },
+    {
+      "request_id": "efdde7726156495c8591892b8dcc56da",
+      "session": "judge-hintfull-pruner-8-0-a0-repair4",
+      "original_bound": 0.1076025,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.1076025
+    },
+    {
+      "request_id": "fc033443eace4666ad89e9737a066e53",
+      "session": "judge-hintfull-pruner-8-0-a0-repair5",
+      "original_bound": 0.1076025,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.1076025
+    },
+    {
+      "request_id": "e04d9dd83737403996091e6fd3c2c770",
+      "session": "judge-precision-pruner-33-2-a0-repair0",
+      "original_bound": 0.11214000000000002,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11214000000000002
+    },
+    {
+      "request_id": "8b678d9dc6ce419dabdbc734ff3ef6a3",
+      "session": "judge-precision-pruner-33-2-a0-repair1",
+      "original_bound": 0.11214000000000002,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11214000000000002
+    },
+    {
+      "request_id": "9b42eca35de8419f8ab63753e2184f03",
+      "session": "judge-precision-pruner-33-2-a0-repair2",
+      "original_bound": 0.11214000000000002,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11214000000000002
+    },
+    {
+      "request_id": "94539121d67c45bca0f99df4fad8da24",
+      "session": "judge-precision-pruner-33-2-a0-repair3",
+      "original_bound": 0.11214000000000002,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11214000000000002
+    },
+    {
+      "request_id": "534a44577c9440489955779a3196e028",
+      "session": "judge-precision-pruner-33-2-a0-repair4",
+      "original_bound": 0.11214000000000002,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11214000000000002
+    },
+    {
+      "request_id": "d13b9fbfa0d54e2e8460e102140589af",
+      "session": "judge-precision-pruner-33-2-a0-repair5",
+      "original_bound": 0.11214000000000002,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11214000000000002
+    },
+    {
+      "request_id": "18e3ec76a2f0432ab6218e196ec35d88",
+      "session": "judge-precision-pruner-33-2-a0-repair6",
+      "original_bound": 0.11214000000000002,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.11214000000000002
+    },
+    {
+      "request_id": "941267f85ec04779900f4f728f82e735",
+      "session": "mechanism-fp32-pruned-2-0",
+      "original_bound": 0.072935,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.072935
+    },
+    {
+      "request_id": "e6c30bbce8434c56aab7fba6793e754f",
+      "session": "mechanism-fp32-full-2-0",
+      "original_bound": 0.076436,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.076436
+    },
+    {
+      "request_id": "b330f1e4b7094448a574b945c24401a1",
+      "session": "mechanism-fp32-recoverable-2-0",
+      "original_bound": 0.07342399999999999,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.07342399999999999
+    },
+    {
+      "request_id": "4f774c2a8c60424fbbde4376a27e34bc",
+      "session": "mechanism-fp32-pruned-3-0",
+      "original_bound": 0.072513,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.072513
+    },
+    {
+      "request_id": "b72da11d467542788b0aed50fb278c39",
+      "session": "mechanism-fp32-full-3-0",
+      "original_bound": 0.07660399999999999,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.07660399999999999
+    },
+    {
+      "request_id": "a97ab741ceba486c8725322114babf51",
+      "session": "mechanism-fp32-recoverable-3-0",
+      "original_bound": 0.073002,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.073002
+    },
+    {
+      "request_id": "f3cb905c8a3346d7b3106e488accb775",
+      "session": "mechanism-fp32-full-4-0",
+      "original_bound": 0.073881,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.073881
+    },
+    {
+      "request_id": "37a330f9a6ba44489a1dcac763b6e6ab",
+      "session": "mechanism-fp32-pruned-4-0",
+      "original_bound": 0.073114,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.073114
+    },
+    {
+      "request_id": "6fb75918dd9a4ba1a6d9e0e13765197a",
+      "session": "mechanism-fp32-recoverable-4-0",
+      "original_bound": 0.073603,
+      "verified_cost": 0,
+      "basis": "HTTPX ConnectError before connection establishment; no HTTP response; retained request has no transmitted API completion.",
+      "released_bound": 0.073603
+    }
+  ],
+  "latest_unresolved": [
+    {
+      "request_id": "0c29d0fee1fe422c81a6b23837742e49",
+      "error": "RemoteProtocolError",
+      "status": null,
+      "bound": 0.172285
+    },
+    {
+      "request_id": "a2c81c7a58e744649246c7e67e478515",
+      "error": "RemoteProtocolError",
+      "status": null,
+      "bound": 0.09732099999999999
+    },
+    {
+      "request_id": "0df2d295629c438f8d146d0d25b647b8",
+      "error": "RemoteProtocolError",
+      "status": null,
+      "bound": 0.10852250000000001
+    },
+    {
+      "request_id": "42e6963459d648d38b8c96f1e038bc37",
+      "error": null,
+      "status": 500,
+      "bound": 0.13147999999999999
+    },
+    {
+      "request_id": "1572082e02884beb8b81978be328278f",
+      "error": "RemoteProtocolError",
+      "status": null,
+      "bound": 0.10827500000000001
+    },
+    {
+      "request_id": "776f30f43257470c957c10a4f97082fd",
+      "error": "RemoteProtocolError",
+      "status": null,
+      "bound": 0.107935
+    },
+    {
+      "request_id": "6c850aefc04540858f6bf7d2c5fadcfe",
+      "error": null,
+      "status": 500,
+      "bound": 0.08821699999999999
+    },
+    {
+      "request_id": "fb0d24d63ce14f919c31dd2fc1ad5424",
+      "error": "JSONDecodeError",
+      "status": null,
+      "bound": 0.11599599999999999
+    },
+    {
+      "request_id": "7f530e97e0fe41d6832729b8d866de46",
+      "error": null,
+      "status": 500,
+      "bound": 0.084366
+    },
+    {
+      "request_id": "d8b5d155ece6494db5e743e02b4fe0d7",
+      "error": "JSONDecodeError",
+      "status": null,
+      "bound": 0.158775
+    },
+    {
+      "request_id": "111727e476f34d7699ccd28670d9c89f",
+      "error": null,
+      "status": 500,
+      "bound": 0.123144
+    },
+    {
+      "request_id": "8c1bc75574fc4a69881cd411710699de",
+      "error": null,
+      "status": 500,
+      "bound": 0.08810799999999999
+    },
+    {
+      "request_id": "9b1f7e829e7b4e48875e4b9758151f1e",
+      "error": null,
+      "status": 500,
+      "bound": 0.125969
+    },
+    {
+      "request_id": "8c675ba99f7843aa83f92b5439beaf87",
+      "error": "RemoteProtocolError",
+      "status": null,
+      "bound": 0.106425
+    },
+    {
+      "request_id": "76a690f8b48542709c63c675fa34dbd1",
+      "error": "RemoteProtocolError",
+      "status": null,
+      "bound": 0.11195250000000001
+    },
+    {
+      "request_id": "7d0c911dde794f3b843a285bf22962bb",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.140263
+    },
+    {
+      "request_id": "21a167ccc4cc44df8ed41de1f40e803e",
+      "error": null,
+      "status": 403,
+      "bound": 0.12170250000000002
+    },
+    {
+      "request_id": "ef26f90870484bb5a778f0526bfe276b",
+      "error": null,
+      "status": 403,
+      "bound": 0.12170250000000002
+    },
+    {
+      "request_id": "4f5ee8442d1d4ddfbc39418a962c00e3",
+      "error": null,
+      "status": 403,
+      "bound": 0.12170250000000002
+    },
+    {
+      "request_id": "5b4b6f47c71a41a8b29337da259c9dca",
+      "error": "ReadTimeout",
+      "status": null,
+      "bound": 0.093443
+    },
+    {
+      "request_id": "6afcee9fe24d438692385778e1477463",
+      "error": "ReadTimeout",
+      "status": null,
+      "bound": 0.14645599999999998
+    },
+    {
+      "request_id": "94f2a4cb2d35491694ecfb2af123292c",
+      "error": "ReadTimeout",
+      "status": null,
+      "bound": 0.262416
+    },
+    {
+      "request_id": "05aa48596de84ec0adc8c9c3202b5c46",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.098773
+    },
+    {
+      "request_id": "eff770b74f6b46c58916529edb7609be",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.14703
+    },
+    {
+      "request_id": "3ed6b046d40c47ddbbc55facde08b206",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.262416
+    },
+    {
+      "request_id": "8469fcb2bc5d459693e7a8ebac5cb0fd",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.143832
+    },
+    {
+      "request_id": "6603fc3576694561a0b8c3fbc9b2eebb",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.084321
+    },
+    {
+      "request_id": "01b6005b4586427999b98aa17753cb61",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.099198
+    },
+    {
+      "request_id": "16d95a5539814280871b3656e49f5efa",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.074187
+    },
+    {
+      "request_id": "198822291ca24128b7ccf7fc143d4c81",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.073698
+    },
+    {
+      "request_id": "be50bcbfe5e143e2a1eeda7fa2b0c4a6",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.10084299999999999
+    },
+    {
+      "request_id": "c50fab66f89d4a158af4d80c28bdaaf1",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.148412
+    },
+    {
+      "request_id": "31875a396dd94f5f859dd69950123aa7",
+      "error": "ReadError",
+      "status": null,
+      "bound": 0.122861
+    }
+  ]
+}

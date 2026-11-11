@@ -3,7 +3,7 @@ import argparse,collections,json,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 folder=ROOT/'runs/full'
-parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['full','subset','precision','hint'],default='full');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--study',choices=['full','subset','precision','hint','hintfull','recovery'],default='full');args=parser.parse_args()
 study=ROOT/f'runs/{args.study}'
 def read(p):return json.loads(p.read_text(encoding='utf-8'))
 ledger=folder/'formal_usage.jsonl'
@@ -17,5 +17,7 @@ failed=[{'cell':'/'.join(p.parts[-4:-1]),'reasons':read(p.parent/'qualification.
 new=sum(c['cost'] for c in calls)
 value={'study':args.study,'completed':dict(done),'running':running,'failures':failed,'requests':len(calls),'new_conservative_cost':new,
        'project_conservative_cost':authorization['prior_stage_conservative_usd']+new,'approved_ceiling':authorization['project_limit_usd'],
-       'unreconciled_requests':sum(c.get('cost_kind')!='provider_reported' for c in calls)}
+       'unreconciled_requests':sum(c.get('cost_kind')!='provider_reported' and c['request_id'] not in authorization.get('transport_reconciliations',{}) for c in calls),
+       'reconciled_transport_requests':len(authorization.get('transport_reconciliations',{})),
+       'aggregate_account_bound_covered_requests':len(authorization.get('account_bound_reconciliation',{}).get('covered_request_ids',[]))}
 print(json.dumps(value,indent=2))
