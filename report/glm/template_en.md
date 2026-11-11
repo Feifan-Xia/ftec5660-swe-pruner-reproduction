@@ -10,16 +10,13 @@ FTEC5660 Individual Reproducibility Project · 11 November 2026
 
 ## 1. Introduction
 
-Coding agents repeatedly search and read repositories. A long tool response can remain in conversation history and be transmitted again in subsequent requests. SWE-Pruner filters such responses using an agent-supplied focus question and a released 0.6B neural skimmer [1,2]. This project, item 26 on the instructor's list, runs the authors' OpenHands/SWE-QA pipeline on Streamlink and examines its quality/resource trade-off.
+SWE-Pruner: Self-Adaptive Context Pruning for Coding Agents uses a 0.6B neural skimmer to select code lines relevant to an agent's current focus, reducing long tool outputs carried across turns [1,4]. We reproduce the authors' `downstream_eval/multi_turn/sweqa` implementation at commit 96171b5 [2]. OpenHands drives GLM-4.6 to search and read repositories through Bash; SWE-QA (Software Engineering Question Answering) supplies questions, reference answers and five-dimensional evaluation; SWE-Pruner filters Bash output before it enters context. These components define the execution framework, evaluation task and reproduced method.
 
-Table 2 of SWE-Pruner reports lower cumulative token usage with unchanged GLM-4.6 quality on Streamlink [1]. This finding connects local observation compression to a complete agent investigation: shorter tool responses can change subsequent reading decisions, interaction counts and conversation history. We examine this trade-off using the matching model identifier, released weights and author evaluation pipeline. Published and reproduced values appear together in Table 3.
+The numerical target is the full-observation and SWE-Pruner rows for Streamlink with GLM-4.6 in the original Table 2. Both published scores are 8.56; tokens are 318.2K/145.1K and rounds 18.2/25.0. We use eight preselected questions from the 48-question release, three executions per condition, a fixed Z.AI GLM-4.6 route and independent GPT-5 scoring with the author rubric. Table 3 places published and local values together, identifying the subset scope.
 
-We also study access to evidence after pruning. As an investigation develops, material removed under an earlier focus question can become relevant. We extend the original pipeline with task-scoped storage and bounded exact recovery, then measure both autonomous repository QA and evidence access under a fixed goal-shift intervention.
+The reproduced pipeline compresses processed source text by 76.5%, while mean task tokens rise from 112.8K to 131.0K (+16.1%) and score rises from 8.63 to 9.27. The local token point estimate therefore reverses the published −54.4% direction. Pruning activates in 10/24 tasks, and q11's long investigation strongly influences the aggregate; the paired token-difference interval spans zero. These observations bound the result by population, serving configuration and investigation behavior.
 
-The main experiment uses the matching GLM-4.6 model identifier, released skimmer weights and author pipeline on eight predefined questions, with three executions per condition. A separate fixed-context experiment tests recovery after a change in investigation goal. The main experiment measures autonomous task behavior; the second isolates access to evidence removed from a saved observation.
-
-
-The study contributes a complete three-condition comparison with request-level analysis of discrepancies, a reusable exact-recovery interface, and complementary autonomous and fixed-context evidence characterizing its benefits and costs.
+Our modification stores original observations per task and adds `expand(observation_id, start, end)`, retrieving up to 200 exact lines per call after the investigation focus changes. Autonomous QA scores 9.13 with 139.8K tokens: −0.13 points and +6.8% tokens relative to pruning. A separate 72-run goal-shift study raises exact matches from 3/24 to 24/24, with total tokens increasing from 20,655 to 55,617. Together, these experiments establish evidence recovery and quantify its cost; downstream utility depends on the agent's choice of ranges.
 
 <!-- page -->
 
