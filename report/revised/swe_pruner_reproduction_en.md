@@ -75,6 +75,8 @@ The fixed zero-based indices are 41, 14, 30, 8, 11, 46, 33 and 29. Three conditi
 
 Table 1. Shared configuration for the 72-cell experiment.
 
+API credentials were supplied through local environment variables and kept outside the agent sandbox and evidence archive; the repository and evidence contain only provider names and routes.
+
 ### 3.2 Metrics and inference
 
 Quality is the mean of correctness, completeness, relevance, clarity and reasoning, each scored from 1 to 10. Relative changes use `100 × (treatment/control − 1)`. Confidence intervals treat questions as clusters: we first average the three repetitions within each question and then perform 10,000 paired bootstrap resamples with seed 5660. The runs use temperature zero but no independent provider seed claim.
@@ -201,6 +203,17 @@ All 72 primary executions have answers, scores and transmitted-request usage. Fi
 
 The 24 recovery cells include three infrastructure retries; the 48 full/pruner cells include ten. Every retry occurs at answer export, process, pruning-service or usage-receipt stages. Judge retries use the same saved answer and accept the first valid five-dimensional JSON response. Connection resets and DNS/SSL errors caused by network and VPN transitions have dedicated logs.
 
+| Blocker | Observed symptom | Resolution | Effect on the study |
+|---|---|---|---|
+| Workspace path mismatch | The agent could not see the intended repository snapshot | Mounted the shared `swe-repos` root read-only and restored the 50-step limit | All cells used the same task workspace |
+| Numerical-setting mismatch | Padding and precision differed from the released behavior | Restored 8192-position padding, FP32 parameters, FP16 autocast and query-tiled SDPA | The checkpoint fit the local 8GB GPU while preserving the model context |
+| Token double counting | The runner summed aggregate usage and per-request usage together | Used an independent ledger with one provider-usage record per request | Every reported token count uses transmitted-request usage |
+| Terminal-summary evidence loss | The 50-step summary serialized real Bash observations as `Observation: []` | Fixed the terminal serializer and preserved original and repaired branches separately | Evidence remains visible while the original execution result stays unchanged |
+| Network and provider interruptions | DNS/SSL resets, missing usage receipts and answer-export failures | Kept every failed attempt and applied one bounded infrastructure retry; judge retries reused the saved answer | Final execution completeness reached 72/72 |
+| Optional-hint activation gap | Author records use hints in 131/131 Bash actions; the local pruner uses 6/254 | Reported activation as an operating-condition difference instead of forcing hints | The 49.9% versus 17.6% gap has a measured path explanation |
+
+Table 9. Debug diary. Engineering changes are separated from the measured recovery modification.
+
 ### 6.2 Artifacts and resources
 
 Frozen protocols, source hashes, question inputs, trajectories, answers, judge responses and request usage form the provenance chain. The fixed batch uses 5,969,294 + 3,001,723 API tokens. Under the project's conservative accounting, the 48 full/pruner cells cost approximately $1.27 and the 24 recovery cells approximately $0.65, or $1.92 for the batch.
@@ -216,7 +229,7 @@ The repository includes installation and execution instructions. Original failur
 | Analysis | Table generation, cluster bootstrap and question summaries |
 | Verification | 23 unit tests, source hashes and execution-completeness audit |
 
-Table 9. Reproducibility artifact checklist.
+Table 10. Reproducibility artifact checklist.
 
 ## 7. Conclusion
 

@@ -173,4 +173,4 @@ python -X utf8 -m unittest tests.test_observation_store tests.test_subset_recove
 
 ## Course submission
 
-The recorded presentation is 12:14 long and demonstrates the reproduction result, the recoverable-pruning modification and the live recovery command. The final course submission also includes the seven-page report PDF.
+The recorded presentation is 12:14 long and demonstrates the reproduction result, the recoverable-pruning modification and the live recovery command. The final course submission also includes the eight-page report PDF.
