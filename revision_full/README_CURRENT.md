@@ -1,8 +1,12 @@
 # Corrected reproduction and evidence map
 
+## Default provider for subsequent reproduction work
+
+User selected **Zhipu GLM direct** on November 11, 2026. The default agent is `glm-4.6` through the standard `https://open.bigmodel.cn/api/paas/v4` Chat Completions endpoint, using the existing CC Switch Zhipu GLM key. Both Coding Plan and standard endpoints passed the small availability probe. `configs/reproduction_provider.json` records the credential reference and endpoint without storing the key. New experiments must freeze this route in a new protocol and use a distinct study identifier. Existing runners and frozen OpenRouter studies retain their historical configuration; launch new studies with the new default explicitly wired and verified. Approved project budget remains USD12.
+
 ## Completed scope
 
-Latest small-scope diagnosis: see `GAP_FINDINGS.md`. Complete author-input replay (131 observations) isolates skimmer fidelity; `results/full/trajectory_gap_audit.json` measures hint/path discrepancies. A disjoint first-request priming screen completes six cells and fails its frozen quality gate (−37.7% tokens, −10.3% quality). Its frozen protocol and sources are in `revision_priming/` and `runs/priming/formal/`. The reference audit preserves two source/reference disagreements without replacing official scores. Full-population expansion is deferred; approved budget remains USD12, current conservative USD9.4687.
+Latest small-scope diagnosis: see `GAP_FINDINGS.md`. Complete author-input replay (131 observations) isolates skimmer fidelity; `results/full/trajectory_gap_audit.json` measures hint/path discrepancies. A disjoint first-request priming screen completes six cells and fails its frozen quality gate (−37.7% tokens, −10.3% quality). Its frozen protocol and sources are in `revision_priming/` and `runs/priming/formal/`. The official BigModel `glm-4.6` development screen now completes six matched cells at 64,697 versus 55,565 mean tokens and 8.60 versus 9.07 mean quality, with 18 frozen sources verified. Results and failure reconciliation are in `revision_bigmodel/RESULTS.md` and `results/bigmodel/development_audit.json`. Full-population expansion is deferred; approved budget remains USD12 and corrected cumulative conservative use is USD10.4500.
 
 Recompute this extension with `revision_priming/analyze.py`, `revision_full/analyze_priming.py`, `revision_full/audit_subset.py --study priming --repeats 1`, `revision_full/audit_development_references.py`, and `revision_full/summarize_gap.py`. The reference audit reads the pinned checkout under `data/paper-workspace/`; its saved JSON embeds cited source excerpts and hashes for archive-only review.
 
@@ -17,7 +21,7 @@ The corrected fixed subset contains eight questions × three repetitions × full
 | Terminal-only replay, two affected prefixes | `runs/full/terminal_repair`, `results/full/terminal_repair_analysis.json` |
 | Author-run same-question reference | `results/full/author_same_questions.json` |
 | Unified manuscript numbers | `results/full/manuscript_evidence.json` |
-| Chinese and English drafts | `report/revised/subset_draft_zh.pdf`, `subset_draft_en.pdf` |
+| Chinese and English final reports | `report/revised/swe_pruner_reproduction_zh.pdf`, `swe_pruner_reproduction_en.pdf` |
 
 The historical `revision_glm` results describe earlier settings and remain separately labeled. Frozen launch files are copied into each study's `formal/frozen_source` directory and verified by `runtime_manifest.json`. `VARIANTS.md` explains the small differences between frozen variants.
 
@@ -37,10 +41,8 @@ python -X utf8 revision_full/summarize_evidence.py
 python -X utf8 revision_full/audit_subset.py --study precision --repeats 3
 python -X utf8 revision_full/audit_subset.py --study optional --repeats 3
 python -X utf8 revision_recovery/audit_reads.py --study optional
-python -X utf8 report/revised/build_subset_draft.py
-python -X utf8 report/revised/build_english_draft.py
-python -X utf8 report/revised/render.py report/revised/subset_draft_zh.md report/revised/subset_draft_zh.pdf --language zh
-python -X utf8 report/revised/render.py report/revised/subset_draft_en.md report/revised/subset_draft_en.pdf --language en
+python -X utf8 report/revised/render.py report/revised/swe_pruner_reproduction_zh.md report/revised/swe_pruner_reproduction_zh.pdf --language zh
+python -X utf8 report/revised/render.py report/revised/swe_pruner_reproduction_en.md report/revised/swe_pruner_reproduction_en.pdf --language en
 ```
 
 The required-hint protocol initially allowed three repetitions; only its predeclared eight-question first screen was launched. Its analyzer's `--partial` preserves that larger frozen protocol while the completed diagnostic uses repetition zero. The original main comparison and optional recovery each require all three repetitions. Eight question clusters, rather than 48 clusters, are used in the bootstrap; the frozen precision protocol's old prose is corrected in `DIAGNOSIS_V2.md`.

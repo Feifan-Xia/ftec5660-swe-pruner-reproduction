@@ -28,6 +28,8 @@ GRAY = colors.HexColor("#526174")
 
 def inline(text, bold=False):
     text = escape(text)
+    text = re.sub(r"==(.*?)==", r'<font backColor="#FFF3B0">\1</font>', text)
+    text = re.sub(r"\{\{(.*?)\}\}", r'<font color="#0F766E">\1</font>', text)
     text = re.sub(r"\*\*(.*?)\*\*", r"<b>\1</b>", text)
     text = re.sub(r"`([^`]+)`", r'<font color="#245B79">\1</font>', text)
     text = re.sub(

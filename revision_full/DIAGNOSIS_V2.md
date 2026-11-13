@@ -6,7 +6,7 @@
 
 原始可选提示的恢复修改：评分相对pruner提高1.4%，tokens增加11.3%，质量区间跨零。24项恢复中12次成功读取均精确匹配并暴露新文本；7次超长、2次越界请求保留。必填提示24项诊断与72项机制实验完整完成，结果分别报告。
 
-终止分支证据序列化缺陷已修复；两条同前缀重放保持原始版本，避免与自主重跑混淆。最新分析为 `results/full/manuscript_evidence.json`，双语稿为 `report/revised/subset_draft_zh.pdf`（8页）和 `subset_draft_en.pdf`（7页）。余下40题的360项扩展方案已准备，USD24提案仍待批准，当前上限USD12。下文阶段表保留早期诊断时点，完整结果以上述文件为准。
+终止分支证据序列化缺陷已修复；两条同前缀重放保持原始版本，避免与自主重跑混淆。最新分析为 `results/full/manuscript_evidence.json`，双语终稿为 `report/revised/swe_pruner_reproduction_zh.pdf`（7页）和 `swe_pruner_reproduction_en.pdf`（7页）。余下40题的360项扩展方案已准备，USD24提案仍待批准，当前上限USD12。下文阶段表保留早期诊断时点，完整结果以上述文件为准。
 
 ## 研究对象与固定范围
 

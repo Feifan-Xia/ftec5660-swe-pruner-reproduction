@@ -1,5 +1,15 @@
 # FTEC5660 full-population reproduction revision
 
+## 2026-11-13 official BigModel development screen completed
+
+The six-cell official `glm-4.6` development screen completed with 18 frozen sources verified and 6/6 selected cells audited. Baseline versus pruner means are 64,697 versus 55,565 tokens (-14.12%) and 8.60 versus 9.07 quality (+5.43%); pruning activates in 2/3 pruner tasks. q17 and q43 reduce tokens while q26 increases by 14.96%, so the three-question screen preserves the expected aggregate direction without implying fixed-eight certainty.
+
+The GPT-5 judge route was restored through the isolated Sakura proxy after direct OpenRouter returned 403. Existing infrastructure failures were retried from preserved judge slots up to six attempts; the one developer wrapper is `revision_bigmodel/resume_development.py`. Baseline q26 attempt0 had one retained post-send ConnectTimeout and triggered the frozen one-retry rule; attempt1 is selected and both outcomes remain. Five reservations created before transmission by an incorrectly launched WSL meter were moved to `runs/bigmodel/reconciliations/pre_send_credential_resolution_20261113/` with a manifest. Corrected new-route accounting is USD0.98028433, project cumulative USD10.449963403, leaving USD1.400036597 below the USD12 ceiling after margin. Results are recorded in `revision_bigmodel/RESULTS.md` and `results/bigmodel/development_audit.json`.
+
+## 2026-11-11 official provider preference
+
+User added CC Switch provider Zhipu GLM (96e61099-3aa6-417a-8e4a-d48efb026c3f), then explicitly selected it as default for reproduction. Availability probe on configured Coding Plan and standard pay-as-you-go endpoints returned HTTP200, model glm-4.6, content OK, 9input+2output tokens each. Credential remains in CC Switch. Default for subsequent agent studies is standard BigModel Chat Completions, recorded in configs/reproduction_provider.json. Future matched studies need a fresh frozen protocol and a route-aware meter; historical OR runner settings are retained. This turn records the preference, without launching another experiment or expanding USD12 approval.
+
 ## 2026-11-11 small-scope gap diagnosis, latest checkpoint
 
 - User defers population expansion and prioritizes understanding the gap and near-author gains on a small scope. USD24 remains unapproved; ceiling USD12. Working target fixed8 x3, at least40% fewer cumulative tokens, no more than2% relative quality loss, complete outcomes and cluster intervals. Target remains unmet.

@@ -14,6 +14,10 @@ report/preview_page*.png
 report/*_draft.pdf
 report/glm/layout_preview/
 results/*_console.json
+tmp/
+.codex-build/
+.chart-data-*/
+presentations/
 
 report/revised/layout_preview/
 report/revised/layout_draft.pdf
